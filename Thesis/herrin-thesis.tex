@@ -1,0 +1,65 @@
+%\documentclass[12pt]{report}
+\documentclass[12pt,twoside]{report}
+
+% note that the document can be single or double sided.  
+
+\usepackage[online]{suthesis-2e}
+\usepackage{subfiles}
+\usepackage{todonotes}
+\usepackage{nag}
+%\usepackage{suthesis-2e}
+
+\newcommand{\addref}{\todo[color=red!40]{Add reference.}}
+
+\newcommand{\isotope}[2]{\(^{#1}\)#2}
+\newcommand{\xenon}[1]{\isotope{#1}{Xe}}
+\newcommand{\cobalt}[1]{\isotope{#1}{Co}}
+\newcommand{\cesium}[1]{\isotope{#1}{Cs}}
+\newcommand{\thorium}[1]{\isotope{#1}{Th}}
+
+\newcommand{\zeronu}{\(0\nu\beta\beta\)}
+\newcommand{\twonu}{\(2\nu\beta\beta\)}
+
+\reversemarginpar
+\setlength{\marginparwidth}{1.25in}
+
+\begin{document}
+
+\title{Something Something\\
+         With EXO-200}
+\author{Steven Herrin}
+\dept{Physics}
+\principaladviser{Martin Breidenbach}
+\firstreader{Pat Burchat}
+\secondreader{Aaron Roodman}
+ 
+\beforepreface
+
+\prefacesection{Abstract}
+\input{herrin-abstract}
+
+\prefacesection{Acknowledgements}
+Lots of people.
+
+\afterpreface
+ 
+\chapter{Introduction}
+\subfile{herrin-introduction}
+
+\chapter{Neutrinos}
+\subfile{herrin-neutrinos}
+
+\chapter{Conclusions}
+\subfile{herrin-conclusion}
+
+\appendix
+\chapter{Appendix Title}
+
+\section{Qoh.1}
+
+\bibliographystyle{plain}
+\bibliography{herrin-thesis}
+
+\onlinesignature
+
+\end{document}

@@ -1,0 +1,148 @@
+\documentclass[12pt,letterpaper,onecolumn]{article}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[super]{nth}
+
+%\newcommand{\deg}{\(^\circ\)} 
+\newcommand{\isotope}[2]{\(^{#1}\)#2}
+
+\pagestyle{plain}
+
+%\graphicspath{{./plots/}}
+
+\title{Thesis Proposal}
+\author{Steve Herrin}
+%\date{}
+
+\begin{document}
+\maketitle
+\setlength{\parskip}{9pt}
+
+\section{Description}
+The EXO-200 experiment is currently taking data in order to search for the neutrinoless double beta decay of \isotope{136}{Xe}. Currently, we have collected about twice as much data as we had when we published our first limit on this process, and the amount of data will continue to grow over the next few months, until we decide to publish. This should happen sometime in the latter half of 2012. I would like to write my thesis on those results.
+
+I've already worked on many aspects that go into the analysis, so some chapters of my thesis should be straightforward to write. My muon tagging module does a good job at identifying muons passing through the TPC, as well as reconstructing their angles. I will have a chapter with descriptions of the algorithm, validation with Monte Carlo simulations, and results from EXO-200. Likewise, I've done extensive work improving the electron lifetime measurements in EXO-200, and so I can again describe my methods, simulations, and results. I can also write about my light map, which corrects for the varying light collection in EXO-200 as a function of position.
+
+I'm continuing to work on signals and fitting, so there will be more to write about. I've been studying event topology as a way of reducing backgrounds, and can already say something about the usefulness. In the previous analysis, we used a constant rotation angle for combining scintillation and ionization. I plan to investigate varying this angle as a function of energy and position to see if we can improve our results. For fitting, we will make another measurement of the two-neutrino decay rate, which will hopefully be more precise with a better understanding of our fiducial volume. Likely, there will be a new limit on the neutrinoless mode. And there are exotic processes like Majoron emission and interactions with solar axions, which I would like to study. EXO-200 has said nothing about those two processes yet.
+
+\newpage
+
+\section{Outline}
+
+\subsection{Physics Motivation}
+
+\subsubsection{History and Theory of Neutrino Physics}
+Neutrinos have mass. Oscillations. Current unknowns. Some theory.
+
+\subsubsection{Neutrinoless Double Beta Decay}
+Theory. Previous experiments, limits.
+
+\subsection{EXO-200 Detector}
+
+\subsubsection{Construction}
+Wires, APDs, physical construction, WIPP
+
+\subsubsection{Signals and Reconstruction}
+Getting clusters from waveforms
+
+\subsection{Electron Lifetime Correction}
+
+\subsubsection{Description}
+Attenuation due to electronegative impurities. How my correction works.
+
+\subsubsection{Monte Carlo Simulations}
+How well does my correction work on simulated data with known electron lifetime?
+
+\subsubsection{Data and Results}
+What's actually in the data. Pump flow correlation. How it improves resolution. Look at spatial and temporal variation.
+
+\subsection{Light Map}
+
+\subsubsection{Description}
+Why a light map is needed. How I voxelize the detector. Any other corrections I apply on top of that.
+
+\subsubsection{Data and Results}
+What the light response look like. How it improves resolution.
+
+\subsection{Muon Background Rejection}
+
+\subsubsection{Algorithm}
+Hough transforms, other cuts.
+
+\subsubsection{Noise Tagger}
+Why it's needed. How it works.
+
+\subsubsection{Monte Carlo Simulations}
+Efficiency in simulated data, and error on angle.
+
+\subsubsection{Data and Results}
+What we see in data. Muon rate, stopped muon rate, angular distribution.
+
+\subsection{Gamma Background Classification}
+
+\subsubsection{Topology and Method}
+Identifying Compton scatters and multiple gamma ray (sum peak) events through topology. Minimal spanning trees.
+
+\subsubsection{Monte Carlo Simulations}
+How well it works on simulated data.
+
+\subsubsection{Data and Results}
+What's actually in the data.
+
+\subsection{Analysis}
+
+\subsubsection{Describe Data}
+When it was taken. Quality cuts.
+
+\subsubsection{Describe Calibration}
+When it was taken. What sources. How it's then applied to data.
+
+\subsubsection{Overall Analysis Process}
+Just an overview from raw waveforms to final spectrum.
+
+\subsubsection{Systematics}
+Things like fiducial volume and beta scale that can affect final results.
+
+\subsection{Fitting and Results}
+
+\subsubsection{Maximum Likelihood analysis}
+What method we apply to the spectrum to get fit results
+
+\subsubsection{Two Neutrino Measurement}
+The result. Compare to previous measurements. Matrix elements.
+
+\subsubsection{Zero Neutrino Limit(?)}
+The result. Compare to previous measurements. Neutrino mass limit.
+
+\subsubsection{Exotica Limits (Majoron, Solar Axion)}
+The result. Compare to other measurements. Cross-sections, couplings, etc.
+
+\newpage
+
+\section{Rough Schedule}
+\begin{itemize}
+\item \textit{\nth{1} half of September 2012} -- Research and write introduction, physics motivation, etc.
+\item \textit{\nth{2} half of September 2012} -- Describe EXO-200 detector and set-up, etc.
+\item \textit{\nth{1} half of October 2012} -- Write up muon and noise tagger. Descriptions, efficiencies, preliminary results.
+\item \textit{\nth{2} half of October 2012} -- Write up electron lifetime correction. Description, preliminary results.
+\item \textit{\nth{1} half of November 2012} -- Write up light map correction. Description, preliminary results.
+\item \textit{\nth{2} half of November 2012} -- Write up topological background reduction. Description, preliminary results.
+\item \textit{\nth{1} half of December 2012} -- Start to write up anticorrelation. Description, preliminary results.
+\item \textit{\nth{2} half of December 2012} -- Revisit previous topics and revise as needed.
+\item \textit{\nth{1} half of January 2013} -- Start to write up analysis topics. Fitting, etc.
+\item \textit{\nth{2} half of January 2013} -- Continue to write up analysis topics. Fitting, etc.
+\item \textit{\nth{1} half of February 2013} -- Go back to previous topics and incorporate results from analysis
+\item \textit{\nth{2} half of February 2013} -- Continue writing analysis results
+\item \textit{\nth{1} half of March 2013} -- First draft finalized and given to Marty to review
+\item \textit{\nth{2} half of March 2013} -- Revise draft, etc.
+\item \textit{\nth{1} half of April 2013} -- Converging on final draft, continuing revision.
+\item \textit{\nth{2} half of April 2013} -- Defend thesis
+\item \textit{May 2013} -- Knowledge transfer, finish up loose ends in thesis, submit to university
+\item \textit{June 2013} -- Graduate
+\end{itemize}
+
+There are a couple unknowns in this schedule. I've allowed about two months for working on the results of the analysis. That's a reasonable amount of time, based on previous experience. However, it's not decided when this will actually happen. So those months may be moved earlier in the schedule if I need to. Also, should things go extremely smoothly with writing and analysis, it's possible that I can defend and submit my thesis at the end of winter quarter, in mid-March.
+
+\end{document}
