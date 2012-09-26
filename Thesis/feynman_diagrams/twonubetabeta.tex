@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[top=1mm, bottom=1mm, left=1mm, right=1mm, paperwidth=75mm, paperheight=54mm]{geometry}
+\usepackage{feynmp}
+\begin{document}
+	\DeclareGraphicsRule{*}{mps}{*}{}
+	\pagestyle{empty}
+	\setlength{\parindent}{0cm}
+	\unitlength = 1mm
+		\begin{fmffile}{2nubb}
+			%\fbox{
+			\fmfframe(6,6)(6,6){
+			\begin{fmfgraph*}(60, 40)
+				\fmfstraight
+				\fmfleft{i1,di1,di2,di3,di4,i2}
+				\fmfright{o1,o2,o3,o4,o5,o6}
+				\fmftop{v2}
+				\fmfbottom{v1}
+				%
+				\fmf{fermion}{i1,v1,o1}
+				\fmf{photon,label=\(W^{-}\),label.side=left,label.dist=1}{v1,v3}
+				\fmf{phantom}{v3,v5}
+				\fmf{phantom}{di1,v5,di2}
+				\fmf{fermion}{o2,v3,o3}
+				\fmf{photon,label=\(W^{-}\),label.side=right,label.dist=1}{v2,v4}
+				\fmf{phantom}{v4,v6}
+				\fmf{phantom}{di4,v6,di3}
+				\fmf{fermion}{o5,v4,o4}
+				\fmf{fermion}{i2,v2,o6}
+				\fmf{phantom,tension=0.8}{v3,v4}
+				%			
+				\fmffreeze
+				\fmfi{fermion}{vpath (__i1,__v1) shifted (thick*(0,-3))}
+				\fmfi{fermion}{vpath (__i1,__v1) shifted (thick*(0,-6))}
+				\fmfi{fermion}{vpath (__v1,__o1) shifted (thick*(0,-3))}
+				\fmfi{fermion}{vpath (__v1,__o1) shifted (thick*(0,-6))}
+				\fmfi{fermion}{vpath (__i2,__v2) shifted (thick*(0,3))}
+				\fmfi{fermion}{vpath (__i2,__v2) shifted (thick*(0,6))}
+				\fmfi{fermion}{vpath (__v2,__o6) shifted (thick*(0,3))}
+				\fmfi{fermion}{vpath (__v2,__o6) shifted (thick*(0,6))}
+				%			
+				\fmflabel{\(n\)}{i1}
+				\fmflabel{\(p\)}{o1}			
+				\fmflabel{\(n\)}{i2}
+				\fmflabel{\(p\)}{o6}
+				\fmflabel{\(e^{-}\)}{o3}
+				\fmflabel{\(e^{-}\)}{o4}
+				\fmflabel{\(\bar\nu_e\)}{o2}
+				\fmflabel{\(\bar\nu_e\)}{o5}
+			\end{fmfgraph*}
+			}%}
+		\end{fmffile}
+\end{document}
