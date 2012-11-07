@@ -27,7 +27,31 @@ e^{-} + AB \leftrightarrow (AB^{-})^{*} \\
 \end{split}
 \label{eq:3bodyattachment}
 \end{equation}
+where X represents the atom or molecule that make up the majority of the liquid.
 \end{enumerate}
+
+The three-body reaction shown in \cref{eq:3bodyattachment} releases some amount of energy, given by the \emph{electron affinity} of \(AB\). The electron affinity is positive if \(AB\) is electronegative. Nobel elements have a negative electron affinity, so the reaction does not take place in a pure detector.
+
+The rate of the reaction shown in \cref{eq:3bodyattachment} is given by:
+\begin{equation}
+\frac{dn_{AB}}{dt} = -k_{3} n_{AB} n_{X} n_{e^{-}}
+\label{eq:3bodyreactionrate}
+\end{equation}
+where \(k_3\) is constant for the 3-body reaction, and \(n_{AB}\), \(n_{X}\), and \(n_{e^{-}}\) are the densities of the impurity, the atoms or molecules of the liquid, and the electrons, respectively. \(k_3\) depends on the species of the impurity, the species of the liquid, and the electric field strength.
+
+According to \cref{eq:3bodyreactionrate}, electrons will be captured, forming \(AB^{-}\) at a rate proportional to the density of electrons. Thus, the number of free electrons will decay exponentially over time according to:
+\begin{equation}
+N_{e^{-}}(t) = N_0 \exp (-t/\tau_e)
+\label{eq:exponentialtaue}
+\end{equation}
+where \(N_0\) is the original number of electrons, and \(\tau_e\) is the \emph{electron lifetime}.
+
+In general, there can be several different species of electronegative impurity. In that case, they all contribute to the electron lifetime according to:
+\begin{equation}
+\tau_e^{-1} = \sum_i k_i n_i
+\label{eq:tauedefinition}
+\end{equation}
+where \(n_i\) is the density of an electronegative impurity and \(k_i\) is the cross section for electron capture by that impurity. For most impurities, \(k_i\) depends on the electric field strength.
 
 \section{Measuring Electron Lifetime}
 
