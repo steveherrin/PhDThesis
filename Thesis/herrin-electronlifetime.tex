@@ -55,8 +55,34 @@ where \(n_i\) is the density of an electronegative impurity and \(k_i\) is the c
 
 \section{Measuring Electron Lifetime}
 
-
 \subsection{Method}
+\Cref{eq:exponentialtaue} provides a simple recipe for measuring the electron lifetime: measure the exponential attenuation of a known quantity of ionization as a function of drift time. All full absorption peaks from gamma-ray lines will create roughly the same amount of ionization, following a Gaussian distribution with its width provided by the Fano factor and detector resolution. If some of the ionization is being attenuated, then the peak's mean will shift downward in energy from its true value.
+
+A single calibration source at the cathode of the detector produces illuminates both TPCs, and the gamma rays interact throughout the entire drift region. After a sufficiently long calibration run, I divide the TPC into drift time bins. The size of the bins is a compromise: a larger bin in drift time will have more events, and thus the measurement of the full absorption peak energy will be better. A smaller bin will have fewer events, but will suffer energy smearing since events in the bin that drift farther will be attenuated less. In practice, 16 \todo{Check this} bins seems a good compromise.
+
+In addition to the full-absorption peak, which is Gaussian, the energy spectrum from a gamma ray source will contain a Compton shoulder. That is, some gamma rays will interact without depositing their full energy, and then scatter out of the detector. A simple model for this shoulder is a step function convolved with a Gaussian smearing representing the effects of energy resolution, producing a complementary error function. For each drift time bin, I fit this simple Gaussian + complementary error function model to the energy spectrum of that bin using an unbinned maximum likelihood fit. \Cref{fig:dtbinfit} shows an example fit.
+
+\begin{figure}[htbp]
+\centering
+\caption[An example fit in a drift time bin]{A fit of the simple Gaussian + complementary error function model to one single drift time bin. In this example, the full absorption peak is the 2615 keV gamma line from \thorium{228}.}
+\label{fig:dtbinfit}
+\end{figure}
+
+Plotting the full absorption peak energy from each drift time bin as a function of drift time reveals the exponential decay described in \cref{eq:exponentialtaue}. Fitting an exponential to each TPC yields a measurement of the electron lifetime for each. Alternatively, a fit with a single electron lifetime to the entire detector uses information from both TPCs. In all cases, the amplitude of the exponential is allowed to float in the fit, since only the relative decay matters when measuring the electron lifetime. Presently, the separate TPC lifetimes are used when correcting for electron lifetime in EXO-200, while the single measurement is used when monitoring the detector and data quality. \Cref{fig:elfit} shows an example.
+
+\begin{figure}[htbp]
+\centering
+\caption[An example fit to exponential attenuation]{Measuring the electron lifetime by fitting a decaying exponential to the full-absorption peak energies binned by drift time. TPC 2 is assigned a negative drift time for convenience in visualization. Both fits to the individual TPCs and to both TPCs together are shown.}
+\label{fig:elfit}
+\end{figure}
+
+The electron lifetime measurement comes from minimizing the \(\chi^2\) statistic. \todo{What says this?} Confidence intervals for the measurement come from doing a profile scan. That is, the electron lifetime is set to some fixed value away from the best fix, and the amplitude is allowed to vary to minimize \(\chi^2\). All values for which \(\chi^2\) is less than 1 above the minimum value define the 1\(\sigma\) (68\%) confidence band. \Cref{fig:profileel} shows an example.
+
+\begin{figure}[htbp]
+\centering
+\caption[A profile scan around the best-fit electron lifetime]{Confidence intervals around the best fit electron lifetime come from a profile scan, shown here. As this figure shows, this is superior to simply estimating the 1\(\sigma\) errors from the second derivative at the best fit value, since the profile is asymmetric around the best fit.}
+\label{fig:profileel}
+\end{figure}
 
 \subsection{Comparison to Simulation}
 
