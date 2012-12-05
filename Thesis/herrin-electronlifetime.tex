@@ -89,6 +89,23 @@ The electron lifetime measurement comes from minimizing the \(\chi^2\) statistic
 
 \subsection{Comparison to Simulation}
 
+\Cref{fig:sim_err} shows a comparison between a known simulated electron lifetime and the measurement of that lifetime using the method described above. The method consistently underestimates the electron lifetime, with the effect getting worse as the electron lifetime improves. This could be due to numerical precision issues in the simulation\todo{Actually figure this out.}, or due to the finite width bins used in the fit. The attenuation will not be symmetric around the centers of the bins, and so this could affect the exponential fit.
+
+\begin{figure}[htbp]
+\begin{subfigure}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=1.0\columnwidth]{./plots/el_sim_error_both.pdf}
+\end{subfigure}%
+\begin{subfigure}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=1.0\columnwidth]{./plots/el_sim_error_indiv.pdf}
+\end{subfigure}
+\caption[Error on reconstructed electron lifetime from simulation]{The absolute error on the electron lifetime measurement for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). The measurement method consistently underestimates the purity, and the error grows as the electron lifetime gets large. Typical calibration runs include 2.5k events in the photo peak (black dots), but using more events would improve the error.}
+\label{fig:sim_err}
+\end{figure}
+
+This error, if real, is small however. For \SI{3000}{\micro\second} electron lifetime, an applied correction of  \SI{2500}{\micro\second} will only move the measured ionization signal 0.76\% lower than its true value, if the ionization drifts over the full  \SI{120}{\micro\second}  drift time. The effect on the energy resolution will be half this, and will be only a small component of the measured 1.68\% energy resolution \todo{Update this} near the \zeronu region of interest. Furthermore, the error seems to have a simple linear or quadratic dependence on electron lifetime, and so this can be corrected for.\todo{Update when this correction is done, or explain why not.}
+
 \subsection{Practical Considerations}
 
 Energy resolution limits measurement of long electron lifetimes.
