@@ -220,7 +220,13 @@ As shown in \cref{fig:err_fits}, a polynomial function nicely fits the observed 
 
 \section{Measurements of Electron Lifetime in EXO-200}
 
+Calibration runs taken every 1--2 days serve to measure the electron lifetime in EXO-200. In a typical calibration run, a \Th{228} source at the cathode creates 250000 events in the TPC. Of these, approximately 2500 are single site events within 2\(\sigma\) of the full-absorption peak.
+
 \subsection{Time Variation and Correction Function}
+
+The measured electron lifetime varies in time. Usually, this variation is small and within the measurement error. However, events such as a feed of gas into the xenon recirculation loop (which might introduce impurities), or changes in the recirculation rate can cause more significant variation. To account for this, a piecewise polynomial is fit to the measured electron lifetimes. This piecewise polynomial can be discontinuous across sudden changes in electron lifetime. A cessation of recirculation, such as by a pump failure, can cause such a sudden change. The polynomial degree can change when the behavior of the electron lifetime changes, such as when rapidly-increasing lifetime after resuming recirculation becomes a steady-state, slowly-varying value. \Cref{fig:el_time_variation} shows the time variation and the polynomial fit for the separate TPCs. Separate electron lifetimes are used for the different TPCs because there could be some purity gradient in the chamber, and splitting the chamber in half provides a modest approximation, and because the measured values in the different TPCs sometimes vary outside of each others' confidence bands.
+
+For a good event in EXO-200, the reconstruction algorithms find both a drift time and an (attenuated) ionization signal. The polynomial fit described above provides an estimate of the electron lifetime at the event time. \Cref{eq:exponentialtaue} provides a recipe for finding the original ionization signal from the attenuated signal, using the drift time and measured electron lifetime.
 
 \subsection{Electron Lifetime in Low Electric Field}
 
