@@ -187,38 +187,38 @@ While we can work out the effect of electron lifetime uncertainty on resolution 
 \begin{figure}[htbp]
 \begin{subfigure}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=1.0\columnwidth]{errm_fit.eps}
+\includegraphics[width=1.0\columnwidth]{./plots/el_sim_errm_fit.pdf}
 \end{subfigure}%
 \begin{subfigure}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=1.0\columnwidth]{errp_fit.eps}
+\includegraphics[width=1.0\columnwidth]{./plots/el_sim_errp_fit.pdf}
 \end{subfigure}
-\caption[Fits to errors on electron lifetime measurements]{The width of the uncertainty bars on single electron lifetime measurements as a function of the electron lifetime. Measurements from TPC 1 are used because they are observed to have larger uncertainties. Since the uncertainties  are asymmetric, the negative uncertainty (left) and the positive uncertainty (right) are fit separately. The fit function is a quadratic polynomial. ROOT's robust linear fitting does not return errors on fit parameters.}
+\caption[Fits to errors on electron lifetime measurements]{The width of the uncertainty bars on single electron lifetime measurements as a function of the electron lifetime. Since the uncertainties  are asymmetric, the negative uncertainty (left) and the positive uncertainty (right) are fit separately. The fit function is a quadratic polynomial.}
 \label{fig:err_fits}
 \end{figure}
 
-As shown in \cref{fig:err_fits}\todo{Fix the plot to use the widths above}, a quadratic function nicely fits the observed uncertainties. So, at first glance, it appears as though the resolution should be independent of electron lifetime, due to the \(1/\tau^2\) term in \cref{eq:de_dtau}. However, because there are linear terms, and because the uncertainties are not symmetric around the measurement, this is not the case. I tabulate the effect on electron lifetime in \cref{tab:res_dtau}
+As shown in \cref{fig:err_fits}, a quadratic function nicely fits the observed uncertainties. So, at first glance, it appears as though the resolution should be independent of electron lifetime, due to the \(1/\tau^2\) term in \cref{eq:de_dtau}. However, because there are linear terms, and because the uncertainties are not symmetric around the measurement, this is not the case. I tabulate the effect on electron lifetime in \cref{tab:res_dtau}
 
 \begin{table}[htdp]
 \centering
 \begin{tabular}{c|c}
 	\(\tau\) (\si{\micro\second})	&	\(\Delta E / E\) (\%) 	\\ \hline
-	100					&	29.1				\\
-	200					&	7.21				\\
-	500					&	3.45				\\
-	800					&	2.23				\\
-	1000					&	1.15				\\
-	1500					&	1.11				\\
-	2000					&	1.11				\\
-	2500					&	1.12				\\
-	3000					&	1.14				\\
-	3500					&	1.15
+	100					&	3.26				\\
+	200					&	1.78				\\
+	500					&	0.90				\\
+	800					&	0.67				\\
+	1000					&	0.60				\\
+	1500					&	0.49				\\
+	2000					&	0.44				\\
+	2500					&	0.40				\\
+	3000					&	0.38				\\
+	3500					&	0.36
 \end{tabular}
 \caption[Electron lifetime uncertainty effect on resolution]{The effect of the electron lifetime uncertainty on energy resolution. This is based on the parameterization shown in \cref{fig:err_fits}. Note that the reported resolution assumes only one measurement is used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
 \label{tab:res_dtau}
 \end{table}
 
-The numbers shown in \cref{tab:res_dtau} \todo{Update this table.} reflect using only a single electron lifetime measurement. As described below, a number of measurements go into the actual correction applied to data.
+The numbers shown in \cref{tab:res_dtau} reflect using only a single electron lifetime measurement. As described below, a number of measurements go into the actual correction applied to data.
 
 \section{Measurements of Electron Lifetime in EXO-200}
 
@@ -227,5 +227,7 @@ The numbers shown in \cref{tab:res_dtau} \todo{Update this table.} reflect using
 \subsection{Electron Lifetime in Low Electric Field}
 
 \subsection{Comparison with Gas Purity Monitor Readings}
+
+\subsection{Comparison with Pump Speeds}
 
 \end{document}
