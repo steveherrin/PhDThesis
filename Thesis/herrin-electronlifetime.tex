@@ -100,7 +100,7 @@ The electron lifetime measurement comes from minimizing the \(\chi^2\) statistic
 \centering
 \includegraphics[width=1.0\columnwidth]{./plots/el_sim_error_indiv.pdf}
 \end{subfigure}
-\caption[Error on reconstructed electron lifetime from simulation]{The absolute error on the electron lifetime measurement for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). The points show the mean error of 20 simulations, and the lines show the mean error on the edges of the 68\% confidence bands for those simulations. The measurement method consistently underestimates the purity, and the error grows as the electron lifetime gets large. Typical calibration runs include 2.5k events in the photo peak (black), but using more events would improve the error.}
+\caption[Error on reconstructed electron lifetime from simulation]{The absolute error on the electron lifetime measurement for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). The points show the mean error of 20 simulations, and the lines show the mean error on the edges of the 68\% confidence bands for those simulations. The measurement method consistently underestimates the purity, and the error grows as the electron lifetime gets large. Typical calibration runs include 2.5k events in the full absorption peak (black), but using more events would improve the error.}
 \label{fig:sim_err}
 \end{figure}
 
@@ -117,11 +117,11 @@ This error, if real, is small however. For \SI{3000}{\micro\second} electron lif
 \centering
 \includegraphics[width=1.0\columnwidth]{./plots/el_sim_width_indiv.pdf}
 \end{subfigure}
-\caption[Confidence band widths for electron lifetime measurements]{The width of the 68\% confidence band for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). Typical calibration runs include 2.5k events in the photo peak (black dots), but using more events would improve the error. Using longer calibrations would improve the uncertainty. However, for long electron lifetimes, it becomes difficult to detect the attenuation and measure it, giving a large uncertainty.}
+\caption[Confidence band widths for electron lifetime measurements]{The width of the 68\% confidence band for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). Typical calibration runs include 2.5k events in the full absorption peak (black dots), but using more events would improve the error. Using longer calibrations would improve the uncertainty. However, for long electron lifetimes, it becomes difficult to detect the attenuation and measure it, giving a large uncertainty.}
 \label{fig:sim_width}
 \end{figure}
 
-As the electron lifetime grows large, it becomes increasingly difficult to measure. For a  \SI{4000}{\micro\second}  electron lifetime, ionization drifting the full distance will only be attenuated about 3\%. This is comparable to the 3.4\% energy resolution in the ionization channel at the 2615 keV photo peak from \thorium{228}. This effect is shown in \cref{fig:sim_width}. The width of the confidence band for the measurement grows to near 20\% of the measured value for large electron lifetimes. Taking more calibration data only partially mitigates this effect, also shown in \cref{fig:sim_width}. A simulated calibration run with twice as many events in the photopeak (and requiring twice as much time to run) only shrinks the confidence band by roughly \(\sqrt{2}\).
+As the electron lifetime grows large, it becomes increasingly difficult to measure. For a  \SI{4000}{\micro\second}  electron lifetime, ionization drifting the full distance will only be attenuated about 3\%. This is comparable to the 3.4\% energy resolution in the ionization channel at the 2615 keV full absorption peak from \thorium{228}. This effect is shown in \cref{fig:sim_width}. The width of the confidence band for the measurement grows to near 20\% of the measured value for large electron lifetimes. Taking more calibration data only partially mitigates this effect, also shown in \cref{fig:sim_width}. A simulated calibration run with twice as many events in the photopeak (and requiring twice as much time to run) only shrinks the confidence band by roughly \(\sqrt{2}\).
 
 \subsection{Effects of Electron Lifetime on the Energy Resolution}
 
