@@ -226,6 +226,19 @@ Calibration runs taken every 1--2 days serve to measure the electron lifetime in
 
 The measured electron lifetime varies in time. Usually, this variation is small and within the measurement error. However, events such as a feed of gas into the xenon recirculation loop (which might introduce impurities), or changes in the recirculation rate can cause more significant variation. To account for this, a piecewise polynomial is fit to the measured electron lifetimes. This piecewise polynomial can be discontinuous across sudden changes in electron lifetime. A cessation of recirculation, such as by a pump failure, can cause such a sudden change. The polynomial degree can change when the behavior of the electron lifetime changes, such as when rapidly-increasing lifetime after resuming recirculation becomes a steady-state, slowly-varying value. \Cref{fig:el_time_variation} shows the time variation and the polynomial fit for the separate TPCs. Separate electron lifetimes are used for the different TPCs because there could be some purity gradient in the chamber, and splitting the chamber in half provides a modest approximation, and because the measured values in the different TPCs sometimes vary outside of each others' confidence bands.
 
+\begin{figure}[htbp]
+\begin{subfigure}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=1.0\columnwidth]{./plots/el_trend_tpc1.pdf}
+\end{subfigure}%
+\begin{subfigure}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=1.0\columnwidth]{./plots/el_trend_tpc2.pdf}
+\end{subfigure}
+\caption[Fit to time-varying electron lifetime]{The fit of a piecewise polynomial to electron lifetime in TPC 1(left) and TPC 2 (right). The colored bands show the 68\% confidence interval on the fit. The vertical dashed lines indicate discontinuities in the electron lifetime due to pump stoppages or xenon feeds.}
+\label{fig:err_fits}
+\end{figure}\todo{PLACEHOLDER! Get Current Values!}
+
 For a good event in EXO-200, the reconstruction algorithms find both a drift time and an (attenuated) ionization signal. The polynomial fit described above provides an estimate of the electron lifetime at the event time. \Cref{eq:exponentialtaue} provides a recipe for finding the original ionization signal from the attenuated signal, using the drift time and measured electron lifetime.
 
 \subsection{Electron Lifetime in Low Electric Field}
