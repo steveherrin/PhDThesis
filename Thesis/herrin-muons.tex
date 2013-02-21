@@ -19,8 +19,14 @@ Muons that reach underground have typical energies of \SIrange{1}{100}{\GeV}, a 
 \end{figure}
 
 \subsection{Hough Transform}
+The Hough transform\cite{Hough:1959fk}\cite{Duda:1972:UHT:361237.361242} is an algorithm originally used to look for tracks in bubble chamber photos. A line can be completely parameterized by the angle \(\eta\) it makes with an axis, and the perpendicular distance \(r\) from the line to the origin. The Hough transform maps a pixel in an image to all possible lines that can pass through that pixel, which looks like a sinusoidal curve in \((\eta, r)\) space. If some of the pixels form a line, then these curves will converge at the point corresponding to that line.
 
-
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\columnwidth]{./plots/muon_houghtransform_run_4685_ev_67.pdf}
+\caption[Identifying a muon with the Hough tranform]{The Hough transform used to identify and reconstruct a muon passing through EXO-200. The left side shows u wire channels, and the right side shows v wire channels. The upper panels show the raw waveforms, baseline subtracted. The middle panels shows the identified hot spots in the waveforms in black, and the reconstructed tracks in red. The lower panels show the Hough transforms of the hot spots above, which converge on the point corresponding to the red line above.}
+\label{fig:muon:houghtransform}
+\end{figure}
 
 For a particle incident from zenith angle \(\theta\) and azimuthal angle \(\phi\), the effective area of a cylinder on its side is
 \begin{equation}
