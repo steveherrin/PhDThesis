@@ -18,15 +18,23 @@ Muons that reach underground have typical energies of \SIrange{1}{100}{\GeV}, a 
 \label{fig:muon:eventdisplay}
 \end{figure}
 
-\subsection{Hough Transform}
+\subsection{Identifying Muons with the Hough Transform}
 The Hough transform\cite{Hough:1959fk}\cite{Duda:1972:UHT:361237.361242} is an algorithm originally used to look for tracks in bubble chamber photos. A line can be completely parameterized by the angle \(\eta\) it makes with an axis, and the perpendicular distance \(r\) from the line to the origin. The Hough transform maps a pixel in an image to all possible lines that can pass through that pixel, which looks like a sinusoidal curve in \((\eta, r)\) space. If some of the pixels form a line, then these curves will converge at the point corresponding to that line.
+
+This can be applied to EXO-200 to look for muons. First, ionization deposits are identified by simply looking at the collection wire channel waveforms and looking for the waveform rising a set threshold above its baseline. A ``hot spot'' is associated with the time value at which the waveform peaks above this threshold. The induction wires are analyzed the same way, except looking for the waveform dipping below its baseline. The Hough-transformed hot spots are placed in a histogram, and the bin with the most entries is used to reconstruct the projection of the muon's track onto the wire planes. \Cref{fig:muon:houghtransform} shows an example.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1\columnwidth]{./plots/muon_houghtransform_run_4685_ev_67.pdf}
-\caption[Identifying a muon with the Hough tranform]{The Hough transform used to identify and reconstruct a muon passing through EXO-200. The left side shows u wire channels, and the right side shows v wire channels. The upper panels show the raw waveforms, baseline subtracted. The middle panels shows the identified hot spots in the waveforms in black, and the reconstructed tracks in red. The lower panels show the Hough transforms of the hot spots above, which converge on the point corresponding to the red line above.}
+\caption[Identifying a muon with the Hough tranform]{The Hough transform used to identify and reconstruct a muon passing through EXO-200. The left side shows collection wire channels, and the right side shows induction wire channels. The upper panels show the raw waveforms, baseline subtracted. The middle panels shows the identified hot spots in the waveforms in black, and the reconstructed tracks in red. The lower panels show the Hough transforms of the hot spots above, which converge on the point corresponding to the red line above.}
 \label{fig:muon:houghtransform}
 \end{figure}
+
+After passing a check for noise (described in \Cref{app:noisetagger}) and a check for a large amount of scintillation light, an event will be tagged as a muon if it has good tracks in both the induction and collection wire planes in at least one TPC. A ``good'' track must be reconstructed from at least 5 hot spots that lie along the reconstructed track, or at least 3 hot spots along the track if fewer than 5 total spots were found.
+
+The Hough transform reconstructs the projection of the muon's path onto the wire planes. Since the drift velocity and wire spacings are well known, these projections can be translated back to an incident angle for the muon.
+
+\subsection{Validation with Monte Carlo Simulations}
 
 For a particle incident from zenith angle \(\theta\) and azimuthal angle \(\phi\), the effective area of a cylinder on its side is
 \begin{equation}
