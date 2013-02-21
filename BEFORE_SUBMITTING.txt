@@ -4,3 +4,5 @@ Random ideas of things to make sure are done before submitting:
 
 2. Look for any of these words:
 comic (comic rays)
+
+3. Use m_{\beta\beta} plot in order to set a limit on m_{min}.
