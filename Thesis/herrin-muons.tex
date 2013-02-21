@@ -35,6 +35,19 @@ After passing a check for noise (described in \Cref{app:noisetagger}) and a chec
 The Hough transform reconstructs the projection of the muon's path onto the wire planes. Since the drift velocity and wire spacings are well known, these projections can be translated back to an incident angle for the muon.
 
 \subsection{Validation with Monte Carlo Simulations}
+In order to validate this muon tagging algorithm, 2 million muons were generated in the EXOSim GEANT4 simulation of the EXO-200 detector. The overall efficiency of the tagging depends on the angular distribution of the incident muons (for example, one could imagine a pathological scenario in which all muons were parallel to the wires in one plane). The angular distribution underground is approximated\cite{miyake:1973} by
+\begin{equation}
+\label{eq:muon_angular_distribution}
+\frac{dN}{d\Omega} \propto \left (cos \theta \right)^{1.53}e^{\left(-8\times10^{-4} h \left(sec \theta -1\right)\right)}
+\end{equation}
+where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\gram\per\square\centi\meter} (\SI{1}{\hecto\gram\per\square\centi\meter} is equivalent shielding to one meter of water).
+
+The energy distribution for muons underground can also be approximated\cite{Mei:2006qy} by
+\begin{equation}
+\label{eq:muon_energy_distribution}
+\frac{dN}{dE} \propto e^{\left(-8\times10^{-4} h\cdot 2.77 \right)}\left(E+693\left(1-e^{-8\times10^{-4} h}\right)\right)^{-3.77}
+\end{equation}
+for energy in \si{\GeV}.
 
 For a particle incident from zenith angle \(\theta\) and azimuthal angle \(\phi\), the effective area of a cylinder on its side is
 \begin{equation}
