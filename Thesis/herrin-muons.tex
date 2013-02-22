@@ -40,12 +40,12 @@ In order to validate this muon tagging algorithm, 2 million muons were generated
 \label{eq:muon_angular_distribution}
 \frac{dN}{d\Omega} \propto \left (\cos \theta \right)^{1.53}e^{-8\times10^{-4} h \left(\sec \theta -1\right)}
 \end{equation}
-where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\gram\per\square\centi\meter} (\SI{1}{\hecto\gram\per\square\centi\meter} is equivalent shielding to one meter of water).
+where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\gram\per\square\centi\meter} (\SI{1}{\hecto\gram\per\square\centi\meter} is equivalent shielding to one meter of water). For WIPP, previous experiments have measured \(h\) to be \(1585^{+11}_{-6}\) \si{\hecto\gram\per\square\centi\meter}\cite{Esch:2004zj}. This distribution is a good approximation for \(\theta < \pi/3\).
 
-The energy distribution for muons underground can also be approximated\cite{Mei:2006qy} by
+The energy distribution for muons underground can also be approximated\cite{Gaisser:1990kx}. The distribution for muons at the surface is given by
 \begin{equation}
-\label{eq:muon_energy_distribution}
-\frac{dN}{dE} \propto e^{-8\times10^{-4} h\cdot 2.77}\left(E+693\left(1-e^{-8\times10^{-4} h}\right)\right)^{-3.77}
+\label{eq:muon_surface_distribution}
+\frac{dN}{dE} \propto E^{-2.7}\left(\frac{1}{1+\frac{1.1 E \cos \theta}{115}} + \frac{0.054}{1+\frac{1.1 E \cos \theta}{850}}\right)
 \end{equation}
 for energy in \si{\GeV}.
 
