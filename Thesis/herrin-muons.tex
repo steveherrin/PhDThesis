@@ -61,20 +61,30 @@ which is the average energy of surface muons that pass through \(h\sec\theta\) o
 
 Muon events were simulated by first picking an azimuthal angle \(\phi\) uniformly from \(\left(-\pi, \pi\right]\) and a zenith angle \(\theta\) from \cref{eq:muon_angular_distribution}. The energy was selected in a range of \SIrange{1}{1000}{\GeV} from \cref{eq:muon_underground_distribution} for the selected zenith angle. A point was chosen uniform randomly in the cylindrical TPC volume, and a muon was generated \SI{3}{\meter} from this point with the selected energy and incident angles. Positively charged muons were generated in a 1.25 ratio to negatively charged muons. The ``standard rock'' values for \(b\) and \(\epsilon\) were used, and the depth \(h\) was varied 10\% around \SI{1585}{\hecto\gram\per\square\centi\meter} to account for systematic effects of the angular distribution on efficiency.
 
+\subsection{Reconstruction Accuracy}
+For most incident muon angles, the algorithm correctly reconstructs their incident angle. \Cref{fig:muon_angular_accuracy} shows the RMS error for muons reconstructed outside of their correct angular bin. Even these muons have a small RMS error, indicating that the algorithm correctly reconstructs the incident angle for most muons.
+
+ \begin{figure}[htpb]
+ \centering
+ \includegraphics[width=0.8\textwidth]{./plots/muon_angular_accuracy.pdf}
+ \caption[Accuracy of muon angle reconstruction]{For muons that are reconstructed in the wrong bin, this plot shows the RMS angular separation in radians between the simulated muon and the reconstructed angle. For \(\theta < \pi/3\), the reconstruction is good to within about 0.1 degrees.}
+ \label{fig:muon_angular_accuracy}
+ \end{figure}
+
 \subsection{Efficiency}
 Overall, of two million simulated events, 864138 were tagged as muons by the algorithm described above. This is an overall efficiency of \(42.3 \pm 0.1\)\%. However, the geometry of the detector means that the efficiency will be a function of the incident muon angle. \Cref{fig:muon_efficiency} shows the efficiency of detecting muons based on the ratio of muons reconstructed in an angular bin to muons simulated in that bin. This is useful for estimating the true flux in a bin. \Cref{fig:muon_correct_ratio} shows the ratio of muons correctly reconstructed to those incorrectly reconstructed in a bin. This is useful for eliminating bins that have a high misreconstructed rate from measurements that require knowledge of incident angles.
 
  \begin{figure}[htpb]
  \centering
  \includegraphics[width=0.8\textwidth]{./plots/muon_efficiency.pdf}
- \caption[Efficiency of reconstructing muons as a function of angle]{The ratio of muons reconstructed in an angular bin to the muons simulated in that bin. This includes muons incorrectly reconstructed, so that this can be used to estimate a total flux. Only \(\theta < \pi/3\) is considered, since the angular distribution used is not good for larger angles.}
+ \caption[Efficiency of reconstructing muons as a function of angle]{The ratio of muons reconstructed in an angular bin to the muons simulated in that bin. This includes muons incorrectly reconstructed, so that this can be used to estimate a total flux. The azimuthal angle is on the horizontal axis, while the zenith angle is on the vertical axis. The binning attempts to have bins of similar solid angle, save for the zenith bin. Only \(\theta < \pi/3\) is considered, since the angular distribution used is not good for larger angles.}
  \label{fig:muon_efficiency}
  \end{figure}
 
  \begin{figure}[htpb]
  \centering
  \includegraphics[width=0.8\textwidth]{./plots/muon_correct_ratio.pdf}
- \caption[Ratio of correct to incorrect reconstructions]{The ratio of correctly reconstructed muons to incorrectly reconstructed muons as a function of angle. Note the low correct rate at \(\phi = \pm \pi/2\), which is due to the degeneracy of muons parallel to the wire planes. The azimuthal angle is on the horizontal axis, while the zenith angle is on the vertical axis. The binning attempts to have bins of similar solid angle, save for the zenith bin.}
+ \caption[Ratio of correct to incorrect reconstructions]{The ratio of correctly reconstructed muons to incorrectly reconstructed muons as a function of angle. Low ratios indicate bins that are not useful in an analysis that looks at angular information, since the misreconstructed muons will dominate the results. Moderate ratios are not of concern, since misreconstructed muons are usually still close to their true angle.}
  \label{fig:muon_correct_ratio}
  \end{figure}
 
