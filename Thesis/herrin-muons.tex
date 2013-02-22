@@ -47,7 +47,36 @@ The energy distribution for muons underground can also be approximated\cite{Gais
 \label{eq:muon_surface_distribution}
 \frac{dN}{dE} \propto E^{-2.7}\left(\frac{1}{1+\frac{1.1 E \cos \theta}{115}} + \frac{0.054}{1+\frac{1.1 E \cos \theta}{850}}\right)
 \end{equation}
-for energy in \si{\GeV}.
+for \(E\) in \si{\GeV}. The flux underground is then
+\begin{equation}
+\label{eq:muon_underground_distribution}
+\frac{dN}{dE} = \frac{dN}{dE_0}e^{b h \sec \theta}
+\end{equation}
+where \(b E\) defines the rate of continuous energy loss for muons. \(b\) is about \SI{4d-6}{\g\per\square\cm} for standard rock. This makes the substitution
+\begin{equation}
+\label{eq:muon_E0_def}
+E_0 = e^{b h \sec \theta}\left(E + \epsilon\right) - \epsilon
+\end{equation}
+which is the average energy of surface muons that pass through \(h\sec\theta\) of material and emerge with energy \(E\). The parameter \(\epsilon\) is a critical energy above which discrete energy losses dominate, rather than continuous losses described by \(b\). For standard rock, \(\epsilon\) is about \SI{500}{\GeV}.
+
+Muon events were simulated by first picking an azimuthal angle \(\phi\) uniformly from \(\left(-\pi, \pi\right]\) and a zenith angle \(\theta\) from \cref{eq:muon_angular_distribution}. The energy was selected in a range of \SIrange{1}{1000}{\GeV} from \cref{eq:muon_underground_distribution} for the selected zenith angle. A point was chosen uniform randomly in the cylindrical TPC volume, and a muon was generated \SI{3}{\meter} from this point with the selected energy and incident angles. Positively charged muons were generated in a 1.25 ratio to negatively charged muons. The ``standard rock'' values for \(b\) and \(\epsilon\) were used, and the depth \(h\) was varied 10\% around \SI{1585}{\hecto\gram\per\square\centi\meter} to account for systematic effects of the angular distribution on efficiency.
+
+\subsection{Efficiency}
+Overall, of two million simulated events, 864138 were tagged as muons by the algorithm described above. This is an overall efficiency of \(42.3 \pm 0.1\)\%. However, the geometry of the detector means that the efficiency will be a function of the incident muon angle. \Cref{fig:muon_efficiency} shows the efficiency of detecting muons based on the ratio of muons reconstructed in an angular bin to muons simulated in that bin. This is useful for estimating the true flux in a bin. \Cref{fig:muon_correct_ratio} shows the ratio of muons correctly reconstructed to those incorrectly reconstructed in a bin. This is useful for eliminating bins that have a high misreconstructed rate from measurements that require knowledge of incident angles.
+
+ \begin{figure}[htpb]
+ \centering
+ \includegraphics[width=0.8\textwidth]{./plots/muon_efficiency.pdf}
+ \caption[Efficiency of reconstructing muons as a function of angle]{The ratio of muons reconstructed in an angular bin to the muons simulated in that bin. This includes muons incorrectly reconstructed, so that this can be used to estimate a total flux. Only \(\theta < \pi/3\) is considered, since the angular distribution used is not good for larger angles.}
+ \label{fig:muon_efficiency}
+ \end{figure}
+
+ \begin{figure}[htpb]
+ \centering
+ \includegraphics[width=0.8\textwidth]{./plots/muon_correct_ratio.pdf}
+ \caption[Ratio of correct to incorrect reconstructions]{The ratio of correctly reconstructed muons to incorrectly reconstructed muons as a function of angle. Note the low correct rate at \(\phi = \pm \pi/2\), which is due to the degeneracy of muons parallel to the wire planes. The azimuthal angle is on the horizontal axis, while the zenith angle is on the vertical axis. The binning attempts to have bins of similar solid angle, save for the zenith bin.}
+ \label{fig:muon_correct_ratio}
+ \end{figure}
 
 For a particle incident from zenith angle \(\theta\) and azimuthal angle \(\phi\), the effective area of a cylinder on its side is
 \begin{equation}
