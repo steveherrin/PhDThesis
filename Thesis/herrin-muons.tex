@@ -9,7 +9,7 @@ Neutrons from these muons can capture on detector materials or the HFE, producin
 
 \section{Identifying Muons}
 \label{sec:muon:id}
-Muons that reach underground have typical energies of \SIrange{1}{100}{\GeV}, a range in which they are minimally ionizing. Those that pass through the detector typically leave a straight line of ionization along their path. Like any energy deposition in EXO-200, some of the energy deposited becomes scintillation light, while the remaining ionization is drifted and collected. Thus, a muon passing through EXO-200 will show a bright flash of light, followed by ionization across many wire channels, linearly spread in time. \Cref{fig:muon:eventdisplay} shows a typical example. This distinct linear trail provides a means to tag the muon.
+Muons that reach underground have typical energies of \SIrange{1}{1000}{\GeV}, a range in which they are minimally ionizing. Those that pass through the detector typically leave a straight line of ionization along their path. Like any energy deposition in EXO-200, some of the energy deposited becomes scintillation light, while the remaining ionization is drifted and collected. Thus, a muon passing through EXO-200 will show a bright flash of light, followed by ionization across many wire channels, linearly spread in time. \Cref{fig:muon:eventdisplay} shows a typical example. This distinct linear trail provides a means to tag the muon.
 
 \begin{figure}[htbp]
 \centering
@@ -21,7 +21,7 @@ Muons that reach underground have typical energies of \SIrange{1}{100}{\GeV}, a 
 \subsection{Identifying Muons with the Hough Transform}
 The Hough transform\cite{Hough:1959fk}\cite{Duda:1972:UHT:361237.361242} is an algorithm originally used to look for tracks in bubble chamber photos. A line can be completely parameterized by the angle \(\eta\) it makes with an axis, and the perpendicular distance \(r\) from the line to the origin. The Hough transform maps a pixel in an image to all possible lines that can pass through that pixel, which looks like a sinusoidal curve in \((\eta, r)\) space. If some of the pixels form a line, then these curves will converge at the point corresponding to that line.
 
-This can be applied to EXO-200 to look for muons. First, ionization deposits are identified by simply looking at the collection wire channel waveforms and looking for the waveform rising a set threshold above its baseline. A ``hot spot'' is associated with the time value at which the waveform peaks above this threshold. The induction wires are analyzed the same way, except looking for the waveform dipping below its baseline. The Hough-transformed hot spots are placed in a histogram, and the bin with the most entries is used to reconstruct the projection of the muon's track onto the wire planes. \Cref{fig:muon:houghtransform} shows an example.
+This can be applied to EXO-200 to look for muons. First, an event must pass a simple scintillation cut. The sum of the individual APD waveforms must sum to at least 10000 ADC units, which is  above the typical signal associated with gamma and beta events under \SI{3}{MeV}. Next, ionization deposits are identified by simply looking at the collection wire channel waveforms. The first 256 samples are averaged to find the baseline.  A ``hot spot'' is associated with the time value at which the waveform peaks, once it has climbed 80 ADC units above the baseline. The induction wires are analyzed the same way, except looking for the waveform dipping 80 ADC units below its baseline. The hot spots undergo a Hough transform, and the curves are placed in a histogram. The bin with the most entries is used to reconstruct the projection of the muon's track onto the wire planes. In the event multiple bins have the most entries, meaning the best track does not quite line up with the binning, the median of the bins (sorted by \(eta\)) is used. \Cref{fig:muon:houghtransform} shows an example of a reconstructed muon track.
 
 \begin{figure}[htbp]
 \centering
@@ -32,15 +32,15 @@ This can be applied to EXO-200 to look for muons. First, ionization deposits are
 
 After passing a check for noise (described in \Cref{app:noisetagger}) and a check for a large amount of scintillation light, an event will be tagged as a muon if it has good tracks in both the induction and collection wire planes in at least one TPC. A ``good'' track must be reconstructed from at least 5 hot spots that lie along the reconstructed track, or at least 3 hot spots along the track if fewer than 5 total spots were found.
 
-The Hough transform reconstructs the projection of the muon's path onto the wire planes. Since the drift velocity and wire spacings are well known, these projections can be translated back to an incident angle for the muon.
+The Hough transform reconstructs the projection of the muon's path onto the wire planes. Since the drift velocity and wire spacings are well known, these projections can be translated back to an incident angle for the muon. However, some information is lost in the time projection. For example, all muons incident from \(\theta,\phi) = (\theta, \pm\pi/2)\) pass parallel to the wire plane. All their charge arrives simultaneously on the wires. While the signal is distinctive and will be tagged as a muon, there is no way to determine \(\theta\). Likewise, a muon may pass parallel to a wire. In this case, it may not create enough hot spots to be tagged as a muon, or some ionization may reach perpendicular wires, leading to a reconstruction in a perpendicular direction.
 
 \subsection{Validation with Monte Carlo Simulations}
-In order to validate this muon tagging algorithm, 2 million muons were generated in the EXOSim GEANT4 simulation of the EXO-200 detector. The overall efficiency of the tagging depends on the angular distribution of the incident muons (for example, one could imagine a pathological scenario in which all muons were parallel to the wires in one plane). The angular distribution underground is approximated\cite{miyake:1973} by
+In order to validate this muon tagging algorithm, 2 million muons were generated in the EXOSim GEANT4 simulation of the EXO-200 detector. The overall efficiency of the tagging depends on the angular distribution of the incident muons, for the reasons described above. The angular distribution underground is approximated\cite{miyake:1973} by
 \begin{equation}
 \label{eq:muon_angular_distribution}
 \frac{dN}{d\Omega} \propto \left (\cos \theta \right)^{1.53}e^{-8\times10^{-4} h \left(\sec \theta -1\right)}
 \end{equation}
-where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\gram\per\square\centi\meter} (\SI{1}{\hecto\gram\per\square\centi\meter} is equivalent shielding to one meter of water). For WIPP, previous experiments have measured \(h\) to be \(1585^{+11}_{-6}\) \si{\hecto\gram\per\square\centi\meter}\cite{Esch:2004zj}. This distribution is a good approximation for \(\theta < \pi/3\).
+where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\g\per\square\cm} (\SI{1}{\hecto\g\per\square\cm} is equivalent shielding to one meter of water). For WIPP, previous experiments have measured \(h\) to be \(1585^{+11}_{-6}\) \si{\hecto\g\per\square\cm}\cite{Esch:2004zj}, so this value was used for the simulations. This distribution is a good approximation for \(\theta < \pi/3\), but at intermediate depths like WIPP, this angular flux is still larger than the isotropic flux due to neutrino-induced muons even out to larger angles.
 
 The energy distribution for muons underground can also be approximated\cite{Gaisser:1990kx}. The distribution for muons at the surface is given by
 \begin{equation}
@@ -59,10 +59,10 @@ E_0 = e^{b h \sec \theta}\left(E + \epsilon\right) - \epsilon
 \end{equation}
 which is the average energy of surface muons that pass through \(h\sec\theta\) of material and emerge with energy \(E\). The parameter \(\epsilon\) is a critical energy above which discrete energy losses dominate, rather than continuous losses described by \(b\). For standard rock, \(\epsilon\) is about \SI{693}{\GeV}\cite{groom:2001ys}.
 
-Muon events were simulated by first picking an azimuthal angle \(\phi\) uniformly from \(\left(-\pi, \pi\right]\) and a zenith angle \(\theta\) from \cref{eq:muon_angular_distribution}. The energy was selected in a range of \SIrange{1}{1000}{\GeV} from \cref{eq:muon_underground_distribution} for the selected zenith angle. A point was chosen uniform randomly in the cylindrical TPC volume, and a muon was generated \SI{3}{\meter} from this point with the selected energy and incident angles. Positively charged muons were generated in a 1.25 ratio to negatively charged muons. The ``standard rock'' values for \(b\) and \(\epsilon\) were used, and the depth \(h\) was varied 5\% around \SI{1585}{\hecto\gram\per\square\centi\meter} to account for systematic effects of the angular distribution on efficiency.
+Muon events were simulated by first picking an azimuthal angle \(\phi\) uniformly from \(\left(-\pi, \pi\right]\) and a zenith angle \(\theta\) from \cref{eq:muon_angular_distribution}. The energy was selected in a range of \SIrange{1}{1000}{\GeV} from \cref{eq:muon_underground_distribution} for the selected zenith angle. A point was chosen uniform randomly in the cylindrical TPC volume, and a muon was generated \SI{3}{\meter} from this point with the selected energy and incident angles. Positively charged muons were generated in a 1.25 ratio to negatively charged muons. The ``standard rock'' values for \(b\) and \(\epsilon\) were used, and the depth \(h\) was varied 5\% around \SI{1585}{\hecto\g\per\square\cm} to account for systematic effects of the angular distribution on efficiency.
 
 \subsection{Reconstruction Accuracy}
-For most incident muon angles, the algorithm correctly reconstructs their incident angle. \Cref{fig:muon_misrecon_rate} shows the rate for muons to be misreconstructed more than \ang{5} from their true angle. This analysis concentrates on the region with good angular reconstruction. This region is bounded by the polygon with vertices \((\theta, \phi) = \{(0.4, 0), (0.45, 0.15), (0.45, 0.9), (0.75, 1.2), (0.95, 1.2), (1.3, 0.1)\}\) and their reflection  across \(\phi=0\), as well as the symmetric region on the opposite side of the detector.
+For most incident muon angles, the algorithm correctly reconstructs their incident angle. \Cref{fig:muon_misrecon_rate} shows the rate for muons to be misreconstructed more than \ang{5} from their true angle. Several pathologies are visible. As discussed above, muons parallel to the wire plane poorly reconstructed. Likewise, the angular resolution for near-vertical muons is poor, since hot spots are only identified with a resolution of \SI{1}{\micro\s}. This analysis concentrates on the region with good angular reconstruction. This region is bounded by the polygon with vertices \((\theta, \phi) = \{(0.4, 0), (0.45, 0.15), (0.45, 0.9), (0.75, 1.2), (0.95, 1.2), (1.3, 0.1)\}\) and their reflection  across \(\phi=0\), as well as the symmetric region on the opposite side of the detector.
  \begin{figure}[htpb]
  \centering
  \begin{subfigure}[b]{1.0\textwidth}
@@ -73,7 +73,7 @@ For most incident muon angles, the algorithm correctly reconstructs their incide
   \centering
    \includegraphics[width=0.8\textwidth]{./plots/muon_misrecon_theta_rate.pdf}
   \end{subfigure}
- \caption[Rate of poorly reconstructed muons]{The rate for muons to be reconstructed more than \ang{5} from their true direction. The top figure shows the rate for  errors greater than \ang{5} in total angular separation. The bottom figure shows the rate for errors greater than \ang{5} in \(\theta\) only, which is of concern because the flux varies in \(\theta\), but is isotropic in \(\phi\). The gray polygon indicates the region with good reconstruction used for this analysis. The azimuthal angle is on the horizontal axis, with \ang{3} bins, while the zenith angle is on the vertical axis, with \ang{1} bins. Blank bins had no muons reconstructed in that bin. Notice that for small \(\theta\), only a few bins are populated, indicating that angular resolution is poor for near vertical muons.}
+ \caption[Rate of poorly reconstructed muons]{The rate for muons to be reconstructed far from their true direction. The top figure shows the rate for  errors greater than \ang{5} in total angular separation. The bottom figure shows the rate for errors greater than \ang{5} in \(\theta\) only, which is of concern because the flux varies in \(\theta\), but is isotropic in \(\phi\). The gray polygon indicates the region with good reconstruction used for this analysis. The azimuthal angle is on the horizontal axis, with \ang{3} bins, while the zenith angle is on the vertical axis, with \ang{1} bins. Blank bins had no muons reconstructed in that bin. Notice that for small \(\theta\), only a few bins are populated, indicating that angular resolution is poor for near vertical muons.}
  \label{fig:muon_misrecon_rate}
  \end{figure}
 
@@ -83,7 +83,7 @@ Overall, of two million simulated events, 864138 were tagged as muons by the alg
  \begin{figure}[htb]
  \centering
  \includegraphics[width=0.8\textwidth]{./plots/muon_efficiency.pdf}
- \caption[Efficiency of reconstructing muons as a function of angle]{The ratio of muons reconstructed in an angular bin to the muons simulated in that bin. This includes muons incorrectly reconstructed, so that this can be used to estimate a total flux. The region inside the gray polygon, used for this analysis, shows reasonable efficiencies. The bin at \((\theta, \phi) = (0, 0)\) is off scale high, with a ratio of 2354, owing to poor angular reconstruction for near-vertical muons.}
+ \caption[Efficiency of reconstructing muons as a function of angle]{The ratio of muons reconstructed in an angular bin to the muons simulated in that bin. This includes muons incorrectly reconstructed, so that this can be used to estimate a total flux. The region inside the gray polygon, used for this analysis, shows reasonable efficiencies. The bin at \((\theta, \phi) = (0, 0)\) is off scale high, with a ratio of 2354, owing to poor angular reconstruction for near-vertical muons, and the degeneracy for muons passing parallel to the wire plane.}
  \label{fig:muon_efficiency}
  \end{figure}
  
@@ -100,17 +100,17 @@ A(\theta,\phi) = \pi r^2 |\cos(\phi)|\sin(\theta) + 2 r \ell \sqrt{1-\sin(\theta
 \end{equation}
 where \(r\) is the cylinder's radius and \(\ell\) is its height.
 
-Integrating \cref{eq:muon_angular_distribution} over the polygonal region of interest, the ratio of the flux in this region to the total flux is \num{0.316\pm0.001}, where the error is found by varying the depth \(h\) by 5\% around \(1585\) \si{\hecto\gram\per\square\centi\meter}.
+Integrating \cref{eq:muon_angular_distribution} over the polygonal region of interest, the ratio of the flux in this region to the total flux is \num{0.316\pm0.001}, where the error is found by varying the depth \(h\) by 5\% around \(1585\) \si{\hecto\g\per\square\cm}.
 
-The pions and kaons in the atmosphere traveling with large \(\theta\) are less likely to interact as they spend more time in the low-density upper atmosphere than to decay to muons. This provides a \(\sec\theta\) enhancement in the flux underground. Therefore, most cosmic ray measurements quote a vertical muon flux:
+The pions and kaons in the atmosphere traveling with large \(\theta\) are more likely to decay to muons than interact as they spend more time in the low-density upper atmosphere. This provides a \(\sec\theta\) enhancement in the flux underground. Therefore, most cosmic ray measurements quote a vertical muon flux:
 \begin{equation}
 \label{eq:muon_vfluxdef}
-\Phi_v(\theta, \phi) = \Phi\cos\theta
+\Phi_v(\theta, \phi) = \Phi(\theta, \phi)\cos\theta
 \end{equation}
 
 Again integrating \cref{eq:muon_angular_distribution}, the ratio of the total flux in the region of interest to the vertical flux is \num{0.387\pm0.003}.
 
-In data taken with the EXO-200 detector, \(12520\pm112\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle in the region of interest was \SI{3.359\pm0.001d3}{\per\square\centi\meter\per\steradian}. This gives a total flux of\todo{Update these numbers with new MC}
+In data taken with the EXO-200 detector, \((12520\pm112)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle in the region of interest was \SI{3.359\pm0.001d3}{\per\square\cm\per\steradian}. This gives a total flux of\todo{Update these numbers with new MC}
 \begin{equation}
 \label{eq:muon_flux_result}
 \Phi = 5.76\pm0.05\text{(stat)}\pm0.01\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
@@ -122,14 +122,16 @@ and a vertical flux of
 \end{equation}
 
 \subsection{Comparison with Previous Results}
-Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian}. To do so, they measure a total flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the integral 
+Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian}. To do so, they measure a total flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the ratio yields 
 \begin{equation}
 \label{eq:muon_esch_integral}
 \frac{\Phi_v}{\Phi} = \frac{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\sin\theta\cos\theta d\theta}{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\sin\theta d\theta} = 0.814^{+0.006}_{-0.005}
 \end{equation}
 where \(\varphi(h,\theta)\) is the distribution in \cref{eq:muon_angular_distribution} and \(h = 1526\)\si{\hecto\gram\per\square\cm} (with the error due to varying this \(\pm10\%\)). The \(\sin\theta\) and \(2 \pi\) factors come from the integral over solid angle.
 
-Furthermore, the paper uses an efficiency of \((88.5\pm0.2)\%\) to calculate their flux, while later on quoting an efficiency \((84.25\pm0.2)\%\). A simple toy Monte Carlo simulation of their geometry with two parallel panels \SI{76.2}{\cm}\(\times\)\SI{305}{\cm} separated by \SI{30.5}{cm} with muons generated according to \cref{eq:muon_angular_distribution} yields a geometric efficiency of \((77.9^{+0.6}_{-0.5})\%\) (with the error from varying the depth \(\pm10\%\)). Using their background-subtracted muon count of \(5224^{+89}_{-123}\), their published area of \SI{23225}{\square\cm}, their published running time of \SI{532800}{s}, and the corrected efficiency, their flux becomes \((5.42^{+0.10}_{-0.12})\times10^{-7}\)\si{\Hz\per\square\cm}. Applying the correct vertical flux ratio, the vertical flux becomes \((4.41^{+0.09}_{-0.10})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian} which agrees with the result above in \cref{eq:muon_vflux_result}.
+Furthermore, the paper uses an efficiency of \((88.5\pm0.2)\%\) to calculate their flux, while later on quoting an efficiency \((84.25\pm0.2)\%\). A simple toy Monte Carlo simulation of their geometry with two parallel panels \SI{76.2}{\cm}\(\times\)\SI{305}{\cm} separated by \SI{30.5}{cm} with muons generated according to \cref{eq:muon_angular_distribution} yields a geometric efficiency of \((77.9^{+0.6}_{-0.5})\%\) (with the error from varying the depth \(\pm10\%\)).
+
+Using their background-subtracted muon count of \(5224^{+89}_{-123}\), their published area of \SI{23225}{\square\cm}, their published running time of \SI{532800}{s}, and the corrected efficiency, their flux becomes \((5.42^{+0.10}_{-0.12})\times10^{-7}\)\si{\Hz\per\square\cm}. Applying the correct vertical flux ratio, the vertical flux becomes \((4.41^{+0.09}_{-0.10})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian} which agrees with the result above in \cref{eq:muon_vflux_result}.
 
 %\bibliographystyle{plain}
 %\bibliography{herrin-thesis}
