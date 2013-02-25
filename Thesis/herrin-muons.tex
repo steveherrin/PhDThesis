@@ -121,6 +121,14 @@ and a vertical flux of
 \Phi_v = 4.24\pm0.04\text{(stat)}\pm0.01\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
 \end{equation}
 
+\subsection{Comparison with Previous Results}
+Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07}\times10^{-7}\)\si{\Hz\per\square\centi\meter\per\steradian}. To do so, they measure a total flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the integral 
+\begin{equation}
+\label{eq:muon_esch_integral}
+\frac{\Phi_v}{\Phi} = \frac{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\sin\theta\cos\theta d\theta}{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\cos\theta d\theta} = 0.814^{+0.06}_{-0.05}
+\end{equation}
+where \(\varphi(h,\theta)\) is the distribution in \cref{eq:muon_angular_distribution} and \(h = 1526\)\si{\hecto\gram\per\square\centi\meter} (with the error due to varying this \(\pm10\%\)). Furthermore, the paper quotes two different values for their efficiency: \((88.5\pm0.2)\%\) and \((84.25\pm0.2)\%\). A simple toy Monte Carlo simulation with two parallel panels \SI{76.2}{\cm}\(\times\)\SI{305}{\cm} separated by \SI{30.5}{cm} with muons generated according to \cref{eq:muon_angular_distribution} yields a geometric efficiency of \((78.0^{+0.5}_{-0.4})\%\) (with the error from varying the depth \(\pm10\%\)). Correcting with this new efficiency and the correct ratio from \cref{eq:muon_esch_integral} raises the vertical muon flux observed by Esch et al. to \((4.19-4.40)\)\si{\Hz\per\square\centi\meter\per\steradian}, which agrees with the result above in \cref{eq:muon_vflux_result}.
+
 %\bibliographystyle{plain}
 %\bibliography{herrin-thesis}
 \end{document} 
