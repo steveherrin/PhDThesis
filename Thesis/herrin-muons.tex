@@ -86,18 +86,41 @@ Overall, of two million simulated events, 864138 were tagged as muons by the alg
  \caption[Efficiency of reconstructing muons as a function of angle]{The ratio of muons reconstructed in an angular bin to the muons simulated in that bin. This includes muons incorrectly reconstructed, so that this can be used to estimate a total flux. The region inside the gray polygon, used for this analysis, shows reasonable efficiencies. The bin at \((\theta, \phi) = (0, 0)\) is off scale high, with a ratio of 2354, owing to poor angular reconstruction for near-vertical muons.}
  \label{fig:muon_efficiency}
  \end{figure}
-
- \begin{figure}[htpb]
- \centering
- \includegraphics[width=0.8\textwidth]{./plots/muon_correct_ratio.pdf}
- \caption[Ratio of correct to incorrect reconstructions]{The ratio of correctly reconstructed muons to incorrectly reconstructed muons as a function of angle. Low ratios indicate bins that are not useful in an analysis that looks at angular information, since the misreconstructed muons will dominate the results. Moderate ratios are not of concern, since misreconstructed muons are usually still close to their true angle.}
- \label{fig:muon_correct_ratio}
- \end{figure}
-
-For a particle incident from zenith angle \(\theta\) and azimuthal angle \(\phi\), the effective area of a cylinder on its side is
+ 
+\section{The Muon Flux at WIPP}
+\label{sec:muon:wipp}
+The muon flux through the  is simply
 \begin{equation}
-A(\theta,\phi) = \pi r^2 |\cos(\phi)|\sin(\theta) + 2 r h \sqrt{1-\sin(\theta)^2 \cos(\phi)^2}
+\label{eq:muon_fluxdef}
+\Phi = \frac{\sum_{i}N_{\mu}}{ \Delta T\sum_{i}\Delta\Omega_i \epsilon(\theta_i, \phi_i) A(\theta_i, \phi_i)}
 \end{equation}
-when \(\phi=0\) is parallel to the cylinder's axis and where \(r\) is the cylinder's radius and \(h\) is its height.
+where \(N_\mu\) is the number of muons observed in time \(\Delta T\). \(\epsilon\) is the efficiency for that bin, \(\Delta\Omega_i\) is the solid angle subtended by bin \(i\), and \(A\) is the projected area of the detector for a particle incident from \((\theta_i, \phi_i)\). The projected area of a cylinder on its side is
+\begin{equation}
+A(\theta,\phi) = \pi r^2 |\cos(\phi)|\sin(\theta) + 2 r \ell \sqrt{1-\sin(\theta)^2 \cos(\phi)^2}
+\end{equation}
+where \(r\) is the cylinder's radius and \(\ell\) is its height.
 
+Integrating \cref{eq:muon_angular_distribution} over the polygonal region of interest, the ratio of the flux in this region to the total flux is \((3.119^{+0.002}_{-0.003})\times10^{-1}\), where the error is found by varying the depth \(h\) by 5\% around \(1585\) \si{\hecto\gram\per\square\centi\meter}.
+
+The pions and kaons in the atmosphere traveling with large \(\theta\) are less likely to interact as they spend more time in the low-density upper atmosphere than to decay to muons. This provides a \(\sec\theta\) enhancement in the flux underground. Therefore, most cosmic ray measurements quote a vertical muon flux:
+\begin{equation}
+\label{eq:muon_vfluxdef}
+\Phi_v(\theta, \phi) = \Phi(\theta, \phi)\cos\theta
+\end{equation}
+
+Again integrating \cref{eq:muon_angular_distribution}, the ratio of the total flux in the region of interest to the vertical flux is \((4.238\pm0.001)\times10^{-1}\).
+
+In data taken with the EXO-200 detector, \(12520\pm112\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle in the region of interest was \SI{3.359\pm0.001d3}{\per\square\centi\meter\steradian}. This gives a total flux of
+\begin{equation}
+\label{eq:muon_flux_result}
+\Phi = 5.76\pm0.05\text{(stat)}\pm0.01\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
+\end{equation}
+and a vertical flux of
+\begin{equation}
+\label{eq:muon_vflux_result}
+\Phi_v = 4.24\pm0.04\text{(stat)}\pm0.01\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
+\end{equation}
+
+%\bibliographystyle{plain}
+%\bibliography{herrin-thesis}
 \end{document} 
