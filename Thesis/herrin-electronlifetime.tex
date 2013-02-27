@@ -266,7 +266,7 @@ Calibration runs taken every 1--2 days serve to measure the electron lifetime in
 
 \subsection{Time Variation and Correction Function}
 
-The measured electron lifetime varies in time. Usually, this variation is small and within the measurement error. However, events such as a feed of gas into the xenon recirculation loop (which might introduce impurities), or changes in the recirculation rate can cause more significant variation. To account for this, a piecewise polynomial is fit to the measured electron lifetimes. This piecewise polynomial can be discontinuous across sudden changes in electron lifetime. A cessation of recirculation, such as by a pump failure, can cause such a sudden change. The polynomial degree can change when the behavior of the electron lifetime changes, such as when rapidly-increasing lifetime after resuming recirculation becomes a steady-state, slowly-varying value. \Cref{fig:el_time_variation} shows the time variation and the polynomial fit for the separate TPCs. Separate electron lifetimes are used for the different TPCs because there could be some purity gradient in the chamber, and splitting the chamber in half provides a modest approximation. Furthermore, the measured values in the different TPCs sometimes vary outside of each others' confidence bands.
+The measured electron lifetime varies in time. Usually, this variation is small and within the measurement error. However, events such as a feed of gas into the xenon recirculation loop (which might introduce impurities), or changes in the recirculation rate can cause more significant variation. To account for this, a piecewise polynomial is fit to the measured electron lifetimes. This piecewise polynomial can be discontinuous across sudden changes in electron lifetime. The polynomial degree can change when the behavior of the electron lifetime changes, such as when rapidly-increasing lifetime after resuming recirculation becomes a steady-state, slowly-varying value. \Cref{fig:el_time_variation} shows the time variation and the polynomial fit for the separate TPCs. Separate electron lifetimes are used for the different TPCs because there could be some purity gradient in the chamber, and splitting the chamber in half provides a modest approximation. Furthermore, the measured values in the different TPCs sometimes vary outside of each others' confidence bands.
 
 \begin{figure}[htb]
 \begin{subfigure}[b]{0.5\linewidth}
@@ -307,6 +307,15 @@ The rate at which xenon is recirculated through the purifiers effects electron l
 \includegraphics[width=0.6\columnwidth]{./plots/el_vs_recirculation.pdf}
 \caption[Electron lifetime vs. recirculation rate]{The electron lifetime plotted as a function of recirculation rate. Time periods when recirculation was fast, but electron lifetimes were low due to a pump stoppage or feed event have been removed. A clear trend is visible, in which electron lifetime increases with recirculation rate.}
 \label{fig:el_vs_recirculation}
+\end{figure}
+
+\Cref{fig:el_and_recirculation} shows the time history of the electron lifetime, plotted along with the recirculation rate. Since the electron lifetime in the chamber decreases when the pump is recirculating at a reduced rate, there is most likely a constant source of impurities in the TPC. That the electron lifetime worsens significantly after prolonged recirculation stoppages supports this. However, when the recirculation stops, the pressures throughout the system change. This causes liquid levels to change and may also cause the slow control system to feed in more gas. Newly exposed or submerged plumbing, and new gas (even though it is fed through the purifiers) could also cause this decrease in electron lifetime, and it is difficult to disentangle the effects. In any case, once recirculation is resumed, the electron lifetime recovers over the course of a few days.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\columnwidth]{./plots/el_and_recirculation.pdf}
+\caption[Electron lifetime history with recirculation rate]{A time history of the electron lifetime, with the recirculation rate plotted below. The electron lifetime drops when the pump slows or completely stops, and recovers when recirculation resumes at a fast rate.}
+\label{fig:el_and_recirculation}
 \end{figure}
 
 \end{document}
