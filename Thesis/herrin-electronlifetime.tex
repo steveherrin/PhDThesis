@@ -284,8 +284,22 @@ The measured electron lifetime varies in time. Usually, this variation is small 
 For a good event in EXO-200, the reconstruction algorithms find both a drift time and an (attenuated) ionization signal. The polynomial fit described above provides an estimate of the electron lifetime at the event time. \Cref{eq:el_exponentialtaue} provides a recipe for finding the original ionization signal from the attenuated signal, using the drift time and measured electron lifetime.
 
 \subsection{Electron Lifetime in Low Electric Field}
-Analyzing the purity during low field runs.
-\todo{Still need to do this.}
+The rate constant for electron attachment to impurities varies with the electric field strength, and the species of impurity determines the nature of this variation. As show in \cref{fig:el_attachment_vs_efield}\cite{Bakale:1976ly}, \ce{O_2} impurities show decreasing attachment with increasing field strength, while \ce{N_2O} show the opposite.
+
+\begin{figure}[htb]
+\centering
+\begin{subfigure}[b]{0.35\linewidth}
+\includegraphics[width=\textwidth]{./plots/el_attachment_vs_efield.pdf}
+\end{subfigure}\hspace{0.05\linewidth}%
+\begin{subfigure}[b]{0.55\linewidth}
+\includegraphics[width=\textwidth]{./plots/el_lifetime_vs_efield.pdf}
+\end{subfigure}
+\caption[Electron lifetime vs. electric field]{On the right is a plot by Bakale et al.\cite{Bakale:1976ly}, showing electron attachment as a function of electric field strength. On the right is the measured electron lifetime in EXO-200 for a number of electric field strengths. For these runs, the calibration source was located slightly on the TPC 2 side of the cathode, giving more events and allowing a better measurement in this TPC. The nominal field for normal operation is \SI{374}{\V\per\cm}. The electron lifetime seems to decrease with increasing electric field.}
+\label{fig:el_attachment_vs_efield}
+\label{fig:el_lifetime_vs_efield}
+\end{figure}
+
+Calibration runs of the standard length were taken with the cathode at \SIlist{-4.4;-2.2;-1.45; -1.1}{\kilo\V}, corresponding to electric field strengths of \SIlist{187;75;38;20}{\V\per\cm}. Normal operation is at \SI{-8}{\kilo\V}, corresponding to \SI{374}{\V\per\cm}. Unfortunately, there were not enough events in the full-absorption peak to measure the electron lifetime at the lowest field strength. The results are shown in \cref{fig:el_lifetime_vs_efield}. The electron lifetime decreases with increasing electric field, resembling \ce{O_2} and \ce{S F_6}. If oxygen is the main species present, then a \SI{2.5}{\ms} electron lifetime corresponds to roughly \num{4d-11} contamination (gram per gram) in the xenon.
 
 \subsection{Comparison with Gas Purity Monitor Readings}
 The gas purity monitors\cite{Dobi:2011zr} provide real-time monitoring of the recirculating xenon. GPM 1 samples the gas returning from the TPC. GPM 2 samples the gas coming out of the purifiers. GPM 3 samples the gas at the output of the recirculation pump. Because these sample room temperature gas instead of cryogenic liquid, some impurities may be in different concentrations than in the TPC due to different solubilities. Likewise, the gas purity monitors have a small electric field and short drift distance, and so they will not be able to measure long electron lifetimes. Despite this, GPM 1 may be able to provide some information about the purity of the xenon in the TPC when that purity is poor.
