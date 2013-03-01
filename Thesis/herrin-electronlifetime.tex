@@ -4,7 +4,7 @@
 \section{Electron Capture on Impurities}
 When an electromagnetic process deposits energy in a nobel liquid detector, it ionizes the atoms, producing electrons and ions. Some of the electrons will recombine with the ions, which produces scintillation light. However, if the detector has an applied electric field, then the remaining electrons and ions will drift in opposite directions along the field lines. In a detector consisting of perfectly pure nobel liquid, the electrons would all reach the anode and would be collected for an energy measurement. In a non-ideal detector, however, electronegative impurities can capture the drifting electrons and form ions. The ions are more massive and drift more slowly, and so they escape inclusion in the signal used for energy measurement.
 
-Electronegative impurities may capture electrons in three ways\cite{Aprile:2006fk}. I denote the impurities, which may be atoms or molecules, as \(AB\):
+Electronegative impurities may capture electrons in three ways\cite{Aprile:2006fk}. Denoting the impurities, which may be atoms or molecules, as \(AB\), these are:
 \begin{enumerate}
 \item Radiative attachment
 \begin{equation}
@@ -85,7 +85,7 @@ Plotting the full absorption peak energy from each drift time bin as a function 
 \label{fig:el_profileel}
 \end{figure}
 
-The electron lifetime measurement comes from minimizing the \(\chi^2\) statistic. Confidence intervals for the measurement come from doing a profile scan. For a profile scan the electron lifetime is set to some fixed value away from the best fit value, and the amplitude is allowed to vary to minimize \(\chi^2\). All electron lifetime values for which this reminimized \(\chi^2\) is less than 1 above the minimum value define the 1\(\sigma\) (68\%) confidence band. \Cref{fig:el_profileel} shows an example.
+The electron lifetime measurement comes from minimizing the \(\chi^2\) statistic. Confidence intervals for the measurement come from doing a profile scan. Short electron lifetimes are easily distinguished, while longer electron lifetimes are not, and so the intervals will be asymmetric about the minimum. For a profile scan the electron lifetime is set to some fixed value away from the best fit value, and the amplitude is allowed to vary to minimize \(\chi^2\). All electron lifetime values for which this reminimized \(\chi^2\) is less than 1 above the minimum value define the 1\(\sigma\) (68\%) confidence band. \Cref{fig:el_profileel} shows an example.
 
 \subsection{Comparison to Simulation}
 
@@ -123,9 +123,9 @@ The error due to this effect is small, however. A measured electron lifetime of 
 \label{fig:el_sim_width}
 \end{figure}
 
-As the electron lifetime grows large, it becomes increasingly difficult to measure. For a \SI{4000}{\micro\second} electron lifetime, ionization drifting the full distance will only be attenuated about 3\%. This is comparable to the 3.4\% energy resolution in the ionization channel at the 2615 keV full absorption peak from \thorium{228}. This effect is shown in \cref{fig:el_sim_width}. The width of the confidence band for the measurement grows to near 20\% of the measured value for large electron lifetimes. Taking more calibration data only partially mitigates this effect, also shown in \cref{fig:el_sim_width}. For low electron lifetimes, a simulated calibration run with twice as many events in the full absorption peak (and requiring twice as much time to run) shrinks the confidence band by roughly \(\sqrt{2}\). For large electron lifetimes, more events don't shrink the band, suggesting systematic errors dominate.
+As the electron lifetime grows large, it becomes increasingly difficult to measure. For a \SI{4000}{\micro\second} electron lifetime, ionization drifting the full distance will only be attenuated about 3\%. This is comparable to the 3.4\%\todo{May need to be updated} energy resolution in the ionization channel at the 2615 keV full absorption peak from \thorium{228}. This effect is shown in \cref{fig:el_sim_width}. The width of the confidence band for the measurement grows to near 20\% of the measured value for large electron lifetimes. Taking more calibration data only partially mitigates this effect, also shown in \cref{fig:el_sim_width}. For low electron lifetimes, a simulated calibration run with twice as many events in the full absorption peak (and requiring twice as much time to run) shrinks the confidence band by roughly \(\sqrt{2}\). For large electron lifetimes, more events don't shrink the band, suggesting systematic errors such as the relatively short drift time dominate.
 
-\subsection{Effects of Electron Lifetime on the Energy Resolution}
+\section{Effects of Electron Lifetime on the Energy Resolution}
 
 The error on \(E_{rotated}\) due to an uncertainty \(\Delta\tau\) in the electron lifetime is:
 \begin{equation}
@@ -266,7 +266,7 @@ Calibration runs taken every 1--2 days serve to measure the electron lifetime in
 
 \subsection{Time Variation and Correction Function}
 
-The measured electron lifetime varies in time. Usually, this variation is small and within the measurement error. However, events such as a feed of gas into the xenon recirculation loop (which might introduce impurities), or changes in the recirculation rate can cause more significant variation. To account for this, a piecewise polynomial is fit to the measured electron lifetimes. This piecewise polynomial can be discontinuous across sudden changes in electron lifetime. The polynomial degree can change when the behavior of the electron lifetime changes, such as when rapidly-increasing lifetime after resuming recirculation becomes a steady-state, slowly-varying value. \Cref{fig:el_time_variation} shows the time variation and the polynomial fit for the separate TPCs. Separate electron lifetimes are used for the different TPCs because there could be some purity gradient in the chamber, and splitting the chamber in half provides a modest approximation. Furthermore, the measured values in the different TPCs sometimes vary outside of each others' confidence bands.
+The measured electron lifetime varies in time. Usually, this variation is small and slow. To account for this, a piecewise polynomial is fit to the measured electron lifetimes. This piecewise polynomial can be discontinuous across sudden changes in electron lifetime. The polynomial degree can change when the behavior of the electron lifetime changes, such as when rapidly-increasing lifetime after resuming recirculation becomes a steady-state, slowly-varying value. \Cref{fig:el_time_variation} shows the time variation and the polynomial fit for the separate TPCs. Separate electron lifetimes are used for the different TPCs because there could be some purity gradient in the chamber, and splitting the chamber in half provides a modest approximation. Furthermore, the measured values in the different TPCs are observed to sometimes vary outside of each others' confidence bands.
 
 \begin{figure}[htb]
 \begin{subfigure}[b]{0.5\linewidth}
@@ -281,37 +281,7 @@ The measured electron lifetime varies in time. Usually, this variation is small 
 \label{fig:el_time_variation}
 \end{figure}
 
-For a good event in EXO-200, the reconstruction algorithms find both a drift time and an (attenuated) ionization signal. The polynomial fit described above provides an estimate of the electron lifetime at the event time. \Cref{eq:el_exponentialtaue} provides a recipe for finding the original ionization signal from the attenuated signal, using the drift time and measured electron lifetime.
-
-\subsection{Electron Lifetime in Low Electric Field}
-The rate constant for electron attachment to impurities varies with the electric field strength, and the species of impurity determines the nature of this variation. As show in \cref{fig:el_attachment_vs_efield}\cite{Bakale:1976ly}, \ce{O_2} impurities show decreasing attachment with increasing field strength, while \ce{N_2O} show the opposite.
-
-\begin{figure}[htb]
-\centering
-\begin{subfigure}[b]{0.35\linewidth}
-\includegraphics[width=\textwidth]{./plots/el_attachment_vs_efield.pdf}
-\end{subfigure}\hspace{0.05\linewidth}%
-\begin{subfigure}[b]{0.55\linewidth}
-\includegraphics[width=\textwidth]{./plots/el_lifetime_vs_efield.pdf}
-\end{subfigure}
-\caption[Electron lifetime vs. electric field]{On the right is a plot by Bakale et al.\cite{Bakale:1976ly}, showing the electron attachment constant as a function of electric field strength. On the right is the measured electron lifetime, which is inversely proportional to the attachment constant, in EXO-200 for a number of electric field strengths. For these runs, the calibration source was located slightly on the TPC 2 side of the cathode, giving more events and allowing a better measurement in this TPC. The nominal field for normal operation is \SI{374}{\V\per\cm}. The electron lifetime seems to decrease with increasing electric field, and the magnitude of this decrease is not unreasonable, resembling \ce{N_2O}.}
-\label{fig:el_attachment_vs_efield}
-\label{fig:el_lifetime_vs_efield}
-\end{figure}
-
-Calibration runs of the standard length were taken with the cathode at \SIlist{-4.4;-2.2;-1.45; -1.1}{\kilo\V}, corresponding to electric field strengths of \SIlist{187;75;38;20}{\V\per\cm}. Normal operation is at \SI{-8}{\kilo\V}, corresponding to \SI{374}{\V\per\cm}. Unfortunately, there were not enough events in the full-absorption peak to measure the electron lifetime at the lowest field strength. The results are shown in \cref{fig:el_lifetime_vs_efield}. The electron lifetime decreases with increasing electric field, unlike oxygen. There is not enough information to identify the exact species of impurity present. For species with similar molecular weight and electron attachment as \ce{N_2O} and \ce{O_2}, the required concentration of impurities for a \SI{3}{\ms} electron lifetime is on the order of \(10^{-11}\) (gram per gram).
-
-\subsection{Comparison with Gas Purity Monitor Readings}
-The gas purity monitors\cite{Dobi:2011zr} provide real-time monitoring of the recirculating xenon. GPM 1 samples the gas returning from the TPC. GPM 2 samples the gas coming out of the purifiers. GPM 3 samples the gas at the output of the recirculation pump. Because these sample room temperature gas instead of cryogenic liquid, some impurities may be in different concentrations than in the TPC due to different solubilities. Likewise, the gas purity monitors have a small electric field and short drift distance, and so they will not be able to measure long electron lifetimes. Despite this, GPM 1 may be able to provide some information about the purity of the xenon in the TPC when that purity is poor.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.6\textwidth]{./plots/el_gpm_vs_el.pdf}
-\caption[GPM reading vs. electron lifetime]{The reading from the gas purity monitor sampling the gas returning from the TPC (GPM 1), during periods when the electron lifetime was recovering from a pump stoppage or feed event. Different recover incidents are denoted with different colors and markers. There is an overall correlation coefficient of 0.55 between the GPM reading and the electron lifetime. However, the correlations in individual incidents are stronger.}
-\label{fig:el_gpm_vs_el}
-\end{figure}
-
-\Cref{fig:el_gpm_vs_el} shows a plot of the gas purity monitor reading for gas returning the TPC during periods when the electron lifetime was poor due to a pump stoppage or feed event. A loose correlation is visible, with a correlation coefficient of 0.55 over all points. More interesting is that the correlation is stronger during individual recovery incidents, denoted by different markers and colors. So, while the gas purity monitors do not measure the electron lifetime in the TPC on an absolute scale, they provide a good indication of large changes in the electron lifetime.
+For a good event in EXO-200, the reconstruction algorithms find both a drift time and an (attenuated) ionization signal. The polynomial fit described above provides an estimate of the electron lifetime at the event time. \Cref{eq:el_exponentialtaue} provides a recipe for correcting the attenuated ionization signal to get a corrected signal, using the drift time and measured electron lifetime.
 
 \subsection{Comparison with Recirculation Rate}
 The rate at which xenon is recirculated through the purifiers effects electron lifetime. \Cref{fig:el_vs_recirculation} shows a clear trend of increasing electron lifetime with increasing recirculation rate. The highest electron lifetimes are achieved with a recirculation rate above \SI{13}{slpm}, which corresponds to completely recirculating the volume of the chamber in \SI{1.8}{days}.
@@ -331,5 +301,35 @@ The rate at which xenon is recirculated through the purifiers effects electron l
 \caption[Electron lifetime history with recirculation rate]{A time history of the electron lifetime, with the recirculation rate plotted below. The electron lifetime drops when the pump slows or completely stops, and recovers when recirculation resumes at a fast rate.}
 \label{fig:el_and_recirculation}
 \end{figure}
+
+\subsection{Comparison with Gas Purity Monitor Readings}
+The gas purity monitors\cite{Dobi:2011zr} provide real-time monitoring of the recirculating xenon. GPM 1 samples the gas returning from the TPC. GPM 2 samples the gas coming out of the purifiers. GPM 3 samples the gas at the output of the recirculation pump. Because these sample room temperature gas instead of cryogenic liquid, some impurities may be in different concentrations than in the TPC due to different solubilities. Likewise, the gas purity monitors have a small electric field and short drift distance, and so they will not be able to measure long electron lifetimes. Despite this, GPM 1 may be able to provide some information about the purity of the xenon in the TPC when that purity is poor.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./plots/el_gpm_vs_el.pdf}
+\caption[GPM reading vs. electron lifetime]{The reading from the gas purity monitor sampling the gas returning from the TPC (GPM 1), during periods when the electron lifetime was recovering from a pump stoppage or feed event. Different recover incidents are denoted with different colors and markers. There is an overall correlation coefficient of 0.55 between the GPM reading and the electron lifetime. However, the correlations in individual incidents are stronger.}
+\label{fig:el_gpm_vs_el}
+\end{figure}
+
+\Cref{fig:el_gpm_vs_el} shows a plot of the gas purity monitor reading for gas returning the TPC during periods when the electron lifetime was poor due to a pump stoppage or feed event. A loose correlation is visible, with a correlation coefficient of 0.55 over all points. More interesting is that the correlation is stronger during individual recovery incidents, denoted by different markers and colors. So, while the gas purity monitors do not measure the electron lifetime in the TPC on an absolute scale, they provide a good indication of large changes in the electron lifetime.
+
+\subsection{Electron Lifetime in Low Electric Field}
+The rate constant for electron attachment to impurities varies with the electric field strength, and the species of impurity determines the nature of this variation. As show in \cref{fig:el_attachment_vs_efield}\cite{Bakale:1976ly}, \ce{O_2} impurities show decreasing attachment with increasing field strength, while \ce{N_2O} show the opposite.
+
+\begin{figure}[htb]
+\centering
+\begin{subfigure}[b]{0.35\linewidth}
+\includegraphics[width=\textwidth]{./plots/el_attachment_vs_efield.pdf}
+\end{subfigure}\hspace{0.05\linewidth}%
+\begin{subfigure}[b]{0.55\linewidth}
+\includegraphics[width=\textwidth]{./plots/el_lifetime_vs_efield.pdf}
+\end{subfigure}
+\caption[Electron lifetime vs. electric field]{On the right is a plot by Bakale et al.\cite{Bakale:1976ly}, showing the electron attachment constant as a function of electric field strength. On the right is the measured electron lifetime, which is inversely proportional to the attachment constant, in EXO-200 for a number of electric field strengths. For these runs, the calibration source was located slightly on the TPC 2 side of the cathode, giving more events and allowing a better measurement in this TPC. The nominal field for normal operation is \SI{374}{\V\per\cm}. The electron lifetime seems to decrease with increasing electric field, and the magnitude of this decrease is not unreasonable, resembling \ce{N_2O}.}
+\label{fig:el_attachment_vs_efield}
+\label{fig:el_lifetime_vs_efield}
+\end{figure}
+
+Calibration runs of the standard length were taken with the cathode at \SIlist{-4.4;-2.2;-1.45; -1.1}{\kilo\V}, corresponding to electric field strengths of \SIlist{187;75;38;20}{\V\per\cm}. Normal operation is at \SI{-8}{\kilo\V}, corresponding to \SI{374}{\V\per\cm}. Unfortunately, there were not enough events in the full-absorption peak to measure the electron lifetime at the lowest field strength. The results are shown in \cref{fig:el_lifetime_vs_efield}. The electron lifetime decreases with increasing electric field, unlike oxygen. There is not enough information to identify the exact species of impurity present. For species with similar molecular weight and electron attachment as \ce{N_2O} and \ce{O_2}, the required concentration of impurities for a \SI{3}{\ms} electron lifetime is on the order of \(10^{-11}\) (gram per gram).
 
 \end{document}
