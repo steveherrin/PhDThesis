@@ -40,7 +40,7 @@ In order to validate this muon tagging algorithm, 2 million muons were generated
 \label{eq:muon_angular_distribution}
 \frac{dN}{d\Omega} = \Phi(h) \left (\cos \theta \right)^{1.53}e^{-8\times10^{-4} h \left(\sec \theta -1\right)}
 \end{equation}
-where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\g\per\square\cm} (\SI{1}{\hecto\g\per\square\cm} is equivalent shielding to one meter of water). For WIPP, previous experiments have measured \(h\) to be \(1585^{+11}_{-6}\) \si{\hecto\g\per\square\cm}\cite{Esch:2004zj}, so this value was used for the simulations. This distribution is a good approximation for \(\theta < \pi/3\), but at intermediate depths like WIPP, this angular flux is still larger than the isotropic flux due to neutrino-induced muons even out to larger angles.
+where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\g\per\square\cm} (\SI{1}{\hecto\g\per\square\cm} is equivalent shielding to one meter of water). For WIPP, previous experiments have measured \(h\) to be \(1585^{+11}_{-6}\) \si{\hecto\g\per\square\cm}\cite{Esch:2004zj}, so this value was used for the simulations. This distribution is a good approximation for \(\theta < \pi/3\).
 
 The energy distribution for muons underground can also be approximated\cite{Gaisser:1990kx}. The distribution for muons at the surface is given by
 \begin{equation}
@@ -64,7 +64,7 @@ Muon events were simulated by first picking an azimuthal angle \(\phi\) uniforml
 A muon was then generated at a height of \SI{3}{\meter} vertically above the plane of the disk with the selected energy and incident angles, and passing through the selected point. To save computation time, only muons that would actually pass through the TPC volume were simulated fully. Positively charged muons were generated in a 1.25 ratio to negatively charged muons, similar to the typical value in nature. The ``standard rock'' values for \(b\) and \(\epsilon\) were used, and the depth \(h\) was varied 5\% around \SI{1585}{\hecto\g\per\square\cm} to account for systematic effects of the angular distribution on efficiency.
 
 \subsection{Reconstruction Accuracy}
-For most incident muon angles, the algorithm correctly reconstructs their incident angle. \Cref{fig:muon_misrecon_rate} shows the rate for muons to be misreconstructed more than \ang{5} from their true angle. Several pathologies are visible. As discussed above, muons parallel to the wire plane poorly reconstructed. Likewise, the angular resolution for near-vertical muons is poor, since hot spots are only identified with a resolution of \SI{1}{\micro\s}. This analysis concentrates on the region with good angular reconstruction. This region is bounded by the polygon with vertices \((\theta,\phi) =\) \{(0.4,~0), (0.45,~0.15), (0.45,~0.9), (0.75,~1.2), (0.95,~1.2), (1.3,~0.1)\} and their reflection  across \(\phi=0\), as well as the symmetric region on the opposite side of the detector.
+For most incident muon angles, the algorithm correctly reconstructs their incident angle. \Cref{fig:muon_misrecon_rate} shows the rate for muons to be misreconstructed more than \ang{5} from their true angle. Several pathologies are visible. As discussed above, muons parallel to the wire plane poorly reconstructed. Likewise, the angular resolution for near-vertical muons is poor, since hot spots are only identified with a resolution of \SI{1}{\micro\s}. This analysis concentrates on the region with good angular reconstruction. This region is bounded by the polygon with vertices \((\theta,\phi) =\) \{(0.4,~0), (0.45,~0.15), (0.45,~0.9), (0.75,~1.2), (0.95,~1.2), (\(\pi\)/3,~0.8)\} and their reflection  across \(\phi=0\), as well as the symmetric region on the opposite side of the detector.
  \begin{figure}[htpb]
  \centering
  \begin{subfigure}[b]{1.0\textwidth}
@@ -102,7 +102,7 @@ A(\theta,\phi) = \pi r^2 |\cos(\phi)|\sin(\theta) + 2 r \ell \sqrt{1-\sin(\theta
 \end{equation}
 where \(r\) is the cylinder's radius and \(\ell\) is its height.
 
-Integrating \cref{eq:muon_angular_distribution} over the polygonal region of interest, the ratio of the flux in this region to the total flux is \num{0.316\pm0.001}, where the error is found by varying the depth \(h\) by 5\% around \(1585\) \si{\hecto\g\per\square\cm}.
+Integrating \cref{eq:muon_angular_distribution} over the polygonal region of interest, the ratio of the flux in this region to the total flux is \num{0.422\pm0.002}, where the error is found by varying the depth \(h\) by 5\% around \(1585\) \si{\hecto\g\per\square\cm}.
 
 The pions and kaons in the atmosphere traveling with large \(\theta\) are more likely to decay to muons than interact as they spend more time in the low-density upper atmosphere. This provides a \(\sec\theta\) enhancement in the flux underground. Therefore, most cosmic ray measurements quote a vertical muon flux:
 \begin{equation}
@@ -110,18 +110,18 @@ The pions and kaons in the atmosphere traveling with large \(\theta\) are more l
 \Phi_v(\theta, \phi) = \Phi(\theta, \phi)\cos\theta
 \end{equation}
 
-Again integrating \cref{eq:muon_angular_distribution}, the ratio of the total flux in the region of interest to the vertical flux is \num{0.387\pm0.003}.
+Again integrating \cref{eq:muon_angular_distribution}, the ratio of the total flux in the region of interest to the vertical flux is \num{0.517\pm0.004}.
 
-In data taken with the EXO-200 detector, \((12520\pm112)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle in the region of interest was \SI{3.359\pm0.001d3}{\per\square\cm\per\steradian}. This gives a total flux of\todo{Update these numbers with new MC}
+To calculate the flux, EXO-200 was divided into \ang{4} bins in \(\theta\) and \ang{12} bins in \(\phi\) to ensure good statistics in each bin. Only bins that had centers in the region of interest were considered. In data taken, \((11267\pm106.1)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle for bins in the region of interest was \SI{2.33\pm0.01d3}{\square\cm\steradian}. This gives a total flux of
 \begin{equation}
 \label{eq:muon_flux_result}
-\Phi(h) = 5.76\pm0.05\text{(stat)}\pm0.01\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
+\Phi = 5.35\pm0.05\text{(stat)}^{+0.03}_{-0.02}\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
 \end{equation}
 and a vertical flux of
 \begin{equation}
 \label{eq:muon_vflux_result}
-\Phi_v(h) = 4.24\pm0.04\text{(stat)}\pm0.01\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
-\end{equation}
+\Phi_v = 4.24\pm0.04\text{(stat)}^{+0.04}_{-0.03}\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
+\end{equation}\todo{Missing systematic error due to varying simulation depth.}
 
 \subsection{Comparison with Previous Results}
 Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian}. To do so, they measure a total flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the ratio yields 
@@ -129,9 +129,9 @@ Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0
 \label{eq:muon_esch_integral}
 \frac{\Phi_v}{\Phi} = \frac{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\cos\theta\sin\theta d\theta}{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\sin\theta d\theta} = 0.814^{+0.006}_{-0.005}
 \end{equation}
-where \(\varphi(h,\theta)\) is the distribution in \cref{eq:muon_angular_distribution} and \(h = 1526\)\si{\hecto\gram\per\square\cm} (with the error due to varying this \(\pm10\%\)). The \(\sin\theta\) and \(2 \pi\) factors come from the integral over solid angle.
+where \(\varphi(h,\theta)\) is the distribution in \cref{eq:muon_angular_distribution} and \(h = \)~\SI{1526}{\hecto\gram\per\square\cm} (with the error due to varying this \(\pm10\%\)) as in their paper. The \(\sin\theta\) and \(2 \pi\) factors come from the integral over solid angle.
 
-Furthermore, the paper uses an efficiency of \((88.5\pm0.2)\%\) to calculate their flux, while later on quoting an efficiency \((84.25\pm0.2)\%\). A simple toy Monte Carlo simulation of their geometry with two parallel panels \SI{76.2}{\cm}\(\times\)\SI{305}{\cm} separated by \SI{30.5}{\cm} with muons generated according to \cref{eq:muon_angular_distribution} yields a geometric efficiency of \((80.6^{+1.5}_{-1.6})\%\), with the main error due to uncertainty about the exact geometry of the experiment.
+Furthermore, the paper uses an efficiency of \((88.5\pm0.2)\%\) to calculate their flux, while later quoting an efficiency of \((84.25\pm0.2)\%\). A simple toy Monte Carlo simulation of their geometry with two parallel panels \SI{76.2}{\cm}\(\times\)\SI{305}{\cm} separated by \SI{30.5}{\cm} with muons generated according to \cref{eq:muon_angular_distribution} yields a geometric efficiency of \((80.6^{+1.5}_{-1.6})\%\), with the main error due to uncertainty about which two surfaces are separated by \SI{30.5}{\cm}.
 
 Using their background-subtracted muon count of \(5224^{+89}_{-123}\), their published area of \SI{23225}{\square\cm}, their published running time of \SI{532800}{s}, and the corrected efficiency, their flux becomes \((5.24\pm0.10)\times10^{-7}\)\si{\Hz\per\square\cm}. Applying the correct vertical flux ratio, the vertical flux becomes \((4.26\pm0.09)\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian} which agrees with the result above in \cref{eq:muon_vflux_result}.
 
