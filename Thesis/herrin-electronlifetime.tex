@@ -70,7 +70,7 @@ A single calibration source at the cathode of the detector produces illuminates 
 \label{fig:el_dtbinfit}
 \end{figure}
 
-In addition to the full-absorption peak, which is Gaussian, the energy spectrum from a gamma ray source will contain a Compton shoulder. Some gamma rays will interact without depositing their full energy, and then scatter out of the detector. A simple model for this shoulder is a step function convolved with a Gaussian smearing representing the effects of energy resolution, producing a complementary error function. For each drift time bin, I fit this simple Gaussian + complementary error function model to the energy spectrum of that bin using an unbinned maximum likelihood fit. \Cref{fig:el_dtbinfit} shows an example fit.
+In addition to the full-absorption peak, which is Gaussian, the energy spectrum from a gamma ray source will contain a Compton shoulder. Some gamma rays will interact without depositing their full energy, and then scatter out of the detector. A simple model for this shoulder is a step function convolved with a Gaussian smearing representing the effects of energy resolution, producing a complementary error function. For each drift time bin, I fit this simple Gaussian + complementary error function model to the energy spectrum of that bin using an unbinned maximum likelihood fit. This fit is performed twice, first over a broad energy range to find the full-absorption peak, then in the range \((-3.0\sigma, +2.5\sigma)\) of the found peak to precisely determine the peak energy. \Cref{fig:el_dtbinfit} shows an example fit.
 
 \begin{figure}[htbp]
 \centering
