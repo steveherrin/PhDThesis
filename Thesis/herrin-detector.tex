@@ -21,4 +21,16 @@ Xenon has many properties that make it useful for a double beta decay experiment
 
 As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon, enriched to 80.6\% in \xenon{136} with clean centrifuges at several laboratories in Russia. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural elements are present in trace amounts. \isotope{85}{Kr} is present at \SI[per-mode=symbol]{25.5\pm3.0d-12}{\g\per\g}\cite{Dobi:2012nx}. This low contamination and low Q value mean it is not problematic for EXO-200.
 
+\section{Time Projection Chamber}
+EXO-200 uses xenon in the liquid phase to make a Time Projection Chamber (TPC). When a process deposits energy in liquid xenon, it creates both scintillation light and ionization. Avalanche PhotoDiodes (APDs) detect the scintillation nearly instantaneously. The ionization, meanwhile, drifts in an applied electric field to crossed wire planes, where it induces a signal in one plane (the ``v'' wires) and is collected on the other plane (the ``u'' wires). \Cref{fig:detector_tpc_cartoon} provides a schematic of the TPC concept for EXO-200. The crossed wire grids provide a 2D projection of the event, while the time between the scintillation signal and the ionization signal provides a \(z\) coordinate. The EXO-200 chamber is actually divided into two separate TPCs by a cathode, biased to \SI{-8.0}{\kV}, producing a drift field of \SI{374}{\V\per\cm}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{./figures/tpc_schematic.pdf}
+\caption[A schematic of a TPC]{A schematic of the TPC concept for EXO-200.}
+\label{fig:detector_tpc_cartoon}
+\end{figure}
+
+The use of a liquid-phase TPC has several advantages for a low-background experiment. The xenon at the outer edges of the detector, outside of the active region, provides modest self shielding against \(\gamma\) rays. The scintillation and the ionization signals can be combined to give good energy resolution\cite{Conti:2003tg}\cite{Aprile:2007hc}. \(\gamma\) ray backgrounds near the Q value of \xenon{136} most often deposit their energy via Compton scattering or electron-positron pair production. These processes create spatially-separated ionization signals, which can then be distinguished from double beta decays, which deposit their energy at a single location in a small volume.
+
 \end{document}
