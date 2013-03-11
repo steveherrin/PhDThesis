@@ -83,7 +83,7 @@ For most incident muon angles, the algorithm correctly reconstructs their incide
  \end{figure}
 
 \subsection{Efficiency}
-Overall, of two million simulated muons that hit the TPC, 1125723 were tagged as muons by the algorithm described above. This is an overall efficiency of \(56.3 \pm 0.1\)\%. However, the geometry of the detector means that the efficiency will be a function of the incident muon angle. \Cref{fig:muon_efficiency} shows the efficiency of detecting muons based on the ratio of muons reconstructed in an angular bin to muons simulated in that bin. This is useful for estimating the true flux in a bin.
+Overall, of two million simulated muons that hit the TPC, \(1125723\pm1061\text{(stat)}\) were tagged as muons by the algorithm described above. This is an overall efficiency of \(56.3 \pm 0.1\text{(stat)}\)\%. However, the geometry of the detector means that the efficiency will be a function of the incident muon angle. \Cref{fig:muon_efficiency} shows the efficiency of detecting muons based on the ratio of muons reconstructed in an angular bin to muons simulated in that bin. This is useful for estimating the true flux in a bin.
 
  \begin{figure}[htb]
  \centering
@@ -115,16 +115,16 @@ The pions and kaons in the atmosphere traveling with large \(\theta\) are more l
 
 Again integrating \cref{eq:muon_angular_distribution}, the ratio of the total flux in the region of interest to the vertical flux is \num{0.517\pm0.004}.
 
-To calculate the flux, EXO-200 was divided into \ang{4} bins in \(\theta\) and \ang{12} bins in \(\phi\) to ensure good statistics in each bin. Only bins that had centers in the region of interest were considered. In data taken, \((11267\pm106.1)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle for bins in the region of interest was \SI{2.33\pm0.01d3}{\square\cm\steradian}. This gives a total flux of
+To calculate the flux, EXO-200 was divided into \ang{4} bins in \(\theta\) and \ang{12} bins in \(\phi\) to ensure good statistics in each bin. Only bins that had centers in the region of interest were considered. In data taken, \((11209\pm105.9)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle for bins in the region of interest was \SI{2.35\pm0.01d3}{\square\cm\steradian}. Applying the ratio above to convert this into a total flux yields
 \begin{equation}
 \label{eq:muon_flux_result}
-\Phi = 5.35\pm0.05\text{(stat)}^{+0.03}_{-0.02}\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
+\Phi = 5.15\pm0.05\text{(stat)}^{+0.05}_{-0.06}\text{(sys)}\frac{\text{Hz}}{\text{cm}^2}
 \end{equation}
-and a vertical flux of
+and likewise, a vertical flux of
 \begin{equation}
 \label{eq:muon_vflux_result}
-\Phi_v = 4.36\pm0.04\text{(stat)}^{+0.04}_{-0.03}\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
-\end{equation}\todo{Missing systematic error due to varying simulation depth.}
+\Phi_v = 4.28\pm0.04\text{(stat)}^{+0.04}_{-0.06}\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
+\end{equation}
 
 \subsection{Comparison with Previous Results}
 Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian}. To do so, they measure a total flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the ratio yields 
