@@ -6,3 +6,5 @@ Random ideas of things to make sure are done before submitting:
 comic (comic rays)
 
 3. Use m_{\beta\beta} plot in order to set a limit on m_{min}.
+
+4. Register it as a SLAC pub.
