@@ -6,9 +6,9 @@
 
 \section{Motivation}
 \label{sec:muon:motivation}
-One potential source of background in EXO-200 is unstable isotopes of common elements, created by neutron activation. The largest source of these neutrons is spallation by cosmic ray muons. Indeed, EXO-200 is located underground to reduce cosmic activation. The energy loss rate \((d E/d x)\) for relativistic muons has a broad minimum between \SIlist{1;10}{\GeV}, and increases slowly for higher energies. Therefore, some muons produced in the upper atmosphere can still travel deep underground.
+One potential source of background in EXO-200 is unstable isotopes of common elements, created by neutron activation. The largest source of these neutrons is spallation by cosmic ray muons. Indeed, EXO-200 is located underground to reduce cosmic activation. However, the energy spectrum of muons produced in the upper atmosphere has a long tail at higher energies, and so some of the muons produced in the upper atmosphere can still reach deep underground.
 
-Neutrons from these muons can capture on detector materials or the HFE, producing high-energy gamma rays that might Compton scatter in the detector and leave behind energy close to the Q value for \xenon{136}. These gamma rays are prompt, and so can be vetoed if the muon can be tagged. A neutron capture on \xenon{136} produces \xenon{137}, an isotope that beta decays with a Q value of 3.8 MeV, which means the beta particle produced in the decay could have an energy close to the Q value of \xenon{136}. The half life of \xenon{137} is 3.8 minutes, and so vetoing becomes more difficult. But a good measurement of the muon flux can put constraints on the amount of \xenon{137} decays expected.
+Neutrons from these muons can capture on detector materials or the HFE, producing high-energy gamma rays that might Compton scatter in the detector and leave behind energy close to the Q value for \xenon{136}. These gamma rays are prompt, and so can be vetoed if the muon can be tagged. A neutron capture on \xenon{136} produces \xenon{137}, an isotope that beta decays with a Q value of \SI{3.8}{\MeV}, which means the beta particle produced in the decay could have an energy close to the Q value of \xenon{136}. Likewise, the (n,~2n) reaction on \xenon{136} can produce \xenon{135}, which beta decays with a Q value of \SI{1.2}{\MeV} and is is a background for the two-neutrino mode. The half lives of \xenon{137} and \xenon{135} are \SI{3.8}{\minute} and \SI{9.1}{\hour} respectively, and so vetoing becomes more difficult. But a good measurement of the muon flux can put constraints on the amount of both isotopes expected.
 
 \section{Identifying Muons}
 \label{sec:muon:id}
@@ -60,7 +60,7 @@ where \(b E\) defines the rate of continuous energy loss for muons. \(b\) is abo
 \label{eq:muon_E0_def}
 E_0 = e^{b h \sec \theta}\left(E + \epsilon\right) - \epsilon
 \end{equation}
-which is the average energy of surface muons that pass through \(h\sec\theta\) of material and emerge with energy \(E\). The parameter \(\epsilon\) is a critical energy above which discrete energy losses dominate, rather than continuous losses described by \(b\). For standard rock, \(\epsilon\) is about \SI{693}{\GeV}\cite{groom:2001ys}.
+which is the average energy of surface muons that pass through \(h\sec\theta\) of material and emerge with energy \(E\). The parameter \(\epsilon\) is a critical energy above which discrete, catastrophic energy losses dominate, rather than continuous losses described by \(b\). For standard rock, \(\epsilon\) is about \SI{693}{\GeV}\cite{groom:2001ys}.
 
 Muon events were simulated by first picking an azimuthal angle \(\phi\) uniformly from \(\left(-\pi, \pi\right]\) and a zenith angle \(\theta\) from \cref{eq:muon_angular_distribution} multiplied by a factor of \(\cos\theta\) (explained below). The energy was selected in a range of \SIrange{1}{500}{\GeV} from \cref{eq:muon_underground_distribution} for the selected zenith angle. A point was chosen uniform randomly from a horizontal disk of radius \SI{3}{\m} just below the TPC. This is the reason for the \(\cos\theta\) factor in the angular distribution, since the flux through that disk will be \(\cos\theta\) less than a disk of the same area normal to the incident angle. The \SI{3}{\m} radius ensures the flux will be accurately simulated for \(\theta \lesssim 80^{\circ}\).
 
@@ -78,7 +78,7 @@ For most incident muon angles, the algorithm correctly reconstructs their incide
   \centering
    \includegraphics[width=0.8\textwidth]{./plots/muon_misrecon_theta_rate.pdf}
   \end{subfigure}
- \caption[Rate of poorly reconstructed muons]{The rate for muons to be reconstructed far from their true direction. The top figure shows the rate for  errors greater than \ang{5} in total angular separation. The bottom figure shows the rate for errors greater than \ang{5} in \(\theta\) only, which is of concern because the flux varies in \(\theta\), but is isotropic in \(\phi\). The black polygon indicates the region with good reconstruction used for this analysis. The azimuthal angle is on the horizontal axis, with \ang{3} bins, while the zenith angle is on the vertical axis, with \ang{1} bins. Blank bins had no muons reconstructed in that bin. Notice that for small \(\theta\), only a few bins are populated, indicating that angular resolution is poor for near vertical muons.}
+ \caption[Rate of poorly reconstructed muons]{The rate for muons to be reconstructed far from their true direction. The top figure shows the rate for  errors greater than \ang{5} in total angular separation. The bottom figure shows the rate for errors greater than \ang{5} in \(\theta\) only, which is of concern because the flux varies in \(\theta\), but is isotropic in \(\phi\). The black polygon indicates the region with good reconstruction used for this analysis. The azimuthal angle is on the horizontal axis, with \ang{3} bins, while the zenith angle is on the vertical axis, with \ang{1} bins. Blank bins had no muons reconstructed in that bin. Poor angular resolution for near-vertical muons leads to the many blank bins at small \(\theta\).}
  \label{fig:muon_misrecon_rate}
  \end{figure}
 
@@ -115,7 +115,7 @@ The pions and kaons in the atmosphere traveling with large \(\theta\) are more l
 
 Again integrating \cref{eq:muon_angular_distribution}, the ratio of the total flux in the region of interest to the vertical flux is \num{0.517\pm0.004}.
 
-To calculate the flux, EXO-200 was divided into \ang{4} bins in \(\theta\) and \ang{12} bins in \(\phi\) to ensure good statistics in each bin. Only bins that had centers in the region of interest were considered. In data taken, \((11209\pm105.9)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle for bins in the region of interest was \SI{2.35\pm0.01d3}{\square\cm\steradian}. Applying the ratio above to convert this into a total flux yields
+To calculate the flux, EXO-200 was divided into \ang{4} bins in \(\theta\) and \ang{12} bins in \(\phi\) to ensure good statistics in each bin. Only bins that had centers in the region of interest were considered. In golden data taken between October 14, 2011 and January 9, 2013, \((11209\pm105.9)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle for bins in the region of interest was \SI{2.35\pm0.01d3}{\square\cm\steradian}. Applying the ratio above to convert this into a total flux yields
 \begin{equation}
 \label{eq:muon_flux_result}
 \Phi = 5.15\pm0.05\text{(stat)}^{+0.05}_{-0.06}\text{(sys)}\frac{\text{Hz}}{\text{cm}^2}
@@ -126,8 +126,10 @@ and likewise, a vertical flux of
 \Phi_v = 4.28\pm0.04\text{(stat)}^{+0.04}_{-0.06}\text{(sys)}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
 \end{equation}
 
+Comparing this the vertical muon flux to a global fit\cite{Mei:2006qy} suggests the overburden at WIPP is \(1448^{+8}_{-7}\)~\si{\hecto\g\per\square\cm}. Other global fits\cite{Crouch:1987ij}\cite{miyake:1973} yield consistent results to these.
+
 \subsection{Comparison with Previous Results}
-Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian}. To do so, they measure a total flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the ratio yields 
+Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian}. To do so, they deployed at WIPP two parallel scintillator panels, oriented horizontally. Using these panels and subtracting off backgrounds, they measure a flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the ratio yields 
 \begin{equation}
 \label{eq:muon_esch_integral}
 \frac{\Phi_v}{\Phi} = \frac{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\cos\theta\sin\theta d\theta}{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\sin\theta d\theta} = 0.814^{+0.006}_{-0.005}
