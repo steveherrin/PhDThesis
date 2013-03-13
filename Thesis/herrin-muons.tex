@@ -60,7 +60,7 @@ where \(b E\) defines the rate of continuous energy loss for muons. \(b\) is abo
 \label{eq:muon_E0_def}
 E_0 = e^{b h \sec \theta}\left(E + \epsilon\right) - \epsilon
 \end{equation}
-which is the average energy of surface muons that pass through \(h\sec\theta\) of material and emerge with energy \(E\). The parameter \(\epsilon\) is a critical energy above which discrete, catastrophic energy losses dominate, rather than continuous losses described by \(b\). For standard rock, \(\epsilon\) is about \SI{693}{\GeV}\cite{groom:2001ys}.
+which is the average energy of surface muons that pass through \(h\sec\theta\) of material and emerge with energy \(E\). The parameter \(\epsilon\) is a critical energy above which discrete, radiative energy losses dominate, rather than continuous losses described by \(b\). For standard rock, \(\epsilon\) is about \SI{693}{\GeV}\cite{groom:2001ys}.
 
 Muon events were simulated by first picking an azimuthal angle \(\phi\) uniformly from \(\left(-\pi, \pi\right]\) and a zenith angle \(\theta\) from \cref{eq:muon_angular_distribution} multiplied by a factor of \(\cos\theta\) (explained below). The energy was selected in a range of \SIrange{1}{500}{\GeV} from \cref{eq:muon_underground_distribution} for the selected zenith angle. A point was chosen uniform randomly from a horizontal disk of radius \SI{3}{\m} just below the TPC. This is the reason for the \(\cos\theta\) factor in the angular distribution, since the flux through that disk will be \(\cos\theta\) less than a disk of the same area normal to the incident angle. The \SI{3}{\m} radius ensures the flux will be accurately simulated for \(\theta \lesssim 80^{\circ}\).
 
