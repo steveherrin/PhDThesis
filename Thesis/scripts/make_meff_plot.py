@@ -199,11 +199,12 @@ for i, m in enumerate(numpy.logspace(log_m_lo, log_m_hi, n, False)):
 
 print("For a limit on m_bb of %0.3e eV:"%(exo_limit))
 found_limit = [False for x in xrange(4)]
-for (m, y) in zip(m_l, ih_lo_l):
-    for i in xrange(1, len(found_limit)):
-        if (not found_limit[i]) and y[i] > exo_limit:
-            print("    %i sigma limit on m_min: %0.3e eV"%(i, m))
-            found_limit[i] = True
+for (i, m) in enumerate(m_l):
+    for j in xrange(1, len(found_limit)):
+        y = min(nh_lo_l[i][j], ih_lo_l[i][j])
+        if (not found_limit[j]) and y > exo_limit:
+            print("    %i sigma limit on m_min: %0.3e eV"%(j, m))
+            found_limit[j] = True
             
     
     
