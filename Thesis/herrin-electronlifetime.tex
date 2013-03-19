@@ -59,9 +59,9 @@ where \(n_i\) is the density of an electronegative impurity and \(k_i\) is the c
 \section{Measuring Electron Lifetime}
 
 \subsection{Method}
-\Cref{eq:el_exponentialtaue} provides a simple recipe for measuring the electron lifetime: measure the exponential attenuation of a known quantity of ionization as a function of drift time. All full absorption peaks from gamma-ray lines will create roughly the same amount of ionization, following a Gaussian distribution with its width provided by the Fano factor and detector resolution. If some of the ionization is being attenuated, then the peak's mean will shift downward in energy from its true value.
+\Cref{eq:el_exponentialtaue} provides a simple recipe for measuring the electron lifetime: measure the exponential attenuation of a known quantity of ionization as a function of drift time. A source of monoenergetic gamma rays can provide such a signal. The ionization produced by the full absorption of a gamma ray follows a Gaussian distribution, with its width provided by the Fano factor and detector resolution. If some of the ionization is being attenuated, then the peak's mean will shift downward in energy from its true value.
 
-A single calibration source at the cathode of the detector produces illuminates both TPCs, and the gamma rays interact throughout the entire drift region. After a sufficiently long calibration run, I divide the TPC into drift time bins. The size of the bins is a compromise: a larger bin in drift time will have more events, and thus the measurement of the full absorption peak energy will be better. A smaller bin will have fewer events, but will suffer less energy smearing because events will have similar drift times. In practice, 16 bins per TPC seems a good compromise.
+A single calibration source at the cathode of the detector illuminates both TPCs, and the gamma rays interact throughout the entire drift region. After a sufficiently long calibration run, the TPC is divided into drift time bins. The size of the bins is a compromise: a larger bin in drift time will have more events, and thus the measurement of the full absorption peak energy will be better. A smaller bin will have fewer events, but will suffer less energy smearing because events will have similar drift times. In practice, 16 bins per TPC seems a good compromise.
 
 \begin{figure}[htbp]
 \centering
