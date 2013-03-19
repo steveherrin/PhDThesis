@@ -8,3 +8,7 @@ comic (comic rays)
 3. Use m_{\beta\beta} plot in order to set a limit on m_{min}.
 
 4. Register it as a SLAC pub.
+
+5. Search for 'nobel' instead of 'noble'.
+
+6. Search for 'I', 'we', 'me', 'our', 'us', etc...
