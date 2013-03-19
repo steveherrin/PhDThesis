@@ -70,12 +70,12 @@ A single calibration source at the cathode of the detector illuminates both TPCs
 \label{fig:el_dtbinfit}
 \end{figure}
 
-In addition to the full-absorption peak, which is Gaussian, the energy spectrum from a gamma ray source will contain a Compton shoulder. Some gamma rays will interact without depositing their full energy, and then scatter out of the detector. A simple model for this shoulder is a step function convolved with a Gaussian smearing representing the effects of energy resolution, producing a complementary error function. For each drift time bin, I fit this simple Gaussian + complementary error function model to the energy spectrum of that bin using an unbinned maximum likelihood fit. This fit is performed twice, first over a broad energy range to find the full-absorption peak, then in the range \((-3.0\sigma, +2.5\sigma)\) of the found peak to precisely determine the peak energy. \Cref{fig:el_dtbinfit} shows an example fit.
+In addition to the full-absorption peak, which is Gaussian, the energy spectrum from a gamma ray source will contain a Compton shoulder. Some gamma rays will interact without depositing their full energy, and then scatter out of the detector. A simple model for this shoulder is a step function convolved with a Gaussian smearing representing the effects of energy resolution, producing a complementary error function. For each drift time bin, this simple Gaussian + complementary error function model is fit to the energy spectrum of that bin using an unbinned maximum likelihood fit. This fit is performed twice, first over a broad energy range to find the full-absorption peak, then in the range \((-3.0\sigma, +2.5\sigma)\) of the found peak to precisely determine the peak energy. \Cref{fig:el_dtbinfit} shows an example fit.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\columnwidth]{./plots/el_run4228_fit.pdf}
-\caption[An example fit to exponential attenuation]{Measuring the electron lifetime by fitting a decaying exponential to the full-absorption peak energies binned by drift time. TPC 2 is assigned a negative drift time for convenience in visualization. Both fits to the individual TPCs and to both TPCs together are shown.}
+\caption[An example fit to exponential attenuation]{Measuring the electron lifetime by fitting a decaying exponential to the full-absorption peak energies binned by drift time. TPC 2 is assigned a negative drift time for convenience in visualization. Both fits to the individual TPCs and to both TPCs together are shown. In this case, there is no large difference between the combined fit and the individual fits.}
 \label{fig:el_elfit}
 \end{figure}
 
@@ -101,7 +101,7 @@ The electron lifetime measurement comes from minimizing the \(\chi^2\) statistic
 \centering
 \includegraphics[width=1.0\columnwidth]{./plots/el_sim_error_indiv.pdf}
 \end{subfigure}
-\caption[Error on reconstructed electron lifetime from simulation]{The absolute error on the electron lifetime measurement for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). The points show the mean error of 20 simulations, and the lines show the mean error on the edges of the 68\% confidence bands for those simulations. The measurement method consistently underestimates the purity, and the error grows as the electron lifetime gets large. Typical calibration runs include 2.5k events in the full absorption peak (black), but using more events would improve the error.}
+\caption[Error on reconstructed electron lifetime from simulation]{The absolute error on the electron lifetime measurement for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). The points show the mean error of 20 simulations. The lines show the size of the 68\% confidence bands returned by the measurement for those simulations. The measurement method systematically underestimates the purity, and the error grows as the electron lifetime gets large. Typical calibration runs include 2.5k events in the full absorption peak (black), but using more events would improve the error.}
 \label{fig:el_sim_err}
 \end{figure}
 
