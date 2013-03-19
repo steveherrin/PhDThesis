@@ -185,8 +185,8 @@ Most events, however, are not point like, and the ionization arrives over a fini
 \end{table}
 
 \subsection{Electron Lifetime Uncertainty}
-\label{subsec:dtau}
-While we can work out the effect of electron lifetime uncertainty on resolution with \cref{eq:el_de_dtau}, there is no a-priori way to estimate the electron lifetime uncertainty. It depends on the type of source used, the source location, and the number of points used. It also depends on the electron lifetime itself. Our \SI{100}{\micro\second} drift time limits our sensitivity to long electron lifetimes. Parameterizing the uncertainty as a function of electron lifetime provides a way to estimate the effects.
+\label{subsec:el_dtau}
+The effect of electron lifetime uncertainty on the energy resolution is given by \cref{eq:el_de_dtau}. With a fixed drift time, it becomes increasingly difficult to measure long electron lifetimes because the attenuation is so slight. The drift distance in EXO-200 is fixed. Varying the electric field to increase the drift time carries some risk to the experiment and so is not done routinely. Furthermore, the attachment rates for electronegative species vary with electric field (see \cref{subsec:el_lowfield}). Lacking knowledge of the precise nature of the impurities in EXO-200, it is not clear this would provide a good estimate for the electron lifetime at normal electric fields. Parameterizing the uncertainty as a function of electron lifetime provides a way to estimate its effect on energy resolution.
 
 \begin{figure}[htd]
 \begin{subfigure}[b]{0.5\linewidth}
@@ -201,7 +201,7 @@ While we can work out the effect of electron lifetime uncertainty on resolution 
 \label{fig:el_err_fits}
 \end{figure}
 
-As shown in \cref{fig:el_err_fits}, a polynomial function nicely fits the observed uncertainties. I tabulate the effect on electron lifetime in \cref{tab:el_res_dtau}. In practice, however, the effect will be smaller because a number of measurements go into the actual correction function applied to the data.
+As shown in \cref{fig:el_err_fits}, a polynomial function nicely fits the observed uncertainties. The effect on energy resolution is tabulated in \cref{tab:el_res_dtau}. In practice, however, a number of measurements go into the actual correction function applied to the data, and so the effect will be smaller.
 
 \begin{table}[htd]
 \centering
