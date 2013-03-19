@@ -227,40 +227,41 @@ The electron lifetime can vary with time. The most dramatic instances are follow
 
 Suppose we have two measurements, \(\tau_1 \pm \sigma_{\tau_1}\) and \(\tau_2 \pm \sigma_{\tau_2}\). The best estimate of the rate of change is simply
 \[\frac{d\tau}{dt} = \frac{\tau_2 - \tau_1}{\Delta t}\]
-However, the uncertainties make this slope consistent with anything within the extremes given by:
-\[\frac{d\tau}{dt} = \frac{(\tau_2 \pm \sigma_{\tau_2}) - (\tau_1 \pm \sigma_{\tau_1})}{\Delta t}\]
+However, propagating the uncertainties, the error on the estimate is
+\[\Delta \frac{d\tau}{dt} = \frac{d\tau}{dt}\sqrt{\left(\frac{\sigma_{\tau_1}}{\tau_1}\right)^2 + \left(\frac{\sigma_{\tau_2}}{\tau_2}\right)^2}\]
+
+If the true rate of change is \(+1\sigma\) away from the estimate, events close to the first measurement will be undercorrected, and events close to the second measurement will be overcorrected. This results in an overall smearing to the energy resolution, tabulated in \cref{tab:el_res_dtaudt}. This effect will grow if the time between measurements is increased, since more data will be taken with an estimate far from the true value.
 
 \begin{table}[htd]
 \centering
 \begin{tabular}{c|c|c}
 	\(\tau\) (\si{\micro\second})	&	\(d\tau/dt\) (\si{\micro\second\per\day})	&	\(\Delta E / E\) (\%) 	\\ \hline
-	1000					&	10			&	0.01				\\
-						&	50			&	0.03				\\
-						&	100			&	0.05				\\
-						&	500			&	0.27				\\ \hline
-	2000					&	10			&	\(<\) 0.01			\\
+	1000					&	10			&	\(<\) 0.01			\\
 						&	50			&	0.01				\\
 						&	100			&	0.03				\\
-						&	500			&	0.14				\\
-						&	1000			&	0.29				\\ \hline
-	3000					&	10			&	\(<\) 0.01			\\
+						&	500			&	0.16				\\
+						&	1000			&	0.37				\\ \hline
+	2000					&	10			&	\(<\) 0.01			\\
 						&	50			&	0.01				\\
-						&	100			&	0.02				\\
-						&	500			&	0.10				\\
-						&	1000			&	0.20						
+						&	100			&	0.01				\\
+						&	500			&	0.06				\\
+						&	1000			&	0.13				\\ \hline
+	3000					&	10			&	\(<\) 0.01			\\
+						&	50			&	\(<\) 0.01			\\
+						&	100			&	0.01				\\
+						&	500			&	0.04				\\
+						&	1000			&	0.08
 \end{tabular}
-\caption[Electron lifetime time variance effect on resolution]{The effect of the rate of change of electron lifetime on energy resolution. This shows the additional error due to linear variation between the limits of the confidence band over 1 day, which is the typical time between calibration runs. Note that the reported resolution assumes only two measurements are used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
+\caption[Electron lifetime time variance effect on resolution]{The effect of the rate of change of electron lifetime on energy resolution. This shows the additional effect due to uncertainty in the rate of change, with measurements taken 1 day apart. Longer intervals between measurements will result in more smearing. Note that the reported resolution assumes only two measurements are used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
 \label{tab:el_res_dtaudt}
 \end{table}
-
-In the most extreme case, this will result in energy smearing throughout the run. \Cref{tab:el_res_dtaudt} tabulates the magnitude of this smearing.
 
 \subsection{Overall}
 The effects of electron lifetime on resolution are taken in account when selecting which runs will be used for the analysis. The guidelines are such that the resolution smearing due to the electron lifetime correction is no more than 0.5\%. Runs can be used if:
 \begin{enumerate}
 \item Electron lifetime is above \SI{1000}{\micro\second} (due to the effects of position uncertainty and electron lifetime uncertainty)
 \item Four or more measurements all show similar electron lifetime (to reduce the effect of the electron lifetime uncertainty)
-\item The electron lifetime is not be increasing at more than half its current value per day, nor decreasing at more than a quarter its current value per day (to reduce the effect of time variation)
+\item The electron lifetime must not be increasing by more than half of its current value per day, nor decreasing by more than a quarter of its current value per day (to reduce the effect of time variation)
 \end{enumerate}
 
 \section{Measurements of Electron Lifetime in EXO-200}
