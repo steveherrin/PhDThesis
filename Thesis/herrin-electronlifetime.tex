@@ -147,6 +147,8 @@ For true (point-like) single-site events, we can measure their drift time to wit
 
 \begin{table}[htd]
 \centering
+\caption[Drift time uncertainty effect on resolution]{The effect of a \SI{0.2}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
+\label{tab:el_res_dt_ideal}
 \begin{tabular}{c|c}
 	\(\tau\) (\si{\micro\second})	&	\(\Delta E / E\) (\%) 	\\ \hline
 	100					&	0.20				\\
@@ -158,8 +160,6 @@ For true (point-like) single-site events, we can measure their drift time to wit
 	2000					&	0.01				\\
 	2500					&	\(<\)0.01			
 \end{tabular}
-\caption[Drift time uncertainty effect on resolution]{The effect of a \SI{0.2}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
-\label{tab:el_res_dt_ideal}
 \end{table}
 
 \subsubsection{Events with Spatial Extent}
@@ -167,6 +167,8 @@ Most events, however, are not point like, and the ionization arrives over a fini
 
 \begin{table}[htd]
 \centering
+\caption[Drift time uncertainty effect on resolution]{The effect of a \SI{3}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
+\label{tab:el_res_dt}
 \begin{tabular}{c|c}
 	\(\tau\) (\si{\micro\second})	&	\(\Delta E / E\) (\%) 	\\ \hline
 	100					&	2.95				\\
@@ -180,8 +182,6 @@ Most events, however, are not point like, and the ionization arrives over a fini
 	3000					&	0.10				\\
 	3500					&	0.08
 \end{tabular}
-\caption[Drift time uncertainty effect on resolution]{The effect of a \SI{3}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
-\label{tab:el_res_dt}
 \end{table}
 
 \subsection{Electron Lifetime Uncertainty}
@@ -205,6 +205,8 @@ As shown in \cref{fig:el_err_fits}, a polynomial function nicely fits the observ
 
 \begin{table}[htd]
 \centering
+\caption[Electron lifetime uncertainty effect on resolution]{The effect of the electron lifetime uncertainty on energy resolution. This is based on the parameterization shown in \cref{fig:el_err_fits}. Note that the reported resolution assumes only one measurement is used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
+\label{tab:el_res_dtau}
 \begin{tabular}{c|c}
 	\(\tau\) (\si{\micro\second})	&	\(\Delta E / E\) (\%) 	\\ \hline
 	100					&	3.88				\\
@@ -218,8 +220,6 @@ As shown in \cref{fig:el_err_fits}, a polynomial function nicely fits the observ
 	3000					&	0.58				\\
 	3500					&	0.57
 \end{tabular}
-\caption[Electron lifetime uncertainty effect on resolution]{The effect of the electron lifetime uncertainty on energy resolution. This is based on the parameterization shown in \cref{fig:el_err_fits}. Note that the reported resolution assumes only one measurement is used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
-\label{tab:el_res_dtau}
 \end{table}
 
 \subsection{Rate of Change}
@@ -234,6 +234,8 @@ If the true rate of change is \(+1\sigma\) away from the estimate, events close 
 
 \begin{table}[htd]
 \centering
+\caption[Electron lifetime time variance effect on resolution]{The effect of the rate of change of electron lifetime on energy resolution. This shows the additional effect due to uncertainty in the rate of change, with measurements taken 1 day apart. Longer intervals between measurements will result in more smearing. Note that the reported resolution assumes only two measurements are used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
+\label{tab:el_res_dtaudt}
 \begin{tabular}{c|c|c}
 	\(\tau\) (\si{\micro\second})	&	\(d\tau/dt\) (\si{\micro\second\per\day})	&	\(\Delta E / E\) (\%) 	\\ \hline
 	1000					&	10			&	0.05				\\
@@ -252,8 +254,6 @@ If the true rate of change is \(+1\sigma\) away from the estimate, events close 
 						&	500			&	0.27				\\
 						&	1000			&	0.47
 \end{tabular}
-\caption[Electron lifetime time variance effect on resolution]{The effect of the rate of change of electron lifetime on energy resolution. This shows the additional effect due to uncertainty in the rate of change, with measurements taken 1 day apart. Longer intervals between measurements will result in more smearing. Note that the reported resolution assumes only two measurements are used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
-\label{tab:el_res_dtaudt}
 \end{table}
 
 \subsection{Overall}
