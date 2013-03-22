@@ -16,8 +16,19 @@ Xenon has many properties that make it desirable for a double beta decay experim
 \item The barium daughter ion could potentially be tagged, reducing backgrounds immensely. (This technique, however, is not used in EXO-200.)
 \end{itemize}
 
+\section{Ionization}
+Radiation depositing energy into xenon creates electron-ion pairs. The average energy needed to create an electron-ion pair is called the \(W\)-value, and is \SI{15.6\pm0.3}{\eV}\cite{Takahashi:1975kx} for liquid xenon. The number of pairs does not follow a Poisson distribution, as might be expected. Rather
+\begin{equation}
+\left (\Delta N_i \right)^2 = F \bar{N_i}
+\end{equation}
+where \(\bar{N_i}\) denotes the mean number of electron-ion pairs and \(\Delta N_i\) denotes the standard deviation. \(F\) is known as the Fano factor\cite{Fano:1947ys} and is estimated to be 0.059 in liquid xenon\cite{Doke:1976vn}. This implies the absolutely best possible energy resolution of a liquid xenon detector should be  
+\begin{equation}
+\frac{\sigma}{E} = \sqrt{F W E}
+\end{equation}
+which would be comparable to the energy resolution of \ce{Ge} detectors. However, no liquid xenon experiments to date have come close to this energy resolution, or even that for the Poisson limit. The reason for this discrepancy remains unclear.
+
 \section{Scintillation}
-Radiation in xenon can directly excite the atoms, in addition to creating electron-ion pairs ex. These excited atoms  pair with other xenon atoms to create excited dimers, which then emit light when they de-excite:
+Radiation in xenon can directly excite the atoms, in addition to creating electron-ion pairs. These excited atoms  pair with other xenon atoms to create excited dimers, which then emit light when they de-excite:
 \begin{equation}
 \begin{split}
 \text{Xe}^{*} + \text{Xe} + \text{Xe} \rightarrow \text{Xe}^{*}_2 + \text{Xe} \\
@@ -35,6 +46,6 @@ Additionally, ions and electrons can recombine, which again produces light:
 \end{split}
 \end{equation}
 
-The light produced in xeon is in the vacuum ultraviolet (VUV) spectrum, and in liquid xenon, the emission peaks at \SI{177.6}{\nm}. The scintillation is prompt, with the excited dimers decaying with a decay time of \SIrange{2}{4}{\ns} for the singlet state and\SIrange{20}{25}{\ns} for the triplet state. The exact decay time depends on the type of radiation.\cite{Aprile:2010uq}
+The light produced in xenon is in the vacuum ultraviolet (VUV) spectrum, and in liquid xenon, the emission peaks at \SI{177.6}{\nm}. The scintillation is prompt, with the excited dimers decaying with a decay time of \SIrange{2}{4}{\ns} for the singlet state and \SIrange{20}{25}{\ns} for the triplet state. The exact decay time depends on the type of radiation.\cite{Aprile:2010uq}
 
 \end{document}
