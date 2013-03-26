@@ -1,7 +1,7 @@
 #!/bin/env python
 
 import ROOT
-from math import pi, sqrt, acos, atan, atan2
+from math import pi, sqrt, sin, acos, atan, atan2, sin, cos, tan
 import array
 import numpy
 
@@ -99,6 +99,23 @@ t_u.SetBorderSize(0)
 t_u.SetFillColor(ROOT.kWhite)
 t_u.AddText("#sigma/E = %0.1f%%"%(100*s_u.getVal()/m_u.getVal()))
 
+ax_x_lo = E_lo
+ax_y_lo = E_lo
+ax_w_lo = E_lo
+
+ax_x_hi = min(E_hi, ax_x_lo + (E_hi-ax_y_lo)*tan(theta.getVal()))
+ax_y_hi = min(E_hi, ax_y_lo + (E_hi-ax_x_lo)/tan(theta.getVal()))
+ax_w_hi = E_lo + ((ax_y_hi - ax_y_lo)*cos(theta.getVal())+(ax_x_hi-ax_x_lo)*sin(theta.getVal()))/(sin(theta.getVal())+cos(theta.getVal()))
+#print("(%0.2f %0.2f) (%0.2f %0.2f) %0.2f %0.2f"%(ax_x_lo, ax_y_lo, ax_x_hi, ax_y_hi, ax_w_lo, ax_w_hi))
+ax = ROOT.TGaxis(ax_x_lo, ax_y_lo, ax_x_hi, ax_y_hi, ax_w_lo, ax_w_hi, 410, "-")
+ax.CenterTitle(True)
+ax.SetTitleOffset(1.5)
+ax.SetLabelOffset(0.05)
+ax.SetTitleColor(ROOT.kGray+2)
+ax.SetLabelColor(ROOT.kGray+2)
+ax.SetLineColor(ROOT.kGray+2)
+ax.SetTitle("Rotated Energy (E/E_{0})")
+
 c_x = ROOT.TCanvas("c_x", "c_x", 600, 600)
 c_x.SetRightMargin(0.01)
 c_x.SetTopMargin(0.01)
@@ -139,6 +156,7 @@ c_2d = ROOT.TCanvas("c_2d", "c_2d", 600, 600)
 c_2d.SetRightMargin(0.01)
 c_2d.SetTopMargin(0.01)
 h_2d.Draw("CONT0")
+ax.Draw()
 h_2d.SetTitle("")
 c_2d.Print("toy_anticorrelation_2d.pdf")
 
@@ -151,6 +169,7 @@ t_y.Draw()
 
 c4.cd(2)
 h_2d.Draw("CONT0")
+ax.Draw()
 
 c4.cd(3)
 frame_u.Draw()
