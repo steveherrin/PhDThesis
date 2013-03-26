@@ -1,8 +1,9 @@
 #!/bin/env python
 
 import ROOT
-import math
+from math import pi, sqrt, acos, atan, atan2
 import array
+import numpy
 
 #ROOT.gStyle.SetNumberContours(10)
 
@@ -20,8 +21,15 @@ E_x = ROOT.RooRealVar("E_x", "Scintillation Energy", E_lo, E_hi, "E/E_{0}")
 E_y = ROOT.RooRealVar("E_y", "Ionization Energy", E_lo, E_hi, "E/E_{0}")
 
 rho = ROOT.RooRealVar("#rho", "#rho", -0.80)
-theta = ROOT.RooRealVar("#theta", "#theta", math.atan2(s_y.getVal(), s_x.getVal()))
-print("theta = %0.2f"%(theta.getVal()*180/math.pi))
+theta = ROOT.RooRealVar("#theta", "#theta", acos(s_x.getVal()*(s_x.getVal()-rho.getVal()*s_y.getVal())
+                                                 /sqrt(s_x.getVal()**4+s_y.getVal()**4
+                                                       -2*rho.getVal()*s_x.getVal()**3*s_y.getVal()
+                                                       -2*rho.getVal()*s_x.getVal()*s_y.getVal()**3
+                                                       +2*(rho.getVal()*s_x.getVal()*s_y.getVal())**2)))
+
+print("I'm using       theta = %0.2f"%(theta.getVal()*180/pi))
+print("Conti suggests  theta = %0.2f"%(0.5*atan(2*rho.getVal()*s_y.getVal()*s_x.getVal()/(s_y.getVal()**2-s_x.getVal()**2))*180/pi))
+print("Aprile suggests theta = %0.2f"%(atan2(s_y.getVal(), s_x.getVal())*180/pi))
 
 m_u = ROOT.RooFormulaVar("#mu_{u}", "#mu_{u}", "(@1*sin(@0) + @2*cos(@0))/(sin(@0)+cos(@0))",
                          ROOT.RooArgList(theta, m_x, m_y))
@@ -40,6 +48,29 @@ E_u = ROOT.RooFormulaVar("E_u", "u Energy", "(@1*sin(@0) + @2*cos(@0))/(sin(@0)+
 E_v = ROOT.RooFormulaVar("E_v", "v Energy", "(@1*cos(@0) - @2*sin(@0))/(sin(@0)+cos(@0))",
                          ROOT.RooArgList(theta, E_x, E_y))
 E_u_plot = ROOT.RooRealVar("E_u", "Rotated Energy", E_lo, E_hi, "E/E_{0}")
+
+g = ROOT.TGraph()
+s_min = m_u.getVal()
+old_th = theta.getVal()
+th_min = 0
+for test_th in numpy.linspace(0.75*theta.getVal(), 1.25*theta.getVal(), 1000, False):
+    n = g.GetN()
+    g.Set(n+1)
+    theta.setVal(test_th)
+    s = s_u.getVal()/E_u.getVal()
+    if s < s_min:
+        s_min = s
+        th_min = test_th
+    g.SetPoint(n, test_th*180/pi, s)
+theta.setVal(old_th)
+
+print("Min sigma/E at  theta = %0.2f"%(th_min*180/pi))
+
+c_g = ROOT.TCanvas("c_g")
+g.Draw("AP")
+g.GetXaxis().SetTitle("#theta (deg)")
+g.GetYaxis().SetTitle("#sigma_{rot}/E")
+    
 
 f_x = ROOT.RooGaussian("f_x", "f_x", E_x, m_x, s_x)
 f_y= ROOT.RooGaussian("f_y", "f_y", E_y, m_y, s_y)
