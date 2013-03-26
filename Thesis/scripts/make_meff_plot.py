@@ -13,6 +13,9 @@ class Parameter:
         self.d_p = [p - self.bf for p in self.p]
 
 # From arXiv:1205.4018
+# Parameters are best fit, then 1, 2, 3 sigma RANGES
+# If you want to use PLUS/MINUS, you need to modify
+# the class above (or better, introduce a new one)
 m_sol = Parameter(7.62e-5, 7.43e-5, 7.81e-5, 7.27e-5,
                   8.01e-5, 7.12e-5, 8.20e-5)
 m_atm_nh = Parameter(2.55e-3, 2.46e-3, 2.61e-3, 2.38e-3,
@@ -28,9 +31,16 @@ s_13_ih = Parameter(0.0250, 0.0223, 0.0276, 0.020, 0.030, 0.017, 0.033)
 # limits
 exo_limit = 0.140
 
-# 0.3 eV >> mass splittings, so expand to first order and call it a day
-cosmo_sum = 0.3
-cosmo_limit = cosmo_sum/3
+# 0.23 eV >> mass splittings, so could expand to zeroth order and call it a day
+cosmo_sum = 0.23
+#cosmo_limit = cosmo_sum/3
+# but let's use the 1st order expansion, which Mathematica tells me is
+cosmo_limit_ih = cosmo_sum/3 - m_atm_ih.bf/cosmo_sum - 0.5*m_sol.bf/cosmo_sum
+cosmo_limit_nh = cosmo_sum/3 - 0.5/cosmo_sum*(m_atm_nh.bf + m_sol.bf)
+cosmo_limit = max(cosmo_limit_ih, cosmo_limit_nh)
+
+#print("IH cosmic limit 0th: %0.3e 1st: %0.3e"%(cosmo_limit, cosmo_limit_ih))
+#print("NH cosmic limit 0th: %0.3e 1st: %0.3e"%(cosmo_limit, cosmo_limit_nh))      
 
 
 # plot range
@@ -38,8 +48,11 @@ log_m_lo = log10(0.9e-4)
 log_m_hi = log10(1.1)
 n = 2000
 
+graph_lo = 1e-4
+graph_hi = 1e0
+
 def m_sum2(m1, m2):
-    return sqrt(m1**2 +m2)
+    return sqrt(m1**2 + m2)
 
 def m_sum3(m1, m2, m3):
     return sqrt(m1**2 + m2 + m3)
@@ -246,6 +259,8 @@ g_ih_3s.SetFillStyle(1001)
 g_ih_3s.SetFillColor(ROOT.kBlue+0)
 
 c = ROOT.TCanvas("c", "Hierarchy", 600, 600)
+c.SetRightMargin(0.02)
+c.SetTopMargin(0.02)
 
 g_nh_3s.Draw("AF")
 g_nh_2s.Draw("F")
@@ -254,15 +269,12 @@ g_ih_3s.Draw("F")
 g_ih_2s.Draw("F")
 g_ih_1s.Draw("F")
 
-l = ROOT.TLegend(.775, .15, .875, .30)
+l = ROOT.TLegend(.85, .15, .95, .30)
 l.SetFillColor(ROOT.kWhite)
 l.AddEntry(g_nh_1s, "1 #sigma", "f")
 l.AddEntry(g_nh_2s, "2 #sigma", "f")
 l.AddEntry(g_nh_3s, "3 #sigma", "f")
 l.Draw()
-
-graph_lo = 1e-4
-graph_hi = 1e0
 
 c.SetLogy()
 c.SetLogx()
