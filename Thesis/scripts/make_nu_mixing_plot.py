@@ -28,6 +28,8 @@ s_23_nh = Parameter(0.613, 0.400, 0.635, 0.380, 0.660, 0.360, 0.680)
 s_23_ih = Parameter(0.600, 0.569, 0.626, 0.390, 0.650, 0.370, 0.670)
 s_13_nh = Parameter(0.0246, 0.0218, 0.0275, 0.019, 0.030, 0.017, 0.033)
 s_13_ih = Parameter(0.0250, 0.0223, 0.0276, 0.020, 0.030, 0.017, 0.033)
+delta_nh = 0.8*pi
+delta_ih = -0.03*pi
 
 # Kind of bad notation. Sorry.
 s12 = sqrt(s_12.bf)
@@ -41,12 +43,13 @@ c23_nh = sqrt(1-s_23_nh.bf)
 s23_ih = sqrt(s_23_ih.bf)
 c23_ih = sqrt(1-s_23_ih.bf)
 
-delta_nh = 0.8*pi
-delta_ih = -0.03*pi
+# CP violating phase
 cp_nh = numpy.exp(numpy.complex(0,delta_nh))
 cp_ih = numpy.exp(numpy.complex(0,delta_ih))
 
-
+# Factors in the mixing matrix, ignoring
+# the Majorana phases because they don't
+# matter for oscillation
 
 U12 = numpy.array([[c12, s12, 0],
                    [-s12, c12, 0],
@@ -63,12 +66,14 @@ U23_nh = numpy.array([[1, 0, 0],
 U23_ih = numpy.array([[1, 0, 0],
                       [0, c23_ih, s23_ih],
                       [0, -s23_ih, c23_ih]])
-# ignore majorana phases
+
+# Multiply out the matrices
 
 U_nh = dot(U23_nh, dot(U13_nh, U12))
 U_ih = dot(U23_ih, dot(U13_ih, U12))
 
-# Draw the colored lines
+# o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-
+# Draw the colored lines for flavor content
 
 colors = [ROOT.kRed, ROOT.kBlue, ROOT.kGreen]
 line_px = 10
@@ -91,6 +96,8 @@ for i in xrange(3):
     scale = 3.0/12
 
     for j in xrange(3):
+        
+        # flavor fraction
         p_nh = scale*abs(U_nh[j, i])**2
         p_ih = scale*abs(U_ih[j, i])**2
 
@@ -117,7 +124,9 @@ c = ROOT.TCanvas("c", "c", x_size, y_size)
 for line in lines:
     line.Draw()
 
+# o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-
 # Add a legend
+
 legend = ROOT.TLegend(11.0/24, 0.8, 13.0/24, 0.97)
 legend.SetFillColor(ROOT.kWhite)
 legend.AddEntry(lines[0], "#nu_{e}", "L")
@@ -126,7 +135,8 @@ legend.AddEntry(lines[4], "#nu_{#tau}", "L")
 legend.SetTextAlign(22)
 legend.Draw()
 
-# Now draw arrows between those lines
+# o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-
+# Now draw arrows between mass states
 
 x_nh = 2.0/12
 x_ih = 7.0/12
@@ -141,6 +151,7 @@ ax_y = 0.05
 
 line_w = 0.5*line_px/x_size
 
+# So the arrows are staggered nicely
 ar_ys_nh = [(ax_y-line_w, ys_nh[0]),
             (ys_nh[0], ys_nh[2]),
             (ys_nh[0], ys_nh[1])]
@@ -151,6 +162,7 @@ ar_ys_ih = [(ax_y-line_w, ys_ih[2]),
 
 for i in xrange(3):
 
+    # A little space so they don't overlap
     dx = (i+1.0)/48
         
     ar_nh = ROOT.TArrow(x_nh + dx, ar_ys_nh[i][0]+line_w,
@@ -166,6 +178,7 @@ for i in xrange(3):
 for arrow in arrows:
     arrow.Draw()
 
+# o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-
 # Label those arrows
 
 splitting_txts_nh = ["?", "#Deltam_{21}^{2} (sol)", "#Deltam_{31}^{2} (atm)"]
@@ -205,6 +218,7 @@ for splitting in splittings:
     splitting.SetTextAlign(12)
     splitting.Draw()
 
+# o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-
 # Now draw the axes
 
 ax_x = 3.0/48
@@ -218,6 +232,7 @@ ar_l.Draw()
 ar_r = ROOT.TArrow(1-ar_ax_x, 0, 1-ar_ax_x, 0.9, ar_size, "|>")
 ar_r.Draw()
 
+# o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-o_o-
 # Tick marks and labels for the axes
 
 ticks = []
@@ -244,6 +259,7 @@ for i in xrange(3):
 
     labels.append(label_nh)
     labels.append(label_ih)
+
 
 label_l = ROOT.TPaveText(0, ax_y - dy,
                          ar_ax_x - dx, ax_y + dy)
@@ -273,8 +289,6 @@ label_inverted.AddText("\"inverted\"")
 label_inverted.AddText("hierarchy")
 labels.append(label_normal)
 labels.append(label_inverted)
-
-
 
 for tick in ticks:
     tick.Draw()
