@@ -66,7 +66,17 @@ The light produced in xenon is in the vacuum ultraviolet (VUV) spectrum, and in 
 \includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_rot.pdf}
 \end{subfigure}
 \caption[Anticorrelated Energy Resolution in Liquid Xenon]{A toy example of how the energy resolution of a monoenergetic line can be improved by combining signals in liquid xenon. The ionization signal (top left) and the scintillation signal (top right) show poor energy resolution individually. When the signals are anticorrelated (shown bottom left, with coefficient -0.8), they can be protected onto a rotated axis to yield an improved energy resolution (bottom right).}
-\label{fig:toy_anticorrelation}
+\label{fig:lxe_toy_anticorrelation}
 \end{figure}
 
+Electron-ion pairs can recombine to produce one scintillation photon. The probability for this to occur depends both on the ionization density and the strength of the electric field applied, since a stronger field will cause more electrons to drift away from the ions before they can recombine. While this can be modeled\cite{Doke:1988qf}\cite{Thomas:1987ve}, collecting both ionization and scintillation signals allows an unambiguous measurement of the total energy deposited in the detector.
+
+A toy example of combining the ionization and scintillation signals is shown in \cref{fig:lxe_toy_anticorrelation}. Even assuming a less-than-perfect correlation between ionization and scintillation due to effects such as imperfect collection and detector noise, this example shows how combining the signals can yield a dramatic improvement in resolution. This has been demonstrated to work in practice\cite{Conti:2003tg}\cite{Aprile:2007hc}. However, the energy resolution for the combined signals in such experiments still falls short of the Poisson limit, suggesting other factors contribute to smearing the energy resolution in liquid xenon.
+
+The ratio of the ionization and scintillation signals varies with changing electric field, since a stronger electric field draws more electron-ion pairs apart before they can recombine. Additionally, the two channels may have different signal levels due to imperfect collection, and different noise levels due if different instruments are used to measure them. As such, the combination of ionization and scintillation that optimizes energy resolution will vary from experiment to experiment.
+
+\section{Radiopurity}
+Liquid xenon is dense (\about~\SI{3}{\g\per\cubic\cm}) and has a high atomic-number (\(Z=54\)). It provides good shielding against low-energy \(\gamma\) rays. The attenuation length of a \SI{100}{keV} photon is less than \SI{2}{\mm}\cite{Berger:2010dq}. However, this shielding grows worse for higher-energy photon. A \SI{1}{MeV} photon has an attenuation length of nearly \SI{6}{\cm}, and so the self-shielding is less useful for a double-beta decay search.
+
+Since xenon is a nobel gas, nearly all radioactive impurities can be removed chemically. However, \isotope{85}{Kr} (a \(\beta^{-}\) emitter primarily produced as a byproduct to nuclear fission) and isotopes of \ce{Rn} (naturally occurring due to \ce{U} and \ce{Th} decays) are potential trace backgrounds. Krypton can be removed through distillation or ultracentrifugation. Since many decays occur along the full radon chains, there is some potential to tag these decays. Cosmogenic \xenon{135} and \xenon{137} can be mitigated by a rock overburden to provide shielding from cosmic rays, and are in any case short-lived. Double beta decays of the even-numbered nuclei will always be a background, of course.
 \end{document}
