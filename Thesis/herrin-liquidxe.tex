@@ -51,5 +51,22 @@ The light produced in xenon is in the vacuum ultraviolet (VUV) spectrum, and in 
 \section{Combining Ionization and Scintillation}
 Electron-ion pairs can recombine to produce one scintillation photon. The probability for this to occur depends both on the ionization density and the strength of the electric field applied, since a stronger field will cause more electrons to drift away from the ions before they can recombine. While this can be modeled\cite{Doke:1988qf}\cite{Thomas:1987ve}, collecting both ionization and scintillation signals allows an unambiguous measurement of the total energy deposited in the detector.
 
+\begin{figure}[htb]
+\centering
+\begin{subfigure}[c]{0.45\linewidth}
+\includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_ioniz.pdf}
+\end{subfigure}\hspace{0.05\linewidth}\hfill%
+\begin{subfigure}[c]{0.45\linewidth}
+\includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_scint.pdf}
+\end{subfigure}
+\begin{subfigure}[c]{0.45\linewidth}
+\includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_2d.pdf}
+\end{subfigure}\hspace{0.05\linewidth}\hfill%
+\begin{subfigure}[c]{0.45\linewidth}
+\includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_rot.pdf}
+\end{subfigure}
+\caption[Anticorrelated Energy Resolution in Liquid Xenon]{A toy example of how the energy resolution of a monoenergetic line can be improved by combining signals in liquid xenon. The ionization signal (top left) and the scintillation signal (top right) show poor energy resolution individually. When the signals are anticorrelated (shown bottom left, with coefficient -0.8), they can be protected onto a rotated axis to yield an improved energy resolution (bottom right).}
+\label{fig:toy_anticorrelation}
+\end{figure}
 
 \end{document}
