@@ -15,14 +15,9 @@ The discovery of the muon in 1936 provided the possibility of a muon neutrino, d
 
 \subsection{The Solar Neutrino Problem}
 
-\subsection{Evidence for Oscillation}
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\textwidth]{./plots/nu_mixing.pdf}
-	\caption[Neutrino mixing]{The neutrino mass eigenstates (represented by the horizontal bands) are each a mixture of the flavor eigenstates (represented by the different colors). The mixing angles in the PMNS matrix provide the flavor compositions of each mass state. The splittings between the squares of the masses of the mass eigenstates are known (but not shown to scale), though the sign of \(\Delta m_{31}^2\) remains unknown, allowing for the possibility of an ``inverted'' mass hierarchy. The absolute scale of the neutrino masses is also unknown.}
-	\label{fig:nu_mixing}
-\end{figure}
+\section{The Nature of the Neutrino}
 
+\section{Neutrino Mixing and Oscillation}
 Neutrino mixing is described by the unitary Pontecorco-Maki-Nakagawa-Sakata (PMNS) matrix \(U\). In the case of three mass eigenstates and 3 flavor eigenstates, \(U\) can be decomposed into the product of three rotation matrices and potentially a diagonal matrix if neutrinos are Majorana particles:
 \begin{equation}
 U=	\begin{pmatrix}
@@ -54,6 +49,7 @@ where the \(s_{ij}\) denote \(\sin\theta_{ij}\) and \(c_{ij}\) denote \(\cos\the
  \Ket{\nu_{\ell}} = \sum_{i}U_{\ell i} \Ket{\nu_i}
  \label{eq:nu_superposition}
  \end{equation}
+ This mixing is illustrated in \cref{fig:nu_mixing}.
  
  The time evolution of a mass eigenstate is simply
  \begin{equation}
@@ -69,8 +65,16 @@ P_{\alpha\rightarrow\beta}	& = \left | \Braket{\nu_\beta | \nu_\alpha(L)} \right
 \end{align}
 Thus, the probability depends only on the angles in the mixing matrix \(U\), the difference between the squares of the masses \(\Delta m_{ij}^2\), and the ratio of distance travelled to neutrino energy \(L/E\). If there is no Dirac CP phase, the second sum is zero. Since the Majorana phases only enter \(U\) as a diagonal factor, they do not affect the oscillation probability, and thus oscillation experiments cannot determine the Majorana nature of the neutrino.
 
-\section{Theory of Massive Neutrinos}
-\subsection{Constraints on Mass}
+\section{Massive Neutrinos}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{./plots/nu_mixing.pdf}
+	\caption[Neutrino mixing]{The neutrino mass eigenstates (represented by the horizontal bands) are each a mixture of the flavor eigenstates (represented by the different colors). The mixing angles in the PMNS matrix provide the flavor compositions of each mass state. The splittings between the squares of the masses of the mass eigenstates are known (but not shown to scale), though the sign of \(\Delta m_{31}^2\) remains unknown, allowing for the possibility of an ``inverted'' mass hierarchy. The absolute scale of the neutrino masses is also unknown.}
+	\label{fig:nu_mixing}
+\end{figure}
+
+Neutrinos are observed to oscillate, and thus according to \cref{eq:nu_oscillation_prob}, the mass-squared splittings have been measured to be nonzero. The sign of \(\Delta m_{21}\) is known from the effect of matter on neutrinos emitted by the sun (known as the MSW effect), while only the magnitude of \(\Delta m_{31}\) is known. The mass splittings provide a weak lower bounds on the masses of two mass eigenstates. This does not determine the absolute mass scale, however, and the lightest eigenstate may have zero mass. If also does not determine which mass eigenstate is the lightest. \Cref{fig:nu_mixing} summarizes the situation. Other experiments, described below, may be able to measure the absolute mass scale and possibly determine the hierarchy of the mass eigenstates. However, to date, they have only provided upper bounds on the mass.
 
 \begin{figure}
 	\centering
@@ -78,6 +82,8 @@ Thus, the probability depends only on the angles in the mixing matrix \(U\), the
 	\caption[Effective Majorana mass vs. smallest neutrino mass]{The allowed values for the effective Majorana mass as a function of the smallest neutrino mass for both the inverted and normal mass hierarchies. The widths of the bands depend on the Majorana phases. Uncertainties on the mixing angles and mass splittings widen these bands.The mixing angles, mass splittings, and uncertainties used are from a global fit by Forero et al.\cite{Forero:2012cr} The cosmological limit comes from the Planck satellite. Constraints on the sum of the neutrino masses combined with the mass splittings yield an upper bound for the smallest neutrino mass.}
 	\label{fig:nu_meff_v_mmin}
 \end{figure}\addref
+
+\subsection{Beta Decay Endpoint}
 
 \subsection{Majorana Particles}
 
