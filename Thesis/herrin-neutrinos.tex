@@ -23,11 +23,55 @@ The discovery of the muon in 1936 provided the possibility of a muon neutrino, d
 	\label{fig:nu_mixing}
 \end{figure}
 
+Neutrino mixing is described by the unitary Pontecorco-Maki-Nakagawa-Sakata (PMNS) matrix \(U\). In the case of three mass eigenstates and 3 flavor eigenstates, \(U\) can be decomposed into the product of three rotation matrices and potentially a diagonal matrix if neutrinos are Majorana particles:
+\begin{equation}
+U=	\begin{pmatrix}
+	1	&	0		&	0		\\
+	0	&	c_{23}	&	s_{23}	\\
+	0	&	-s_{23}	&	c_{23}	\\
+	\end{pmatrix}
+	\begin{pmatrix}
+	c_{13}			&	0	&	s_{13}e^{-i\delta}	\\
+	0				&	1	&	0				\\
+	-s_{13}e^{i\delta}	&	0	&	c_{13}			\\
+	\end{pmatrix}
+	\begin{pmatrix}
+	c_{12}	&	s_{12}	&	0	\\
+	-s_{12}	&	c_{12}	&	0	\\
+	0		&	0		&	1	\\
+	\end{pmatrix}
+	\begin{pmatrix}
+	e^{\frac{i\alpha_1}{2}}	&	0					&	0	\\
+	0					&	e^{\frac{i\alpha_2}{2}}	&	0	\\
+	0					&	0					&	1	\\
+	\end{pmatrix}
+\label{eq:nu_pmns_matrix}
+\end{equation}
+where the \(s_{ij}\) denote \(\sin\theta_{ij}\) and \(c_{ij}\) denote \(\cos\theta_{ij}\). \(\delta\) is the Dirac CP violation phase, and \(\alpha_1\) and \(\alpha_2\) are the Majorana CP violation phases.
+
+ A flavor eigenstate, such as a neutrino produced by the decay of a lepton, is a superposition of mass eigenstates:
+ \begin{equation}
+ \Ket{\nu_{\ell}} = \sum_{i}U_{\ell i} \Ket{\nu_i}
+ \label{eq:nu_superposition}
+ \end{equation}
+ 
+ The time evolution of a mass eigenstate is simply
+ \begin{equation}
+ \Ket{\nu_{i}(t)} = e^{-i(E_i t - \vec{p}_i\cdot\vec{x})}\Ket{\nu_i(0)}
+ \label{eq:nu_time_evolution}
+ \end{equation}
+
+Neutrinos have such small masses that the relativistic limit often applies, in which \(t\approx L\), \(p\approx E\), where \(E\) is the total energy of the neutrino. In this limit, the phase in the exponent for \cref{eq:nu_time_evolution} becomes \(m_i^2 L/(2E)\). Combining this and \cref{eq:nu_superposition}, then the probability for a neutrino with flavor \(alpha\) and energy \(E\) to oscillate to a neutrino with flavor \(\beta\) after traveling distance \(L\) is
+\begin{align}
+P_{\alpha\rightarrow\beta}	& = \left | \Braket{\nu_\beta | \nu_\alpha(L)} \right |	& = \delta_{\alpha\beta}	& - 4\sum_{i>j}\text{Re}\left(U_{\alpha i}^{*}U_{\beta i}U_{\alpha j}U_{\beta j}^{*}\right)\sin^2\left(\frac{\Delta m_{ij}^2 L}{4 E}\right)\nonumber\\
+						&										&					& +2\sum_{i>j}\text{Im}\left(U_{\alpha i}^{*}U_{\beta i}U_{\alpha j}U_{\beta j}^{*}\right)\sin^2\left(\frac{\Delta m_{ij}^2 L}{2 E}\right)
+\label{eq::nu_oscillation_prob}
+\end{align}
+Thus, the probability depends only on the angles in the mixing matrix \(U\), the difference between the squares of the masses \(\Delta m_{ij}^2\), and the ratio of distance travelled to neutrino energy \(L/E\). If there is no Dirac CP phase, the second sum is zero. Since the Majorana phases only enter \(U\) as a diagonal factor, they do not affect the oscillation probability, and thus oscillation experiments cannot determine the Majorana nature of the neutrino.
 
 \section{Theory of Massive Neutrinos}
 \subsection{Constraints on Mass}
 
-\subsection{Evidence for Oscillation}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{./plots/nu_meff_v_mmin.pdf}
