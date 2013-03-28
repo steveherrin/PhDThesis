@@ -34,19 +34,19 @@ def R_mass(E, m_nu):
         return R(E) * sqrt((Q-E)**2 - m_nu**2)
     except ValueError:
         return 0
-
-scale = 1.0/R_mass(0.9999*Q, 0)
+d_lo = 1e-4
+scale = 1.0/R_mass((1-d_lo)*Q, 0)
 
 mg = ROOT.TMultiGraph("mg_endpt", "")
-l = ROOT.TLegend(0.78, 0.78, 0.98, 0.98)
+l = ROOT.TLegend(0.76, 0.76, 0.96, 0.96)
 l.SetFillColor(ROOT.kWhite)
 graphs = []
 colors = [ROOT.kBlack, ROOT.kRed, ROOT.kBlue]
 
-for (m_nu, color) in zip([0, 1, 0.25], colors):
+for (m_nu, color) in zip([0, 0.25, 1.0], colors):
     g = ROOT.TGraph(0)
 
-    for E in numpy.linspace(0.9999, 1, 1000, False):
+    for E in numpy.linspace((1-2*d_lo), 1, 2000, False):
         n = g.GetN()
         g.Set(n+1)
         r = scale*R_mass(E*Q, m_nu)
@@ -57,16 +57,18 @@ for (m_nu, color) in zip([0, 1, 0.25], colors):
     g.SetLineColor(color)
     g.SetTitle("m_{#nu} = %0.2f eV"%(m_nu))
     graphs.append(g)
-    l.AddEntry(g, "m_{#nu} = %0.2f eV"%(m_nu), "l")
+    l.AddEntry(g, "m(#nu_{e}) = %0.2f eV"%(m_nu), "l")
     mg.Add(g, "l")
 
 c = ROOT.TCanvas("c")
-c.SetRightMargin(0.01)
-c.SetTopMargin(0.01)
+c.SetRightMargin(0.02)
+c.SetTopMargin(0.02)
 
 mg.Draw("AL")
 mg.GetXaxis().SetTitle("E/Q")
 mg.GetYaxis().SetTitle("dN/dE (relative)")
+mg.GetXaxis().SetRangeUser((1-1.1*d_lo), 1+0.1*d_lo)
+mg.GetYaxis().SetRangeUser(0, 1.2)
 l.Draw()
 
 #c.SetLogy()
