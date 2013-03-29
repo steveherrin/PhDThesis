@@ -73,7 +73,7 @@ P_{\alpha\rightarrow\beta}	& = \left | \Braket{\nu_\beta | \nu_\alpha(L)} \right
 						&										&					& +2\sum_{i>j}\text{Im}\left(U_{\alpha i}^{*}U_{\beta i}U_{\alpha j}U_{\beta j}^{*}\right)\sin^2\left(\frac{\Delta m_{ij}^2 L}{2 E}\right)
 \label{eq:nu_oscillation_prob}
 \end{align}
-Thus, the probability depends only on the angles in the mixing matrix \(U\), the difference between the squares of the masses \(\Delta m_{ij}^2\), and the ratio of distance travelled to neutrino energy \(L/E\). If there is no Dirac CP phase, \(U\) is real and the second sum is zero. Since the Majorana phases only enter \(U\) as a diagonal factor, they do not affect the oscillation probability, and thus oscillation experiments cannot determine the Majorana nature of the neutrino.
+Thus, the probability depends only on the angles in the mixing matrix \(U\), the difference between the squares of the masses \(\Delta m_{ij}^2\), and the ratio of distance travelled to neutrino energy \(L/E\). If there is no CP violation, \(U\) is real and the second sum is zero. Since the Majorana phases only enter \(U\) as a diagonal factor, they do not affect the oscillation probability, and thus oscillation experiments cannot determine the Majorana nature of the neutrino.
 
 \section{Massive Neutrinos}
 
@@ -86,16 +86,25 @@ Thus, the probability depends only on the angles in the mixing matrix \(U\), the
 
 Neutrinos are observed to oscillate, and thus according to \cref{eq:nu_oscillation_prob}, the mass-squared splittings have been measured to be nonzero. The sign of \(\Delta m_{21}\) is known from the effect of matter on neutrinos emitted by the sun (known as the MSW effect), while only the magnitude of \(\Delta m_{31}\) is known. The mass splittings provide a weak lower bounds on the masses of two mass eigenstates. This does not determine the absolute mass scale, however, and the lightest eigenstate may have zero mass. If also does not determine which mass eigenstate is the lightest. \Cref{fig:nu_mixing} summarizes the situation. Other experiments, described below, may be able to measure the absolute mass scale and possibly determine the hierarchy of the mass eigenstates. However, to date, they have only provided upper bounds on the mass.
 
+\subsection{Beta Decay Endpoint}
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\textwidth]{./plots/nu_meff_v_mmin.pdf}
-	\caption[Effective Majorana mass vs. smallest neutrino mass]{The allowed values for the effective Majorana mass as a function of the smallest neutrino mass for both the inverted and normal mass hierarchies. The widths of the bands depend on the Majorana phases. Uncertainties on the mixing angles and mass splittings widen these bands.The mixing angles, mass splittings, and uncertainties used are from a global fit by Forero et al.\cite{Forero:2012cr} The cosmological limit comes from the Planck satellite. Constraints on the sum of the neutrino masses combined with the mass splittings yield an upper bound for the smallest neutrino mass.}
-	\label{fig:nu_meff_v_mmin}
-\end{figure}\addref
+	\includegraphics[width=0.6\textwidth]{./plots/nu_beta_endpt.pdf}
+	\caption[Beta decay spectrum endpoint for massive neutrinos]{The endpoint of the electron energy spectrum for beta decay for several neutrino masses. Experiments like Mainz and KATRIN aim to measure the neutrino mass by looking for the slight distortion of the spectrum close to the Q value of the decay due to the neutrino mass.}
+	\label{fig:nu_beta_endpt}
+\end{figure}
 
-\subsection{Beta Decay Endpoint}
+When an isotope beta decays, it emits an electron-antineutrino which carries away some energy from the decay. However, this amount may be very small, and so in rare cases, the electron may cary away nearly all of the energy of the decay. A neutrino with nonzero rest mass will always take some energy to create, however, limiting the maximum energy of the electron and distorting the spectrum. This is illustrated in \cref{fig:nu_beta_endpt}.
 
-\subsection{Majorana Particles}
+An experiment looking at the beta decay spectrum will measure the effective mass squared of the electron neutrino:
+\begin{equation}
+m^2\left(\nu_e\right) = \sum_j \left | U_{e j} \right |^2 m^2\left(\nu_j\right)
+\label{eq:nu_beta_endpt_mass}
+\end{equation}
+The best limit comes from the Mainz experiment, which examined the spectrum of tritium to derive \(m(\nu_e) \leq 2.3 \text{ eV}/\text{c}^{2}\) at the 95\% confidence level\cite{Kraus:2005nx}. The KATRIN experiment, which will begin operation soon and also examine the spectrum for tritium, hopes to be sensitive to masses greater than \(200\text{ meV}/\text{c}^2\)\cite{Osipowicz:2001oq}.
+
+\subsection{Cosmology}
+Due to their small masses, neutrinos in the early universe did not clump together like most other matter. The distribution of matter in the universe, then, is sensitive to the mass ratio of neutrinos to other matter. Thus, cosmological surveys of structure and anisotropy can potentially measure \(\sum m_{\nu}\). Cosmic microwave background data from the Planck satellite provide the best limit to date. The Planck data yield \(\sum m_{\nu} < (0.23 - 1.08) \text{ eV}/\text{c}^2\), with the spread depending on which other data sets are used\cite{Ade:2013kl}. Further data from other surveys may push the sensitivity down to the \si{\eV} scale\cite{Abazajian:2011tg}.
 
 \subsection{Double Beta Decay}
 
@@ -116,5 +125,39 @@ Neutrinos are observed to oscillate, and thus according to \cref{eq:nu_oscillati
 	\label{fig:diagrams}
 	\caption[Double beta decay modes]{Double beta decay modes}
 \end{figure}
+
+Double beta decay (\twonu)is a standard model process in which two neutrons simultaneously decay to two protons, emitting two electrons and two antineutrinos. \Cref{fig:diagram_2nubb} illustrates this process. It has been observed in a number of isotopes with half lives between \SI{7.1d18}{\year} for \isotope{100}{Mo}\cite{Arnold:2005hc} and \SI{2.2d21}{\year} for \xenon{136}\cite{Auger:2012ar}.
+
+If neutrinos are Majorana particles, then there is the potential to observe neutrinoless double beta decay (\zeronu). The simplest mechanism, shown in \cref{fig:diagram_0nubb}, has a light Majorana neutrino being exchanged. In this process two electrons are emitted, but unlike \twonu, the electrons carry away the entire energy of the decay. Thus, this decay mode should be observable in a detector with good energy resolution. \Cref{fig:nu_twonu_zeronu_comparison} illustrates the the difference in the sum electron spectrum for the two modes. If \zeronu does indeed proceed through light neutrino exchange, then the rate is given by
+\begin{equation}
+\left [ T^{0\nu}_{1/2} \right ]^{-1} = G^{0\nu}\left(E, Z\right)\frac{\left | \langle m_{\beta\beta} \rangle \right |^2}{m_e^2}\left | \mathcal{M}^{0\nu}\right |^2
+\label{eq:nu_zeronu_rate}
+\end{equation}
+where \(G^{0\nu}(E,Z)\) is a calculable phase-space factor, \(m_e\) is the mass of the electron, \( \mathcal{M}^{0\nu}\) is the nuclear matrix element, which can be estimated with models, and
+\begin{equation}
+\langle m_{\beta\beta} \rangle = \sum_i U_{e i}^2 m_i
+\label{eq:nu_meff_def}
+\end{equation}
+is known as the ``effective mass''. A number of experiments have attempted to look for neutrinoless double beta decay, but it has not yet been observed. A controversial claim by a subset of the Heidelberg-Moscow collaboration report discovery of \zeronu in \isotope{76}{Ge}\cite{KlapdorKleingrothaus:2006ff}, but this is in tension with results from \isotope{136}{Xe} experiments\cite{Auger:2012ar}\cite{Gando:2013fk}. \Cref{tab:nu_zeronu_limits} summarizes the present limits.
+
+\begin{table}[htd]
+\centering
+\caption[Current \zeronu limits]{Limits from searches for neutrinoless double beta decay.}
+\label{tab:nu_zeronu_limits}
+\begin{tabular}{c c c c}\toprule
+	isotope			&	half-time (\(\times10^{20}\) \si{\year})		&	\(\left|\langle m_{\beta\beta}\rangle\right |\) (\si{\eV})	&	experiment	\\\midrule
+	\isotope{136}{Xe}	&	xxx								&	xxxx										&	EXO-200		\\\bottomrule
+\end{tabular}
+\end{table}
+\subsection{Summary}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{./plots/nu_meff_v_mmin.pdf}
+	\caption[Effective Majorana mass vs. smallest neutrino mass]{The allowed values for the effective Majorana mass as a function of the smallest neutrino mass for both the inverted and normal mass hierarchies. The widths of the bands depend on the Majorana phases. Uncertainties on the mixing angles and mass splittings widen these bands.The mixing angles, mass splittings, and uncertainties used are from a global fit by Forero et al.\cite{Forero:2012cr} The cosmological limit comes from the Planck satellite. Constraints on the sum of the neutrino masses combined with the mass splittings yield an upper bound for the smallest neutrino mass.}
+	\label{fig:nu_meff_v_mmin}
+\end{figure}\addref
+
+
 
 \end{document}
