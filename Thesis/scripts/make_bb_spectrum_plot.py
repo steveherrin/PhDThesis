@@ -52,7 +52,11 @@ def D(D, K, i):
 
     return p1*E1*F(Z, T1*m_e)*p2*E2*F(Z, T1*m_e)*pow(T0 - K, i)
 
-def SumSpectrum(K, i):    
+def SumSpectrum(K, i):
+    if K < 0:
+        return 0
+    elif K > Q:
+        return 0
     a = -K/m_e
     b = K/m_e
 
@@ -103,8 +107,17 @@ g_bb0n.SetLineStyle(ROOT.kDashed)
 g_bb2n = ROOT.TGraph(N, E_scaled, bb2n_norm)
 g_bb2n.SetTitle("")
 
-#print("bb0n %f"%(sum((y*eps for y in bb0n_norm))))
-#print("bb2n %f"%(sum((y*eps for y in bb2n_norm))))
+bb0nX = []
+bb0nX.append([0.5/eps if abs(E-Q)<eps else 0 for E in Es])
+for i in [1, 2, 3, 5, 7]:
+    bb0nX.append([SumSpectrum(E, i) for E in Es])
+
+bb0nX_graphs = []
+for bb0nXn in bb0nX:
+    bb0nX_int = scipy.integrate.simps(bb0nXn, None, eps)
+    bb0nX_norm = array('d', normalize(bb0nXn, eps, 1/bb0nX_int))
+    g_bb0nX = ROOT.TGraph(N, E_scaled, bb0nX_norm)
+    bb0nX_graphs.append(g_bb0nX)
 
 min_E = 0.9
 max_E = 1.1
@@ -169,5 +182,35 @@ c.SetRightMargin(0.05)
 c.SetTopMargin(0.05)
 g_bb2n.Draw("AL")
 g_bb0n.Draw("L")
+
+c_majoron = ROOT.TCanvas("c_majoron")
+c_majoron.SetRightMargin(0.05)
+c_majoron.SetTopMargin(0.05)
+colors = [ROOT.kBlack, ROOT.kRed, ROOT.kGreen, ROOT.kBlue,
+          ROOT.kMagenta, ROOT.kCyan]
+
+draw_opt = "AL"
+for i in xrange(len(bb0nX_graphs)):
+    bb0nX_graphs[-(i+1)].SetLineColor(colors[-(i+1)])
+    bb0nX_graphs[-(i+1)].Draw(draw_opt)
+    draw_opt = "L"
+# Draw bb0n last so it doesn't scale others to 0
+bb0nX_graphs[-1].SetTitle("")
+bb0nX_graphs[-1].GetXaxis().SetRangeUser(0, 1.1)
+bb0nX_graphs[-1].GetXaxis().SetTitle("Sum e^{-} Energy (E/Q)")
+bb0nX_graphs[-1].GetYaxis().SetTitle("dN/dE")
+
+l_majoron = ROOT.TLegend(0.63, 0.78, 0.93, 0.93)
+l_majoron.SetFillColor(ROOT.kWhite)
+l_majoron.SetNColumns(2)
+l_majoron.AddEntry(bb0nX_graphs[0], "#beta#beta0#nu", "l")
+l_majoron.AddEntry(bb0nX_graphs[1], "#beta#beta0#nu#chi (n=1)", "l")
+l_majoron.AddEntry(bb0nX_graphs[4], "#beta#beta2#nu (n=5)", "l")
+l_majoron.AddEntry(bb0nX_graphs[2], "#beta#beta0#nu#chi (n=2)", "l")
+l_majoron.AddEntry(None, "", "")
+l_majoron.AddEntry(bb0nX_graphs[3], "#beta#beta0#nu#chi (n=3)", "l")
+l_majoron.AddEntry(None, "", "")
+l_majoron.AddEntry(bb0nX_graphs[5], "#beta#beta0#nu#chi (n=7)", "l")
+l_majoron.Draw()
 
 dummy = raw_input("Press Enter...")
