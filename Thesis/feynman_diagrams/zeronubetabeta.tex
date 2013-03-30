@@ -16,6 +16,7 @@
 				\fmftop{v2}
 				\fmfbottom{v1}
 				%
+				\fmfv{d.sh=cross,d.size=0.05w,label=\(\nu_e\),label.dist=-0.1w}{in1}
 				\fmf{fermion}{i1,v1,o1}
 				\fmf{photon,label=\(W^{-}\),label.side=left,label.dist=1}{v1,v3}
 				\fmf{phantom}{v1,v5}
@@ -32,7 +33,6 @@
 				\fmffixedx{0}{v4,in1}
 				\fmffixedy{0}{v3,o2}
 				\fmffixedy{0}{v4,o3}
-				\fmfv{decor.shape=cross}{in1}
 				%			
 				\fmffreeze
 				\fmfi{fermion}{vpath (__i1,__v1) shifted (thick*(0,-3))}
@@ -50,7 +50,6 @@
 				\fmflabel{\(p\)}{o4}
 				\fmflabel{\(e^{-}\)}{o2}
 				\fmflabel{\(e^{-}\)}{o3}
-				\fmflabel{\(\nu_e\)}{in1}
 			\end{fmfgraph*}
 			}%}
 		\end{fmffile}
