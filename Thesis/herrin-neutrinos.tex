@@ -145,27 +145,33 @@ Due to their small masses, neutrinos in the early universe did not clump togethe
 
 \subsection{Double Beta Decay}
 
-\begin{figure}
+\begin{figure}[htb]
 	\centering
-	\begin{subfigure}[b]{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./feynman_diagrams/twonubetabeta.pdf}
-		\caption[Diagram of \(2\nu\beta\beta\)]{The standard model allowed mode of two neutrino double beta decay.}
-		\label{fig:diagram_2nubb}
-	\end{subfigure}\hfill%
+	\includegraphics[width=0.48\textwidth]{./feynman_diagrams/twonubetabeta.pdf}
+	\caption[Diagram of \(2\nu\beta\beta\)]{The standard model allowed mode of two neutrino double beta decay.}
+	\label{fig:nu_diagram_2nubb}
+\end{figure}
+
+\begin{figure}[htb]
          \begin{subfigure}[b]{0.48\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{./feynman_diagrams/zeronubetabeta.pdf}
 		\caption[Diagram of \(0\nu\beta\beta\)]{The neutrinoless mode of double beta decay.}
-		\label{fig:diagram_0nubb}
+		\label{fig:nu_diagram_0nubb}
+	\end{subfigure}\hfill%
+         \begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./feynman_diagrams/zeronubetabetamajoron.pdf}
+		\caption[Diagram of \(0\nu\beta\beta\chi^0\)]{One neutrinoless mode of double beta decay with Majoron emission.}
+		\label{fig:nu_diagram_0nubbX}
 	\end{subfigure}
-	\label{fig:diagrams}
-	\caption[Double beta decay modes]{Double beta decay modes}
+	\caption[Neutrinoless double beta decay modes]{Neutrinoless double beta decay modes}
+	\label{fig:nu_diagrams}
 \end{figure}
 
-Double beta decay (\twonu)is a standard model process in which two neutrons simultaneously decay to two protons, emitting two electrons and two antineutrinos. \Cref{fig:diagram_2nubb} illustrates this process. It has been observed in a number of isotopes with half lives between \SI{7.1d18}{\year} for \isotope{100}{Mo}\cite{Arnold:2005hc} and \SI{2.2d21}{\year} for \xenon{136}\cite{Auger:2012ar}.
+Double beta decay (\twonu{})is a standard model process in which two neutrons simultaneously decay to two protons, emitting two electrons and two antineutrinos. \Cref{fig:nu_diagram_2nubb} illustrates this process. It has been observed in a number of isotopes with half lives between \SI{7.1d18}{\year} for \isotope{100}{Mo}\cite{Arnold:2005hc} and \SI{2.2d21}{\year} for \xenon{136}\cite{Auger:2012ar}.
 
-If neutrinos are Majorana particles, then there is the potential to observe neutrinoless double beta decay (\zeronu). The simplest mechanism, shown in \cref{fig:diagram_0nubb}, has a light Majorana neutrino being exchanged. In this process two electrons are emitted, but unlike \twonu, the electrons carry away the entire energy of the decay. Thus, this decay mode should be observable in a detector with good energy resolution. \Cref{fig:nu_twonu_zeronu_comparison} illustrates the the difference in the sum electron spectrum for the two modes. If \zeronu does indeed proceed through light neutrino exchange, then the rate is given by
+If neutrinos are Majorana particles, then there is the potential to observe neutrinoless double beta decay (\zeronu{}). The simplest mechanism, shown in \cref{fig:nu_diagram_0nubb}, has a light Majorana neutrino being exchanged. In this process two electrons are emitted, but unlike \twonu{}, the electrons carry away the entire energy of the decay. Thus, this decay mode should be observable in a detector with good energy resolution. \Cref{fig:nu_comp_2nu_0nu} illustrates the the difference in the sum electron spectrum for the two modes. If \zeronu{} does indeed proceed through light neutrino exchange, then the rate is given by
 \begin{equation}
 \left [ T^{0\nu}_{1/2} \right ]^{-1} = G^{0\nu}\left(E, Z\right)\frac{\left | \langle m_{\beta\beta} \rangle \right |^2}{m_e^2}\left | \mathcal{M}^{0\nu}\right |^2
 \label{eq:nu_zeronu_rate}
@@ -175,11 +181,24 @@ where \(G^{0\nu}(E,Z)\) is a calculable phase-space factor, \(m_e\) is the mass 
 \langle m_{\beta\beta} \rangle = \sum_i U_{e i}^2 m_i
 \label{eq:nu_meff_def}
 \end{equation}
-is known as the ``effective mass''. A number of experiments have attempted to look for neutrinoless double beta decay, but it has not yet been observed. A controversial claim by a subset of the Heidelberg-Moscow collaboration report discovery of \zeronu in \isotope{76}{Ge}\cite{KlapdorKleingrothaus:2006ff}, but this is in tension with results from \isotope{136}{Xe} experiments\cite{Auger:2012ar}\cite{Gando:2013fk}. \Cref{tab:nu_zeronu_limits} summarizes the present status of experiments.
+is known as the ``effective mass''. A number of experiments have attempted to look for neutrinoless double beta decay, but it has not yet been observed. A controversial claim by a subset of the Heidelberg-Moscow collaboration report discovery of \zeronu{} in \isotope{76}{Ge}\cite{KlapdorKleingrothaus:2006ff}, but this is in tension with results from \isotope{136}{Xe} experiments\cite{Auger:2012ar}\cite{Gando:2013fk}. \Cref{tab:nu_zeronu_limits} summarizes the present status of experiments.
 
-\begin{table}[htd]
+\begin{figure}[htb]
+         \begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./plots/nu_comp_2nu_0nu_1e2.pdf}
+	\end{subfigure}\hfill%
+         \begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./plots/nu_comp_2nu_0nu_1e6.pdf}
+	\end{subfigure}
+	\caption[Comparison of \twonu{} and \zeronu{} energy spectra]{The electrons emitted in two neutrino double beta decay have a continuous sum energy spectrum (solid line), while the energies of the electrons emitted in neutrinoless double beta decay sum to the Q value (dashed line). Here the spectra have been smeared with a 2\% \(\sigma/E\) energy resolution. On the left (right), the rate of \zeronu{} is 100 (\(1\times10^{6}\)) times less than that of \twonu{}. If the rate of \zeronu{} is small compared to \twonu{}, good energy resolution is needed to distinguish the two modes.}
+	\label{fig:nu_comp_2nu_0nu}
+\end{figure}
+
+\begin{table}[htb]
 \centering
-\caption[Current \zeronu limits]{Results of searches for neutrinoless double beta decay. Effective masses limits are as reported by the experiments, and no attempt has been made to standardize the nuclear matrix element calculation used. Where a range has been reported, it is due to variation between different nuclear matrix element calculations.}
+\caption[Current \zeronu{} limits]{Results of searches for neutrinoless double beta decay. Effective masses limits are as reported by the experiments, and no attempt has been made to standardize the nuclear matrix element calculation used. Where a range has been reported, it is due to variation between different nuclear matrix element calculations.}
 \label{tab:nu_zeronu_limits}
 \begin{tabular}{c c c c}\toprule
 	isotope			&	half-life (\(\times10^{22}\) \si{\year})	&	\(\left|\langle m_{\beta\beta}\rangle\right |\) (\si{\eV})	&	experiment	\\\midrule
