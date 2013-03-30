@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[top=1mm, bottom=1mm, left=1mm, right=1mm, paperwidth=75mm, paperheight=40mm]{geometry}
+\usepackage{feynmp}
+\begin{document}
+	\DeclareGraphicsRule{*}{mps}{*}{}
+	\pagestyle{empty}
+	\setlength{\parindent}{0cm}
+	\unitlength = 1mm
+		\begin{fmffile}{0nubb_blackbox}
+			%\fbox{
+			\fmfframe(6,6)(6,6){
+			\begin{fmfgraph*}(60, 25)
+				\fmfstraight
+				\fmfleft{i1}
+				\fmfright{o1}
+				\fmftop{d1,t1,t2,d2}
+				%
+				\fmfv{label=\(0\nu\beta\beta\),l.a=90,l.d=0.15h}{box1}
+				%
+				\fmf{plain}{box1,box2}
+				\fmf{plain}{box2,box3}
+				\fmf{plain}{box3,box4}
+				\fmf{plain}{box4,box5}
+				\fmf{plain}{box5,box6}
+				\fmf{plain}{box6,box7}
+				\fmf{plain}{box7,box8}
+				\fmf{plain}{box8,box9}
+				\fmf{plain}{box9,box10}
+				\fmf{plain}{box10,box11}
+				\fmf{plain}{box11,box1}
+				\fmfforce{(0.50w,0.05h)}{box1}
+				\fmfforce{(0.35w,0.05h)}{box2}
+				\fmfforce{(0.35w,0.25h)}{box3}
+				\fmfforce{(0.35w,0.45h)}{box4}
+				\fmfforce{(0.37w,0.45h)}{box5}
+				\fmfforce{(0.48w,0.45h)}{box6}
+				\fmfforce{(0.52w,0.45h)}{box7}
+				\fmfforce{(0.63w,0.45h)}{box8}
+				\fmfforce{(0.65w,0.45h)}{box9}
+				\fmfforce{(0.65w,0.25h)}{box10}
+				\fmfforce{(0.65w,0.05h)}{box11}
+				%
+				\fmfforce{(0.425w,1.0h)}{t1}
+				\fmfforce{(0.575w,1.0h)}{t2}
+				\fmfforce{(0.0w,0.25h)}{i1}
+				\fmfforce{(1.0w,0.25h)}{o1}
+				%
+				\fmf{fermion}{i1,v1}
+				\fmf{fermion,label=\(e^{-}\),l.s=left}{box3,v1}
+				\fmf{fermion,label=\(u\),l.s=left}{box5,t1}
+				\fmf{fermion,label=\(d\),l.s=left,l.d=2}{t1,box6}
+				\fmf{fermion,label=\(d\),l.s=right,l.d=2}{t2,box7}
+				\fmf{fermion,label=\(u\),l.s=right}{box8,t2}
+				\fmf{fermion,label=\(e^{-}\)}{box10,v2}
+				\fmf{fermion}{v2,o1}
+				\fmf{photon,right=0.5,tension=0,label=\(W^{-}\)}{t1,v1}
+				\fmf{photon,right=0.5,tension=0,label=\(W^{-}\)}{v2,t2}
+				%
+				\fmflabel{\(\overline{\nu}\)}{i1}
+				\fmflabel{\(\nu\)}{o1}
+			\end{fmfgraph*}
+			}%}
+		\end{fmffile}
+\end{document}
