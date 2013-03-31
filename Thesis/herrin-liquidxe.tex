@@ -47,31 +47,31 @@ Additionally, ions and electrons can recombine, which again produces light:
 \end{split}
 \end{equation}
 
-The light produced in xenon is in the vacuum ultraviolet (VUV) spectrum, and in liquid xenon, the emission peaks at \SI{177.6}{\nm}. Xenon is transparent at this wavelength. The scintillation is prompt, with the excited dimers decaying with a decay time of \SIrange{2}{4}{\ns} for the singlet state and \SIrange{20}{25}{\ns} for the triplet state. The exact decay time depends on the type of radiation\cite{Aprile:2010uq}.
+The light produced in xenon is in the vacuum ultraviolet (VUV) spectrum, and in liquid xenon, the emission peaks at \SI{177.6}{\nm}. Xenon is transparent at this wavelength. The scintillation is prompt, with the excited dimers decaying with a decay time of \SIrange{2}{4}{\ns} for the singlet state and \SIrange{20}{25}{\ns} for the triplet state\cite{Aprile:2010uq}.
 
 \subsection{Combining Ionization and Scintillation}
 
 \begin{figure}[htb]
 \centering
 \begin{subfigure}[c]{0.45\linewidth}
-\includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_ioniz.pdf}
+\includegraphics[width=\textwidth]{./plots/xe_anticorrelation_ioniz.pdf}
 \end{subfigure}\hspace{0.05\linewidth}\hfill%
 \begin{subfigure}[c]{0.45\linewidth}
-\includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_scint.pdf}
+\includegraphics[width=\textwidth]{./plots/xe_anticorrelation_scint.pdf}
 \end{subfigure}
 \begin{subfigure}[c]{0.45\linewidth}
-\includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_2d.pdf}
+\includegraphics[width=\textwidth]{./plots{xe_anticorrelation_2d.pdf}
 \end{subfigure}\hspace{0.05\linewidth}\hfill%
 \begin{subfigure}[c]{0.45\linewidth}
-\includegraphics[width=\textwidth]{./plots/lxe_anticorrelation_rot.pdf}
+\includegraphics[width=\textwidth]{./plots/xe_anticorrelation_rot.pdf}
 \end{subfigure}
 \caption[Anticorrelated Energy Resolution in Liquid Xenon]{A toy example of how the energy resolution of a monoenergetic line can be improved by combining signals in liquid xenon. The ionization signal (top left) and the scintillation signal (top right) show poor energy resolution individually. When the signals are anticorrelated (shown bottom left, with coefficient -0.8), they can be protected onto a rotated axis to yield an improved energy resolution (bottom right).}
-\label{fig:lxe_toy_anticorrelation}
+\label{fig:xe_toy_anticorrelation}
 \end{figure}
 
 Electron-ion pairs can recombine to produce one scintillation photon. The probability for this to occur depends both on the ionization density and the strength of the electric field applied, since a stronger field will cause more electrons to drift away from the ions before they can recombine. While this can be modeled\cite{Doke:1988qf}\cite{Thomas:1987ve}, collecting both ionization and scintillation signals allows an unambiguous measurement of the total energy deposited in the detector.
 
-A toy example of combining the ionization and scintillation signals is shown in \cref{fig:lxe_toy_anticorrelation}. Even assuming a less-than-perfect correlation between ionization and scintillation due to effects such as imperfect collection and detector noise, this example shows how combining the signals can yield a dramatic improvement in resolution. This has been demonstrated to work in practice\cite{Conti:2003tg}\cite{Aprile:2007hc}. However, the energy resolution for the combined signals in such experiments still falls short of the Poisson limit, suggesting other factors contribute to smearing the energy resolution in liquid xenon.
+A toy example of combining the ionization and scintillation signals is shown in \cref{fig:xe_toy_anticorrelation}. Even assuming a less-than-perfect correlation between ionization and scintillation due to effects such as imperfect collection and detector noise, this example shows how combining the signals can yield a dramatic improvement in resolution. This has been demonstrated to work in practice\cite{Conti:2003tg}\cite{Aprile:2007hc}. However, the energy resolution for the combined signals in such experiments still falls short of the Poisson limit, suggesting other factors contribute to smearing the energy resolution in liquid xenon.
 
 The ratio of the ionization and scintillation signals varies with changing electric field, since a stronger electric field draws more electron-ion pairs apart before they can recombine. Additionally, the two channels may have different signal levels due to imperfect collection, and different noise levels due if different instruments are used to measure them. As such, the combination of ionization and scintillation that optimizes energy resolution will vary from experiment to experiment.
 
