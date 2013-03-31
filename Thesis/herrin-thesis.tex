@@ -5,6 +5,7 @@
 
 \usepackage[online]{suthesis-2e}
 \usepackage{fixltx2e}
+\usepackage{biblatex}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[version=3]{mhchem}
@@ -36,6 +37,8 @@
 
 \reversemarginpar
 \setlength{\marginparwidth}{1.25in}
+
+\addbibresource{herrin-thesis.bib}
 
 \begin{document}
 
@@ -73,8 +76,7 @@ Lots of people.
 \subfile{herrin-appendix-noisetagger}
 
 
-\bibliographystyle{plain}
-\bibliography{herrin-thesis}
+\printbibliography
 
 \onlinesignature
 
