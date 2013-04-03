@@ -7,7 +7,7 @@
 \section{Motivation}
 Ideally, EXO-200 would only trigger on events that are due to particles interacting in the liquid xenon. Unlike the detectors at hadron colliders that have a large event rate and must selectively trigger, EXO-200 only sees about one event every 10 seconds. Therefore, the triggers do not need to be sophisticated, and indeed err on the side of including events that may not be interesting.
 
-These simple triggers, however, allow events that are not actually due to interactions in the detector to make it into the data. One common source of spurious events is noise, for example due to microphonic vibration of the signal readout cables due to loud noises. When these noise signals go through processing, they can slow down the processing due to odd signal shapes and large multiplicity. Furthermore, they can masquerade as signals. As described below, one of the most common types of noise can be tagged as a TPC muon. These noise events are frequent enough that the deadtime enforced after a TPC muon would cause a significant hit to live time. And so code was developed to identify and tag noise events.
+These simple triggers, however, allow events that are not actually due to interactions in the detector to make it into the data. One common source of spurious events is noise, for example due to microphonic vibration of the signal readout cables due to loud noises. When these noise signals go through processing, they can slow down the processing due to odd signal shapes and large multiplicity. Furthermore, they can masquerade as signals. As described below, one of the most common types of noise can be tagged as a TPC muon. These noise events are frequent enough that the deadtime enforced after a TPC muon would cause a significant hit to live time. Therefore code was developed to identify and tag noise events.
 
 \section{Types of Noise Events}
 \subsection{Unphysically Negative Signals on the Collection Wires}
@@ -25,9 +25,7 @@ These events are identified by summing all collection wire waveforms. The baseli
 \Cref{fig:noise_sum_u_neg} shows an example of a typical event caught by this check. These events would otherwise be problematic for the muon tagging algorithm (\cref{ch:muons}) because they exhibit lines of positive collection signals and negative inductions signals that resemble a muon passing parallel to the wire plane.
 
 \subsection{``Glitch'' events}
-For a period of time, the high-voltage supply for the EXO-200 cathode would occasionally cause a large number of channels in the TPC to complete saturate. The exact origin of these ``glitch'' events is still unknown. They seem to be electronic, since they still saturated channels when the APD gains were reduced to unity.
-
-These events are identified by looking for more than 100 channels completely saturated.
+For a period of time, the high-voltage supply for the EXO-200 cathode would occasionally cause many channels in the TPC to complete saturate. Events with 100 or more saturated channels are tagged as ``glitch'' events. The exact origin of these events is still unknown. They seem to be electronic, since they still saturated channels when the APD gains were reduced to unity.
 
 \begin{figure}[tbp]
 \centering
@@ -45,8 +43,15 @@ These events are identified by looking for any APD channels that saturate, then 
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\columnwidth]{./plots/noise_eventdisplay_run_4685_ev_3344.png}
-\caption[APD ``bouncing'' noise]{A noise event with an APD channel signal ``bouncing''.}
+\begin{subfigure}[b]{1.0\textwidth}
+\centering
+\includegraphics[width=\textwidth]{./plots/noise_eventdisplay_run_4685_ev_3344.png}
+\end{subfigure}
+\begin{subfigure}[b]{1.0\textwidth}
+\centering
+\includegraphics[width=\textwidth]{./plots/noise_eventdisplay_run_4685_ev_3344_waveform.png}
+\end{subfigure}
+\caption[APD ``bouncing'' noise]{A noise event with an APD channel signal ``bouncing''. The top image shows baseline subtracted signals for TPC 2, while the bottom image shows the waveform for one APD channel with no baseline subtraction.}
 \label{fig:noise_apd_bounce}
 \end{figure}
 
