@@ -32,7 +32,7 @@ The EXO-200 detector uses liquid xenon as both the source and the detector of do
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{./figures/detector_tpc_schematic.pdf}
-\caption[A schematic of the EXO-200 TPC]{The concept for EXO-200. The TPC is divided into two identical halves by a cathode. When energy is deposited in the liquid xenon, it creates both scintillation light and ionization. Avalanche PhotoDiodes behind the anode wire planes collect the scintillation signal. Ionization drifts to the anode and is read out on two crossed wire planes. The ``u'' collection plane is held at virtual ground and collects the ionization. The wires that collect charge provide one transverse coordinate. The ``v'' induction plane shields the collection wires and determines the other transverse coordinate.}
+\caption[A conceptual drawing of EXO-200]{The concept for EXO-200. The TPC is divided into two identical halves by a cathode. When energy is deposited in the liquid xenon, it creates both scintillation light and ionization. APDs behind the anode wire planes collect the scintillation signal. Ionization drifts to the anode and is read out on two crossed wire planes.}
 \label{fig:detector_tpc_cartoon}
 \end{figure}
 
@@ -41,9 +41,15 @@ The EXO-200 detector uses liquid xenon as both the source and the detector of do
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{./figures/detector_wire_geometry.pdf}
-\caption[Geometry of the ionization readout wire planes]{The geometry of the ionization readout. An ionization cloud drifts past the v wires, inducing a signal in them. The cloud is then collected on the u wires. For simplicity, the wires are shown collinear here. In reality, they are angled \ang{60} from each other.}
+\caption[Geometry of the ionization readout wire planes]{The geometry of the ionization readout. An ionization cloud drifts past the \(v\) wires, inducing a signal in them. The cloud is then collected on the \(u\) wires. For simplicity, the wires are shown collinear here. In reality, they are angled \ang{60} from each other.}
 \label{fig:detector_wire_geometry}
 \end{figure}
+
+A central cathode divides EXO-200 into two drift regions. This cathode creates a drift field that drifts ionization electrons to the anodes, at either end of the TPC. The anodes consist of two crossed wire planes, angled \ang{60} to each other. The plane farther from the cathode, denoted \(u\), is held at virtual ground and collects the ionization. The plane closer to the cathode is denoted \(v\) and is biased to be fully transparent to drifting ionization. The \(v\) wire plane shields the \(u\) wire plane from induction effects. The induced signal on the \(v\) wires also provides a transverse coordinate. This, along with knowledge of which \(u\) wire collected the charge, provides a location for the event in the transverse plane.
+
+Each wire plane consists of 114 wires. These wires were formed as triplets by photoetching sheets of phosphor bronze. This gives 38 electrical readouts per plane. Each wire plane is 95.8\% transparent to scintillation light. The cathode is also formed from two pieces of etched phosphor bronze and is 90\% transparent to light.
+
+The wire planes are spaced \SI{6}{\mm} apart, and the collection plane is \SI{6}{\mm} from the face of the the platter that holds the APDs. The cathode, biased to \SI{-8}{\kV}, is \SI{19.2}{\cm} from the induction wire plane. The cathode and cylindrical field shaping rings along the sides of the drift region create a \SI{374}{\V\per\cm} field in the main drift region. Charge in this region drifts at \SI{1.71}{\mm\per\micro\s}. The field is stronger between the \(u\) and \(v\) wires, and charge drifts about \SI{2.2}{\mm\per\micro\s} in this region.
 
 \subsection{Scintillation Readout}
 
