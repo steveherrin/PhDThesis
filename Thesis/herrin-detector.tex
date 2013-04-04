@@ -31,12 +31,19 @@ The design of a detector for a double beta decay experiment is guided by \cref{e
 The EXO-200 detector uses liquid xenon as both the source and the detector of double beta decays. It takes the form of a Time Projection Chamber (TPC), with the xenon in the liquid phase. A TPC configuration collects both the ionization and scintillation signals so they can be combined to improve energy resolution as discussed in \cref{ch:liquidxe}. A TPC also collects information about event topology, which is useful for background rejection. \Cref{fig:detector_tpc_cartoon} illustrates the TPC concept.
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{./figures/tpc_schematic.pdf}
-\caption[A schematic of a TPC]{The concept for EXO-200. The TPC is divided into two identical halves by a cathode. When energy is deposited in the liquid xenon, it creates both scintillation light and ionization. Avalanche PhotoDiodes behind the anode wire planes collect the scintillation signal. Ionization drifts to the anode and is read out on two crossed wire planes. The ``u'' collection plane is held at virtual ground and collects the ionization. The wires that collect charge provide one transverse coordinate. The ``v'' induction plane shields the collection wires and determines the other transverse coordinate.}
+\includegraphics[width=0.6\textwidth]{./figures/detector_tpc_schematic.pdf}
+\caption[A schematic of the EXO-200 TPC]{The concept for EXO-200. The TPC is divided into two identical halves by a cathode. When energy is deposited in the liquid xenon, it creates both scintillation light and ionization. Avalanche PhotoDiodes behind the anode wire planes collect the scintillation signal. Ionization drifts to the anode and is read out on two crossed wire planes. The ``u'' collection plane is held at virtual ground and collects the ionization. The wires that collect charge provide one transverse coordinate. The ``v'' induction plane shields the collection wires and determines the other transverse coordinate.}
 \label{fig:detector_tpc_cartoon}
 \end{figure}
 
 \subsection{Ionization Readout}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{./figures/detector_wire_geometry.pdf}
+\caption[Geometry of the ionization readout wire planes]{The geometry of the ionization readout. An ionization cloud drifts past the v wires, inducing a signal in them. The cloud is then collected on the u wires. For simplicity, the wires are shown collinear here. In reality, they are angled \ang{60} from each other.}
+\label{fig:detector_wire_geometry}
+\end{figure}
 
 \subsection{Scintillation Readout}
 
@@ -67,7 +74,7 @@ As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80
 \begin{figure}[htb]
 \centering
 \begin{subfigure}[c]{0.30\linewidth}
-\includegraphics[width=\textwidth]{./figures/wipp_map.pdf}
+\includegraphics[width=\textwidth]{./figures/detector_wipp_map.pdf}
 \end{subfigure}\hspace{0.05\linewidth}\hfill%
 \begin{subfigure}[c]{0.60\linewidth}
 \includegraphics[width=\textwidth]{./photos/wipp_site_annotated.png}
