@@ -4,7 +4,7 @@
 \chapter{The EXO-200 Detector}
 \label{ch:detector}
 
-\section{Detector Sensitivity}
+\section{Creating a Sensitive Detector}
 The number of decays of a radioactive element in a given period of time follow a Poisson distribution, provided the half life is much longer than the observation time. This is clearly the case for a double beta decay experiment. The expected signal in such a case is
 \begin{equation}
 N_{s} = \epsilon \frac{a M}{A} \frac{t \ln2}{T_{1/2}}
@@ -27,23 +27,16 @@ where the approximation that the uncertainty \(\Delta N_b = \sqrt{N_b}\) is vali
 
 The design of a detector for a double beta decay experiment is guided by \cref{eq:detector_bgfree_sensitivity,eq:detector_bg_sensitivity}. It must be able to contain a large mass \(M\) of material highly-enriched in the isotope of interest \((a)\). It must also have a good energy resolution (small \(\Gamma\)) and be constructed to minimize backgrounds (small \(b\)). In a search for \zeronu{}, recalling \cref{eq:nu_zeronu_rate}, an experiment with large backgrounds will decrease the smallest  \(\langle m_{\nu} \rangle\) it is sensitive to as \((t)^{-1/4}\), which is very slowly.
 
-\section{Overview}
-
-
-
-As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon, enriched to 80.6\% in \xenon{136} with clean centrifuges at several laboratories in Russia. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural elements are present in trace amounts. \isotope{85}{Kr} is present at \SI[per-mode=symbol]{25.5\pm3.0d-12}{\g\per\g}\cite{Dobi:2012nx}. This low contamination and low Q value mean it is not problematic for EXO-200.
-
 \section{Time Projection Chamber}
-EXO-200 uses xenon in the liquid phase to make a Time Projection Chamber (TPC). When a process deposits energy in liquid xenon, it creates both scintillation light and ionization. Avalanche PhotoDiodes (APDs) detect the scintillation nearly instantaneously. The ionization, meanwhile, drifts in an applied electric field to crossed wire planes, where it induces a signal in one plane (the ``v'' wires) and is collected on the other plane (the ``u'' wires). \Cref{fig:detector_tpc_cartoon} provides a schematic of the TPC concept for EXO-200. The crossed wire grids provide a 2D projection of the event, while the time between the scintillation signal and the ionization signal provides a \(z\) coordinate. The EXO-200 chamber is actually divided into two separate TPCs by a cathode, biased to \SI{-8.0}{\kV}, producing a drift field of \SI{374}{\V\per\cm}
-
+The EXO-200 detector uses liquid xenon as both the source and the detector of double beta decays. It takes the form of a Time Projection Chamber (TPC), with the xenon in the liquid phase. A TPC configuration collects both the ionization and scintillation signals so they can be combined to improve energy resolution as discussed in \cref{ch:liquidxe}. A TPC also collects information about event topology, which is useful for background rejection. \Cref{fig:detector_tpc_cartoon} illustrates the TPC concept.
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{./figures/tpc_schematic.pdf}
-\caption[A schematic of a TPC]{A schematic of the TPC concept for EXO-200.}
+\caption[A schematic of a TPC]{The concept for EXO-200. The TPC is divided into two identical halves by a cathode. When energy is deposited in the liquid xenon, it creates both scintillation light and ionization. Avalanche PhotoDiodes behind the anode wire planes collect the scintillation signal. Ionization drifts to the anode and is read out on two crossed wire planes. The ``u'' collection plane is held at virtual ground and collects the ionization. The wires that collect charge provide one transverse coordinate. The ``v'' induction plane shields the collection wires and determines the other transverse coordinate.}
 \label{fig:detector_tpc_cartoon}
 \end{figure}
 
-The use of a liquid-phase TPC has several advantages for a low-background experiment. The xenon at the outer edges of the detector, outside of the active region, provides modest self shielding against \(\gamma\) rays. The scintillation and the ionization signals can be combined to give good energy resolution\cite{Conti:2003tg}\cite{Aprile:2007hc}. \(\gamma\) ray backgrounds near the Q value of \xenon{136} most often deposit their energy via Compton scattering or electron-positron pair production. These processes create spatially-separated ionization signals, which can then be distinguished from double beta decays, which deposit their energy at a single location in a small volume.
+\subsection{Ionization Readout}
 
 \section{Calibration}
 
@@ -59,7 +52,15 @@ The use of a liquid-phase TPC has several advantages for a low-background experi
 \label{fig:detector_calibration}
 \end{figure}
 
-\section{WIPP}
+\section{Xenon Handling}
+
+As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80.6\% in \xenon{136}. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural isotopes are present in trace amounts. \isotope{85}{Kr} is present at \SI[per-mode=symbol]{25.5\pm3.0d-12}{\g\per\g}\cite{Dobi:2012nx}. This low contamination and low Q value mean it is not problematic for EXO-200.
+
+\section{Shielding}
+
+\subsection{Cryostat and Clean Rooms}
+
+\subsection{WIPP}
 
 \begin{figure}[htb]
 \centering
@@ -76,6 +77,8 @@ The use of a liquid-phase TPC has several advantages for a low-background experi
 In order to shield from cosmic rays that are a potential background, EXO-200 is located \(\sim\)~\SI{655}{\m} underground at the Department of Energy's Waste Isolation Pilot Plant (WIPP) in southeastern New Mexico. WIPP is a salt mine, and its primary purpose is the permanent disposal of transuranic waste. The north end of the mine, far from the waste, serves as a suitable site for low-background experiments.
 
 The rock overburden provides \SI{1480}{\hecto\g\per\square\cm} shielding from cosmic rays (see \cref{ch:muons}), and the salt walls are naturally low in radionuclides. Direct counting finds a contamination of \SI[per-mode=symbol]{27\pm2d-9}{\g\per\g} of \isotope{238}{U}, \SI[per-mode=symbol]{66\pm2d-9}{\g\per\g} of \isotope{232}{Th}, and \SI[per-mode=symbol]{124\pm2}{\g\per\g} of \isotope{40}{K}\todo{Find a source for this besides Russell's thesis.}. Little radon emanates from the walls, such that radon levels are similar to those found at the surface.
+
+\subsection{Muon Veto}
 
 
 \end{document}
