@@ -87,11 +87,20 @@ Currently, EXO-200 calibrates with three different isotopes. \isotope{137}{Cs} e
 
 \section{Xenon Handling}
 
-As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80.6\% in \xenon{136}. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural isotopes are present in trace amounts. \isotope{85}{Kr} is present at \SI[per-mode=symbol]{25.5\pm3.0d-12}{\g\per\g}\cite{Dobi:2012nx}. This low contamination and low Q value mean it is not problematic for EXO-200.
+As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80.6\% in \xenon{136}. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural isotopes are present in trace amounts.
 
-\section{Shielding}
+\section{Infrastructure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{./photos/detector_cleanroom.png}
+\caption[Cutaway view of EXO-200 as installed]{A cutaway view of EXO-200 as installed at WIPP. The TPC vessel is surrounded by cold HFE. A cryostat insulates the HFE and liquid xenon. Lead surrounds the cryostat to shield from external radiation, and a second wall in front of the front-end electronics blocks radiation that might pass through the feedthroughs used for xenon, high voltage, and electrical cabling. All of this is located inside a clean room, which is surrounded with an active muon veto.}
+\label{fig:detector_cleanroom}
+\end{figure}
 
 \subsection{Cryostat and Clean Rooms}
+
+\subsection{Muon Veto}
 
 \subsection{WIPP}
 
@@ -109,9 +118,6 @@ As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80
 
 In order to shield from cosmic rays that are a potential background, EXO-200 is located \(\sim\)~\SI{655}{\m} underground at the Department of Energy's Waste Isolation Pilot Plant (WIPP) in southeastern New Mexico. WIPP is a salt mine, and its primary purpose is the permanent disposal of transuranic waste. The north end of the mine, far from the waste, serves as a suitable site for low-background experiments.
 
-The rock overburden provides \SI{1480}{\hecto\g\per\square\cm} shielding from cosmic rays (see \cref{ch:muons}), and the salt walls are naturally low in radionuclides. Direct counting finds a contamination of \SI[per-mode=symbol]{27\pm2d-9}{\g\per\g} of \isotope{238}{U}, \SI[per-mode=symbol]{66\pm2d-9}{\g\per\g} of \isotope{232}{Th}, and \SI[per-mode=symbol]{124\pm2}{\g\per\g} of \isotope{40}{K}\todo{Find a source for this besides Russell's thesis.}. Little radon emanates from the walls, such that radon levels are similar to those found at the surface.
-
-\subsection{Muon Veto}
-
+The rock overburden provides \SI{1480}{\hecto\g\per\square\cm} shielding from cosmic rays (see \cref{ch:muons}), and the salt walls are naturally low in radionuclides. Direct counting finds a contamination of \SI[per-mode=symbol]{27\pm2d-9}{\g\per\g} of \isotope{238}{U}, \SI[per-mode=symbol]{66\pm2d-9}{\g\per\g} of \isotope{232}{Th}, and \SI[per-mode=symbol]{124\pm2}{\g\per\g} of \isotope{40}{K}\cite{Auger:2012dq}. Little radon emanates from the walls, such that radon levels are similar to those found at the surface.
 
 \end{document}
