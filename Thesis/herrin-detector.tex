@@ -76,9 +76,14 @@ The wire planes are spaced \SI{6}{\mm} apart, and the collection plane is \SI{6}
 \begin{subfigure}[c]{0.60\linewidth}
 \includegraphics[width=\textwidth]{./photos/calibration_tubing_cropped.png}
 \end{subfigure}
-\caption[The Calibration System]{To calibrate the detector, a tiny source capsules (left) containing a radioisotope can be deployed to many positions just outside the detector through a guide tube system (right).}
+\caption[The calibration system]{To calibrate the detector, a tiny source capsules (left) containing a radioisotope can be deployed to many positions just outside the detector through a guide tube system (right).}
 \label{fig:detector_calibration}
 \end{figure}
+
+Routine calibrations help monitor the performance and characterize the energy response of EXO-200. A guide tube system runs just outside the TPC, providing access to both anodes and three positions around the circumference of the cathode. In a typical calibration run, a miniature radioactive source is pushed to one of these positions by a long cable. After enough time passes to accumulate enough calibration data, the source is retracted and normal physics operations resume.
+
+Currently, EXO-200 calibrates with three different isotopes. \isotope{137}{Cs} emits a \SI{662}{\keV} gamma ray when it decays. \isotope{60}{Co} decays emit both \SI{1173}{\keV} and \SI{1333}{\keV} gamma rays simultaneously. \isotope{228}{Th} eventually decays to \isotope{208}{Tl}, which emits a \SI{2615}{\keV} gamma ray when it decays. Typically, short (\SI{2}{hr}) \isotope{228}{Th} calibrations are taken a few times per week, chiefly to measure the electron lifetime (see \cref{ch:electronlifetime}). Several times per year, longer campaigns with the full suite of sources establish the energy response of the detector.
+
 
 \section{Xenon Handling}
 
