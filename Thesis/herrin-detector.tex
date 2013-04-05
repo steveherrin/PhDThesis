@@ -38,13 +38,6 @@ The EXO-200 detector uses liquid xenon as both the source and the detector of do
 
 \subsection{Scintillation Readout}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{./photos/detector_half.jpg}
-\caption[Half of the EXO-200 detector]{One half of the detector while being assembled. The APDs are visible in their platter and the flex cables can be seen around the edges. The anode wire planes are above the APD plane and cross each other at \ang{60}. PTFE tiles line the inside of the field-shaping rings. The cathode grid has not been installed in this photo, but would be at the top.}
-\label{fig:detector_half_photo}
-\end{figure}
-
 The scintillation light is collected by Large Area Avalanche PhotoDiodes (LAAPDS, or APDs). APDs can be manufactured with significantly lower radioactivity than traditional photomultiplier tubes. They operate well at cryogenic temperatures, and have a higher quantum efficiency than PMTs at \SI{178}{\nm}. However, APDs do suffer from increased noise and reduced gain compared to PMTs, but this is less of a concern at cryogenic temperatures, and for the relatively high energies associated with double beta decay.
 
 The 468 APDs are housed two identical platters on either end of the TPC. The APDs are electrically connected to the platters, which provide \about~\SI{1.4}{\kV} bias. The platters are plated with \ce{Al} and \ce{MgF2} for improved reflectivity. PTFE tiles line the walls of the TPC and also provide reflection to improve light collection efficiency. One device is missing from each platter in order to make room for a diffuser that can deliver light from an external laser for calibration purposes.
@@ -70,8 +63,13 @@ The wire planes are spaced \SI{6}{\mm} apart, and the collection plane is \SI{6}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{./photos/detector_TPC.pdf}
-\caption[Cutaway view of the EXO-200 detector]{A cutaway view of the EXO-200 detector and liquid xenon vessel.}
+\begin{subfigure}[c]{0.42\linewidth}
+\includegraphics[width=\textwidth]{./photos/detector_TPC.pdf}
+\end{subfigure}\hfill%
+\begin{subfigure}[c]{0.54\linewidth}
+\includegraphics[width=\textwidth]{./photos/detector_half.jpg}
+\end{subfigure}\hfill%
+\caption[The EXO-200 detector]{On the left, a cutaway view of the EXO-200 detector and liquid xenon vessel. On the right is a photo of EXO-200 under construction. The APDs are visible in their platter and the flex cables can be seen around the edges. The anode wire planes are above the APD plane and cross each other at \ang{60}. PTFE tiles line the inside of the field-shaping rings. The cathode grid has not been installed in this photo, but would be at the top.}
 \label{fig:detector_TPC_vessel}
 \end{figure}
 
