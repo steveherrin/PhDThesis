@@ -60,18 +60,38 @@ f(r, \phi, z) &=&   & F(r_{i\phantom{+1}}, \phi_{j\phantom{+1}}, z_{k\phantom{+1
 
 There is a complication, however, when the lower neighbor bin for \(r\) is the \(z\)-axis. In order to ensure that \(f\) is single-valued at \(r=0\), define the value of \(F\) at the axis as the mean value for the surrounding points: 
 \begin{equation}
-F(0, \phi, z_k) = \frac{1}{N_\phi}\Sum_{j=1}^{N_\phi} F(r_{1}, \phi_j, z_k)
+F(0, \phi, z_k) = \frac{1}{N_\phi}\sum_{j=1}^{N_\phi} F(r_{1}, \phi_j, z_k)
 \end{equation}
 
 Then \cref{eq:lightmap_trilinear} can still be used. In this case, \(\phi_d\) will not matter in the terms involving \(r_i\).
 
 \subsection{Correcting for Light Response}
-To correct for the light response, first the histogram containing the light map is normalized such that the average response is 1. Let \(F(r_i, \phi_j, z_k)\) be the value of the normalized light map for the bin that has center \((r_i, \phi_j, z_k)\). Then let \(f(r,\phi,z)\) be the trilinear interpolation of \(F\). Then the normalized scintillation response for an event is
+
+To correct for the light response, first the histogram containing the light map is normalized such that the average response is 1. Let \(F(r_i, \phi_j, z_k)\) be the value of the normalized light map for the bin that has center \((r_i, \phi_j, z_k)\). Then let \(f(r,\phi,z)\) be the trilinear interpolation of \(F\). \Cref{fig:lightmap_correction_phi_slices,fig:lightmap_correction_z_slices} show an example of this interpolation. The normalized scintillation response for an event is
 \begin{equation}
 g = \frac{\sum_{m=1}^{N}E_m f(r_m, \phi_m, z_m)}{\sum_{m=1}^{N}E_m}
 \label{eq:lightmap_weighted_response}
 \end{equation}
-where the sums are over the \(N\) ionization clusters in the event, each with a position \((r_m, \phi_m, z_m)\) and ionization energy \(E_m\). This assumes that the fraction of total scintillation light produced by a charge cluster at a given position is the same as that cluster's fraction of total ionization energy.
+where the sums are over the \(N\) ionization clusters in the event, each with a position \((r_m, \phi_m, z_m)\) and an ionization energy \(E_m\). This assumes that the fraction of total scintillation light produced by a charge cluster at a given position is the same as that cluster's fraction of total ionization energy.
 
+If \(E_{s}\) is the uncorrected scintillation signal, then
+\begin{equation}
+E_{s,\text{corrected}} = \frac{E_s}{g}
+\label{eq:lightmap_corrected_signal}
+\end{equation}
+is the corrected signal.
+
+\begin{sidewaysfigure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{./plots/lightmap_correction_phi_slices.png}
+\caption[Correction function \(\phi\) slices]{The light response function \(f(r,\phi,z)\), evaluated at 8 discrete values of \(\phi\) over the full range of \(r\) (horizontal axis) and \(z\) (vertical axis).}
+\label{fig:lightmap_correction_phi_slices}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{./plots/lightmap_correction_z_slices.png}
+\caption[Correction function \(z\) slices]{The light response function \(f(r,\phi,z)\), evaluated at 13 discrete values of \(z\) over the full range of \(x\) (horizontal axis) and \(y\) (vertical axis).}\label{fig:correction_z_slices}
+\end{sidewaysfigure}
 
 \end{document}
