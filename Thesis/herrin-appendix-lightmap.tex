@@ -67,7 +67,7 @@ Then \cref{eq:lightmap_trilinear} can still be used. In this case, \(\phi_d\) wi
 
 \subsection{Correcting for Light Response}
 
-To correct for the light response, first the histogram containing the light map is normalized such that the average response is 1. Let \(F(r_i, \phi_j, z_k)\) be the value of the normalized light map for the bin that has center \((r_i, \phi_j, z_k)\). Then let \(f(r,\phi,z)\) be the trilinear interpolation of \(F\). \Cref{fig:lightmap_correction_phi_slices,fig:lightmap_correction_z_slices} show an example of this interpolation. The normalized scintillation response for an event is
+To correct for the light response, first the histogram containing the light map is normalized such that the average response is 1. Let \(F(r_i, \phi_j, z_k)\) be the value of the normalized light map for the bin that has center \((r_i, \phi_j, z_k)\). Then let \(f(r,\phi,z)\) be the trilinear interpolation of \(F\). \Cref{fig:lightmap_correction_phi_slices,fig:lightmap_correction_z_slices} show an example of this interpolation\todo{Add new pdf versions of these}. The normalized scintillation response for an event is
 \begin{equation}
 g = \frac{\sum_{m=1}^{N}E_m f(r_m, \phi_m, z_m)}{\sum_{m=1}^{N}E_m}
 \label{eq:lightmap_weighted_response}
@@ -91,7 +91,7 @@ is the corrected signal.
 \begin{sidewaysfigure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{./plots/lightmap_correction_z_slices.png}
-\caption[Correction function \(z\) slices]{The light response function \(f(r,\phi,z)\), evaluated at 13 discrete values of \(z\) over the full range of \(x\) (horizontal axis) and \(y\) (vertical axis).}\label{fig:correction_z_slices}
+\caption[Correction function \(z\) slices]{The light response function \(f(r,\phi,z)\), evaluated at 13 discrete values of \(z\) over the full range of \(x\) (horizontal axis) and \(y\) (vertical axis).}\label{fig:lightmap_correction_z_slices}
 \end{sidewaysfigure}
 
 \end{document}
