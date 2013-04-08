@@ -96,9 +96,16 @@ Routine calibrations help monitor the performance and characterize the energy re
 Currently, EXO-200 calibrates with three different isotopes. \isotope{137}{Cs} emits a \SI{662}{\keV} gamma ray when it decays. \isotope{60}{Co} decays emit both \SI{1173}{\keV} and \SI{1333}{\keV} gamma rays simultaneously. \isotope{228}{Th} eventually decays to \isotope{208}{Tl}, which emits a \SI{2615}{\keV} gamma ray when it decays. Typically, short (\SI{2}{hr}) \isotope{228}{Th} calibrations are taken a few times per week, chiefly to measure the electron lifetime (see \cref{ch:electronlifetime}). Several times per year, longer campaigns with the full suite of sources establish the energy response of the detector.
 
 
-\section{Xenon Handling}
+\section{Xenon and Recirculation}
 
-As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80.6\% in \xenon{136}. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural isotopes are present in trace amounts.
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{./figures/detector_simplified_xe.pdf}
+\caption[The EXO-200 xenon recirculation system]{A simplified schematic of the EXO-200 xenon recirculation system. A heater vaporizes xenon returning from the TPC. A gas-phase pump recirculates xenon through purifiers. The xenon is condensed and then returns to the TPC. Gas purity monitors (GPMs) look for dramatic changes in the electron lifetime of the circulation xenon. The TPC vessel must track the HFE pressure closely. A sophisticated slow controls system controls valves to feed and bleed xenon as needed from storage bottles. Compressors allow the xenon to be placed back into the bottles when bleeding xenon.}
+\label{fig:detector_simplified_xe}
+\end{figure}
+
+As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80.6\% in \xenon{136}. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural isotopes are present in trace amounts.\todo{Xenon recirculation, feed/bleed, purifiers, how much xenon is where...}
 
 \section{Infrastructure}
 
