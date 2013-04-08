@@ -105,7 +105,11 @@ Currently, EXO-200 calibrates with three different isotopes. \isotope{137}{Cs} e
 \label{fig:detector_simplified_xe}
 \end{figure}
 
-As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80.6\% in \xenon{136}. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural isotopes are present in trace amounts.\todo{Xenon recirculation, feed/bleed, purifiers, how much xenon is where...}
+As the name suggests, EXO-200 makes use of \SI{200}{\kg} of xenon enriched to 80.6\% in \xenon{136}. Of the remaining fraction of the xenon, isotope 134 comprises 19.1\%, and lighter natural isotopes are present in trace amounts. Roughly \SI{175}{\kg} of xenon fills the \SI{58}{\l} vessel, with \SI{110}{\kg} of that in the active region bounded by the anode wires and PTFE reflectors. The remaining xenon is in the recirculation and storage system.
+
+Because the TPC vessel has very thin walls, the pressure inside must be closely matched to the pressure of the HFE surrounding it. A sophisticated slow control system can feed gas into the system or bleed gas off as needed. The xenon plumbing consists of a high pressure side where gas is stored, and a low pressure recirculation loop. Compressors place gas back into the storage bottles when bleeding. Under normal operations, feeds and bleeds do not happen. Instead, xenon returns from the TPC and vaporizes in a heater. A gas-phase pump\cite{LePort:2011fk} recirculates the xenon through heated zirconium purifiers, after which the xenon is recondensed. This is shown in \cref{fig:detector_simplified_xe}. 
+
+The purifiers chemically remove electronegative impurities from the xenon so that ionization can drift in the TPC. Gas purity monitors\cite{Dobi:2011zr} measure the quality of the gas returning from the TPC to look for large quantities of impurities, which might indicate purifier failure or a leak. However, in normal operation, continuous recirculation leads to electron lifetimes of \(>\)~\SI{2}{\ms}, which must be measured with the TPC itself  (see \cref{ch:electronlifetime}).
 
 \section{Infrastructure}
 
