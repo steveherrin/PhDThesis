@@ -31,29 +31,29 @@ After digitization, the Trigger Event Module (TEM) monitors the signals to selec
 
 \section{Signal Reconstruction}
 \subsection{Signal Finding}
-Either scintillation or ionization signals may cause the trigger to fire. Since there is not a fixed time between the two types of signal, it is necessary to search for signals in the waveforms. This is done in a two stage process: first a matched filter technique searches for signals, and then a waveform unshaping technique refines the found signals. \Cref{fig:data_signal_finding} shows an example of this process\todo{Improve these example plots to not have so much white space}.
+Either scintillation or ionization signals may cause the trigger to fire. Since there is not a fixed time between the two types of signal, it is necessary to search for signals in the waveforms. This is done in a two stage process: first a matched filter technique searches for signals, and then a waveform unshaping technique refines the found signals. \Cref{fig:data_signal_finding} shows an example of this process.
 
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[t]{0.48\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{./plots/data_signal_finding_raw.pdf}
 		\caption[Raw \(u\) wire waveform]{A raw \(u\) wire waveform showing two signals.}
 		\label{fig:data_signal_finding_raw}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[t]{0.48\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{./plots/data_signal_finding_mf.pdf}
 		\caption[Matched filter output]{The output of the matched filter with the threshold shown in red.}
 		\label{fig:data_signal_finding_mf}
 	\end{subfigure}
-		\begin{subfigure}[b]{0.48\textwidth}
+		\begin{subfigure}[t]{0.48\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{./plots/data_signal_finding_unshaped.pdf}
 		\caption[Unshaped signals]{The `unshaped' signals.}
 		\label{fig:data_signal_finding_unshaped}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[t]{0.48\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{./plots/data_signal_finding_msf.pdf}
 		\caption[Multiple signal finger output]{The output of a \SI{2}{\micro\s} triangular filter on the unshaped signals.}
