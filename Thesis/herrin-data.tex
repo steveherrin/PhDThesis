@@ -16,12 +16,13 @@
 \centering
 \caption[Electronic shaping times]{The shaping times for the signal readouts in EXO-200.}
 \label{tab:data_shaping_times}
-\begin{tabular}{l c c c c c}\toprule
-				&						\multicolumn{5}{c}{Stage Type}										\\\cmidrule{2-6}
-	Channel Type	&	\multicolumn{2}{c}{Integration (\si{\micro\s})}	&	\multicolumn{3}{c}{Differentiation (\si{\micro\s})}	\\\midrule
-	APDs		&	3		&	3						&	10		&	10	&	300					\\
-	\(u\) wires		&	1.5		&	1.5						&	40		&	40	&	measured (nominally 60)	\\
-	\(v\) wires		&	3		&	3						&	10		&	10	&	60					\\\bottomrule
+\begin{tabular}{l c @{\hskip 20pt} c c c @{\hskip 20pt} c c c}\toprule
+							&&						\multicolumn{6}{c}{Stage Type}													\\\cmidrule{3-8}
+	Channel Type				&&	\multicolumn{2}{c}{Integration (\si{\micro\s})}	&&	\multicolumn{3}{c}{Differentiation (\si{\micro\s})}				\\\midrule
+	APDs					&&	3				&		3			&&	10				&	10				&	300			\\
+	\multirow{2}{*}{\(u\) wires}		&&	\multirow{2}{*}{1.5}	&	\multirow{2}{*}{1.5}	&&	\multirow{2}{*}{40}	&	\multirow{2}{*}{40}	& 	measured 	\\
+							&&					&					&&					&					& 	(nominally 60)	\\
+	\(v\) wires					&&	3				&		3			&&	10				&	10				&	60			\\\bottomrule
 \end{tabular}
 \end{table}
 
