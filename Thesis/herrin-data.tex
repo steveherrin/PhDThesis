@@ -20,12 +20,12 @@
 				&						\multicolumn{5}{c}{Stage Type}										\\\cmidrule{2-6}
 	Channel Type	&	\multicolumn{2}{c}{Integration (\si{\micro\s})}	&	\multicolumn{3}{c}{Differentiation (\si{\micro\s})}	\\\midrule
 	APDs		&	3		&	3						&	10		&	10	&	300					\\
-	\(u\) wires		&	1.5		&	1.5						&	40		&	40	&	60					\\
+	\(u\) wires		&	1.5		&	1.5						&	40		&	40	&	measured (nominally 60)	\\
 	\(v\) wires		&	3		&	3						&	10		&	10	&	60					\\\bottomrule
 \end{tabular}
 \end{table}
 
-\Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The APD signals and the ionization inductions and collection signals are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of two integrators followed by two differentiators and one final differentiator on the charge preamp. \Cref{tab:data_shaping_times} summarizes the time constants.
+\Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The APD signals and the ionization inductions and collection signals are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of two integrators followed by two differentiators and one final differentiator on the charge preamp. \Cref{tab:data_shaping_times} summarizes the time constants.  The transfer functions of these shapers determine the waveform of a physical signal (ionization or scintillation). In order to improve energy resolution, the final stage differentiation times for the \(u\) wire channels are measured by analyzing the response to charge injected from a capacitor.
 
 After digitization, the Trigger Event Module (TEM) monitors the signals to select interesting events. Due to the low radioactive backgrounds in EXO-200, and the relatively slow rate of \twonu, this trigger is extremely permissive. It is 100\% efficient at triggering on events that deposit more that \todo{Look up} in the liquid xenon. The average trigger rate during routine data taking is approximately \SI{8}{\mHz}. Additionally, the trigger is forced to fire every \SI{0.1}{\s} in order to ensure the DAQ system is correctly recording events and to provide a measurement of detector live time. When the trigger fires, the DAQ records a frame consisting of digitized waveforms for all channels \SI{\pm1024}{\micro\s} around the trigger time.
 
