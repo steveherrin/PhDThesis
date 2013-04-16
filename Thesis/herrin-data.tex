@@ -79,6 +79,12 @@ Signals that are collected on a \(u\) wire channel can induce signals in neighbo
 \end{itemize}
 
 \subsection{Signal Clustering}
+Once signals have been identified, signals of the same type may be bundled together:
+\begin{itemize}
+\item \(u\) wire signals: signals that are on neighboring channels and are within \SI{3.5}{\micro\s} of each other most likely came from the same energy deposition, and so are bundled together. This bundle is assigned the energy-weighted mean time and \(u\) position of the constituent signals.
+\item \(v\) wire signals: induction effects from a single energy deposition may affect more than the nearest-neighbor channels. \(v\) wire signals are bundled together if \(|(t_{i} + (\SI{2.97}{\micro\s})\Delta v) - t_0|< \SI{4.5}{\micro\s}\), where \(t_0\) is the largest amplitude signal and \(\Delta v\) is the difference in channel number between the largest signal and signal \(i\). This is based on an empirical measurement that channels farther away from the event fit to earlier signal times. The resulting bundle is assigned the energy-weighted mean \(v\) position of the bundled signals and the time of the largest signal.
+\item The sum APD plane signals are bundled together if they have times within \SI{6}{\micro\s} (based on the integration times for the shaping circuits). This bundle is assigned the energy-weighted mean time of the signals.
+\end{itemize}
 
 \section{Corrections}
 \subsection{Gain Corrections}
