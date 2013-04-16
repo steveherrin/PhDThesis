@@ -68,6 +68,15 @@ The matched filter technique\cite{North:1963fk} convolves a time-reversed templa
 While the matched filter is good at identifying that there was a signal on a wire, a refined analysis is needed to identify if multiple signals occurred in a short period of time. As \cref{fig:data_signal_finding_raw} shows, the matched filter only finds one signal when two are clearly visible. To find other signals, a \SI{256}{\micro\s} portion of the raw waveform is unshaped (by convolving the signal with the inverse transfer function of the shapers), then reshaped with a \SI{2}{\micro\s} triangular filter. Peaks in the output correspond to distinct signals. Finding multiple signals aids in discriminating against Compton-scattering \(\gamma\) ray backgrounds.
 
 \subsection{Signal Parameter Extraction}
+Once signals have been identified in a waveform, information about their energies and times are extracted by fitting a template waveforms (determined by the shaping times in \cref{tab:data_shaping_times}) to the waveforms. This is done by minimizing the \(\chi^2\) statistic formed by comparing the baseline-subtracted waveform to the template waveform. Signals that fit to similar times are combined. Signals that fit to small amplitudes or have large errors on the fit amplitude are removed. Minimization is repeated until no more signals need to be combined or removed. This is done on the individual \(u\) and \(v\) wire channels, and on the two plane sum APD signals.
+
+Signals that are collected on a \(u\) wire channel can induce signals in neighboring channels. These induction signals could be mistaken for collection signals. Induction signals are identified and removed by combining information from a number of metrics:
+\begin{itemize}
+\item The rise times and maximum-to-minimum times of the pulses in the waveforms are shorter for induction signals than collection signals.
+\item The integrals of the unshaped waveforms are much larger for collection signals than induction signals.
+\item Induction signals have a better \(chi^2\) statistic when fit to a template induction signal than to a template collection signal.
+\item Induction signals occur on channels that neighbor channels with very large collection signals (associated with events of \(\gtrsim\)~\SI{1}{\MeV}).
+\end{itemize}
 
 \subsection{Signal Clustering}
 
