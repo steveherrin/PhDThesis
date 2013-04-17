@@ -87,6 +87,17 @@ Once signals have been identified, signals of the same type may be bundled toget
 \item The sum APD plane signals are bundled together if they have times within \SI{6}{\micro\s} (based on the integration times for the shaping circuits). This bundle is assigned the energy-weighted mean time of the signals.
 \end{itemize}
 
+The \(z\) position of each \(u\) wire bundle is calculated using the time of the most recent scintillation bundle and the known drift velocity for ionization. If no scintillation bundle is found within the maximum physically possible drift time, the bundle is not assigned a \(z\) position. Later data quality cuts remove events that have more than one scintillation bundle within this time window, since the \(z\) position becomes ambiguous.
+
+Finally, \(u\) signal bundles are paired with \(v\) signal bundles. For each possible pairing, a likelihood is computed used 3 PDFs:
+\begin{itemize}
+\item After correcting for the known drift velocity between the anodes, the distribution of two paired \(u\) and \(v\) bundle times is a Gaussian centered around 0, with the standard deviation determined by the timing resolution of \SI{1}{\micro\s}.
+\item The relationship between \(u\) and \(v\) signal magnitudes has been studied. Once the magnitudes of the bundles have been appropriately scaled, the distribution of their differences is again Gaussian, smeared by the energy resolution.
+\item Not all \(u\) and \(v\) wire channels cross. If a pairing would cause the signal to be outside the hexagon containing the wires, the likelihood is penalized. The perpendicular distance to the edge of this hexagon is calculated. The penalty is the likelihood to be that distance away from the mean of a Gaussian distribution with standard deviation \SI{4.5}{\mm} (half the wire pitch).
+\end{itemize}
+
+The paired \(u\) and \(v\) bundles provide a 2D transverse position for the event. Since the wires do not cross at right angles, this position is translated to a \((x, y\) position. The \(+y\) direction is vertically upward, the \(+x\) direction is away from the cryostat door, and \(+z\) is along the TPC axis and chosen to make the coordinate system right-handed. The position \((x, y, z) = (0, 0, 0)\) is defined to be the center of the detector, which is the center of the cathode.
+
 \section{Corrections}
 \subsection{Gain Corrections}
 \subsection{Shielding Grid Corrections}
