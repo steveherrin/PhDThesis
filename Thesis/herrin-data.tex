@@ -5,6 +5,7 @@
 \label{ch:data}
 
 \section{Signal Readout}
+\label{sec:data_signal_readout}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./figures/data_simplified_electronics.pdf}
@@ -102,7 +103,22 @@ The paired \(u\) and \(v\) bundles provide a 2D transverse position for the even
 In order to have good energy resolution, events of the same energy should be reconstructed with the same energy, regardless of where in the detector they originated or on which channels the signals were collected. In order to achieve this, a number of corrections are applied to correct for both gain and positional variation. They are detailed below.
 
 \subsection{Wire Gain Corrections}
+\begin{figure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./plots/data_wiregain_pp07.pdf}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./plots/data_wiregain_pp29.pdf}
+	\end{subfigure}
+	\caption[The pair-production peak on individual \(u\) wire channels]{The \SI{1593}{\keV} pair-production peak shown on two different, uncorrected \(u\) wire channels. A Gaussian peak with an exponential background matches the observed spectrum well, and the mean obtained from the fit is then used to correct for channel-to-channel variations.}
+	\label{fig:data_wiregain_pp}
+\end{figure}
 
+Minute differences in the components that read out each \(u\) wire channel can cause channel-to-channel variation in their responses. In order to address this, data from \thorium{228} calibration runs is used. The \SI{2615}{\keV} \(\gamma\) ray can produce an electron-positron pair with combined energy \SI{1593}{\keV}. Since the electron and positron deposit their energy in a small volume, this peak is clearly visible on individual wire channels. A scaling factor for each channel is determined by fitting these peaks scaling so that it occurs at the same value for each channel. \Cref{fig:data_wiregain_pp} shows examples for two channels.
+
+Environmental conditions can also cause the response to shift over time. To address this, each channel has a capacitor that can inject a known amount of charge. These charge injections are done \about{} daily and used to measure the shaping time for the charge preamp (see \cref{sec:data_signal_readout}), but can also be used to measure the time variation of each individual channel. The time variation is tracked, and applied as a very small correction on top of the channel-to-channel correction.
 
 \subsection{Shielding Grid Correction}
 When ionization is created in a TPC, the positively charged ions move more slowly than the much less massive electrons. These positive ions can induce a signal on the collection wires opposite the collection signal. The measured signal will be reduced. For events far from the anode, the induction wire grid shields the collection wires from this effect. However, closer to the anode, the shielding grid is not perfect\cite{Bunemann:1949kx}, and so this effect must be corrected for.\todo{Fill in final details, whatever gets decided on.}
