@@ -29,9 +29,10 @@
 
 \Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The APD signals and the ionization inductions and collection signals are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of two integrators followed by two differentiators and one final differentiator on the charge preamp. \Cref{tab:data_shaping_times} summarizes the time constants.  The transfer functions of these shapers determine the waveform of a physical signal (ionization or scintillation). In order to improve energy resolution, the final stage differentiation times for the \(u\) wire channels are measured by analyzing the response to charge injected from a capacitor.
 
-After digitization, the Trigger Event Module (TEM) monitors the signals to select interesting events. Due to the low radioactive backgrounds in EXO-200, and the relatively slow rate of \twonu, this trigger is extremely permissive. It is 100\% efficient at triggering on events that deposit more that \todo{Look up} in the liquid xenon. The average trigger rate during routine data taking is approximately \SI{8}{\mHz}. Additionally, the trigger is forced to fire every \SI{0.1}{\s} in order to ensure the DAQ system is correctly recording events and to provide a measurement of detector live time. When the trigger fires, the DAQ records a frame consisting of digitized waveforms for all channels \SI{\pm1024}{\micro\s} around the trigger time.
+After digitization, the Trigger Event Module (TEM) monitors the signals to select interesting events. Due to the low radioactive backgrounds in EXO-200, and the relatively slow rate of \twonu, this trigger is extremely permissive. It is 100\% efficient at triggering on events that deposit more than \SI{700}{\keV}\todo{verify} in the liquid xenon. The average trigger rate during routine data taking is approximately \SI{8}{\mHz}. Additionally, the trigger is forced to fire every \SI{0.1}{\s} in order to ensure the DAQ system is correctly recording events and to provide a measurement of detector live time. When the trigger fires, the DAQ records a frame consisting of digitized waveforms for all channels \SI{\pm1024}{\micro\s} around the trigger time.
 
 \section{Signal Reconstruction}
+\label{sec:data_reconstruction}
 \subsection{Signal Finding}
 Either scintillation or ionization signals may cause the trigger to fire. Since there is not a fixed time between the two types of signal, it is necessary to search for signals in the waveforms. This is done in a two stage process: first a matched filter technique searches for signals, and then a waveform unshaping technique refines the found signals. \Cref{fig:data_signal_finding} shows an example of this process.
 
@@ -132,5 +133,16 @@ While trim voltages are applied to the APDs to try to achieve a uniform response
 \section{Calibration}
 
 \section{Data Quality Cuts}
+Once the data has been processed, a number of data quality cuts are applied before it can be used in analyses. These cuts help ensure that the detector response and behavior are consistent throughout the data set. Summarizing them:
+\begin{itemize}
+\item The DAQ must be operating normally. All voltages must be nominal, and the trigger must be the standard one. Channels must not have an unusual baseline or RMS (indicating high noise).
+\item The number of forced \SI{0.1}{\Hz} triggers must be consistent with the DAQ recorded start and end time for the data run.
+\item The rate at which the DAQ records triggers must not be unusually high or low. Individual channels must not be creating abnormally many or few triggers.
+\item The active muon veto must be operational.
+\item The electron lifetime in the TPC must be good and not changing rapidly. The considerations behind this cut are explained in \cref{sec:el_practical_considerations}.
+\item The rate of events that cannot be reconstructed (as in \cref{sec:data_reconstruction}) must be small.
+\item The rate of events with energies greater than \SI{300}{\keV}, \SI{1000}{\keV}, and \SI{2000}{\keV} should not vary significantly from previously observed rates.
+\item The run must be long enough (\SI{1800}{\s}) that the above criteria can be properly evaluated.
+\end{itemize}
 
 \end{document}
