@@ -4,6 +4,22 @@
 \chapter{Measuring Double-beta Decay}
 \label{ch:analysis}
 
+\section{Event Selection}
+\subsection{Timing-based Vetoes}
+In order to reduce backgrounds (described in \cref{sec:muon_motivation}) due to cosmic-ray muons, two cuts are applied to the data:
+\begin{itemize}
+\item Events that occur within \SI{0.1}{\s} of a hit in a muon veto system panel are cut.
+\item Events that occur within \SI{10}{\s} of a muon passing through the TPC (identified by the method in \cref{ch:muons}) are cut.
+\end{itemize}
+These cuts are designed to remove as many cosmogenic background events as possible while not cutting a portion of the detector live time so large that the trade-off in signal-to-background ratio is not worth it. The TPC muon cut removes X.X\% of the live time, while the muon veto system panel cut removes X.X\% of the live time. Since these are often coincident, the total impact is X.X\%.\todo{Get the final numbers for these.}
+
+Events occurring near each other in time are likely to be due to a decay of some radioactive contaminant, followed by another decay of a short-lived daughter. For example, the \isotope{222}{Rn} daughter \isotope{214}{Bi} \(\beta^{-}\) decays to \isotope{214}{Po}, which then \(\alpha\) decays with a \SI{164}{\micro\s} half-life.  Events with more than one scintillation signal identified are cut for this reason. Furthermore, any event is vetoed if it occurs within \SI{\pm1}{\s} of another event. The dead-time incurred is X.X\%.
+
+\subsection{Other Cuts}
+
+\subsection{Quantities of Interest}
+Once an event passes the data quality cuts
+
 \section{Monte Carlo Simulations of Signals and Backgrounds}
 
 \section{Maximum Likelihood Method}
