@@ -18,19 +18,6 @@ Only single site full-absorption events are used to make the light map, since bo
 
 \subsection{Binning the Detector Volume}
 
-\begin{sidewaysfigure}[tbhp]
-\centering
-\includegraphics[width=\textwidth]{./plots/lightmap_binned_phi_slices.pdf}
-\caption[Lightmap \(\phi\) slices]{The lightmap, showing the bins in \(r\) (horizontal axis) and \(z\) (vertical axis) for each of the 8 \(\phi\) bins. Note the finer binning around the cathode at \(z=0\).}
-\label{fig:lightmap_binned_phi_slices}
-\end{sidewaysfigure}
-\begin{sidewaysfigure}[tbhp]
-\centering
-\includegraphics[width=\textwidth]{./plots/lightmap_binned_z_slices.pdf}
-\caption[Lightmap \(z\) slices]{The lightmap, showing the bins in \(r\) and \(\phi\) for each of the 13 \(z\) bins.}
-\label{fig:lightmap_binned_z_slices}
-\end{sidewaysfigure}
-
 The detector volume is divided into 1352 spatial bins. This binning is split into 8 \(\phi\) bins, 13 radial bins, and 13 \(z\) bins. The \(\phi\) binning is evenly-spaced. For the \(z\) binning, the TPC is divided evenly into 11 slices. The central slice is then divided into 3 even slices, since the response is observed to change rapidly near the cathode. The radial binning consists of 1 bin from \SIrange{0}{3}{\mm}, bins every \SI{20}{mm} from \SIrange{30}{90}{\mm}, bins every \SI{10}{\mm} from \SIrange{90}{120}{\mm}, and bins every \SI{8}{mm} from \SIrange{120}{168}{\mm}. This binning is chosen to ensure adequate statistics within all bins, and to optimally map the response in regions with a high light collection gradient.
 
 Full absorption, single site events from all calibrations are placed into the bins according to the event location. Then the mean of each bin is stored in a 3-dimensional histograms. This histogram stores the scintillation response in each bin of the detector and is referred to as the ``light map''. It is stored in a database. \Cref{fig:lightmap_binned_phi_slices,fig:lightmap_binned_z_slices} \todo{Get new versions of these} show an example light map. Histograms of the number of events in each bin, and the error on the mean, are also retained to ensure an adequate amount of data was used.
@@ -67,7 +54,7 @@ Then \cref{eq:lightmap_trilinear} can still be used. In this case, \(\phi_d\) wi
 
 \subsection{Correcting for Light Response}
 
-To correct for the light response, first the histogram containing the light map is normalized such that the average response is 1. Let \(F(r_i, \phi_j, z_k)\) be the value of the normalized light map for the bin that has center \((r_i, \phi_j, z_k)\). Then let \(f(r,\phi,z)\) be the trilinear interpolation of \(F\). \Cref{fig:lightmap_correction_phi_slices,fig:lightmap_correction_z_slices} show an example of this interpolation\todo{Add new pdf versions of these}. The normalized scintillation response for an event is
+To correct for the light response, first the histogram containing the light map is normalized such that the average response is 1. Let \(F(r_i, \phi_j, z_k)\) be the value of the normalized light map for the bin that has center \((r_i, \phi_j, z_k)\). Then let \(f(r,\phi,z)\) be the trilinear interpolation of \(F\). \Cref{fig:lightmap_correction_phi_slices,fig:lightmap_correction_z_slices} show an example of this interpolation. The normalized scintillation response for an event is
 \begin{equation}
 g = \frac{\sum_{m=1}^{N}E_m f(r_m, \phi_m, z_m)}{\sum_{m=1}^{N}E_m}
 \label{eq:lightmap_weighted_response}
@@ -81,17 +68,31 @@ E_{s,\text{corrected}} = \frac{E_s}{g}
 \end{equation}
 is the corrected signal.
 
-\begin{sidewaysfigure}[tbhp]
+\begin{sidewaysfigure}[p]
+\centering
+\includegraphics[width=\textwidth]{./plots/lightmap_binned_phi_slices.pdf}
+\caption[Lightmap \(\phi\) slices]{The lightmap, showing the bins in \(r\) (horizontal axis) and \(z\) (vertical axis) for each of the 8 \(\phi\) bins. Note the finer binning around the cathode at \(z=0\).}
+\label{fig:lightmap_binned_phi_slices}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}[p]
+\centering
+\includegraphics[width=\textwidth]{./plots/lightmap_binned_z_slices.pdf}
+\caption[Lightmap \(z\) slices]{The lightmap, showing the bins in \(r\) and \(\phi\) for each of the 13 \(z\) bins.}
+\label{fig:lightmap_binned_z_slices}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}[p]
 \centering
 \includegraphics[width=\textwidth]{./plots/lightmap_correction_phi_slices.pdf}
 \caption[Correction function \(\phi\) slices]{The light response function \(f(r,\phi,z)\), evaluated at 8 discrete values of \(\phi\) over the full range of \(r\) (horizontal axis) and \(z\) (vertical axis).}
 \label{fig:lightmap_correction_phi_slices}
 \end{sidewaysfigure}
 
-\begin{sidewaysfigure}[tbhp]
+\begin{sidewaysfigure}[p]
 \centering
 \includegraphics[width=\textwidth]{./plots/lightmap_correction_z_slices.pdf}
-\caption[Correction function \(z\) slices]{The light response function \(f(r,\phi,z)\), evaluated at 13 discrete values of \(z\) over the full range of \(x\) (horizontal axis) and \(y\) (vertical axis).}\label{fig:lightmap_correction_z_slices}
+\caption[Correction function \(z\) slices]{The light response function \(f(r,\phi,z)\), evaluated at 13 discrete values of \(z\) over the full range of \(x\) (horizontal axis) and \(y\) (vertical axis). Notice that the most light is collected for events near the anodes. Near the \(+z\) anode, just above the \(+x\) axis there is a region of low collection due to a disabled APD gang.}\label{fig:lightmap_correction_z_slices}
 \end{sidewaysfigure}
 
 \end{document}
