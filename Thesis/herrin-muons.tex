@@ -5,13 +5,13 @@
 \label{ch:muons}
 
 \section{Motivation}
-\label{sec:muon:motivation}
+\label{sec:muon_motivation}
 One potential source of background in EXO-200 is unstable isotopes of common elements, created by neutron activation. The largest source of these neutrons is spallation by cosmic ray muons. Indeed, EXO-200 is located underground to reduce cosmic activation. However, the energy spectrum of muons produced in the upper atmosphere has a long tail at higher energies, and so some of the muons produced in the upper atmosphere can still reach deep underground.
 
 Neutrons from these muons can capture on detector materials or the HFE, producing high-energy gamma rays that might Compton scatter in the detector and leave behind energy close to the Q value for \xenon{136}. This process occurs on millisecond timescales, and so the gamma ray can be vetoed if the muon can be tagged. A neutron capture on \xenon{136} produces \xenon{137}, an isotope that beta decays with a Q value of \SI{3.8}{\MeV}, which means the beta particle produced in the decay could have an energy close to the Q value of \xenon{136}. Likewise, the (n,~2n) reaction on \xenon{136} can produce \xenon{135}, which beta decays with a Q value of \SI{1.2}{\MeV} and is is a background for the two-neutrino mode. The half lives of \xenon{137} and \xenon{135} are \SI{3.8}{\minute} and \SI{9.1}{\hour} respectively, and so vetoing becomes more difficult. But a good measurement of the muon flux can put constraints on the amount of both isotopes expected.
 
 \section{Identifying Muons}
-\label{sec:muon:id}
+\label{sec:muon_id}
 Muons that reach underground have typical energies of \SIrange{1}{1000}{\GeV}, a range in which they are minimally ionizing. Those that pass through the detector typically leave a straight line of ionization along their path. Like any energy deposition in EXO-200, some of the energy deposited becomes scintillation light, while the remaining ionization is drifted and collected. Thus, a muon passing through EXO-200 will show a bright flash of light, followed by ionization across many wire channels, linearly spread in time. \Cref{fig:muon:eventdisplay} shows a typical example. This distinct linear trail provides a means to tag the muon.
 
 \begin{figure}[htbp]
@@ -93,7 +93,7 @@ Overall, of two million simulated muons that hit the TPC, \(1125723\pm1061\text{
  \end{figure}
  
 \section{The Muon Flux at WIPP}
-\label{sec:muon:wipp}
+\label{sec:muon_wipp}
 The muon flux through the detector divided into discrete solid angle bins is simply
 \begin{equation}
 \label{eq:muon_fluxdef}
