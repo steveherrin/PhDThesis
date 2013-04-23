@@ -245,18 +245,22 @@ for i in range(n):
     g_ih_3s.SetPoint(i, m_l[i], ih_hi_l[i][3])
     g_ih_3s.SetPoint(n+i, m_l[n-i-1], ih_lo_l[n-i-1][3])
 
+color1s = ROOT.kBlue
+color2s = ROOT.kOrange
+color3s = ROOT.kTeal
+
 g_nh_1s.SetFillStyle(1001)
-g_nh_1s.SetFillColor(ROOT.kBlue+2)
+g_nh_1s.SetFillColor(color1s)
 g_nh_2s.SetFillStyle(1001)
-g_nh_2s.SetFillColor(ROOT.kBlue+1)
+g_nh_2s.SetFillColor(color2s)
 g_nh_3s.SetFillStyle(1001)
-g_nh_3s.SetFillColor(ROOT.kBlue+0)
+g_nh_3s.SetFillColor(color3s)
 g_ih_1s.SetFillStyle(1001)
-g_ih_1s.SetFillColor(ROOT.kBlue+2)
+g_ih_1s.SetFillColor(color1s)
 g_ih_2s.SetFillStyle(1001)
-g_ih_2s.SetFillColor(ROOT.kBlue+1)
+g_ih_2s.SetFillColor(color2s)
 g_ih_3s.SetFillStyle(1001)
-g_ih_3s.SetFillColor(ROOT.kBlue+0)
+g_ih_3s.SetFillColor(color3s)
 
 c = ROOT.TCanvas("c", "Hierarchy", 600, 600)
 c.SetRightMargin(0.02)
