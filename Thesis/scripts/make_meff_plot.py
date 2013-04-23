@@ -29,15 +29,26 @@ s_13_nh = Parameter(0.0246, 0.0218, 0.0275, 0.019, 0.030, 0.017, 0.033)
 s_13_ih = Parameter(0.0250, 0.0223, 0.0276, 0.020, 0.030, 0.017, 0.033)
 
 # limits
-exo_limit = 0.140
+exo_limit_lo = 0.140
+exo_limit_hi = 0.380
 
 # 0.23 eV >> mass splittings, so could expand to zeroth order and call it a day
-cosmo_sum = 0.23
+cosmo_sum_lo = 0.23
+cosmo_sum_hi = 1.08
 #cosmo_limit = cosmo_sum/3
 # but let's use the 1st order expansion, which Mathematica tells me is
-cosmo_limit_ih = cosmo_sum/3 - m_atm_ih.bf/cosmo_sum - 0.5*m_sol.bf/cosmo_sum
-cosmo_limit_nh = cosmo_sum/3 - 0.5/cosmo_sum*(m_atm_nh.bf + m_sol.bf)
-cosmo_limit = max(cosmo_limit_ih, cosmo_limit_nh)
+cosmo_limit_ih_lo = (cosmo_sum_lo/3
+                     - m_atm_ih.bf/cosmo_sum_lo
+                     - 0.5*m_sol.bf/cosmo_sum_lo)
+cosmo_limit_nh_lo = (cosmo_sum_lo/3
+                     - 0.5/cosmo_sum_lo*(m_atm_nh.bf + m_sol.bf))
+cosmo_limit_lo = max(cosmo_limit_ih_lo, cosmo_limit_nh_lo)
+cosmo_limit_ih_hi = (cosmo_sum_hi/3
+                     - m_atm_ih.bf/cosmo_sum_hi
+                     - 0.5*m_sol.bf/cosmo_sum_hi)
+cosmo_limit_nh_hi = (cosmo_sum_hi/3
+                     - 0.5/cosmo_sum_hi*(m_atm_nh.bf + m_sol.bf))
+cosmo_limit_hi = max(cosmo_limit_ih_hi, cosmo_limit_nh_hi)
 
 #print("IH cosmic limit 0th: %0.3e 1st: %0.3e"%(cosmo_limit, cosmo_limit_ih))
 #print("NH cosmic limit 0th: %0.3e 1st: %0.3e"%(cosmo_limit, cosmo_limit_nh))      
@@ -210,14 +221,15 @@ for i, m in enumerate(numpy.logspace(log_m_lo, log_m_hi, n, False)):
     ih_lo_l.append(ih_lo)
     ih_hi_l.append(ih_hi)
 
-print("For a limit on m_bb of %0.3e eV:"%(exo_limit))
-found_limit = [False for x in xrange(4)]
-for (i, m) in enumerate(m_l):
-    for j in xrange(1, len(found_limit)):
-        y = min(nh_lo_l[i][j], ih_lo_l[i][j])
-        if (not found_limit[j]) and y > exo_limit:
-            print("    %i sigma limit on m_min: %0.3e eV"%(j, m))
-            found_limit[j] = True
+for exo_limit in (exo_limit_lo, exo_limit_hi):
+    print("For a limit on m_bb of %0.3e eV:"%(exo_limit))
+    found_limit = [False for x in xrange(4)]
+    for (i, m) in enumerate(m_l):
+        for j in xrange(1, len(found_limit)):
+            y = min(nh_lo_l[i][j], ih_lo_l[i][j])
+            if (not found_limit[j]) and y > exo_limit:
+                print("    %i sigma limit on m_min: %0.3e eV"%(j, m))
+                found_limit[j] = True
             
     
     
@@ -273,13 +285,6 @@ g_ih_3s.Draw("F")
 g_ih_2s.Draw("F")
 g_ih_1s.Draw("F")
 
-l = ROOT.TLegend(.85, .15, .95, .30)
-l.SetFillColor(ROOT.kWhite)
-l.AddEntry(g_nh_1s, "1 #sigma", "f")
-l.AddEntry(g_nh_2s, "2 #sigma", "f")
-l.AddEntry(g_nh_3s, "3 #sigma", "f")
-l.Draw()
-
 c.SetLogy()
 c.SetLogx()
 g_nh_3s.SetTitle("")
@@ -308,31 +313,77 @@ t_ih.SetTextSize(0.05)
 t_ih.SetTextFont(42)
 t_ih.Draw()
 
-g_exo = ROOT.TGraph(2)
-g_exo.SetPoint(0, graph_lo, exo_limit)
-g_exo.SetPoint(1, graph_hi, exo_limit)
-g_exo.SetLineColor(ROOT.kRed)
-g_exo.SetLineStyle(2)
-g_exo.Draw()
-t_exo = ROOT.TText(6e-4, .16, "EXO-200 Limit")
-t_exo.SetTextColor(ROOT.kRed)
-t_exo.SetTextSize(0.05)
-t_exo.SetTextFont(42)
-t_exo.Draw()
+limit_color = ROOT.kRed
+
+g_exo_lo = ROOT.TGraph(2)
+g_exo_lo.SetPoint(0, graph_lo, exo_limit_lo)
+g_exo_lo.SetPoint(1, graph_hi, exo_limit_lo)
+g_exo_lo.SetLineColor(limit_color)
+g_exo_lo.SetLineStyle(2)
+g_exo_lo.Draw()
+g_exo_hi = ROOT.TGraph(2)
+g_exo_hi.SetPoint(0, graph_lo, exo_limit_hi)
+g_exo_hi.SetPoint(1, graph_hi, exo_limit_hi)
+g_exo_hi.SetLineColor(limit_color)
+g_exo_hi.SetLineStyle(2)
+g_exo_hi.Draw()
+t_exo_lo = ROOT.TText(3e-4, exo_limit_lo*1.2, "EXO-200 Run2a (GCM)")
+t_exo_lo.SetTextColor(limit_color)
+t_exo_lo.SetTextSize(0.04)
+t_exo_lo.SetTextFont(42)
+t_exo_lo.Draw()
+t_exo_hi = ROOT.TText(3e-4, exo_limit_hi*1.2, "EXO-200 Run2a (QRPA-2)")
+t_exo_hi.SetTextColor(limit_color)
+t_exo_hi.SetTextSize(0.04)
+t_exo_hi.SetTextFont(42)
+t_exo_hi.Draw()
+
+ar_exo_lo = ROOT.TArrow(6e-4, exo_limit_lo, 6e-4, 0.67*exo_limit_lo, 0.03, ">")
+ar_exo_lo.SetLineColor(limit_color)
+ar_exo_lo.Draw()
+ar_exo_hi = ROOT.TArrow(6e-4, exo_limit_hi, 6e-4, 0.67*exo_limit_hi, 0.03, ">")
+ar_exo_hi.SetLineColor(limit_color)
+ar_exo_hi.Draw()
 
 #print("Cosmo limit was %f."%(cosmo_limit))
 
-g_cosmo = ROOT.TGraph(2)
-g_cosmo.SetPoint(0, cosmo_limit, graph_lo)
-g_cosmo.SetPoint(1, cosmo_limit, graph_hi)
-g_cosmo.SetLineColor(ROOT.kRed)
-g_cosmo.SetLineStyle(2)
-g_cosmo.Draw()
-t_cosmo = ROOT.TText(cosmo_limit+0.02, 2e-2, "Cosmological Limit")
-t_cosmo.SetTextColor(ROOT.kRed)
-t_cosmo.SetTextSize(0.05)
-t_cosmo.SetTextFont(42)
-t_cosmo.SetTextAngle(-90)
-t_cosmo.Draw()
+g_cosmo_lo = ROOT.TGraph(2)
+g_cosmo_lo.SetPoint(0, cosmo_limit_lo, graph_lo)
+g_cosmo_lo.SetPoint(1, cosmo_limit_lo, graph_hi)
+g_cosmo_lo.SetLineColor(limit_color)
+g_cosmo_lo.SetLineStyle(2)
+g_cosmo_lo.Draw()
+g_cosmo_hi = ROOT.TGraph(2)
+g_cosmo_hi.SetPoint(0, cosmo_limit_hi, graph_lo)
+g_cosmo_hi.SetPoint(1, cosmo_limit_hi, graph_hi)
+g_cosmo_hi.SetLineColor(limit_color)
+g_cosmo_hi.SetLineStyle(2)
+g_cosmo_hi.Draw()
+t_cosmo_hi = ROOT.TText(cosmo_limit_hi*1.2, 1.5e-2, "Planck+WP+highL")
+t_cosmo_hi.SetTextColor(limit_color)
+t_cosmo_hi.SetTextSize(0.04)
+t_cosmo_hi.SetTextFont(42)
+t_cosmo_hi.SetTextAngle(-90)
+t_cosmo_hi.Draw()
+t_cosmo_lo = ROOT.TText(cosmo_limit_lo*1.2, 1.5e-2, "Planck+WP+highL+BAO")
+t_cosmo_lo.SetTextColor(limit_color)
+t_cosmo_lo.SetTextSize(0.04)
+t_cosmo_lo.SetTextFont(42)
+t_cosmo_lo.SetTextAngle(-90)
+t_cosmo_lo.Draw()
+
+ar_cosmo_lo = ROOT.TArrow(cosmo_limit_lo, 1e-3, 0.67*cosmo_limit_lo, 1e-3, 0.03, ">")
+ar_cosmo_lo.SetLineColor(limit_color)
+ar_cosmo_lo.Draw()
+ar_cosmo_hi = ROOT.TArrow(cosmo_limit_hi, 1e-3, 0.67*cosmo_limit_hi, 1e-3, 0.03, ">")
+ar_cosmo_hi.SetLineColor(limit_color)
+ar_cosmo_hi.Draw()
+
+l = ROOT.TLegend(.85, .12, .95, .27)
+l.SetFillColor(ROOT.kWhite)
+l.AddEntry(g_nh_1s, "1 #sigma", "f")
+l.AddEntry(g_nh_2s, "2 #sigma", "f")
+l.AddEntry(g_nh_3s, "3 #sigma", "f")
+l.Draw()
 
 raw_input("Press enter...")
