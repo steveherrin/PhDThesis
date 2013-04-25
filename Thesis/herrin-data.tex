@@ -140,6 +140,42 @@ Ionization drifting in the TPC is attenuated by attachment to electronegative im
 While trim voltages are applied to the APDs to try to achieve a uniform response, there is still some variation in the gain from channel to channel. Additionally, there is geometric variation in the amount of scintillation light actually reaching the APDs due to shadowing from the wire planes, imperfect reflection off of the walls, and other effects. Using radioactive source calibration runs, the overall response from both of these factors can be mapped out and corrected for. \Cref{app:lightmap} details this correction.
 
 \section{Calibration}
+The calibration system described in \cref{sec:detector_calibration} is used to calibrate the energy scale of the detector. This is done separately for single site and multiple site events.
+\subsection{Fit Model}
+For gamma ray lines, a Gaussian distribution representing the full-absorption peak is combined with a complimentary error function representing Compton scatter events that escape the detector. Explicitly, the model is:
+\begin{equation}
+\frac{dN}{dE} = a \frac{1}{\sigma\sqrt{2\pi}}\exp\left(\frac{-(E-E_0)^2}{2\sigma^2}\right)+ (1-a)\text{erfc}\left(\frac{E-E_0}{\sqrt{2}\sigma}\right)
+\label{eq:data_fitmodel}
+\end{equation}
+where the peak energy \(E_0\), width \(\sigma\), and peak fraction \(a\) are all allowed to float.
+
+This model is fit to spectra collected in \isotope{137}{Cs} and  \thorium{228} calibrations, and a sum of two such models is fit to data from \isotope{60}{Co} calibrations, since it emits two gamma rays similar in energy. The energy spectra are fit using an unbinned maximum likelihood method. This fit is performed twice, first over a broad energy range to roughly identify the peak, then again in the range \((-3.0\sigma, +2.5\sigma)\) from the found peak to more precisely determine the mean energy, and to minimize bias introduced by the choice of fit window.
+
+\begin{table}[htp]
+\centering
+\caption{The bias for fits using \cref{eq:data_fitmodel} obtained from Monte Carlo simulations of the sources. It is defined as \((E_\text{true} - E_\text{fit})\). It differs for single site (SS) and multiple site (MS) events.}
+\label{tab:data_fit_biases}
+\begin{tabular}{c c c c c}\toprule
+	&	\multicolumn{4}{c}{\((E_\text{true} - E_\text{fit})\) (\si{\keV})}								\\\cmidrule{2-5}
+	&	\isotope{137}{Cs} (at \SI{662}{\keV})		&	\isotope{60}{Co} (at \SI{1173}{\keV})	&\isotope{60}{Co} (at \SI{1333}{\keV})	&	\isotope{228}{Th} (at \SI{2615}{\keV})\\\midrule
+SS 	& 	3.19				& 3.19				& 2.50				&	3.82 				\\
+MS 	& 	8.13 				& 6.19 				& 6.35 				&	7.15				\\\bottomrule
+\end{tabular}
+\end{table}
+
+This model exhibits a slight bias. That is, the mean energy found is different than the true value. This can be measured by applying the fit model to Monte Carlo simulations of the sources, where the true peak location is known. The biases are summarized in \cref{tab:data_fit_biases}. They are taken into account when calibrating.
+
+\subsection{Rotation Angle}
+As described in \cref{sec:xe_combining_ion_and_scint}, the ionization and scintillation signals can be combined by projection onto a rotated axis in order to achieve good energy resolution. In order to determine the optimal angle, the energy spectra for calibration runs are constructed using a range of different angles using
+\begin{equation}
+E_R = E_{I}\cos\theta_R + E_{S}\sin\theta_R
+\label{eq:data_E_rotated}
+\end{equation}
+where \(E_I\) and \(E_S\) are the ionization and scintillation signals after all corrections, but no calibrations, have been applied. The spectra are fit with the model in \cref{eq:data_fitmodel}, and the angle that optimizes the resolution \(\sigma/E_0\) is selected. \Cref{fig:data_optimal_theta} shows an example of this process. Because \(E_I\) and \(E_S\) are uncalibrated, the value of \(\theta_R\) determined in this manner has no physical meaning.
+
+\subsection{Overall Energy Scale}
+
+
 
 \section{Data Quality Cuts}
 Once the data has been processed, a number of data quality cuts are applied before it can be used in analyses. These cuts help ensure that the detector response and behavior are consistent throughout the data set. Summarizing them:
