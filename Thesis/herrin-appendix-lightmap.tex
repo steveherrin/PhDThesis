@@ -47,7 +47,7 @@ f(r, \phi, z) &=&   & F(r_{i\phantom{+1}}, \phi_{j\phantom{+1}}, z_{k\phantom{+1
 
 There is a complication, however, when the lower neighbor bin for \(r\) is the \(z\)-axis. In order to ensure that \(f\) is single-valued at \(r=0\), define the value of \(F\) at the axis as the mean value for the surrounding points: 
 \begin{equation}
-F(0, \phi, z_k) = \frac{1}{N_\phi}\sum_{j=1}^{N_\phi} F(r_{1}, \phi_j, z_k)
+F(r_{0}=0, \phi, z_k) = \frac{1}{N_\phi}\sum_{j=1}^{N_\phi} F(r_{1}, \phi_j, z_k)
 \end{equation}
 
 Then \cref{eq:lightmap_trilinear} can still be used. In this case, \(\phi_d\) will not matter in the terms involving \(r_i\).
