@@ -19,7 +19,7 @@ S(T_{1/2}) \propto \epsilon t \frac{a M}{A}
 \label{eq:detector_bgfree_sensitivity}
 \end{equation}
 
-Now suppose that an experiment has some number \(N_b\) of background events in the region of interest. As an approximation, assume that the rate of background events \(b\) is flat over an energy-based region of interest, the width \(\Gamma\) of which increases with the detector resolution. The number of background events should also increase with increasing exposure \(M t\). That is, \(N_b \propto b M t \Gamma\). The confidence limit on \(N_s\) must take into account the Poisson counting uncertainty on \((N_s + N_b)\), which will be dominated by the uncertainty on \(N_b\), and so the sensitivity instead goes like
+Now suppose that an experiment has some number \(N_b\) of background events in the region of interest. As an approximation, assume that the rate of background events \(b\) is flat over an energy-based region of interest, the width \(\Gamma\) of which increases with the detector resolution. The number of background events should also increase with increasing exposure \(M t\). That is, \(N_b \propto b M t \Gamma\). The confidence limit on \(N_s\) must take into account the Poisson counting uncertainty on \((N_s + N_b)\), which will be dominated by the uncertainty on \(N_b\) (denoted \(\Delta N_b\)), and so the sensitivity instead goes like
 \begin{equation}
 S(T_{1/2}) \propto t \epsilon \frac{a M}{A} \frac{1}{\Delta N_b} \approx t \epsilon \frac{a M}{A} \frac{1}{\sqrt{N_b}} \propto \epsilon \frac{a}{A} \sqrt{\frac{M t}{b \Gamma}}
 \label{eq:detector_bg_sensitivity}
