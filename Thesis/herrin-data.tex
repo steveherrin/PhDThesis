@@ -153,10 +153,10 @@ This model is fit to spectra collected in \isotope{137}{Cs} and  \thorium{228} c
 
 \begin{table}[htp]
 \centering
-\caption{The bias for fits using \cref{eq:data_fitmodel} obtained from Monte Carlo simulations of the sources. It is defined as \((E_\text{true} - E_\text{fit})\). It differs for single site (SS) and multiple site (MS) events.}
+\caption[Fit function biases]{The bias for fits using \cref{eq:data_fitmodel} obtained from Monte Carlo simulations of the sources. It is defined as \(E^\text{bias} = (E^\text{true} - E^\text{fit})\). It differs for single site (SS) and multiple site (MS) events.}
 \label{tab:data_fit_biases}
 \begin{tabular}{c c c c c}\toprule
-	&	\multicolumn{4}{c}{\((E_\text{true} - E_\text{fit})\) (\si{\keV})}								\\\cmidrule{2-5}
+	&	\multicolumn{4}{c}{\(E^\text{bias} = (E^\text{true} - E^\text{fit})\) (\si{\keV})}					\\\cmidrule{2-5}
 	&	\isotope{137}{Cs} 	&	\multicolumn{2}{c}{\isotope{60}{Co}}			&	\isotope{228}{Th}	\\
 	&	(at \SI{662}{\keV})	&	(at \SI{1173}{\keV})	&(at \SI{1333}{\keV})		&	(at \SI{2615}{\keV})	\\\midrule
 SS 	& 	3.19				& 3.19				& 2.50				&	3.82 				\\
@@ -164,7 +164,7 @@ MS 	& 	8.13 				& 6.19 				& 6.35 				&	7.15				\\\bottomrule
 \end{tabular}
 \end{table}
 
-This model exhibits a slight bias. That is, the mean energy found is different than the true value. This can be measured by applying the fit model to Monte Carlo simulations of the sources, where the true peak location is known. The biases are summarized in \cref{tab:data_fit_biases}. They are taken into account when calibrating.
+This model exhibits a slight bias. That is, the mean energy found is different than the true value. This can be measured by applying the fit model to Monte Carlo simulations of the sources, where the true peak location is known. The biases are summarized in \cref{tab:data_fit_biases}. The bias varies as a function of energy resolution, and with the peak-to-Compton ratio, which is why it is not the same in all cases.
 
 \subsection{Rotation Angle}
 As described in \cref{sec:xe_combining_ion_and_scint}, the ionization and scintillation signals can be combined by projection onto a rotated axis in order to achieve good energy resolution. In order to determine the optimal angle, the energy spectra for calibration runs are constructed using a range of different angles using
@@ -172,11 +172,66 @@ As described in \cref{sec:xe_combining_ion_and_scint}, the ionization and scinti
 E_R = E_{I}\cos\theta_R + E_{S}\sin\theta_R
 \label{eq:data_E_rotated}
 \end{equation}
-where \(E_I\) and \(E_S\) are the ionization and scintillation signals after all corrections, but no calibrations, have been applied. The spectra are fit with the model in \cref{eq:data_fitmodel}, and the angle that optimizes the resolution \(\sigma/E_0\) is selected. \Cref{fig:data_optimal_theta} shows an example of this process. Because \(E_I\) and \(E_S\) are uncalibrated, the value of \(\theta_R\) determined in this manner has no physical meaning.
+where \(E_I\) and \(E_S\) are the ionization and scintillation signals after all corrections, but no calibrations, have been applied. The spectra are fit with the model in \cref{eq:data_fitmodel}, and the angle that optimizes the resolution \(\sigma/E_0\) is selected. \Cref{fig:data_finding_theta} shows an example of this process. Because \(E_I\) and \(E_S\) are uncalibrated, the value of \(\theta_R\) determined in this manner has no physical meaning.
+
+\subsection{Thorium Peak}
+Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, the optimal rotation angle for the \SI{2615}{\keV} full absorption peak is determined from these calibrations. This angle is used for all data during that week. \SI{2615}{\keV} is close to the \SI{2458}{\keV} Q value for \xenon{136}, and so optimizing the resolution for the thorium peak should also give good resolution near the \zeronu{} peak.
+
+\begin{figure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./plots/data_finding_theta_scan.pdf}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./plots/data_finding_theta_best.pdf}
+	\end{subfigure}
+	\caption[Finding the optimal rotation angle]{The rotation angle is scanned over a range of values (left) in order to find the angle that optimizes rotation. In this case, the optimal angle was \(\theta = 0.18\). On the right, the fit of the model in \cref{eq:data_fitmodel} to the data with the optimal rotation applied (according to \cref{eq:data_E_rotated}).}
+	\label{fig:data_finding_theta}
+\end{figure}
+
 
 \subsection{Overall Energy Scale}
+While thorium source calibrations are taken frequently, the cobalt and cesium sources are generally reserved for dedicated campaigns. Throughout these campaigns, it has been observed that the ratio between the peak energies remain relatively stable, even though their values show some drift. This is shown in \cref{fig:data_energy_ratios_time}. Therefore, the three ratios \(E_\text{Cs}/E_\text{Th}\) and \(E_{\text{Co},i}/E_\text{Th}\) are used as the basis for the calibration. The process for calibration is then:
+\begin{enumerate}
+\item On a week-by-week basis, use thorium calibration data to determine the optimal rotation angle \(\theta(t)\) and to fit the thorium peak \(E^\text{fit}_\text{Th}(t)\) in the spectrum obtained using \cref{eq:data_E_rotated} and that rotation angle. If no thorium data is available for a given week, data from the adjacent weeks are combined and used to estimate the angle and peak for that week.
+\item For each multiple isotope calibration campaign, compute the ratios \(E^\text{fit}_\text{Cs}/E^\text{fit}_\text{Th}\) and \(E^\text{fit}_{\text{Co},i}/E^\text{fit}_\text{Th}\)
+\item Using the mean values from these campaigns and the true ratios, fit a polynomial function \(f\) such that \(f([E^\text{fit}/E^\text{fit}_\text{Th}]|_\text{data}) = [E^\text{fit}/E^\text{fit}_\text{Th}]|_\text{simulation}\). The ratios used for this fit are shown in \cref{tab:data_calib_ratios}.
+\end{enumerate}
+
+\begin{table}[htp]
+\centering
+\caption[Calibration peak ratios]{The mean ratios of the fitted Cs and Co peaks to the Th peaks taken from calibration campaigns. The error on data is the RMS of the ratios from the campaigns.}
+\label{tab:data_calib_ratios}
+\begin{tabular}{r r c c c c c}\toprule
+				&				&	\multicolumn{2}{c}{Single Site}	&	\multicolumn{2}{c}{Multiple Site}		\\\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+isotope			&	E (\si{\keV})	&	data					&	simulation		&	data					&	simulation	\\\midrule
+\isotope{137}{Cs}	&	662 			& \num{0.2513\pm0.0007}	& 0.2523 			& \num{0.2496\pm0.0009}	&	0.2507 	\\
+\isotope{60}{Co}	& 	1173			& \num{0.4488\pm0.0007}	& 0.4480 			& \num{0.4488\pm0.0006}	&	0.4474 	\\
+\isotope{60}{Co}	& 	1333			& \num{0.5109\pm0.0008}	& 0.5095 			& \num{0.5100\pm0.0004}	&	0.5087 	\\\bottomrule
+\end{tabular}
+\end{table}
 
 
+The calibrated energy of an event, then, with rotated energy \(E_R(\theta(t))\) is (taking into account the fit function bias)
+\begin{equation}
+E = \left(E^\text{true}_\text{Th} - E^\text{bias}_\text{Th}\right) f\left(\frac{E_R(\theta(t))}{E^\text{fit}_\text{Th}(t)}\right)
+\label{eq:data_E_calibration}
+\end{equation}
+where
+\begin{equation}
+f(x) = \begin{dcases*}
+	5.17\times10^{-3} + 0.9797 \cdot x + 1.516\times10^{-2} \cdot x^2	&	(single-site events)	\\
+	5.37\times10^{-3} + 0.9784 \cdot x + 1.635\times10^{-2} \cdot x^2	&	(multi-site events)
+	\end{dcases*}
+\end{equation}
+The residuals from the calibration campaigns are shown in \cref{fig:data_calibration_residuals}. This ratio-based method allows for some correction of the time variation without requiring additional time to be spent calibrating.
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./plots/data_calibration_residuals.pdf}
+	\caption[Residuals of energy calibration]{The residuals \((E^\text{fit} - E^\text{true})/E^\text{true}\) for the calibration source peaks after the calibration is applied. The top shows them for the single site calibration, while the bottom shows them for the multiple site calibration. The points are the mean of all source calibration campaigns, while the error bars represent the RMS.}
+	\label{fig:data_calibration_residuals}
+\end{figure}
 
 \section{Data Quality Cuts}
 Once the data has been processed, a number of data quality cuts are applied before it can be used in analyses. These cuts help ensure that the detector response and behavior are consistent throughout the data set. Summarizing them:
