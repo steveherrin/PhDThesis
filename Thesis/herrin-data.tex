@@ -230,10 +230,11 @@ f(x) = \begin{dcases*}
 	\end{dcases*}
 \end{equation}
 The residuals from the calibration campaigns are shown in \cref{fig:data_calibration_residuals}. This ratio-based method allows for some correction of the time variation without requiring additional time to be spent calibrating.
+
 \begin{figure}[htp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./plots/data_calibration_residuals.pdf}
-	\caption[Residuals of energy calibration]{The residuals \((E^\text{fit} - E^\text{true})/E^\text{true}\) for the calibration source peaks after the calibration is applied. The top shows them for the single site calibration, while the bottom shows them for the multiple site calibration. The points are the mean of all source calibration campaigns, while the error bars represent the RMS.}
+	\caption[Residuals of energy calibration]{The residuals \((E^\text{fit,data} - E^\text{fit,sim})/E^\text{sim}\) for the calibration source peaks after the calibration is applied. The fit values are used because both data and simulation suffer from a fitting function bias. The top shows them for the single site calibration, while the bottom shows them for the multiple site calibration. The points are the mean of all source calibration campaigns, while the error bars represent the RMS. The small values indicate the calibration successfully reconstructs the true energy of an event.}
 	\label{fig:data_calibration_residuals}
 \end{figure}
 
