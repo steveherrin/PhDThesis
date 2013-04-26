@@ -101,6 +101,7 @@ Finally, \(u\) signal bundles are paired with \(v\) signal bundles to form a ``c
 The paired \(u\) and \(v\) bundles provide a 2D transverse position for the event. Since the wires do not cross at right angles, this position is translated to a \((x, y)\) position. The \(+y\) direction is vertically upward, the \(+x\) direction is away from the cryostat door, and \(+z\) is along the TPC axis and chosen to make the coordinate system right-handed. The position \((x, y, z) = (0, 0, 0)\) is defined to be the center of the detector, which is the center of the cathode.
 
 \subsection{Topology}
+\label{sec:data_topology}
 An event may have zero, one, or many clusters. This proves a useful tool for discriminating beta decays from gamma ray backgrounds. The electron(s) from a beta decay deposit their energy in a small volume, creating mostly events with one cluster. A small fraction create bremsstrahlung photons that create multiple clusters. Meanwhile, gamma ray backgrounds tend to Compton scatter, producing events with multiple clusters. Some, however, do photoionize the xenon or Compton scatter in a small volume, producing only one cluster. When an electron-positron pair is created, if the \SI{511}{\keV} gamma rays from the positron annihilation escape the detector, this also only produces one cluster.
 
 Two categories of event are created:
@@ -108,6 +109,8 @@ Two categories of event are created:
 \item Single Site (SS) events: events with only one cluster. Additionally, this cluster must have only occurred on two or fewer adjacent \(u\) wires. This selects most beta decay events and few gamma ray events.
 \item Multiple Site (MS) events: events that are not single site. This selects most gamma ray events, with only a small number of beta decay events.
 \end{itemize}
+
+The clustering algorithm above is limited by the position resolution of the detector. For the \(u\) wires, the resolution is dominated by the \SI{9}{\mm} pitch. For the \(v\) wires, the magnitude of the induction signal on a channel is correlated with the signal's distance from that channel. Since induction signals occur on many neighboring channels, the \SI{9999}{\mm} resolution in \(v\) is better than for \(u\). The sampling frequency and shaping times determine the resolution in \(z\). With the multiple signal finder described about, the resolution is about \SI{9999}{\mm}.
 
 \section{Corrections}
 In order to have good energy resolution, events of the same energy should be reconstructed with the same energy, regardless of where in the detector they originated or on which channels the signals were collected. In order to achieve this, a number of corrections are applied to correct for both gain and positional variation. They are detailed below.
