@@ -134,7 +134,48 @@ Minute differences in the components that read out each \(u\) wire channel can c
 Environmental conditions can also cause the response to shift over time. To address this, each channel has a capacitor that can inject a known amount of charge. These charge injections are done \about{} daily and used to measure the shaping time for the charge preamp (see \cref{sec:data_signal_readout}), but can also be used to measure the time variation of each individual channel. The time variation is tracked, and applied as a very small correction on top of the channel-to-channel correction.
 
 \subsection{Shielding Grid Correction}
-When ionization is created in a TPC, the positively charged ions move more slowly than the much less massive electrons. These positive ions can induce a signal on the collection wires opposite the collection signal. The measured signal will be reduced. For events far from the anode, the induction wire grid shields the collection wires from this effect. However, closer to the anode, the shielding grid is not perfect\cite{Bunemann:1949kx}, and so this effect must be corrected for.\todo{Fill in final details, whatever gets decided on.}
+\label{sec:data_grid_correction}
+When ionization is created in a TPC, the positively charged ions move more slowly than the much less massive electrons. These positive ions can induce a signal on the collection wires opposite the collection signal. The measured signal will be reduced. For events far from the anode, the induction wire grid shields the collection wires from this effect. However, closer to the anode, the shielding grid is not perfect\cite{Bunemann:1949kx}, and so this effect must be corrected for.
+
+Monte Carlo simulations using a MAXWELL simulation of the electric field inside the TPC suggest that the measured ionization signal \(E_\text{measured}\) is related to the true ionization signal \(E_\text{true}\) by
+\begin{equation}
+E_\text{measured} = E_\text{true}\left[1 + p_0 \exp \left(\frac{|z| - 195.5\si{\mm}}{p_1}\right)\right]^{-1}
+\label{eq:data_grid_correction}
+\end{equation}
+where \SI{192.5}{\mm} is the distance between the cathode and the \(v\) wire plane. The constants \(p_0\) and \(p_1\)are determined from fitting to simulated data, as shown in \cref{fig:data_grid_correction_fits}. They are found to differ for events that have ionization collected on one \(u\) wire and for events that share ionization across 2 \(u\) wires. The best-fit values are summarized in \cref{tab:data_grid_correction_parameters}. The results of applying these corrections is shown in \cref{fig:data_grid_correction_applied}\todo{Reformat these figures}. There is a lingering \SI{\pm0.35}{\percent} variation in the collected signal through the TPC.
+
+\begin{table}[htp]
+\centering
+\caption[Shielding grid correction parameters]{The parameters for the shielding grid correction (\cref{eq:data_grid_correction}) obtained from Monte Carlo simulations. The parameters are observed to vary when the signal is collected on a single \(u\) wire and when it is shared over two \(u\) wires. For comparison, the parameters when 1- and 2- wire signals are not separated are also given.}
+\label{tab:data_grid_correction_parameters}
+\begin{tabular}{c c c}\toprule
+number of \(u\) wires	&	\(p_0\)	&	\(p_1\)	\\\midrule
+1				&	0.043	&	7.02		\\
+2				&	0.064	&	8.49		\\
+1 and 2			&	0.043	&	6.60		\\\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htp]
+\centering
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./plots/data_grid_correction_Th1wire.pdf}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./plots/data_grid_correction_Th2wire.pdf}
+	\end{subfigure}
+	\caption[Fits to determine the shieldin grid correction parameters]{Fits of the shielding grid correction function (\cref{eq:data_grid_correction}) to simulated \isotope{228}{Th} data. Each point represents the center of the full-absorption peak for events in a particular \(z\) bin. The left shows the signals collected on 1 \(u\) wire, while the right shows the signals collected on 2 \(u\) wires.}
+	\label{fig:data_grid_correction_fits}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.75\textwidth]{./plots/data_grid_correction_applied.pdf}
+\caption[The shielding grid correction applied to data]{The results of applying the shielding grid correction (\cref{eq:data_grid_correction}) with the parameters in \cref{tab:data_grid_correction_parameters} to data collected with a \isotope{228}{Th} source positioned at the cathode.  Each point represents the center of the full-absorption peak for events in a particular \(z\) bin. A \SI{\pm0.35}{\percent} variation is observed throughout the TPC.}
+	\label{fig:data_grid_correction_applied}
+\end{figure}
 
 \subsection{Electron Lifetime Correction}
 Ionization drifting in the TPC is attenuated by attachment to electronegative impurities. For uniformly distributed impurities, this results in an exponentially decreasing signal as a function of drift time, and the corresponding time constant is the ``electron lifetime''. This effect can be measured by measuring the attenuation of a known signal (as during a radioactive source calibration). This measurement is then used to correct unknown signals. \Cref{ch:electronlifetime} details the measurement of the electron lifetime and correction.
