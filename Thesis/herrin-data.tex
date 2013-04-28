@@ -187,6 +187,7 @@ While trim voltages are applied to the APDs to try to achieve a uniform response
 \label{sec:data_calibration}
 The calibration system described in \cref{sec:detector_calibration} is used to calibrate the energy scale of the detector. This is done separately for single site and multiple site events.
 \subsection{Fit Model}
+\label{sec:data_fitmodel}
 For gamma ray lines, a Gaussian distribution representing the full-absorption peak is combined with a complimentary error function representing Compton scatter events that escape the detector. Explicitly, the model is:
 \begin{equation}
 \frac{dN}{dE} = a \frac{1}{\sigma\sqrt{2\pi}}\exp\left(\frac{-(E-E_0)^2}{2\sigma^2}\right)+ (1-a)\text{erfc}\left(\frac{E-E_0}{\sqrt{2}\sigma}\right)
@@ -233,16 +234,35 @@ where \(E_I\) and \(E_S\) are the ionization and scintillation signals after all
 \end{figure}
 
 \subsection{Thorium Peak}
-Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, the optimal rotation angle for the \SI{2615}{\keV} full absorption peak is determined from these calibrations. This angle is used for all data during that week. \SI{2615}{\keV} is close to the \SI{2458}{\keV} Q value for \xenon{136}, and so optimizing the resolution for the thorium peak should also give good resolution near the \zeronu{} peak.
+Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, the optimal rotation angle for the \SI{2615}{\keV} full absorption peak is determined from these calibrations. This angle is used for all data during that week. \SI{2615}{\keV} is close to the \SI{2458}{\keV} Q value for \xenon{136}, and so optimizing the resolution for the thorium peak should also give good resolution near the \zeronu{} peak. \Cref{fig:data_theta_v_time} shows the optimal angle for the Run2a time period. Some slight variation is seen. This is primarily due to variation in the electronic noise of the APDs. As the noise increases, better energy resolution can be obtained by using less of their signal, corresponding to smaller \(\theta\).
 
+\begin{figure}[htp]
+\centering
+	\includegraphics[width=0.75\textwidth]{./plots/data_theta_v_time.pdf}
+	\caption[Optimal rotation angle and resulting full-absorption peak energy]{The angle that yields the optimal energy resolution for the \SI{2615}{\keV} \isotope{228}{Th} full-absorption peak is determined on a week-by-week basis (top). Shaded periods represent times in which the \ce{Th} source was not used, and so the optimal angle is based on the combined data from the previous and next weeks that the \ce{Th} source was used. The vertical lines represent electronics changes prior to the start of Run2a.}
+	\label{fig:data_theta_v_time}
+\end{figure}
 
 \subsection{Overall Energy Scale}
-While thorium source calibrations are taken frequently, the cobalt and cesium sources are generally reserved for dedicated campaigns. Throughout these campaigns, it has been observed that the ratio between the peak energies remain relatively stable, even though their values show some drift. This is shown in \cref{fig:data_energy_ratios_time}. Therefore, the three ratios \(E_\text{Cs}/E_\text{Th}\) and \(E_{\text{Co},i}/E_\text{Th}\) are used as the basis for the calibration. The process for calibration is then:
+While thorium source calibrations are taken frequently, the cobalt and cesium sources are generally reserved for dedicated campaigns. Throughout these campaigns, it has been observed that the ratio between the peak energies remain relatively stable, even though their values show some drift. This is shown in \cref{fig:data_energy_ratios_time}\todo{Reformat these}. Therefore, the three ratios \(E_\text{Cs}/E_\text{Th}\) and \(E_{\text{Co},i}/E_\text{Th}\) are used as the basis for the calibration. The process for calibration is then:
 \begin{enumerate}
 \item On a week-by-week basis, use thorium calibration data to determine the optimal rotation angle \(\theta(t)\) and to fit the thorium peak \(E^\text{fit}_\text{Th}(t)\) in the spectrum obtained using \cref{eq:data_E_rotated} and that rotation angle. If no thorium data is available for a given week, data from the adjacent weeks are combined and used to estimate the angle and peak for that week.
 \item For each multiple isotope calibration campaign, compute the ratios \(E^\text{fit}_\text{Cs}/E^\text{fit}_\text{Th}\) and \(E^\text{fit}_{\text{Co},i}/E^\text{fit}_\text{Th}\)
 \item Using the mean values from these campaigns and the true ratios, fit a polynomial function \(f\) such that \(f([E^\text{fit}/E^\text{fit}_\text{Th}]|_\text{data}) = [E^\text{fit}/E^\text{fit}_\text{Th}]|_\text{simulation}\). The ratios used for this fit are shown in \cref{tab:data_calib_ratios}.
 \end{enumerate}
+
+\begin{figure}[htb]
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{./plots/data_peak_energy_v_time.pdf}
+\end{subfigure}
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=1\textwidth]{./plots/data_peak_ratio_v_time.pdf}
+\end{subfigure}
+\caption[Variation of full-absorption peak energies and peak energy ratios over time.]{Although the rotated energy of the full-absorpion peaks for \isotope{60}{Co} and \isotope{228}{Th} vary by \about{}\SI{\pm3}{\percent} over time (top), the ratios between the \isotope{60}{Co} peaks and the \isotope{228}{Th} peak remain much more steady, varying less than \SI{1}{\percent}.}
+\label{fig:data_energy_ratios_time}
+\end{figure}
 
 \begin{table}[htp]
 \centering
