@@ -15,6 +15,23 @@ These cuts are designed to remove as many cosmogenic background events as possib
 
 Events occurring near each other in time are likely to be due to a decay of some radioactive contaminant, followed by another decay of a short-lived daughter. For example, the \isotope{222}{Rn} daughter \isotope{214}{Bi} \(\beta^{-}\) decays to \isotope{214}{Po}, which then \(\alpha\) decays with a \SI{164}{\micro\s} half-life.  Events with more than one scintillation signal identified are cut for this reason. Furthermore, any event is vetoed if it occurs within \SI{\pm1}{\s} of another event. The dead-time incurred is X.X\%.
 
+\subsection{Fiducial Volume}
+\begin{figure}[htb]
+\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_fiducial_vol_xy.pdf}
+\end{subfigure}\hfill%
+\begin{subfigure}[b]{0.48\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{./plots/analysis_fiducial_vol_xz.pdf}
+	\end{subfigure}
+\caption[Fiducial Volume]{Projections of the hexagonal fiducial volume. The dashed lines represent the fiducial volume. The solid lines are the anode wire plane and the teflon reflector. For the \(xz\) projection on the right, the two sets of vertical dashed lines are the maximum and minimum radial boundaries of the fiducial volume.}
+\label{fig:analysis_fiducial_volume}
+\end{figure}
+
+All the liquid xenon within the teflon reflectors and between the anodes is ``active''. That is, ionization and scintillation in the active region are collected. However, in order to reduce backgrounds from detector materials, and in order to ensure uniform detector response, only events within a fiducial volume. This fiducial volume is a right hexagonal prism. The hexagon is coaxial with the detector and has apothem \SI{153}{\mm}. In each TPC, it begins \SI{15}{\mm} away from the cathode and extends to \SI{182}{\mm} (which is \SI{10.2}{\mm} from the \(v\) wire plane). \Cref{fig:analysis_fiducial_volume} provides an illustration. The total volume is \SI{27.1}{\litre}, which contains \SI{81.9}{\kg} of liquid xenon.
+
 \subsection{Other Cuts}
 
 \subsection{Quantities of Interest}
