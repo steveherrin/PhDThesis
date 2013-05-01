@@ -15,7 +15,7 @@ These cuts are designed to remove as many cosmogenic background events as possib
 
 Events occurring near each other in time are likely to be due to a decay of some radioactive contaminant, followed by another decay of a short-lived daughter. For example, the \isotope{222}{Rn} daughter \isotope{214}{Bi} \(\beta^{-}\) decays to \isotope{214}{Po}, which then \(\alpha\) decays with a \SI{164}{\micro\s} half-life.  Any event is vetoed if it occurs within \SI{\pm1}{\s} of another event.
 
-Finally, conditions external to the detector may make the data unusable. Data from these time periods is vetoed.The most common cause is the mine evacuation siren, which is tested periodically. It is loud enough to create a large amount electronic noise through microphonic pickup. Time periods in which the siren is going off are vetoed. The typical event rate in the TPC is \about{}\SI{0.1}{\milli\Hz}, so random coincidences are rare enough that this cut only affects a small number of legitimate events.
+Finally, conditions external to the detector may make the data unusable. Data from these time periods is vetoed.The most common cause is the mine evacuation siren, which is tested periodically. It is loud enough to create a large amount electronic noise through microphonic pickup. Time periods in which the siren is going off are vetoed.
 
 The effects of all timing-based vetoes are summarized in \cref{tab:analysis_veto_effects}.
 
@@ -41,8 +41,8 @@ The effects of all timing-based vetoes are summarized in \cref{tab:analysis_veto
 \subsubsection{Scintillation-to-ionization ratio}
 As mentioned in \cref{sec:xe_combining_ion_and_scint}, \(\alpha\) particle interactions produce more scintillation and less ionization in the liquid xenon than \(\beta\) and \(\gamma\) interactions. Therefore, events with a large scintillation-to-ionization ratio are removed from the data used for double beta decay physics. Since \isotope{222}{Rn} is a common source of \(\alpha\) particles, these decays are later used in order to constrain backgrounds due to other isotopes in the \isotope{222}{Rn} decay chain.
 
-\subsubsection{Event Reconstructability}
-
+\subsubsection{Scintillation Timing}
+Events are vetoed if they contain more than one scintillation cluster. The typical event rate in the TPC is \about{}\SI{0.1}{\Hz}, so random coincidences are rare enough that the effects of this cut on legitimate events is minuscule compared to other sources of systematic error. This eliminates \isotope{214}{Bi}-\isotope{214}{Po} coincidences, as described above, and also eliminates events in which there could be ambiguity in associating ionization signals with multiple scintillation signals. Additionally, events are vetoed if the scintillation comes too late in the waveform form ionization to have time to drift the full TPC drift length. Since the waveforms are centered around the trigger time, this does not happen in typical data, but may happen in source calibration runs.
 
 \subsection{Fiducial Volume}
 \label{sec:analysis_fiducial_volume}
@@ -88,7 +88,14 @@ This particular choice of fiducial volume has two chief motivations. The first i
 The second motivation is to ensure a homogeneous detector response inside the fiducial volume. As shown in the previous discussion of the shielding grid correction in \cref{sec:data_grid_correction}, the correction becomes significant near \(|z|=\SI{182}{\mm}\) (see \cref{fig:data_grid_correction_fits}). Even with the correction applied, the detector response begins to diverge near that position (see \cref{fig:data_grid_correction_applied}), and so it is used as the boundary of the fiducial region. In the transverse dimension, a hexagonal cross-section is used. This matches the anode wire geometry, and so makes applying the fiducial volume cut straightforward. \Cref{fig:analysis_fiducial_vol_transverse} shows that requiring the apothem of this hexagon to be less than \SI{153}{\mm} ensures uniform energy response.
 
 \subsection{Quantities of Interest}
-Once an event passes the data quality cuts
+Once an event passes the data quality cuts, the following quantities are calculated:
+\begin{enumerate}
+\item The multiplicity (single site or multiple site), using the criteria described in \cref{sec:data_topology}.
+\item The event energy using the calibration obtained as described in \cref{sec:data_calibration}.
+\item The ``standoff distance''. The radial distance of the cluster to the teflon reflector is calculated. So is the \(z\) distance to the \(v\) wire plane. The standoff distance is the minimum of these two distances.
+\end{enumerate}
+
+The singles site and multiple site information helps separate \(\gamma\) interactions from \(\beta\) interactions. The standoff distance describes the spatial distribution of events. For example, the distribution of \twonu{} events, since they are uniformly distributed in the detector, have a standoff distance distribution that extends to higher values. The distribution of background events from detector materials, on the other hand, peaks at small standoff distances. And, of course, the energy spectra of different types of decay are different.
 
 \section{Monte Carlo Simulations of Signals and Backgrounds}
 \subsection{PDF Generation}
@@ -97,10 +104,13 @@ The GEANT4 simulation toolkit\cite{Agostinelli:2003fk} is used in order to deter
 
 All double beta decay modes are simulated using the Fermi function by Schenter and Vogel\cite{Schenter:1983uq}.
 
+\section{Systematic Uncertainties}
 
 \section{Maximum Likelihood Method}
 
 \section{Measurement of \twonu}
+
+\subsection{Consistency Checks}
 
 \section{Limits on \(0\nu\beta\beta\chi^0(\chi^0)\)}
 
