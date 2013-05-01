@@ -60,14 +60,38 @@ As mentioned in \cref{sec:xe_combining_ion_and_scint}, \(\alpha\) particle inter
 \label{fig:analysis_fiducial_volume}
 \end{figure}
 
-All the liquid xenon within the teflon reflectors and between the anodes is ``active''. That is, ionization and scintillation in the active region are collected. However, in order to reduce backgrounds from detector materials, and in order to ensure uniform detector response, only events within a fiducial volume are used in the analysis. This fiducial volume is a right hexagonal prism. The hexagon is coaxial with the detector and has apothem \SI{153}{\mm}. In each TPC, it begins \SI{15}{\mm} away from the cathode and extends to \SI{182}{\mm} (which is \SI{10.2}{\mm} from the \(v\) wire plane). \Cref{fig:analysis_fiducial_volume} provides an illustration. The total volume is \SI{27.1}{\litre}, which contains \SI{81.9}{\kg} of liquid xenon.
+All the liquid xenon within the teflon reflectors and between the anodes is ``active''. That is, ionization and scintillation in the active region are collected. However, only events within a fiducial volume are used in the analysis. This fiducial volume is a right hexagonal prism. The hexagon is coaxial with the detector and has apothem \SI{153}{\mm}. In each TPC, it begins \SI{5}{\mm} away from the cathode and extends to \SI{182}{\mm} (which is \SI{10.2}{\mm} from the \(v\) wire plane). \Cref{fig:analysis_fiducial_volume} provides an illustration. The total volume is \SI{27.1}{\litre}, which contains \SI{81.9}{\kg} of liquid xenon.
 
+\begin{figure}[htb]
+\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_fiducial_vol_bg_cathode.pdf}
+\end{subfigure}\hfill%
+\begin{subfigure}[b]{0.48\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{./plots/analysis_fiducial_vol_bg_anode.pdf}
+	\end{subfigure}
+\caption[Increased event rates near cathode and anodes]{The choice of fiducial volume is partially motivated by the increased event rate seen near the cathode (at \(z = \SI{0}{\mm}\)) (shown left) and near the anodes (shown right; the \(v\) plane is at \(|z|=\SI{192}{\mm}\) and the \(u\) plane is at \(|z|=\SI{198}{\mm}\)). An increase is seen for both the total event rate, and for the rate of \(\alpha\) particle interactions, which suggests the increased rate is due to backgrounds. Requiring \(\SI{5}{\mm} < |z| < \SI{182}{\mm}\) puts the fiducial volume well away from the volumes that show an increased rate.}
+\label{fig:analysis_fiducial_vol_bg_rates}
+\end{figure}
 
+This particular choice of fiducial volume has two chief motivations. The first is to reduce radioactive backgrounds from the detector materials. \Cref{fig:analysis_fiducial_vol_bg_rates} shows event rates near the cathode and anodes. There is nothing special about the xenon near these planes, and so the increased event rate must be due to backgrounds. The \(z\) cuts above eliminate the volumes that show higher-than-typical event rates.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{./plots/analysis_fiducial_vol_transverse.pdf}
+\caption[Energy response due to increasing fiducial volume apothem]{The reconstructed energy of the \SI{2615}{\keV} peak from a \isotope{228}{Th} source calibration. This is found by fitting a Gaussian + complimentary error function model to data with an increasingly large allowed fiducial volume. A larger allowed hexagonal apothem extends the fiducial volume closer and closer to the edges of the anode wire planes. The detector response begins to deviate significantly when the cut is extended above \SI{153}{\mm}, and so this is used to define the fiducial volume.}
+\label{fig:analysis_fiducial_vol_bg_rates}
+\end{figure}
+
+The second motivation is to ensure a homogeneous detector response inside the fiducial volume. As shown in the previous discussion of the shielding grid correction in \cref{sec:data_grid_correction}, the correction becomes significant near \(|z|=\SI{182}{\mm}\) (see \cref{fig:data_grid_correction_fits}). Even with the correction applied, the detector response begins to diverge near that position (see \cref{fig:data_grid_correction_applied}), and so it is used as the boundary of the fiducial region. In the transverse dimension, a hexagonal cross-section is used. This matches the anode wire geometry, and so makes applying the fiducial volume cut straightforward. \Cref{fig:analysis_fiducial_vol_transverse} shows that requiring the apothem of this hexagon to be less than \SI{153}{\mm} ensures uniform energy response.
 
 \subsection{Quantities of Interest}
 Once an event passes the data quality cuts
 
 \section{Monte Carlo Simulations of Signals and Backgrounds}
+\subsection{PDF Generation}
 
 The GEANT4 simulation toolkit\cite{Agostinelli:2003fk} is used in order to determine both the energy spectra and spatial distributions of various double beta decay signals and radioactive backgrounds in EXO-200.
 
