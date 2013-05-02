@@ -135,10 +135,9 @@ The GEANT4 simulation toolkit\cite{Agostinelli:2003fk} is used in order to deter
 \item \isotope{222}{Rn} in the air gap between the cryostat and lead wall
 \end{itemize}
 
-For double beta decay and background in the liquid xenon, the events are simulated uniformly in the volume of active xenon. For \isotope{222}{Rn}, there are additional complications, however. Decays of radon and daughters in the inactive xenon can emit \(\gamma\) rays that also deposit energy in the active volume. Therefore, these are simulated as well. Additionally, charged radon daughters can drift to the cathode. \isotope{214}{Bi} emits \(\gamma\) rays when it decays. The daughter \isotope{214}{Po} has a \SI{164}{\micro\s} half-life, and so both are typically eliminated by the event-event coincidence and multiple scintillation cuts. However, on the cathode, the \(\alpha\) particle from the \isotope{214}{Po} decay may go into the cathode and not be seen. Therefore, \isotope{214}{Bi} on the cathode is simulated separately.
+For double beta decay and background in the liquid xenon, the events are simulated uniformly in the volume of active xenon. All double beta decay modes are simulated using the Fermi function by Schenter and Vogel\cite{Schenter:1983uq}. For \isotope{222}{Rn}, there are additional complications, however. Decays of radon and daughters in the inactive xenon can emit \(\gamma\) rays that also deposit energy in the active volume. Therefore, these are simulated as well. Additionally, charged radon daughters can drift to the cathode. \isotope{214}{Bi} emits \(\gamma\) rays when it decays. The daughter \isotope{214}{Po} has a \SI{164}{\micro\s} half-life, and so both are typically eliminated by the event-event coincidence and multiple scintillation cuts. However, on the cathode, the \(\alpha\) particle from the \isotope{214}{Po} decay may go into the cathode and not be seen. Therefore, \isotope{214}{Bi} on the cathode is simulated separately.
 
-
-	
+For backgrounds in the detector copper, the TPC vessel, all internal components, the legs, and the high-voltage feedthrough are simulated as a whole. These are all modeled in the simulation, as shown in \cref{fig:analysis_geant4_detector}. It is assumed that the impurities are uniformly distributed according to copper mass. Even if some of the contamination is surface area, the thin-walled construction of EXO-200 makes this a close approximation.
 
 \begin{figure}[htb]
 \centering
