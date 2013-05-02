@@ -115,7 +115,30 @@ The singles site and multiple site information helps separate \(\gamma\) interac
 \label{sec:analysis_monte_carlo}
 \subsection{PDF Generation}
 
-The GEANT4 simulation toolkit\cite{Agostinelli:2003fk} is used in order to determine both the energy spectra and spatial distributions of various double beta decay signals and radioactive backgrounds in EXO-200.
+The GEANT4 simulation toolkit\cite{Agostinelli:2003fk} is used in order to determine both the energy spectra and spatial distributions of various double beta decay signals and radioactive backgrounds in EXO-200. The following are simulated:
+\begin{itemize}
+\item Double beta decay of \xenon{136}:
+	\twonu{},
+	\zeronu{},
+	and \(0\nu\beta\beta\chi^{0}(\chi^{0})\) for spectral indices 1, 2, 3, and 7
+\item Potential backgrounds in the liquid xenon:
+	\xenon{135},
+	%\item \xenon{137},
+	and \isotope{222}{Rn}
+\item Potential backgrounds in the detector copper:
+	\isotope{40}{K}, 
+	\isotope{54}{Mn},
+	\isotope{60}{Co},
+	\isotope{65}{Zn},
+	\isotope{238}{U},
+	and \isotope{232}{Th}
+\item \isotope{222}{Rn} in the air gap between the cryostat and lead wall
+\end{itemize}
+
+For double beta decay and background in the liquid xenon, the events are simulated uniformly in the volume of active xenon. For \isotope{222}{Rn}, there are additional complications, however. Decays of radon and daughters in the inactive xenon can emit \(\gamma\) rays that also deposit energy in the active volume. Therefore, these are simulated as well. Additionally, charged radon daughters can drift to the cathode. \isotope{214}{Bi} emits \(\gamma\) rays when it decays. The daughter \isotope{214}{Po} has a \SI{164}{\micro\s} half-life, and so both are typically eliminated by the event-event coincidence and multiple scintillation cuts. However, on the cathode, the \(\alpha\) particle from the \isotope{214}{Po} decay may go into the cathode and not be seen. Therefore, \isotope{214}{Bi} on the cathode is simulated separately.
+
+
+	
 
 \begin{figure}[htb]
 \centering
