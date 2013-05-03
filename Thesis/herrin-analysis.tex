@@ -190,6 +190,15 @@ where \(f(x_i|\boldsymbol{\theta})\) is a probability density function with para
 
 Finding the set of parameters that best describe the data, then, becomes a matter of maximizing \(\mathcal{L}\). In practice, since \(\mathcal{L}\) is always less than one and can be quite small for some choices of parameters, it is easier to work with the negative logarithm of the likelihood function, or ``negative log-likelihood''. Maximizing \(\mathcal{L}\) becomes minimizing the negative log-likelihood. This can be done analytically for simple cases, but for most problems numerical minimization package such as MINUIT\cite{James:1975kx} is used.
 
+The maximum likelihood method can be used to construct confidence intervals. Define
+\begin{equation}
+\lambda({\theta_0}) = \ln \mathcal{L}_{max}(\boldsymbol{\theta}) - \ln \mathcal{L}_{max}(\theta_0, \boldsymbol{\theta}')
+\end{equation} 
+where \(\mathcal{L}_{max}(\boldsymbol{\theta})\) denotes the likelihood maximized over all parameters. \(\mathcal{L}_{max}(\theta_0, \boldsymbol{\theta}')\) denotes the likelihood maximized over all parameters except for \(\theta_0\), which is held fixed. Wilks' theorem says that the distribution of \(\lambda\) can be approximated by
+\begin{equation}
+2\lambda(\theta_0) \sim \chi^2_{\text{dim}(\theta_0)}
+\end{equation}
+where \(\chi^2_{\text{dim}(\theta_0)}\) is the \(\chi^2\) distribution with degrees of freedom equal to the dimensionality of \(\theta_0\).
 
 \section{Measurement of \twonu}
 
