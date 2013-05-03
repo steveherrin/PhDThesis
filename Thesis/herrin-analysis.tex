@@ -168,7 +168,7 @@ The final state is to form distributions in multiplicity, energy, and standoff d
 
 In order to simulate the detector energy resolution, the true energies are smeared by a parameterized resolution function given by
 \begin{equation}
-\sigma(E)/E = \sqrt{\frac{p_0^2}{E^2} + \frac{p_1^2}{E} + p_2^2}
+\frac{\sigma(E)}{E} = \sqrt{\frac{p_0^2}{E^2} + \frac{p_1^2}{E} + p_2^2}
 \label{eq:analysis_energy_resolution}
 \end{equation}
 where \(p_0\) is a constant, noise-like smearing, \(p_1\) is a smearing due to counting statistics, and \(p_2\) is an energy-dependent smearing that can be due to drifting gains. These parameters are determined on a week-by-week basis by fitting a simulated calibration source spectrum to the data collected by the detector during calibration runs with that source.
