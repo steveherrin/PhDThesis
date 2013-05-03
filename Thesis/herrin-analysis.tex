@@ -160,6 +160,10 @@ Few external backgrounds (chiefly due to \isotope{40}{K}, \isotope{232}{Th}, and
 \subsection{PDF Generation}
 For a single event, the GEANT4 simulation provides a list of energy deposits in the liquid xenon, their positions, and their times. These must then be converted into simulations of the signals actually seen by the detector. This begins by estimating the amount of drifting ionization by using the \SI{15.6}{\eV} \(W\)-value (see \cref{sec:xe_ionization}) and the observation that \about{}\SI{80}{\percent} of ionization drifts instead of recombining in strong electric fields\cite{Aprile:1991fk}. \(\alpha\) particles have their ionization yield quenched by a factor of 0.055\cite{Aprile:1991uq}. This ionization is drifted to the anodes in small time steps, and the signals on the wires are determined using the Shockley-Ramo theorem using a 2D MAXWELL simulation of the electric fields in the detector.
 
+The energy that doesn't go into drifting ionization goes into scintillation. The anticorrelation between ionization and scintillation is not modeled, and so the fraction of energy in scintillation is constant. The scintillation photons are distributed across the two planes in a parameterized way. All photoelectrons from the APDs are assumed to arrive instantaneously, since the scintillation signal arrives in \si{\ns}, compared to the \si{\micro\s} digitization time.
+
+White noise is added to the ionization and scintillation signals to yield a similar signal-to-noise ratio as in the detector. They are then run through simulations of the shapers found in the detector electronics, and are digitized at \SI{1}{\MHz}, just like the real signals. The matched filter and multiple signal finder are applied to identify signals, and the signals are bundled and clustered. The process is identical to the one described in \cref{sec:data_reconstruction}.
+
 
 
 \section{Systematic Uncertainties}
