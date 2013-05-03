@@ -180,6 +180,14 @@ The true energies from the signal and background Monte Carlo simulations are sme
 \section{Constraints}
 
 \section{Maximum Likelihood Method}
+When attempting to measure a decay rate (as for double beta decay), the parameter measured is the number of decays in a given amount of time. This is complicated by the presence of backgrounds. Ultimately, the collected data is a combination of many backgrounds and possibly signals, each parameterized by a number of decays. A maximum likelihood analysis provides a way to estimate these parameters and their uncertainties, or to place limits on the parameters.
+
+In a maximum likelihood analysis, first a likelihood function \(\mathcal{L}\) is established:
+\begin{equation}
+\mathcal{L} = \prod_i f(x_i|\boldsymbol{\theta})
+\end{equation}
+where \(f(x_i|\boldsymbol{\theta})\) is a probability density function with parameters \(\boldsymbol{\theta}\) for the observed data \(x_i\).
+
 
 \section{Measurement of \twonu}
 
