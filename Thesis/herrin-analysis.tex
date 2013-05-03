@@ -175,11 +175,8 @@ where \(p_0\) is a constant, noise-like smearing, \(p_1\) is a smearing due to c
 
 The true energies from the signal and background Monte Carlo simulations are smeared according to the parameterization in \cref{eq:analysis_energy_resolution}\todo{Check that this matches Caio's definitions}. For each simulation, then two probability density functions (PDFs) are formed in energy and standoff distance: one for single site events, and one for multiple site events. For each simulation, the efficiency for a simulated event to make it into the final PDFs is recorded, as well as the fractional split between single site and multiple site events.
 
-\section{Systematic Uncertainties}
-
-\section{Constraints}
-
 \section{Maximum Likelihood Method}
+\subsection{Theory}
 When attempting to measure a decay rate (as for double beta decay), the parameter measured is the number of decays in a given amount of time. This is complicated by the presence of backgrounds. Ultimately, the collected data is a combination of many backgrounds and possibly signals, each parameterized by a number of decays. A maximum likelihood analysis provides a way to estimate these parameters and their uncertainties, or to place limits on the parameters.
 
 In a maximum likelihood analysis, first a likelihood function \(\mathcal{L}\) is established:
@@ -193,12 +190,41 @@ Finding the set of parameters that best describe the data, then, becomes a matte
 The maximum likelihood method can be used to construct confidence intervals. Define
 \begin{equation}
 \lambda({\theta_0}) = \ln \mathcal{L}_{max}(\boldsymbol{\theta}) - \ln \mathcal{L}_{max}(\theta_0, \boldsymbol{\theta}')
-\end{equation} 
+\end{equation}
 where \(\mathcal{L}_{max}(\boldsymbol{\theta})\) denotes the likelihood maximized over all parameters. \(\mathcal{L}_{max}(\theta_0, \boldsymbol{\theta}')\) denotes the likelihood maximized over all parameters except for \(\theta_0\), which is held fixed. Wilks' theorem says that the distribution of \(\lambda\) can be approximated by
 \begin{equation}
 2\lambda(\theta_0) \sim \chi^2_{\text{dim}(\theta_0)}
+\label{eq:analysis_nll_distribution}
 \end{equation}
-where \(\chi^2_{\text{dim}(\theta_0)}\) is the \(\chi^2\) distribution with degrees of freedom equal to the dimensionality of \(\theta_0\).
+where \(\chi^2_{\text{dim}(\theta_0)}\) is the \(\chi^2\) distribution with degrees of freedom equal to the dimensionality of \(\theta_0\). Then the \(\alpha\%\) level confidence interval on \(\theta_0\) is bounded by \(\theta_0^-\) and \(\theta_0^+\) such that \(2\lambda(\theta_0^\pm)\) is equal to the \(\chi^2\) quantile for \(\text{dim}(\theta_0)\) degrees of freedom at the \(\alpha\%\) level.
+
+It may happen, however, that when measuring physical quantities, the best fit parameters or confidence intervals may be unphysical. A radioactive isotope can not have a negative number of decays, for example. Rolke et al.\cite{Rolke:2005uq} propose a method to extract limits in these situations. Suppose that \(\theta_0\) cannot be negative, but the best fit has \(\theta_0 < 0\). Their method of bounded likelihood sets \(\theta_0 = 0\), and the limit on \(\theta_0\) is taken using
+\begin{equation}
+\lambda'({\theta_0}) = \ln \mathcal{L}(\theta_0 = 0, \boldsymbol{\theta}) - \ln \mathcal{L}_{max}(\theta_0, \boldsymbol{\theta}')
+\end{equation}
+and the relationship in \cref{eq:analysis_nll_distribution}.
+
+When employing the method of bounded likelihood, it is necessary to verify that the method provides ``coverage''. That is, if a \(\alpha\%\) confidence level is reported, then the interval obtained should cover the true value \(\alpha\%\) of the time. This can be studied through Monte Carlo simulations. Namely, the experiment is simulated some large number of times for a range of parameter values. For each simulation, the confidence interval is obtained using the method of bounded likelihood. The fraction of the time the true parameter value lies within the confidence interval can then be computed. The method is said to ``overcover'' if an \(\alpha\%\) confidence interval contains the true value more than \(\alpha\%\) of the time. The opposite is to ``undercover''. In this case, the approximation in \cref{eq:analysis_nll_distribution} does not hold well, and so the value of \(\lambda'\) used to form the confidence interval must be adjusted.
+
+\subsection{Application to EXO-200}
+
+For each signal and each background, two dimensional PDFs (in energy and standoff distance) are generated for single site and multiple site multiplicities as described in \cref{sec:analysis_monte_carlo}. These PDFs are generated for \(\SI{700}{\keV} \leq E < \SI{3500}{\keV}\) and \(\SI{5}{\mm} \leq d_s < \SI{182}{\mm}\), where \(d_s\) is the standoff distance. There are 200 evenly-spaced (\SI{14}{\keV}) bins in energy, and 20 evenly-spaced (\SI{9.1}{\mm}) bins in standoff distance.
+
+For each PDF, there are two parameters: the total number of events \(N_i\) associated with that PDF, and the fraction \(a_i\) of those events that are single site events. There is also one overall normalization parameter \(c_\text{norm}\), explained below. Denote the number of events in the bin with multiplicity (SS or MS) \(m\), energy \(E\), and standoff distance \(d_s\) for PDF \(i\) as \(n_i(m, E, d_s)\). The combined PDF predicts
+\begin{equation}
+n(m, E, d_s) = c_\text{norm}\sum_i N_i a_i n_i(m, E, d_s)
+\end{equation}
+events in that bin.
+
+Suppose a bin for single site data contains \(k\) events in the data. The combined PDF predicts \(n = n(c_\text{norm}, \mathbf{N}, \mathbf{a})\) events. The likelihood function for that individual bin is then given by the Poisson distribution:
+\begin{equation}
+f(k|c_\text{norm}, \mathbf{N}, \mathbf{a}) = \frac{[n(c_\text{norm}, \mathbf{N}, \mathbf{a})]^k \exp[-n(c_\text{norm}, \mathbf{N}, \mathbf{a})]}{k!}
+\end{equation}
+The total likelihood function that is maximized is the product of the likelihood functions for all bins.
+
+\section{Systematic Uncertainties}
+
+\section{Constraints}
 
 \section{Measurement of \twonu}
 
