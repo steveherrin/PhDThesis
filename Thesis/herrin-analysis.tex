@@ -222,9 +222,19 @@ f(k|c_\text{norm}, \mathbf{N}, \mathbf{a}) = \frac{[n(c_\text{norm}, \mathbf{N},
 \end{equation}
 The total likelihood function that is maximized is the product of the likelihood functions for all bins.
 
-\section{Systematic Uncertainties}
-
 \section{Constraints}
+\subsection{Theory}
+The maximum likelihood method also admits a simple way to constrain parameters. Suppose a parameter \(\theta\) is measured to have value \(\theta_0 \pm \sigma\). Then one way to constrain \(\theta\) is to multiply the likelihood function by
+\begin{equation}
+f(\theta) = exp\left[\frac{(\theta-\theta_0)^2}{2\sigma^2}\right]
+\end{equation}
+That is, the likelihood for a given \(\theta\) is Gaussian distributed around the measurement \(\theta_0\), with the width given by the uncertainty \(\sigma\) in the measurement. In this case, the normalization factors for the Gaussian have been omitted, since they just scale the likelihood function without affecting the location of the maximum. This is just an example, and any likelihood function can in principle be used to constrain a parameter or parameters.
+
+\subsection{Single Site Fraction}
+
+\subsection{Radon Activity}
+
+\section{Systematic Uncertainties}
 
 \section{Measurement of \twonu}
 
