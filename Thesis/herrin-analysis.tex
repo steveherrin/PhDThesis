@@ -179,6 +179,7 @@ The true energies from the signal and background Monte Carlo simulations are sme
 In order to verify that the simulations accurately predict multiplicity, energy, and standoff distance distributions, they are cross checked by simulating the calibration sources and comparing the results with calibration data. This is done for both the \isotope{60}{60} source and the \isotope{228}{Th} source.
 
 \subsubsection{Single Site Fraction Agreement}
+\label{sec:analysis_ss_frac_agreement}
 Since the distinction between single site and multiple site events plays a strong role in estimating backgrounds, it is important to confirm that the simulations accurately reflect the fraction of events of each multiplicity. \Cref{fig:analysis_ssfrac_agreement} shows that the maximum observed deviation in the single site fraction is less than \SI{10}{\percent} and varies with energy. The systematic error due to the energy-dependent deviation is evaluated with the shape agreement below. The remaining energy independent error on the overall fraction is \SI{5.9}{\percent}. This is determined by taking the mean of the measured residual, weighted by the fraction of the \twonu{} spectrum in each energy bin. The weighting is done so that the error reflects the portion of the spectrum where the most events are collected.
 
 \begin{figure}[htb]
@@ -229,6 +230,8 @@ One simple check is to compare the shapes of the energy and standoff distance di
 
 \subsubsection{Rate Agreement}
 \todo{Do I want/need to include this?}
+
+\section{Systematic Uncertainties}
 
 \section{Maximum Likelihood Method}
 \subsection{Theory}
@@ -282,17 +285,16 @@ The total likelihood function that is maximized is the product of the likelihood
 The maximum likelihood method also admits a simple way to constrain parameters. Suppose a parameter \(\theta\) is measured to have value \(\theta_0 \pm \sigma\). Then one way to constrain \(\theta\) is to multiply the likelihood function by
 \begin{equation}
 f(\theta) = \exp\left[\frac{(\theta-\theta_0)^2}{2\sigma^2}\right]
+\label{eq:analysis_gaussian_constraint}
 \end{equation}
 That is, the likelihood for a given \(\theta\) is Gaussian distributed around the measurement \(\theta_0\), with the width given by the uncertainty \(\sigma\) in the measurement. In this case, the normalization factors for the Gaussian have been omitted, since they just scale the likelihood function without affecting the location of the maximum. This is just an example, and any likelihood function can in principle be used to constrain a parameter or parameters.
 
 \subsection{Single Site Fraction}
-
+As described in \cref{sec:analysis_ss_frac_agreement}, the overall systematic error on the single site fraction is estimated to be \SI{5.9}{\percent}, based on comparisons of calibration data to simulations. Therefore, the single site fraction for each component in the fit is assigned a Gaussian constraint (as in \cref{eq:analysis_gaussian_constraint}. The mean of this Gaussian is the single site fraction from the simulation, and the width is \SI{5.9}{\percent} of the mean. The constraint on each component is assumed independent of every other component. While some correlation should be expected, it has not been studied, and independence provides a conservative assumption.
 
 \subsection{Radon in the xenon}
 
 \subsection{Radon in the air gap}
-
-\section{Systematic Uncertainties}
 
 \section{Measurement of \twonu}
 
