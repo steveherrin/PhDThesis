@@ -178,8 +178,25 @@ The true energies from the signal and background Monte Carlo simulations are sme
 \subsection{Agreement between simulation and data}
 In order to verify that the simulations accurately predict multiplicity, energy, and standoff distance distributions, they are cross checked by simulating the calibration sources and comparing the results with calibration data. This is done for both the \isotope{60}{60} source and the \isotope{228}{Th} source.
 
+\subsubsection{Single Site Fraction Agreement}
+Since the distinction between single site and multiple site events plays a strong role in estimating backgrounds, it is important to confirm that the simulations accurately reflect the fraction of events of each multiplicity. \Cref{fig:analysis_ssfrac_agreement} shows that the maximum observed deviation in the single site fraction is less than \SI{10}{\percent} and varies with energy. The systematic error due to the energy-dependent deviation is evaluated with the shape agreement below. The remaining energy independent error on the overall fraction is \SI{5.9}{\percent}. This is determined by taking the mean of the measured residual, weighted by the fraction of the \twonu{} spectrum in each energy bin. The weighting is done so that the error reflects the portion of the spectrum where the most events are collected.
+
+\begin{figure}[htb]
+\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_ssfrac_agreement.pdf}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_ssfrac_residuals.pdf}
+	\end{subfigure}
+\caption[Single site fraction agreement between simulation and data]{The left plot shows the agreement between the fraction of events that are single site in simulations and data for a \isotope{228}{Th} calibration. The right plot shows the fractional residual error between simulation and data for \isotope{60}{Co} and \isotope{228}{Th} data.}
+\label{fig:analysis_ssfrac_agreement}
+\end{figure}
+
 \subsubsection{Shape Agreement}
-One simple check is to compare the shapes of the energy and standoff distance distributions in data and simulation. \Cref{fig:analysis_shape_agreement} shows this comparison. The overall agreement in both shape and standoff distance looks reasonable. However, looking at the residual plots shown in \cref{fig:analysis_shape_agreement_residuals} shows that the agreement is not perfect.
+One simple check is to compare the shapes of the energy and standoff distance distributions in data and simulation. \Cref{fig:analysis_shape_agreement} shows this comparison. The overall agreement in both shape and standoff distance looks reasonable. However, this agreement is not perfect. As \cref{fig:analysis_shape_agreement_ratio} shows, the simulations underpredict the fraction of single site events at low energies. The effects of this can be modeled. First, linear functions are fit to the data as shown in \cref{fig:analysis_shape_agreement_ratio}. The fits are used to form a skewing function that can be applied to PDFs. This correction is applied to PDFs for \twonu{}, and toy simulations with a known number of \twonu{} events are generated from these unskewed PDFs. Finally, the original unskewed PDFs are fit to the toy simulated data. Doing so reveals the skewing introduces a \SI{0.75}{\percent} systematic error on the number of \twonu{} events. This systematic error is taken into account at a later stage.
 
 \begin{figure}[htb]
 \centering
@@ -205,18 +222,13 @@ One simple check is to compare the shapes of the energy and standoff distance di
 
 \begin{figure}[htb]
 \centering
-	\begin{subfigure}[c]{0.48\textwidth}
-	\centering
-	\includegraphics[width=\textwidth]{./plots/analysis_shape_agreement_E_residual.pdf}
-	\end{subfigure}\hfill%
-	\begin{subfigure}[c]{0.48\textwidth}
-	\centering
-	\includegraphics[width=\textwidth]{./plots/analysis_shape_agreement_sd_residual.pdf}
-	\end{subfigure}
-\caption[Residuals for data minus simulation for a \isotope{228}{Th} calibration source]{The residuals for data minus simulation for the energy (left) and standoff distance distributions (right) of a \isotope{228}{Th} source located at the cathode. This is for single site events. The \(y\)-axis is the number of standard deviations the data is from the simulation.}
-\label{fig:analysis_shape_agreement_residuals}
+\includegraphics[width=0.7\textwidth]{./plots/analysis_shape_agreement_ratio.pdf}
+\caption[Ratio of simulated spectra to data as a function of energy]{The ratio of the simulated energy spectrum to data for a \isotope{60}{Co} source. Single site events are shown on top, and multiple site events are shown on bottom. This indicates that the simulation underpredicts the fraction of single site events at low energies.}
+\label{fig:analysis_shape_agreement_ratio}
 \end{figure}
 
+\subsubsection{Rate Agreement}
+\todo{Do I want/need to include this?}
 
 \section{Maximum Likelihood Method}
 \subsection{Theory}
