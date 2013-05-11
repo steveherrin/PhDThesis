@@ -115,6 +115,7 @@ The singles site and multiple site information helps separate \(\gamma\) interac
 \label{sec:analysis_monte_carlo}
 
 \subsection{Simulations}
+\label{sec:analysis_simulations}
 The GEANT4 simulation toolkit\cite{Agostinelli:2003fk} is used in order to determine both the energy spectra and spatial distributions of various double beta decay signals and radioactive backgrounds in EXO-200. The following are simulated using a detailed model of the detector and its surroundings (see \cref{fig:analysis_geant4_detector}):
 \begin{itemize}
 \item Double beta decay of \xenon{136}:
@@ -271,6 +272,7 @@ For each signal and each background, two dimensional PDFs (in energy and standof
 For each PDF, there are two parameters: the total number of events \(N_i\) associated with that PDF, and the fraction \(a_i\) of those events that are single site events. There is also one overall normalization parameter \(c_\text{norm}\), explained below. Denote the number of events in the bin with multiplicity (SS or MS) \(m\), energy \(E\), and standoff distance \(d_s\) for PDF \(i\) as \(n_i(m, E, d_s)\). The combined PDF predicts
 \begin{equation}
 n(m, E, d_s) = c_\text{norm}\sum_i N_i a_i n_i(m, E, d_s)
+\label{eq:analysis_sum_pdf}
 \end{equation}
 events in that bin.
 
@@ -293,6 +295,16 @@ That is, the likelihood for a given \(\theta\) is Gaussian distributed around th
 As described in \cref{sec:analysis_ss_frac_agreement}, the overall systematic error on the single site fraction is estimated to be \SI{5.9}{\percent}, based on comparisons of calibration data to simulations. Therefore, the single site fraction for each component in the fit is assigned a Gaussian constraint (as in \cref{eq:analysis_gaussian_constraint}. The mean of this Gaussian is the single site fraction from the simulation, and the width is \SI{5.9}{\percent} of the mean. The constraint on each component is assumed independent of every other component. While some correlation should be expected, it has not been studied, and independence provides a conservative assumption.
 
 \subsection{Radon in the xenon}
+Because radon is noble, it cannot be chemically purified from the xenon. \isotope{222}{Rn} and some daughters emit \(\alpha\) particles when decaying, and these can be identified through their increased scintillation and decreased ionization signals. Counting these decays reveals there is \SI{3.65\pm0.37}{\micro\Bq\per\kg} of \isotope{222}{Rn} dissolved in the liquid xenon in the TPC. This is used to constrain the the contributions of radon in the xenon in the fit to the spectrum:
+\begin{itemize}
+\item The active volume of xenon has a total mass of \SI{126.1}{\kg}, so there is a total activity of \SI{460.1\pm46.0}{\micro\Bq} in the active xenon.
+\item Of the \isotope{214}{Po} \(\alpha\) decays observed, roughly 75\% occur at the cathode. Since half of the decays on the cathode will have the \(\alpha\) particle emitted invisibly into the cathode material, this means 83\% of all radon daughters decay at the cathode. Since \isotope{214}{Bi} is the only one that can deposit energy in the fiducial volume, its activity is constrained to \SI{381.9\pm38.2}{\micro\Bq}.
+\item The remaining \SI{78.2\pm46.0}{\micro\Bq} is used as the constraint for \isotope{222}{Rn} and its daughters in the active xenon.
+\item There is also \SI{30.2}{\kg} of inactive xenon. Its activity is constrained to \SI{110.3\pm11.0}{\Bq}.
+\end{itemize}
+These constraints are imposed as Gaussian constraints (\cref{eq:analysis_gaussian_constraint}) on the \(N_i\) (as in \cref{eq:analysis_sum_pdf}) for the PDFs, taking into account the efficiencies of all cuts, including the \(\alpha\) particle eliminating diagonal cut.
+
+
 
 \subsection{Radon in the air gap}
 
