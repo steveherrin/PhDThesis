@@ -230,7 +230,25 @@ One simple check is to compare the shapes of the energy and standoff distance di
 \end{figure}
 
 \subsubsection{Rate Agreement}
-\todo{Do I want/need to include this?}
+\Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate observed using the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals gives a mean residual rate for (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations. Thus, the \(1\sigma\) uncertainty on the rate of calibration sources, \SI{4.1}{\percent} represents a conservative estimate on the uncertainty for decay rats in the liquid xenon.
+
+\begin{table}[htb]
+\centering
+\caption[Calibration source rate agreement]{Comparison of the estimated calibration source activities based on measurements in the EXO-200 detector and Monte Carlo simulations of efficiencies to their true values, based on the activity at the time of manufacture and known half life.}
+\label{tab:analysis_source_rate_agreement}
+\begin{tabular}{c c c c}\toprule
+			&			&					&	Absolute rate agreement		\\
+\multicolumn{2}{c}{Location}	&	Isotope			&	(True - Estimated)/True (\%)	\\\midrule
+Anode		&	\(-z\)		&	\isotope{228}{Th}	&	\(6.2^{+0.2}_{-1.7}\)			\\
+			&			&	\isotope{60}{Co}	&	\(6.0^{+0.4}_{-1.7}\)			\\
+Anode		&	\(+z\)		&	\isotope{228}{Th}	&	\(-0.4^{+0.6}_{-0.5}\)			\\
+			&			&	\isotope{60}{Co}	&	\(2.3^{+0.5}_{-0.8}\)			\\
+Cathode		&	\(+x\)		&	\isotope{228}{Th}	&	\(3.6^{+0.7}_{-1.4}\)			\\
+			&			&	\isotope{60}{Co}	&	\(0.9^{+1.0}_{-1.5}\)			\\
+Cathode		&	\(+y\)		&	\isotope{228}{Th}	&	\(4.5^{+3.3}_{-3.2}\)			\\
+			&			&	\isotope{60}{Co}	&	\(5.1^{+3.2}_{4.0}\)			\\\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Systematic Uncertainties}
 
