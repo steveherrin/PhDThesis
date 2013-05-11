@@ -26,6 +26,7 @@ theta = ROOT.RooRealVar("#theta", "#theta", acos(s_x.getVal()*(s_x.getVal()-rho.
                                                        -2*rho.getVal()*s_x.getVal()**3*s_y.getVal()
                                                        -2*rho.getVal()*s_x.getVal()*s_y.getVal()**3
                                                        +2*(rho.getVal()*s_x.getVal()*s_y.getVal())**2)))
+# Think triangle with adjacent side s_x*(s_x-rho*s_y) and opposite side s_y*(s_y-rho*s_x)
 
 print("I'm using       theta = %0.2f"%(theta.getVal()*180/pi))
 print("Conti suggests  theta = %0.2f"%(0.5*atan(2*rho.getVal()*s_y.getVal()*s_x.getVal()/(s_y.getVal()**2-s_x.getVal()**2))*180/pi))
