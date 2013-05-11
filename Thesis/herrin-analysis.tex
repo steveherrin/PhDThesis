@@ -230,6 +230,7 @@ One simple check is to compare the shapes of the energy and standoff distance di
 \end{figure}
 
 \subsubsection{Rate Agreement}
+\label{sec:analysis_rate_agreement}
 \Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate observed using the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals gives a mean residual rate for (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations. Thus, the \(1\sigma\) uncertainty on the rate of calibration sources, \SI{4.1}{\percent} represents a conservative estimate on the uncertainty for decay rats in the liquid xenon.
 
 \begin{table}[htb]
@@ -251,6 +252,33 @@ Cathode		&	\(+y\)		&	\isotope{228}{Th}	&	\(4.5^{+3.3}_{-3.2}\)			\\
 \end{table}
 
 \section{Systematic Uncertainties}
+\subsection{Rate Agreement}
+While the rate agreement with calibration sources provides a conservative estimate of the accuracy to which the detector can measure decay rates, it is possible to estimate this uncertainty directly. \Cref{tab:analysis_normalization_error} summarizes these estimates.
+
+\begin{table}[htb]
+\centering
+\caption[Contributions to systematic uncertainty]{Estimated contributions to the uncertainty for rates measured in the detector. Some contributions are energy independent, and so are calculated separately for the different modes.}
+\label{tab:analysis_source_rate_agreement}
+\begin{tabular}{p{0.45\textwidth} c c c c c}\toprule
+			&	\multicolumn{5}{c}{Contribution to rate uncertainty (\%)}				\\
+Component	&	\twonu	&	\multicolumn{4}{c}{\(0\nu\beta\beta\chi^0(\chi^0)\)}		\\
+			&			&	\(n = 1\)	&	\(n = 2\)	&	\(n = 3\)	&	\(n = 7\)	\\
+Identified noise in coincidence with physics events		&	\multicolumn{5}{c}{\(1\times10^{-3}\)}		\\
+Physics events mis-identified as noise				&	\multicolumn{5}{c}{\(<0.06\)}				\\
+Noise leading to improper clustering				&	\multicolumn{5}{c}{\(<0.18\)}				\\
+Fiducial volume due to bias in position reconstruction	&	\multicolumn{5}{c}{\(1.73\)}				\\
+Fiducial volume due to position reconstruction resolution	&	\multicolumn{5}{c}{\(0.36\)}				\\
+Energy calibration and resolution uncertainty			&	0.40	&	0.04	&	0.09	&	0.16	&	0.56	\\
+Energy scale difference between \(\beta\) and \(\gamma\)	&	0.17	&	0.09	&	0.20	&	0.37	&	1.40	\\
+Induction tagging								&	\(<0.2\)&		&		&		&		\\
+Triggering efficiency	(above \SI{700}{\keV})			&	\multicolumn{5}{c}{\(\approx 0\)}			\\
+Signal-finding efficiency (above \SI{700}{\keV})		&	\multicolumn{5}{c}{\(\approx 0\)}			\\
+Clustering efficiency								&	0.18									\\
+Shape distortion in \SIrange{700}{1000}{\keV}			&	0.75	&	0.75	&	0.75	&	0.75	&		\\\midrule
+\textbf{Total}									&\textbf{2.0}&\textbf{2.0}&\textbf{2.0}&\textbf{2.0}&\textbf{2.8}\\\bottomrule
+\end{tabular}
+\end{table}
+
 
 \section{Maximum Likelihood Method}
 \subsection{Theory}
@@ -324,6 +352,8 @@ These constraints are imposed as Gaussian constraints (\cref{eq:analysis_gaussia
 
 \subsection{Radon in the air gap}
 Radon can seep through the cracks in the lead wall and decay in the small gap between the lead and the cryostat. \(\gamma\) rays from decays of \isotope{214}{Bi} in this volume can reach the TPC. A DURRIDGE RAD7 unit monitors the level of \isotope{222}{Rn} in the clean room air. The average activity during periods when the detector was live was \SI{7.2\pm0.5}{\Bq\per\cubic\meter}. Measurements sampling air from the gap directly have confirmed that radon levels in that gap are similar to those in the clean room air. The volume of air in the gap is known to be \SI{.280\pm0.015}{\cubic\meter}, and so the total activity of \SI{2.01\pm 0.11}{\Bq} is used, along with the efficiencies from simulation, to constrain the number of decays \(N_i\) for \SI{214}{Bi} in the gap. This is applied as a Gaussian constraint on the upper number of decays.
+
+\subsection{Normalization}
 
 \section{Measurement of \twonu}
 
