@@ -25,7 +25,7 @@
 							&&					&					&&					&					& 	(nominally 60)	\\
 	\(v\) wires					&&	3				&		3			&&	10				&	10				&	60			\\\bottomrule
 \end{tabular}
-\end{table}
+\end{table} %Preamp-RC -CR
 
 \Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The scintillation signals from the APDs and the induction and collection signals from ionization are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of two integrators followed by three differentiators. \Cref{tab:data_shaping_times} summarizes the time constants.  The transfer functions of these shapers determine the waveform of a physical signal (ionization or scintillation). In order to improve energy resolution, the final stage differentiation times for the \(u\) wire channels are measured by analyzing the response to charge injected from a capacitor.
 
