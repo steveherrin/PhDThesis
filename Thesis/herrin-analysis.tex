@@ -263,7 +263,7 @@ While the rate agreement with calibration sources provides a conservative estima
 \label{tab:analysis_normalization_uncertainaty}
 \begin{tabular}{p{0.45\textwidth} c c c c c}\toprule
 			&	\multicolumn{5}{c}{Contribution to rate uncertainty (\%)}				\\
-Component	&	\twonu	&	\multicolumn{4}{c}{\(0\nu\beta\beta\chi^0(\chi^0)\)}		\\
+Component	&	\twonu{}	&	\multicolumn{4}{c}{\(0\nu\beta\beta\chi^0(\chi^0)\)}		\\
 			&			&	\(n = 1\)	&	\(n = 2\)	&	\(n = 3\)	&	\(n = 7\)	\\
 Identified noise in coincidence with physics events		&	\multicolumn{5}{c}{\(1\times10^{-3}\)}		\\
 Physics events mis-identified as noise				&	\multicolumn{5}{c}{\(<0.06\)}				\\
@@ -444,11 +444,11 @@ The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty
 The best fit of the background and signal PDFs to the data is shown in \cref{fig:analysis_bb2n_best_fit}. The fiducial volume contains \SI{81.9}{\kg} of xenon, of which \SI{80.6}{\percent} is \isotope{136}{Xe}. The total live time was \SI{116.5}{day} and the efficiency for detecting \twonu{} after all cuts is \SI{59}{\percent}. The best fit using the maximum likelihood method says the data set contains \num{1.92e4} \twonu{} decays. This implies a half life of \SI{1.98e21}{\year}. \Cref{fig:analysis_bb2n_best_fit} shows projections of the best fit spectra.
 
 \subsection{Breakdown of systematic errors}
-Ultimately, the profile likelihood method gives an overall error, not broken down into statistical and systematic components. However, the relative contributions to the overall error can be obtained by fixing various components in the fit and observing the change in the width of the likelihood profile. The statistical uncertainty is obtained by fixing all parameters except the number of \twonu events to their best fit values. Systematic uncertainty can likewise be obtained by looking at just the effect of the single site fraction uncertainty, the contributions of the background PDFs, and the normalization uncertainty. \Cref{tab:analysis_error_budget} breaks down these different sources of uncertainty.
+Ultimately, the profile likelihood method gives an overall error, not broken down into statistical and systematic components. However, the relative contributions to the overall error can be obtained by fixing various components in the fit and observing the change in the width of the likelihood profile. The statistical uncertainty is obtained by fixing all parameters except the number of \twonu{} events to their best fit values. Systematic uncertainty can likewise be obtained by looking at just the effect of the single site fraction uncertainty, the contributions of the background PDFs, and the normalization uncertainty. \Cref{tab:analysis_error_budget} breaks down these different sources of uncertainty.
 
 \begin{table}[htb]
 \centering
-\caption[Breakdown of uncertainties]{A breakdown of the various uncertainties on the measurement of \twonu. Each contribution is given as a percentage of the best-fit value}
+\caption[Breakdown of uncertainties]{A breakdown of the various uncertainties on the measurement of \twonu{}. Each contribution is given as a percentage of the best-fit value}
 \label{tab:analysis_error_budget}
 \begin{tabular}{c c}\toprule
 Uncertainty	&	Contribution \%		\\\midrule
@@ -473,7 +473,7 @@ As \cref{fig:analysis_bb2n_rate_v_time} shows, the half time obtained by fitting
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.6\textwidth]{./plots/analysis_bb2n_rate_v_time.pdf}
-\caption[\twonu half life v. time]{The half life of \twonu throughout the data set. The data set has been broken up into 4 week slices and each individual period has been fit in order to determine the half life. The blue line represents the best fit half life for the entire data set, as reported in \cref{eq:analysis_bb2n_halflife}. The \(\chi^2\) statistic comparing this value to the individual time periods shows good agreement.}
+\caption[\twonu{} half life v. time]{The half life of \twonu{} throughout the data set. The data set has been broken up into 4 week slices and each individual period has been fit in order to determine the half life. The blue line represents the best fit half life for the entire data set, as reported in \cref{eq:analysis_bb2n_halflife}. The \(\chi^2\) statistic comparing this value to the individual time periods shows good agreement.}
 \label{fig:analysis_bb2n_rate_v_time}
 \end{figure}
 
@@ -486,12 +486,12 @@ As \cref{fig:analysis_bb2n_rate_v_time} shows, the half time obtained by fitting
 	\centering
 	\includegraphics[width=\textwidth]{./plots/analysis_bb2n_rate_v_apothem.pdf}
 	\end{subfigure}
-\caption[Number of \twonu decays v. position]{The number of \twonu{} decays returned by the fit when applied to small volumes of the detector. As the plot on the left shows, the rate is consistent with uniform in \(z\). For the right plot, the volume is proportional to the square of the apothem. Therefore, the volume in a shell bounded by apothem \(r\) and \(r+dr\) should increase linearly as a function of \(r\). Thus, the plot shows the \twonu{} decays are uniformly distributed throughout the fiducial volume.}
+\caption[Number of \twonu{} decays v. position]{The number of \twonu{} decays returned by the fit when applied to small volumes of the detector. As the plot on the left shows, the rate is consistent with uniform in \(z\). For the right plot, the volume is proportional to the square of the apothem. Therefore, the volume in a shell bounded by apothem \(r\) and \(r+dr\) should increase linearly as a function of \(r\). Thus, the plot shows the \twonu{} decays are uniformly distributed throughout the fiducial volume.}
 \label{fig:analysis_bb2n_rate_v_pos}
 \end{figure}
 
 \subsubsection{Energy only fit}
-It is worthwhile to verify that the inclusion of standoff distance in the fit is not somehow biasing the results. Repeating the fit with the standoff distance ignored, the best fit for the \twonu half life is \(T_{1/2} = \SI{2.01\pm0.05e21}{\year}\), in agreement with the half life reported above.
+It is worthwhile to verify that the inclusion of standoff distance in the fit is not somehow biasing the results. Repeating the fit with the standoff distance ignored, the best fit for the \twonu{} half life is \(T_{1/2} = \SI{2.01\pm0.05e21}{\year}\), in agreement with the half life reported above.
 
 \section{Limits on \(0\nu\beta\beta\chi^0(\chi^0)\)}
 \subsection{Limits}
