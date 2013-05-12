@@ -198,6 +198,7 @@ Since the distinction between single site and multiple site events plays a stron
 \end{figure}
 
 \subsubsection{Shape Agreement}
+\label{sec:analysis_shape_agreement}
 One simple check is to compare the shapes of the energy and standoff distance distributions in data and simulation. \Cref{fig:analysis_shape_agreement} shows this comparison. The overall agreement in both shape and standoff distance looks reasonable. However, this agreement is not perfect. As \cref{fig:analysis_shape_agreement_ratio} shows, the simulations underpredict the fraction of single site events at low energies. The effects of this can be modeled. First, linear functions are fit to the data as shown in \cref{fig:analysis_shape_agreement_ratio}. The fits are used to form a skewing function that can be applied to PDFs. This correction is applied to PDFs for \twonu{}, and toy simulations with a known number of \twonu{} events are generated from these unskewed PDFs. Finally, the original unskewed PDFs are fit to the toy simulated data. Doing so reveals the skewing introduces a \SI{0.75}{\percent} systematic error on the number of \twonu{} events. This systematic error is taken into account at a later stage.
 
 \begin{figure}[htb]
@@ -275,8 +276,8 @@ Triggering efficiency	(above \SI{700}{\keV})			&	\multicolumn{5}{c}{\(\approx 0\
 Signal-finding efficiency (above \SI{700}{\keV})		&	\multicolumn{5}{c}{\(\approx 0\)}			\\
 Clustering efficiency								&	0.18									\\
 Noise leading to improper clustering				&	\multicolumn{5}{c}{\(<0.18\)}				\\
-Shape distortion in \SIrange{700}{1000}{\keV}			&	0.75	&	0.75	&	0.75	&	0.75	&		\\\midrule
-\textbf{Total}									&\textbf{2.0}&\textbf{2.0}&\textbf{2.0}&\textbf{2.0}&\textbf{2.8}\\\bottomrule
+Shape distortion in \SIrange{700}{1000}{\keV}			&	\multicolumn{5}{c}{0.75}					\\\midrule
+\textbf{Total}									&\textbf{2.0}&\textbf{2.0}&\textbf{2.0}&\textbf{2.0}&\textbf{2.5}\\\bottomrule
 \end{tabular}
 \end{table}
 
@@ -290,7 +291,7 @@ The \SI{2615}{\keV} \(\gamma\) ray from \isotope{228}{Th} may produce an electro
 
 The clustering efficiency is determined by comparing the number of ionization clusters with a fully reconstructed position to the total number of collection wire signal bundles. The former is a subset of the latter, and both have a well-defined energy. The absolute efficiency is energy-dependent, and taken into account when generating PDFs. The uncertainty is obtained by comparing the efficiency, as a function of energy, in both simulations and data. Integrating over the energy spectra of the double beta decay modes gives the uncertainties listed in \cref{tab:analysis_source_rate_agreement}. Since noise being reconstructed as a signal would contribute to differing efficiencies, the uncertainty introduced by noise in clustering is included in this number.
 
-
+Finally, simulations predict a shape for the spectrum between about \SIrange{700}{1000}{\keV} that disagrees with calibration data. This shape error is similar for \isotope{60}{Co} and \isotope{228}{Th}, and can be parameterized as shown in \cref{fig:analysis_shape_agreement_ratio}. This could be used as a correction, but instead it is taken as a systematic uncertainty. All PDFs are ``skewed'' to effectively undo this error, and then used to generate toy Monte Carlo simulations with similar amounts of signal and background as in the Run2a data. The resulting toy sets are then fit with the original, unskewed PDFs. The result is that the number of \twonu{} events returned by the fit is systematically \SI{0.75}{\percent} higher than the number generated in the simulation. Therefore, this is the contribution to the \twonu{} rate uncertainty. The Majoron-emitting modes with spectral indices 1, 2, and 3 have less of their spectrum at these low energies, and so using the \twonu{} uncertainty is a conservative estimate. For spectral index 7, the sign of the distortion would tend to cause the number of these decays to fit to higher than their true values. Thus, if a limit is obtained for spectral index 7, it will still be conservative, even using the \twonu{} uncertainty.
 
 \section{Maximum Likelihood Method}
 \subsection{Theory}
