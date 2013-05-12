@@ -307,6 +307,36 @@ The clustering efficiency is determined by comparing the number of ionization cl
 
 Finally, simulations predict a shape for the spectrum between about \SIrange{700}{1000}{\keV} that disagrees with calibration data. This shape error is similar for \isotope{60}{Co} and \isotope{228}{Th}, and can be parameterized as shown in \cref{fig:analysis_shape_agreement_ratio}. This could be used as a correction, but instead it is taken as a systematic uncertainty. All PDFs are ``skewed'' to effectively undo this error, and then used to generate toy Monte Carlo simulations with similar amounts of signal and background as in the Run2a data. The resulting toy sets are then fit with the original, unskewed PDFs. The result is that the number of \twonu{} events returned by the fit is systematically \SI{0.75}{\percent} higher than the number generated in the simulation. Therefore, this is the contribution to the \twonu{} rate uncertainty. The Majoron-emitting modes with spectral indices 1, 2, and 3 have less of their spectrum at these low energies, and so using the \twonu{} uncertainty is a conservative estimate. For spectral index 7, the sign of the distortion would tend to cause the number of these decays to fit to higher than their true values. Thus, if a limit is obtained for spectral index 7, it will still be conservative, even using the \twonu{} uncertainty.
 
+\subsection{Other PDFs}
+\subsubsection{Other Backgrounds}
+A number of radioactive isotopes are only simulated in the TPC vessel. However, since the cryostat, for example, is made of the same copper, it seems reasonable to include simulations for it as well. And, likewise, other sources of background can be imagined. In the Run2a data set, however, there are not enough events to statistically distinguish backgrounds in different components. \Cref{fig:analysis_degenerate_uranium_spectra} shows projections of the energy and standoff distance spectra for \isotope{238}{U} in the TPC vessel and the inner cryostat, normalized to the number of \isotope{238}{U} decays returned by the fit. Statistical errors are shown.
+ 
+\begin{figure}[htb]
+\centering
+\begin{subfigure}[c]{0.7\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_degenerate_uranium_spectra_e.pdf}
+\end{subfigure}
+\begin{subfigure}[c]{0.7\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_degenerate_uranium_spectra_s.pdf}
+\end{subfigure}
+\caption[Lack of statistical power to distinguish the source of uranium backgrounds]{Projections of the energy (top) and standoff distance (bottom) spectra for \isotope{238}{U} in the TPC vessel (black points) and in the inner cryostat (blue line). The error bars are statistical, normalized to the number of \isotope{238}{U} decays returned by the fit. The two spectra are statistically indistinguishable without more data.}
+\label{fig:analysis_degenerate_uranium_spectra}
+\end{figure}
+
+Neutron-induced backgrounds are difficult to model. The most likely candidate background, due the large volume of HFE and its close proximity to the TPC, is the \SI{2.2}{\MeV} \(\gamma\) ray produced by neutron capture on hydrogen. Using the muon flux measured in \cref{ch:muons} and FLUKA\cite{Ferrari:2005zk} simulations of the EXO-200 detector, a conservative estimate for the number of \SI{2.2}{\MeV} \(\gamma\) rays seen in the data is roughly 40, split evenly between the single-site and multiple-site spectra. Attempting to include the \(\gamma\) line in the fit (described below) yields a best fit of 23 events, but not significant at even the \(1\sigma\) level. Therefore, this potential background is not included in the fit, and will only be a small effect if present.
+
+\subsubsection{Missing wire channel}
+For a period of roughly 1 month, the data collected from the detector did not include one collection wire (numbered channel 16). In order to determine the effect of this period on the overall spectrum PDFs were constructed for data with and without this channel included and combined, weighted by their fraction of total live time in Run2a. The period with the missing channel constitutes \SI{5.2}{\percent} of the total time. These weighted PDFs were compared with the default PDFs with all channels working. The reduced \(\chi^2\) of 0.1 shows the spectra are quite compatible. A Kolomgorov-Smirnov test reports \SI{89.7}{\percent} probability for compatibility. Therefore, the default spectra are used, since they closely match the weighted spectra, which are more complicated to produce.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.7\textwidth]{./plots/analysis_missing_channel16_comparison.pdf}
+\caption[Comparison of default PDF to PDF with missing channel]{A comparison of the default PDF for \isotope{232}{Th} in the TPC vessel (black) to one that accounts for the time period in which one collection wire was not taking data (blue). The two spectra are quite compatible, with a reduced \(\chi^2\) of 0.1, and a Kolmogorov-Smirnov test indicating \SI{89.7}{\percent} probability for compatibility.}
+\label{fig:analysis_missing_channel16_comparison}
+\end{figure}
+
 \section{Maximum Likelihood Method}
 \subsection{Theory}
 When attempting to measure a decay rate (as for double beta decay), the parameter measured is the number of decays in a given amount of time. This is complicated by the presence of backgrounds. Ultimately, the collected data is a combination of many backgrounds and possibly signals, each parameterized by a number of decays. A maximum likelihood analysis provides a way to estimate these parameters and their uncertainties, or to place limits on the parameters.
