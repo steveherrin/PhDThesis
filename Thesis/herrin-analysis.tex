@@ -95,7 +95,7 @@ This particular choice of fiducial volume has two chief motivations. The first i
 \centering
 \includegraphics[width=0.8\textwidth]{./plots/analysis_fiducial_vol_transverse.pdf}
 \caption[Energy response due to increasing fiducial volume apothem]{The reconstructed energy of the \SI{2615}{\keV} peak from a \isotope{228}{Th} source calibration. This is found by fitting a Gaussian + complimentary error function model to data with an increasingly large allowed fiducial volume. A larger allowed hexagonal apothem extends the fiducial volume closer and closer to the edges of the anode wire planes. The detector response begins to deviate significantly when the cut is extended above \SI{153}{\mm}, and so this is used to define the fiducial volume.}
-\label{fig:analysis_fiducial_vol_bg_rates}
+\label{fig:analysis_fiducial_vol_transverse}
 \end{figure}
 
 The second motivation is to ensure a homogeneous detector response inside the fiducial volume. As shown in the previous discussion of the shielding grid correction in \cref{sec:data_grid_correction}, the correction becomes significant near \(|z|=\SI{182}{\mm}\) (see \cref{fig:data_grid_correction_fits}). Even with the correction applied, the detector response begins to diverge near that position (see \cref{fig:data_grid_correction_applied}), and so it is used as the boundary of the fiducial region. In the transverse dimension, a hexagonal cross-section is used. This matches the anode wire geometry, and so makes applying the fiducial volume cut straightforward. \Cref{fig:analysis_fiducial_vol_transverse} shows that requiring the apothem of this hexagon to be less than \SI{153}{\mm} ensures uniform energy response.
@@ -255,12 +255,12 @@ Cathode		&	\(+y\)		&	\isotope{228}{Th}	&	\(4.5^{+3.3}_{-3.2}\)			\\
 \section{Systematic Uncertainties}
 \subsection{Rate Uncertainty}
 \label{sec:analysis_rate_uncertainty}
-While the rate agreement with calibration sources provides a conservative estimate of the accuracy to which the detector can measure decay rates, it is possible to estimate this uncertainty directly. \Cref{tab:analysis_normalization_error} summarizes these estimates.
+While the rate agreement with calibration sources provides a conservative estimate of the accuracy to which the detector can measure decay rates, it is possible to estimate this uncertainty directly. \Cref{tab:analysis_normalization_uncertainty} summarizes these estimates.
 
 \begin{table}[htb]
 \centering
 \caption[Contributions to systematic uncertainty]{Estimated contributions to the uncertainty for rates measured in the detector. Some contributions are energy independent, and so are calculated separately for the different modes.}
-\label{tab:analysis_source_rate_agreement}
+\label{tab:analysis_normalization_uncertainaty}
 \begin{tabular}{p{0.45\textwidth} c c c c c}\toprule
 			&	\multicolumn{5}{c}{Contribution to rate uncertainty (\%)}				\\
 Component	&	\twonu	&	\multicolumn{4}{c}{\(0\nu\beta\beta\chi^0(\chi^0)\)}		\\
@@ -441,7 +441,7 @@ The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty
 \label{fig:analysis_bb2n_best_fit}
 \end{figure}
 
-The best fit of the background and signal PDFs to the data is shown in \cref{fig:analysis_bb2n_best_fit}. The fiducial volume contains \SI{81.9}{\kg} of xenon, of which \SI{80.6}{\percent} is \isotope{136}{Xe}. The total live time was \SI{116.5}{day} and the efficiency for detecting \twonu{} after all cuts is \SI{59}{\percent}. The best fit using the maximum likelihood method says the data set contains \num{1.92e4} \twonu{} decays. This implies a half life of \SI{1.98e21}{\year}. \Cref{fig:analysis_best_fit_spectra} shows projections of the best fit spectra.
+The best fit of the background and signal PDFs to the data is shown in \cref{fig:analysis_bb2n_best_fit}. The fiducial volume contains \SI{81.9}{\kg} of xenon, of which \SI{80.6}{\percent} is \isotope{136}{Xe}. The total live time was \SI{116.5}{day} and the efficiency for detecting \twonu{} after all cuts is \SI{59}{\percent}. The best fit using the maximum likelihood method says the data set contains \num{1.92e4} \twonu{} decays. This implies a half life of \SI{1.98e21}{\year}. \Cref{fig:analysis_bb2n_best_fit} shows projections of the best fit spectra.
 
 \subsection{Breakdown of systematic errors}
 Ultimately, the profile likelihood method gives an overall error, not broken down into statistical and systematic components. However, the relative contributions to the overall error can be obtained by fixing various components in the fit and observing the change in the width of the likelihood profile. The statistical uncertainty is obtained by fixing all parameters except the number of \twonu events to their best fit values. Systematic uncertainty can likewise be obtained by looking at just the effect of the single site fraction uncertainty, the contributions of the background PDFs, and the normalization uncertainty. \Cref{tab:analysis_error_budget} breaks down these different sources of uncertainty.
