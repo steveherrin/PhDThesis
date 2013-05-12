@@ -362,11 +362,14 @@ These constraints are imposed as Gaussian constraints (\cref{eq:analysis_gaussia
 Radon can seep through the cracks in the lead wall and decay in the small gap between the lead and the cryostat. \(\gamma\) rays from decays of \isotope{214}{Bi} in this volume can reach the TPC. A DURRIDGE RAD7 unit monitors the level of \isotope{222}{Rn} in the clean room air. The average activity during periods when the detector was live was \SI{7.2\pm0.5}{\Bq\per\cubic\meter}. Measurements sampling air from the gap directly have confirmed that radon levels in that gap are similar to those in the clean room air. The volume of air in the gap is known to be \SI{.280\pm0.015}{\cubic\meter}, and so the total activity of \SI{2.01\pm 0.11}{\Bq} is used, along with the efficiencies from simulation, to constrain the number of decays \(N_i\) for \SI{214}{Bi} in the gap. This is applied as a Gaussian constraint on the upper number of decays.
 
 \subsection{Normalization}
+The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty} is included in the fit as an overall factor multiplying the normalization. This is not so much a constraint as a way to account for the uncertainty. The constraint has the factor centered around 1, so it will never affect the best fit value. The width is given by the rate uncertainty given in \cref{tab:analysis_source_rate_agreement}, and so it contributes to the uncertainty on half life measurements or limits.
 
 \section{Measurement of \twonu}
 
+The best fit of the background and signal PDFs to the data is shown in \cref{fig:analysis_bb2n_best_fit}. The fiducial volume contains \SI{81.9}{\kg} of xenon, of which \SI{80.6}{\percent} is \isotope{136}{Xe}. The total live time was \SI{116.5}{day} and the efficiency for detecting \twonu{} after all cuts is \SI{59}{\percent}. The best fit using the maximum likelihood method says the data set contains \num{1.92e4} \twonu{} decays. This implies a half life of \SI{1.98e21}{\year}. \Cref{fig:analysis_best_fit_spectra} shows projections of the best fit spectra.
+
 \subsection{Breakdown of systematic errors}
-Ultimately, the profile likelihood method gives an overall error, not broken down into statistical and systematic components. However, the relative contributions to the overall error can be obtained by fixing various components in the fit and observing the change in the width of the likelihood profile. The statistical uncertainty is obtained by fixing all parameters except the number of \twonu events to their best fit values. Systematic uncertainty is can likewise be obtained by looking at just the effect of the single site fraction uncertainty, the contributions of the background PDFs, and the normalization uncertainty. \Cref{tab:analysis_error_budget} breaks down these different sources of uncertainty.
+Ultimately, the profile likelihood method gives an overall error, not broken down into statistical and systematic components. However, the relative contributions to the overall error can be obtained by fixing various components in the fit and observing the change in the width of the likelihood profile. The statistical uncertainty is obtained by fixing all parameters except the number of \twonu events to their best fit values. Systematic uncertainty can likewise be obtained by looking at just the effect of the single site fraction uncertainty, the contributions of the background PDFs, and the normalization uncertainty. \Cref{tab:analysis_error_budget} breaks down these different sources of uncertainty.
 
 \begin{table}[htb]
 \centering
@@ -381,6 +384,12 @@ Normalization	&	2.0				\\\midrule
 \textbf{Total}	&	\textbf{2.4}		\\\bottomrule
 \end{tabular}
 \end{table}
+
+Thus, the measurement of the \twonu{} half time for \isotope{136}{Xe} is
+\begin{equation}
+T_{1/2} = \left ( 1.983 \pm 0.015 (\text{stat}) \pm 0.045 (\text{sys}) \right)\times 10^21 \si{\year}
+\label{eq:analysis_bb2n_halflife}
+\end{equation}
 
 \subsection{Consistency Checks}
 \subsubsection{Time-independence}
