@@ -396,13 +396,27 @@ T_{1/2} = \left ( 1.983 \pm 0.015 (\text{stat}) \pm 0.045 (\text{sys}) \right)\t
 \end{equation}
 
 \subsection{Consistency Checks}
-\subsubsection{Time-independence}
+\subsubsection{Time and position independence}
+As \cref{fig:analysis_bb2n_rate_v_time} shows, the half time obtained by fitting over subsets of the data is consistent with the half life obtained from the entire data set. Thus, the half life seems steady over time. Likewise, as \cref{fig:analysis_bb2n_rate_v_pos} shows, the \twonu{} decays seem uniformly distributed throughout the volume.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.6\textwidth]{./plots/analysis_bb2n_rate_v_time.pdf}
-\caption[The \twonu half-life over time]{The half life of \twonu throughout the data set. The data set has been broken up into 4 week slices and each individual period has been fit in order to determine the half life. The blue line represents the best fit half life for the entire data set, as reported in \cref{eq:analysis_bb2n_halflife}. The \(\chi^2\) statistic comparing this value to the individual time periods shows good agreement.}
+\caption[\twonu half life v. time]{The half life of \twonu throughout the data set. The data set has been broken up into 4 week slices and each individual period has been fit in order to determine the half life. The blue line represents the best fit half life for the entire data set, as reported in \cref{eq:analysis_bb2n_halflife}. The \(\chi^2\) statistic comparing this value to the individual time periods shows good agreement.}
 \label{fig:analysis_bb2n_rate_v_time}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{subfigure}[c]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_bb2n_rate_v_z.pdf}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[c]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_bb2n_rate_v_apothem.pdf}
+	\end{subfigure}
+\caption[Number of \twonu decays v. position]{The number of \twonu{} decays returned by the fit when applied to small volumes of the detector. As the plot on the left shows, the rate is consistent with uniform in \(z\). For the right plot, the volume is proportional to the square of the apothem. Therefore, the volume in a shell bounded by apothem \(r\) and \(r+dr\) should increase linearly as a function of \(r\). Thus, the plot shows the \twonu{} decays are uniformly distributed throughout the fiducial volume.}
+\label{fig:analysis_bb2n_rate_v_pos}
 \end{figure}
 
 \subsubsection{Energy only fit}
