@@ -17,8 +17,8 @@ These events are identified by summing all collection wire waveforms. The baseli
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\columnwidth]{./plots/noise_eventdisplay_run_4685_ev_0441.png}
-\caption[Collection wires negative noise]{A noise event which shows the collection \((u)\) wires going unphysically negative before any individual wire shows a psoitive signal.}
+\includegraphics[width=\columnwidth]{./plots/noise_eventdisplay_run_4685_ev_0441_annotated.png}
+\caption[Collection wires negative noise]{A noise event which shows the collection \((u)\) wires going unphysically negative before any individual wire shows a psoitive signal. The arrow indicates the first time at which the sum signal goes negative, but more extreme examples are visible later in the event.}
 \label{fig:noise_sum_u_neg}
 \end{figure}
 
@@ -43,8 +43,8 @@ These events are identified by looking for any APD channels that saturate, then 
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\textwidth]{./plots/noise_eventdisplay_run_4685_ev_3344.png}
-\caption[APD ``bouncing'' noise]{A noise event with an APD channel signal ``bouncing''. The top image shows signals for the APD plane and u wires in TPC 2, while the bottom image shows the waveform for one APD channel. No baseline subtraction has been applied in order to show that the APD signals bounce between the full scale of the ADC.}
+\includegraphics[width=\textwidth]{./plots/noise_eventdisplay_run_4685_ev_3344_annotated.png}
+\caption[APD ``bouncing'' noise]{A noise event with an APD channel signal ``bouncing''. The top image shows signals for the APD plane and u wires in TPC 2, while the bottom image shows the waveform for one APD channel. No baseline subtraction has been applied in order to show the characteristic noise signal: 1) The APD channel saturates; 2) It dips below 20 ADC counts absolute; 3) It rises back above one quarter full scale; 4) Then dips back below one quarter full scale again.}
 \label{fig:noise_apd_bounce}
 \end{figure}
 
