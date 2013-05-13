@@ -493,6 +493,16 @@ As \cref{fig:analysis_bb2n_rate_v_time} shows, the half time obtained by fitting
 \subsubsection{Energy only fit}
 It is worthwhile to verify that the inclusion of standoff distance in the fit is not somehow biasing the results. Repeating the fit with the standoff distance ignored, the best fit for the \twonu{} half life is \(T_{1/2} = \SI{2.01\pm0.05e21}{\year}\), in agreement with the half life reported above.
 
+\subsection{Comparison to previous results}
+\Cref{fig:analysis_bb2n_halflife_comparison} shows previous measurements of the \twonu{} half life by the EXO-200 and KamLAND-Zen experiments. The Run2a data was previously used to report \(T_{1/2} = (2.23\pm0.017(\text{stat})\pm0.22(\text{sys}))\times10^{21}\si{\year}\). This measurement suffered from a 3\% overestimate in the detector live time, and correcting for this brings the measurement closer in line with the one reported here. That measurement also used a larger fiducial volume, including regions near the detector edges where the volume is less well-known (this is demonstrated by the apparent drop-off in events near the walls and anode/cathode planes in \cref{fig:analysis_bb2n_rate_v_pos}). So while this measurement is consistent with previous measurements by the EXO-200 experiment, it is now in tension with the measurements by KamLAND-Zen.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./plots/analysis_bb2n_half_life_comparison.pdf}
+\caption[Comparison of measurements of the half life for \twonu{}]{A comparison of measurements of \twonu{} half life measurements. The EXO-200 experiment reported results in 2011\cite{Ackerman:2011gz} and 2012\cite{Auger:2012ar} using independent data sets. The KamLAND-Zen experiment reported two results in 2012, denoted a\cite{Gando:2012qy} and b\cite{Gando:2012fk}, with some data in common between the two analyses. The blue line is the maximum likelihood estimate of the half life (\(T_{1/2} = (2.29\pm0.09)\times10^{21}\si{\year}\)) based on these previous measurements, assuming all are independent. The bottom point is the measurement reported in this work.}
+\label{fig:analysis_bb2n_half_life_comparison}
+\end{figure}
+
 \section{Limits on \(0\nu\beta\beta\chi^0(\chi^0)\)}
 \subsection{Limits}
 The Majoron-emitting modes are each separately included in the fit, and confidence intervals are constructed for each using the bounded likelihood method described above. All modes fit to a value consistent with zero events at the 68\% confidence level. The likelihood profiles used to extract the 90\% confidence limits are shown in \cref{fig:analysis_bb0nX_profiles}. Limits on the number of events are translated into limits on half lives using the known live time and number of \xenon{136} nuclei in the fiducial volume. The efficiency for detection is 88.6\% for the mode with spectral index 1; 84.1\% for the mode with spectral index 2; 77.4\% for the mode with spectral index 3; and 44.1\% for the mode with spectral index 7. \Cref{fig:analysis_bb0nX_best_fit} shows projections of the single site spectra with the 90\% confidence limits for the Majoron-emitting modes. \Cref{tab:analyis_majoron_limits} summarizes the limits obtained in the context of a number of models.
