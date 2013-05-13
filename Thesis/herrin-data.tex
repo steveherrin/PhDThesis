@@ -25,9 +25,9 @@
 							&&					&					&&					&					& 	(nominally 60)	\\
 	\(v\) wires					&&	3				&		3			&&	10				&	10				&	60			\\\bottomrule
 \end{tabular}
-\end{table} %Preamp-RC -CR
+\end{table}
 
-\Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The scintillation signals from the APDs and the induction and collection signals from ionization are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of two integrators followed by three differentiators. \Cref{tab:data_shaping_times} summarizes the time constants.  The transfer functions of these shapers determine the waveform of a physical signal (ionization or scintillation). In order to improve energy resolution, the final stage differentiation times for the \(u\) wire channels are measured by analyzing the response to charge injected from a capacitor.
+\Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The scintillation signals from the APDs and the induction and collection signals from ionization are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of a differentiator on the preamplifier, followed by two identical stages of differentiation followed by integration.\todo{Check!} \Cref{tab:data_shaping_times} summarizes the time constants.  The transfer functions of these shapers determine the waveform of a physical signal (ionization or scintillation). In order to improve energy resolution, the final stage differentiation times for the \(u\) wire channels are measured by analyzing the response to charge injected from a capacitor.
 
 After digitization, the Trigger Event Module (TEM) monitors the signals to select interesting events. Due to the low radioactive backgrounds in EXO-200, and the relatively slow rate of \twonu, this trigger is extremely permissive. The triggering thresholds have not been thoroughly studied at low energies, but the trigger is 100\% efficient at triggering on events that deposit more than \SI{700}{\keV} in the liquid xenon. The average trigger rate during routine data taking is approximately \SI{8}{\mHz}. Additionally, the trigger is forced to fire every \SI{0.1}{\s} in order to ensure the DAQ system is correctly recording events and to provide a measurement of detector live time. When the trigger fires, the DAQ records a frame consisting of digitized waveforms for all channels \SI{\pm1024}{\micro\s} around the trigger time.
 
@@ -72,7 +72,7 @@ While the matched filter is good at identifying that there was a signal on a wir
 
 \subsection{Signal Parameter Extraction}
 \label{sec:data_signal_extraction}
-Once signals have been identified in a waveform, information about their energies and times are extracted by fitting template waveforms (determined by the shaping times in \cref{tab:data_shaping_times}) to the waveforms. This is done by minimizing the \(\chi^2\) statistic formed by comparing the baseline-subtracted waveform to the template waveform. Signals that fit to similar times are combined. Signals that fit to small amplitudes or have large errors on the fit amplitude are removed. Minimization is repeated until no more signals need to be combined or removed. This is done on the individual \(u\) and \(v\) wire channels, and on the two plane sum APD signals.
+Once signals have been identified in a waveform, information about their energies and times are extracted by fitting template waveforms (determined by the shaping times in \cref{tab:data_shaping_times}) to the waveforms. This fit is done by minimizing the \(\chi^2\) statistic formed by comparing the baseline-subtracted waveform to the template waveform, allowing the template's amplitude and time to float. Signals that fit to similar times are combined. Signals that fit to small amplitudes or have large errors on the fit amplitude are removed. Minimization is repeated until no more signals need to be combined or removed. This is done on the individual \(u\) and \(v\) wire channels, and on the two plane sum APD signals.
 
 Signals that are collected on a \(u\) wire channel can induce signals in neighboring channels. These induction signals could be mistaken for collection signals. Induction signals are identified and removed by combining information from a number of metrics:
 \begin{itemize}
@@ -92,7 +92,7 @@ Once signals have been identified, signals of the same type may be bundled toget
 
 The \(z\) position of each \(u\) wire bundle is calculated using the time of the most recent scintillation bundle and the known drift velocity for ionization. If no scintillation bundle is found within the maximum physically possible drift time, the bundle is not assigned a \(z\) position. Later data quality cuts remove events that have more than one scintillation bundle within this time window, since the \(z\) position becomes ambiguous.
 
-Finally, \(u\) signal bundles are paired with \(v\) signal bundles to form a ``cluster''. For each possible pairing, a likelihood is computed used 3 PDFs:
+Finally, \(u\) signal bundles are paired with \(v\) signal bundles to form a ``cluster''. For each possible pairing, a likelihood is computed using 3 PDFs:
 \begin{itemize}
 \item After correcting for the known drift velocity between the anodes, the distribution of two paired \(u\) and \(v\) bundle times is a Gaussian centered around 0, with the standard deviation determined by the timing resolution of \SI{1}{\micro\s}.
 \item The relationship between \(u\) and \(v\) signal magnitudes has been studied. Once the magnitudes of the bundled signals have been appropriately scaled, the distribution of their differences is again Gaussian, smeared by the energy resolution.
@@ -111,11 +111,11 @@ Two categories of event are created:
 \item Multiple Site (MS) events: events that are not single site. This selects most gamma ray events, with only a small number of beta decay events.
 \end{itemize}
 
-The clustering algorithm above is limited by the position resolution of the detector. For the \(u\) wires, the resolution is dominated by the \SI{9}{\mm} pitch. For the \(v\) wires, the magnitude of the induction signal on a channel is correlated with the signal's distance from that channel. Since induction signals occur on many neighboring channels, the \SI{3}{\mm} resolution in \(v\) is better than for \(u\). The sampling frequency and shaping times determine the resolution in \(z\). With the multiple signal finder described above, the resolution is about \SI{3}{\micro\s}, which corresponds to about \SI{5}{\mm}.
+The clustering algorithm above is limited by the position resolution of the detector. For the \(u\) wires, the resolution is dominated by the \SI{9}{\mm} pitch. For the \(v\) wires, the magnitude of the induction signal on a channel is correlated with the signal's distance from that channel. Since induction signals occur on many neighboring channels, the \SI{3}{\mm} resolution in \(v\) is better than for \(u\). The electronic noise, sampling frequency, and shaping times determine the resolution in \(z\). With the multiple signal finder described above, the resolution is about \SI{3}{\micro\s}, which corresponds to about \SI{5}{\mm}.
 
 \section{Corrections}
 \label{sec:data_corrections}
-In order to have good energy resolution, events of the same energy should be reconstructed with the same energy, regardless of where in the detector they originated or on which channels the signals were collected. In order to achieve this, a number of corrections are applied to correct for both gain and positional variation. They are detailed below.
+In order to have good energy resolution, events of the same energy should be reconstructed with the same energy, regardless of where in the detector they originated or on which channels the signals were collected. In order to achieve this, a number of corrections are applied to correct for both gain and position variation. They are detailed below.
 
 \subsection{Wire Gain Corrections}
 \begin{figure}
@@ -141,10 +141,10 @@ When ionization is created in a TPC, the positively charged ions move more slowl
 
 Monte Carlo simulations using a MAXWELL simulation of the electric field inside the TPC suggest that the measured ionization signal \(E_\text{measured}\) is related to the true ionization signal \(E_\text{true}\) by
 \begin{equation}
-E_\text{measured} = E_\text{true}\left[1 + p_0 \exp \left(\frac{|z| - 195.5\si{\mm}}{p_1}\right)\right]^{-1}
+E_\text{measured} = E_\text{true}\left[1 + p_0 \exp \left(\frac{|z| - 192.5\si{\mm}}{p_1}\right)\right]^{-1}
 \label{eq:data_grid_correction}
 \end{equation}
-where \SI{192.5}{\mm} is the distance between the cathode and the \(v\) wire plane. The constants \(p_0\) and \(p_1\)are determined from fitting to simulated data, as shown in \cref{fig:data_grid_correction_fits}. They are found to differ for events that have ionization collected on one \(u\) wire and for events that share ionization across 2 \(u\) wires. The best-fit values are summarized in \cref{tab:data_grid_correction_parameters}. The results of applying these corrections is shown in \cref{fig:data_grid_correction_applied}\todo{Reformat these figures}. There is a lingering \SI{\pm0.35}{\percent} variation in the collected signal through the TPC.
+where \SI{192.5}{\mm} is the distance between the cathode and the \(v\) wire plane. The constants \(p_0\) and \(p_1\) are determined by fitting to simulated data, as shown in \cref{fig:data_grid_correction_fits}. They are found to differ for events that have ionization collected on one \(u\) wire and for events that share ionization across 2 \(u\) wires. The best-fit values are summarized in \cref{tab:data_grid_correction_parameters}. The results of applying these corrections is shown in \cref{fig:data_grid_correction_applied}\todo{Reformat these figures}. There is a lingering \SI{\pm0.35}{\percent} variation in the collected signal through the TPC.
 
 \begin{table}[htp]
 \centering
@@ -183,7 +183,7 @@ number of \(u\) wires	&	\(p_0\)	&	\(p_1\)	\\\midrule
 Ionization drifting in the TPC is attenuated by attachment to electronegative impurities. For uniformly distributed impurities, this results in an exponentially decreasing signal as a function of drift time, and the corresponding time constant is the ``electron lifetime''. This effect can be measured by measuring the attenuation of a known signal (as during a radioactive source calibration). This measurement is then used to correct unknown signals. \Cref{ch:electronlifetime} details the measurement of the electron lifetime and correction.
 
 \subsection{Light Collection Correction}
-While trim voltages are applied to the APDs to try to achieve a uniform response, there is still some variation in the gain from channel to channel. Additionally, there is geometric variation in the amount of scintillation light actually reaching the APDs due to shadowing from the wire planes, imperfect reflection off of the walls, and other effects. Using radioactive source calibration runs, the overall response from both of these factors can be mapped out and corrected for. \Cref{app:lightmap} details this correction.
+While trim voltages are applied to the APDs to try to achieve a uniform response, there is still some variation in the gain from channel to channel. Additionally, there is geometric variation in the amount of scintillation light actually reaching the APDs due to shadowing from the wire planes, imperfect reflection off of the walls, and other effects. Using radioactive source calibration runs, the overall response from both of these factors can be mapped out and corrected. \Cref{app:lightmap} details this correction.
 
 \section{Energy Calibration}
 \label{sec:data_calibration}
@@ -231,7 +231,7 @@ where \(E_I\) and \(E_S\) are the ionization and scintillation signals after all
 		\centering
 		\includegraphics[width=\textwidth]{./plots/data_finding_theta_best.pdf}
 	\end{subfigure}
-	\caption[Finding the optimal rotation angle]{The rotation angle is scanned over a range of values (left) in order to find the angle that optimizes rotation. In this case, the optimal angle was \(\theta = 0.18\). On the right, the fit of the model in \cref{eq:data_fitmodel} to thorium calibration data with the optimal rotation applied (according to \cref{eq:data_E_rotated}).}
+	\caption[Finding the optimal rotation angle]{The rotation angle is scanned over a range of values (left) in order to find the angle that optimizes resolution. In this case, the optimal angle was \(\theta = 0.18\). On the right, the fit of the model in \cref{eq:data_fitmodel} to thorium calibration data with the optimal rotation applied (according to \cref{eq:data_E_rotated}).}
 	\label{fig:data_finding_theta}
 \end{figure}
 
