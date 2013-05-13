@@ -172,9 +172,34 @@ In order to simulate the detector energy resolution, the true energies are smear
 \frac{\sigma(E)}{E} = \sqrt{\frac{p_0^2}{E^2} + \frac{p_1^2}{E} + p_2^2}
 \label{eq:analysis_energy_resolution}
 \end{equation}
-where \(p_0\) is a constant, noise-like smearing, \(p_1\) is a smearing due to counting statistics, and \(p_2\) is an energy-dependent smearing that can be due to drifting gains. These parameters are determined for the entire data set by fitting a simulated calibration source spectrum to the calibration data collected by the detector during the entire time period.
+where \(p_0\) is a constant, noise-like smearing, \(p_1\) is a smearing due to counting statistics, and \(p_2\) is an energy-dependent smearing that can be due to drifting gains. These parameters are determined for the entire data set by fitting a simulated calibration source spectrum to the calibration data collected by the detector during the entire time period. The values of the parameters are shown in \cref{tab:analysis_resolution_parameters}, and the resolution as a function of energy is shown in \cref{fig:analysis_resolution}. The \(p_0\) term can be attributed to electronic noise, and the \(p_1\) term is due to statistical fluctuations. The \(p_2\) term can be attributed to spatial or temporal inhomogeneity.
 
-The true energies from the signal and background Monte Carlo simulations are smeared according to the parameterization in \cref{eq:analysis_energy_resolution}\todo{Check that this matches Caio's definitions}. For each simulation, then two probability density functions (PDFs) are formed in energy and standoff distance: one for single site events, and one for multiple site events. \Cref{fig:analysis_example_PDFs} shows an example of two smeared PDFs. For each simulation, the efficiency for a simulated event to make it into the final PDFs is recorded, as well as the fractional split between single site and multiple site events. 
+\begin{table}[htp]
+\centering
+\caption[Energy resolution parameters]{The values for the energy resolution parameters used in this analysis for both single site (SS) and multiple site (MS) events. The parameters are defined in \cref{eq:analysis_energy_resolution}.}
+\label{tab:analysis_resolution_parameters}
+\begin{tabular}{c c c c}\toprule
+Multiplicity	&	\(p_0\) (\si{\keV})	&	\(p_1\) (\(\sqrt{\si{\keV}}\))		&	\(p_2	\)		\\\midrule
+SS			&	39.2				&	\num{7.0e-4}				&	0.01			\\
+MS			&	40.9				&	\num{2.8e-4}				&	0.01			\\\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htp]
+\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_resolution_ss.pdf}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_resolution_ms.pdf}
+	\end{subfigure}
+\caption[Parameterized energy resolution functions]{The parameterized energy resolution as a function of energy for single site (left) and multiple site (right) events. The dark curve is the resolution, while the various dashed lines show the contributions of the individual terms. This is determined by finding the set of parameters that best match a simulated spectrum to the spectrum obtained in calibration runs.}
+\label{fig:analysis_resolution}
+\end{figure}
+
+The true energies from the signal and background Monte Carlo simulations are smeared according to the parameterization in \cref{eq:analysis_energy_resolution}. For each simulation, then two probability density functions (PDFs) are formed in energy and standoff distance: one for single site events, and one for multiple site events. \Cref{fig:analysis_example_PDFs} shows an example of two smeared PDFs. For each simulation, the efficiency for a simulated event to make it into the final PDFs is recorded, as well as the fractional split between single site and multiple site events.
 
 \begin{figure}[htp]
 \centering
