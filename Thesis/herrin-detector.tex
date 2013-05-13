@@ -19,7 +19,7 @@ S(T_{1/2}) \propto \epsilon t \frac{a M}{m_{a}}
 \label{eq:detector_bgfree_sensitivity}
 \end{equation}
 
-Now suppose that an experiment has some number \(N_b\) of background events in the region of interest. As an approximation, assume that the rate of background events \(b\) (in units of counts per unit mass per unit energy per unit time) is flat over an energy-based region of interest, whose width \(\Gamma\) increases with the detector resolution. The number of background events then increases with increasing exposure \(M t\), or  \(N_b \propto b M t \Gamma\). The confidence limit on \(N_s\) must take into account the Poisson counting uncertainty on \((N_s + N_b)\), which will be dominated by the uncertainty on \(N_b\) (denoted \(\Delta N_b\)), and so the sensitivity instead goes like
+Now suppose that an experiment has some number \(N_b\) of background events in the region of interest. As an approximation, assume that the rate of background events \(b\) (in units of counts per unit energy per unit exposure) is flat over an energy-based region of interest, whose width \(\Gamma\) increases with the detector resolution. The number of background events then increases with increasing exposure \(M t\), or  \(N_b \propto b M t \Gamma\). The confidence limit on \(N_s\) must take into account the Poisson counting uncertainty on \((N_s + N_b)\), which will be dominated by the uncertainty on \(N_b\) (denoted \(\Delta N_b\)), and so the sensitivity instead goes like
 \begin{equation}
 S(T_{1/2}) \propto t \epsilon \frac{a M}{m_{a}} \frac{1}{\Delta N_b} \approx t \epsilon \frac{a M}{m_{a}} \frac{1}{\sqrt{N_b}} \propto \epsilon \frac{a}{m_{a}} \sqrt{\frac{M t}{b \Gamma}}
 \label{eq:detector_bg_sensitivity}
@@ -70,7 +70,7 @@ The wire planes are spaced \SI{6}{\mm} apart, and the collection plane is \SI{6}
 \begin{subfigure}[c]{0.54\linewidth}
 \includegraphics[width=\textwidth]{./photos/detector_half.jpg}
 \end{subfigure}\hfill%
-\caption[The EXO-200 detector]{On the left, a cutaway view of the EXO-200 detector and liquid xenon vessel. On the right is a photo of EXO-200 under construction. The APDs are visible in their platter and the flex cables can be seen around the edges. The anode wire planes are above the APD plane and cross each other at \ang{60}. PTFE tiles line the inside of the field-shaping rings. The cathode grid has not been installed in this photo, but would be at the top.}
+\caption[The EXO-200 detector]{On the left, a cutaway view of the EXO-200 detector and liquid xenon vessel. On the right is a photo of EXO-200 under construction. The circular APDs are visible in their platter and the flex cables can be seen around the edges. The anode wire planes are above the APD plane and cross each other at \ang{60}. PTFE tiles line the inside of the field-shaping rings. The cathode grid has not been installed in this photo, but would be at the top.}
 \label{fig:detector_TPC_vessel}
 \end{figure}
 
@@ -84,12 +84,12 @@ The electrical cables for the anode wires and the APDs reach the detector throug
 \begin{figure}[htb]
 \centering
 \begin{subfigure}[c]{0.33\linewidth}
-\includegraphics[width=\textwidth]{./photos/source_capsule.png}
+\includegraphics[width=\textwidth]{./photos/source_capsule_annotated.png}
 \end{subfigure}\hspace{0.05\linewidth}\hfill%
 \begin{subfigure}[c]{0.60\linewidth}
 \includegraphics[width=\textwidth]{./photos/calibration_tubing_cropped.png}
 \end{subfigure}
-\caption[The calibration system]{To calibrate the detector, a tiny source capsule (left) containing a radioisotope can be deployed to many positions just outside the detector through a guide tube system (right).}
+\caption[The calibration system]{To calibrate the detector, a tiny source capsule (left) containing a radioisotope housed in the small sphere indicated by the arrow can be deployed to many positions just outside the detector through a guide tube system (right).}
 \label{fig:detector_calibration}
 \end{figure}
 
@@ -107,7 +107,7 @@ Currently, EXO-200 calibrates with three different isotopes. \isotope{137}{Cs} e
 \end{figure}
 
 \subsection{Cryostat and Clean Rooms}
-As shown in \cref{fig:detector_cleanroom}, the TPC vessel that contains the liquid xenon is housed inside a double-walled cryostat. The inner chamber is filled with HFE-7000\cite{hfe7000} fluid that acts a thermal bath. The HFE fluid is radiologically clean and additionally provides some shielding from external \(\gamma\) radiation. The outer chamber is held at \(10^{-6}\si{Torr}\) for insulation. The cryostat, made of copper low in radioactivity, is in turn shielded by two \SI{25}{\cm} walls of lead. The front end electronics lie just outside this inner lead wall, and the second \SI{25}{\cm} wall sits just outside these. This second wall prevents external radiation from having line-of-site to the detector through the penetrations in the inner lead wall, used for xenon and electrical connections.
+As shown in \cref{fig:detector_cleanroom}, the TPC vessel that contains the liquid xenon is housed inside a double-walled cryostat. The inner chamber is filled with HFE-7000\cite{hfe7000} fluid that acts a thermal bath. The HFE fluid is radiologically clean and additionally provides some shielding from external \(\gamma\) radiation. The outer chamber is held at \(10^{-6}\)~\si{Torr} for insulation. The cryostat, made of copper low in radioactivity, is in turn shielded by two \SI{25}{\cm} walls of lead. The front end electronics lie just outside this inner lead wall, and the second \SI{25}{\cm} wall sits just outside these. This second wall prevents external radiation from having line-of-site to the detector through the penetrations in the inner lead wall, used for xenon and electrical connections.
 
 A class 1000 clean room houses the cryostat and its shielding in order to reduce trace radioactivity from dust being tracked in and introduced to the detector. This clean room also houses the xenon handling system, the cryogenic refrigerators used to chill the HFE, and other necessary infrastructure.
 

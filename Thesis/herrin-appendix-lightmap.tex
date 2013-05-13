@@ -14,7 +14,7 @@ Although attempts have been made to simulate light collection in the detector (s
 In order to illuminate the entire detector, long calibration runs at both anode positions and all three cathode locations are needed. These runs are taken as part of larger calibration campaigns, or whenever electronic components are changed or adjusted in a way that might affect the APD response.
 
 \subsection{Event Selection}
-Only single site full-absorption events are used to make the light map, since both their location and energies are known. Full absorption events are identified by looking at the ionization spectrum. The mean and sigma of the full-absorption peak are fit with a Gaussian + complementary errror function model like that used for calibration. Only events with ionization energies between \(+0.33\sigma\) and \(+3.0\sigma\)\todo{Get plot for this.} are used. This cut retains 37\% of the full-absorption events, and should only retain 3\% of the Compton scatter events with energies within 2\(\sigma\) of the peak. Since scintillation is correlated with ionization, and the ionization response is uniform throughout the detector (after electron lifetime and shielding grid corrections), this should give a give a sample of events with the same scintillation throughout the detector.
+Only single site full-absorption events are used to make the light map, since both their location and energies are known. Full absorption events are identified by looking at the ionization spectrum. The mean and sigma of the full-absorption peak are fit with a Gaussian + complementary errror function model like that used for calibration. Only events with ionization energies between \(+0.33\sigma\) and \(+3.0\sigma\) \todo{Get plot for this.} are used. This cut retains 37\% of the full-absorption events, and should only retain 3\% of the Compton scatter events with energies within 2\(\sigma\) of the peak. Since scintillation is correlated with ionization, and the ionization response is uniform throughout the detector (after electron lifetime and shielding grid corrections), this should give a give a sample of events with the same scintillation throughout the detector.
 
 \subsection{Binning the Detector Volume}
 
@@ -75,7 +75,7 @@ is the corrected signal.
 \caption[Resolution improvement due to correction]{The improvement in the scintillation-only energy resolution \((\sigma/E)\) after applying the correction for both single site (SS) and multiple site (MS) events. This is based on fitting a Gaussian + complimentary error function model (see \ref{sec:data_fitmodel}) to \isotope{228}{Th} calibration data taken at a number of positions.}
 \label{tab:lightmap_effect}
 \begin{tabular}{l l c c c}\toprule
-\multicolumn{2}{c}{Source Position}	&	Multiplicity	&	\(\sigma/E\) without correction (\%)	&	\(\sigma/E\) with correction (\%)		\\\midrule
+\multicolumn{2}{c}{Source Position}	&	Multiplicity	&	\(\sigma/E\) uncorrected (\%)	&	\(\sigma/E\) corrected (\%)		\\\midrule
 cathode	&	\(+x\)				&	SS			&	\(8.01\pm0.18\)					&	\(6.13\pm0.12\)					\\
 		&	\(+x\)				&	MS			&	\(8.03\pm0.08\)					&	\(6.33\pm0.06\)					\\
 		&	\(+y\)				&	SS			&	\(8.73\pm0.28\)					&	\(6.09\pm0.16\)					\\

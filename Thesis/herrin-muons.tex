@@ -105,22 +105,15 @@ A(\theta,\phi) = \pi r^2 |\cos(\phi)|\sin(\theta) + 2 r \ell \sqrt{1-\sin(\theta
 \end{equation}
 where \(r\) is the cylinder's radius and \(\ell\) is its height. The dimensions of the cylinder used were the same as for the simulation (\(r =\)~\SI{22.74}{\cm}, \(\ell=2\times\)\SI{20.44}{\cm}). If the muons were simulated through a larger cylinder, the efficiency would be lower, but the product of area and efficiency would be the same.
 
-Integrating \cref{eq:muon_angular_distribution} over the polygonal region of interest, the ratio of the flux in this region to the total flux is \num{0.451\pm0.018}, where the error is found by varying the depth \(h\) by 5\% around \SI{1585}{\hecto\g\per\square\cm}.
-
 The pions and kaons in the atmosphere traveling with large \(\theta\) are more likely to decay to muons than interact as they spend more time in the low-density upper atmosphere. This provides a \(\sec\theta\) enhancement in the flux underground. Therefore, most cosmic ray measurements quote a vertical muon flux:
 \begin{equation}
 \label{eq:muon_vfluxdef}
 \Phi_v(\theta, \phi) = \Phi(\theta, \phi)\cos\theta
 \end{equation}
 
-Again integrating \cref{eq:muon_angular_distribution}, the ratio of the total flux in the region of interest to the vertical flux is \num{0.553\pm0.020}.
+Integrating \cref{eq:muon_angular_distribution} over the polygonal region of interest, the ratio of the total flux in the region of interest to the vertical flux is \num{0.553\pm0.020} where the error is found by varying the depth \(h\) by 5\% around \SI{1585}{\hecto\g\per\square\cm}.
 
-To calculate the flux, EXO-200 was divided into \ang{4} bins in \(\theta\) and \ang{12} bins in \(\phi\) to ensure good statistics in each bin. Only bins that had centers in the region of interest were considered. In golden data taken between October 14, 2011 and January 9, 2013, \((11209\pm105.9)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle for bins in the region of interest was \SI{2.35\pm0.01d3}{\square\cm\steradian}. Applying the ratio above to convert this into a total flux yields
-\begin{equation}
-\label{eq:muon_flux_result}
-\Phi = \left(4.82\pm0.05\text{(stat)}^{+0.04}_{-0.06}\text{(sys)}\right)\times10^{-7}\frac{\text{Hz}}{\text{cm}^2}
-\end{equation}
-and likewise, a vertical flux of
+To calculate the flux, EXO-200 was divided into \ang{4} bins in \(\theta\) and \ang{12} bins in \(\phi\) to ensure good statistics in each bin. Only bins that had centers in the region of interest were considered. In golden data taken between October 14, 2011 and January 9, 2013, \((11209\pm105.9)\) muons were observed in \SI{2.140d7}{\second}. The integrated product of area, efficiency, and solid angle for bins in the region of interest was \SI{2.35\pm0.01d3}{\square\cm\steradian}. Applying the ratio above to convert this into a total flux yields a vertical flux of
 \begin{equation}
 \label{eq:muon_vflux_result}
 \Phi_v = \left(4.01\pm0.04\text{(stat)}^{+0.04}_{-0.05}\text{(sys)}\right)\times10^{-7}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
