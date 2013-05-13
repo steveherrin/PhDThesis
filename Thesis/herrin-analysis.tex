@@ -570,6 +570,7 @@ Decay mode	&	n	&	\multicolumn{2}{c}{\(T_{1/2} (\si{\year})\)}					\\
 \end{table}
 
 \subsection{Effect of Systematic Uncertainties}
+\label{sec:analysis_majoron_error_budget}
 \Cref{tab:majoron_error_budget} tabulates the effect of the various uncertainties on the limits obtained for the Majoron-emitting modes. All of the limits are only slightly degraded below their statistical limits. For all modes, uncertainty in the backgrounds has a modest effect on the limit. Being able to better constrain the backgrounds, both through external constraints and more detector data, could improve the limits. For the modes with spectral indices 1, 2, and 3, the statistical limits are weakened by uncertainties in the background, and the systematic uncertainty in the single site fraction. Since these events are similar to \twonu{} events, this suggests the limits could be improved modestly by using the \twonu{} single site fraction as a constraint on the single site fraction for these modes. The mode with spectral index 7 has its limit weakened by the normalization uncertainty, and this seems to be correlated with the background uncertainty, since the overall limit is no worse. Looking at the energy spectrum, this mode is similar in shape to \twonu{}, and so changes in its amplitude can be compensated for in similar ways by either changing the normalization or the number of \twonu{}.
 
 \begin{table}[htb]
@@ -622,5 +623,14 @@ When using the bounded likelihood method of Rolke et al., it is important to ver
 Using the best fit spectrum with no \zeronuXpX{} to again create toy simulations, it is possible to study the sensitivity to Majoron-emitting modes. Each simulation is used to construct a 90\% confidence interval. \Cref{fig:analysis_bb0nX_sensitivity} shows histograms of the limits obtained from many simulations. For all modes, the expected sensitivity is higher than the observed limit. For the modes with spectral indices 1 and 2, higher limits are expected 77\% and 81\% of the time, respectively. For the mode with spectral index 3, 98\% of simulations had a better limit. For the mode with spectral index 7, only one simulation in 500 had a comparable limit. This suggests that the model used to simulate the data is inadequate. As discussed in \cref{sec:analysis_shape_agreement} the simulations show a slightly different single-site fraction than seen in data. Since the \zeronuXX{} spectrum is primarily single site and peaks at lower energies than \twonu{}, the upper limit on the number of decays is larger in data than in the toy simulations.
 
 \subsection{Comparison to previous results}
+As \cref{tab:analysis_majoron_limits} shows, the limits on the Majoron-emitting modes with spectral indices 1, 2, and 3 are weaker than those reported by KamLAND-Zen. The weaker limits are primarily due to statistics, as discussed in \cref{sec:analysis_majoron_error_budget}. This is not surprising, as the KamLAND-Zen results come from \SI{38.4}{\kg\year} exposure of \xenon{136}, whereas this analysis only contains \SI{21.0}{\kg\year}. For the spectral index 7 mode, EXO-200 can report a modestly improved limit. Looking at \cref{fig:analysis_kamlandzen_spectrum}, backgrounds in KamLAND-Zen begin to dominate over the \twonu{} mode below \SI{1}{\MeV}. EXO-200, on the other hand, has much smaller backgrounds at this low energy, which allow a stronger limit, even with reduced exposure.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.7\textwidth]{./plots/analysis_kamlandzen_spectrum.pdf}
+\caption[KamLAND-Zen spectrum for Majoron-emitting modes]{The energy spectrum reported by KamLAND-Zen. Backgrounds begin to become comparable to the \twonu{} signal below \SI{1}{\MeV}, reducing sensitivity to the Majoron-emitting mode with spectral index 7. Figure from \cite{Gando:2012fk}.}
+\label{fig:analysis_kamlandzen_spectrum}
+\end{figure}
+
 
 \end{document}
