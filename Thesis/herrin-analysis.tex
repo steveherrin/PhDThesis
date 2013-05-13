@@ -565,12 +565,27 @@ Decay mode	&	n	&	\multicolumn{2}{c}{\(T_{1/2} (\si{\year})\)}					\\
 \zeronuX{}	&	1	&	\(>2.6\times10^{24}\)		&	\(>6.34\times10^{23}\)		\\
 \zeronuX{}	&	2	&	\(>1.0\times10^{24}\)		&	\(>2.31\times10^{23}\)		\\
 \zeronuXpX{}	&	3	&	\(>4.5\times10^{23}\)		&	\(>6.67\times10^{22}\)		\\
-\zeronuXX{}	&	7	&	\(>1.1\times10^{22}\)		&	\(>1.20\times10^{22}\)		\\\bottomrule
+\zeronuXX{}	&	7	&	\(>1.1\times10^{22}\)		&	\(>1.30\times10^{22}\)		\\\bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Breakdown of Systematic Errors}
+\subsection{Effect of Systematic Uncertainties}
+\Cref{tab:majoron_error_budget} tabulates the effect of the various uncertainties on the limits obtained for the Majoron-emitting modes. All of the limits are only slightly degraded below their statistical limits. For all modes, uncertainty in the backgrounds has a modest effect on the limit. Being able to better constrain the backgrounds, both through external constraints and more detector data, could improve the limits. For the modes with spectral indices 1, 2, and 3, the statistical limits are weakened by uncertainties in the background, and the systematic uncertainty in the single site fraction. Since these events are similar to \twonu{} events, this suggests the limits could be improved modestly by using the \twonu{} single site fraction as a constraint on the single site fraction for these modes. The mode with spectral index 7 has its limit weakened by the normalization uncertainty, and this seems to be correlated with the background uncertainty, since the overall limit is no worse. Looking at the energy spectrum, this mode is similar in shape to \twonu{}, and so changes in its amplitude can be compensated for in similar ways by either changing the normalization or the number of \twonu{}.
 
+\begin{table}[htb]
+\centering
+\caption[Contributions of uncertainties to the limit]{A breakdown of how various uncertainties effect the limit obtained on the Majoron-emitting modes. These are obtained by fixing parameters to their best-fit values and then letting only the specified parameters float when doing the profile scan. \twonu{} is considered a background for these results.}
+\label{tab:analysis_majoron_error_budget}
+\begin{tabular}{c c c c c }\toprule
+Uncertainty		&	\multicolumn{4}{c}{90\% CL limit on \(T_{1/2}\)}			\\
+				&	\(n = 1\) (\SI{e23}{\year})		&	\(n = 2\) (\SI{e23}{\year})		&	\(n = 3\) (\SI{e22}{\year})		&	\(n=4\) (\SI{e22}{\year})		\\\midrule
+Statistical only		&	6.49						&	2.36						&	6.87						&	1.34						\\
+Stat. + SS fraction	&	6.42						&	2.33						&	6.76						&	1.34						\\
+Stat. + Backgrounds	&	6.43						&	2.34						&	6.79						&	1.30						\\
+Stat. + Normalization&	6.49						&	2.36						&	6.87						&	1.30						\\
+\textbf{Reported}	&	\textbf{6.34}				&	\textbf{2.31}				&	\textbf{6.67}				&	\textbf{1.30}				\\\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Coverage Tests and Sensitivity}
 When using the bounded likelihood method of Rolke et al., it is important to verify that the intervals constructed have coverage. This is, a nominal 90\% confidence interval should contain the true value 90\% of the time. To study this, the best fit spectrum with no \zeronuXpX{} decays included is used to generate toy Monte Carlo data sets. Sampling from the \zeronuXpX{} PDF, a known number of events are injected into the toy data set, and the profile likelihood method is used to construct confidence intervals. Doing this many times provides an estimate of how likely the intervals are to cover the true value. As \cref{fig:analysis_bb0nX_coverage} shows, the method provides adequate coverage.
