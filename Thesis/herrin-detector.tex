@@ -21,7 +21,7 @@ S(T_{1/2}) \propto \epsilon t \frac{a M}{m_{a}}
 
 Now suppose that an experiment has some number \(N_b\) of background events in the region of interest. As an approximation, assume that the rate of background events \(b\) (in units of counts per unit mass per unit energy per unit time) is flat over an energy-based region of interest, whose width \(\Gamma\) increases with the detector resolution. The number of background events then increases with increasing exposure \(M t\), or  \(N_b \propto b M t \Gamma\). The confidence limit on \(N_s\) must take into account the Poisson counting uncertainty on \((N_s + N_b)\), which will be dominated by the uncertainty on \(N_b\) (denoted \(\Delta N_b\)), and so the sensitivity instead goes like
 \begin{equation}
-S(T_{1/2}) \propto t \epsilon \frac{a M}{A} \frac{1}{\Delta N_b} \approx t \epsilon \frac{a M}{A} \frac{1}{\sqrt{N_b}} \propto \epsilon \frac{a}{A} \sqrt{\frac{M t}{b \Gamma}}
+S(T_{1/2}) \propto t \epsilon \frac{a M}{m_{a}} \frac{1}{\Delta N_b} \approx t \epsilon \frac{a M}{m_{a}} \frac{1}{\sqrt{N_b}} \propto \epsilon \frac{a}{m_{a}} \sqrt{\frac{M t}{b \Gamma}}
 \label{eq:detector_bg_sensitivity}
 \end{equation}
 where the approximation that the uncertainty \(\Delta N_b = \sqrt{N_b}\) is valid when \(N_b\) is large enough that Gaussian statistics apply. Poisson statistics on \(N_b\) create a transition between \cref{eq:detector_bgfree_sensitivity,eq:detector_bg_sensitivity}.
