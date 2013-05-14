@@ -318,13 +318,13 @@ Fiducial volume due to bias in position reconstruction	&	\multicolumn{5}{c}{\(1.
 Fiducial volume due to position reconstruction resolution	&	\multicolumn{5}{c}{\(0.36\)}				\\
 Energy calibration and resolution uncertainty			&	0.40	&	0.04	&	0.09	&	0.16	&	0.56	\\
 Energy scale difference between \(\beta\) and \(\gamma\)	&	0.17	&	0.09	&	0.20	&	0.37	&	1.40	\\
-Induction tagging								&	\(<0.2\)&		&		&		&		\\
+Induction tagging								&	\(<0.2\)&	\(<0.66\)	&	\(<0.44\)	&	\(<0.21\)	&	\(<0.28\)	\\
 Triggering efficiency	(above \SI{700}{\keV})			&	\multicolumn{5}{c}{\(\approx 0\)}			\\
 Signal-finding efficiency (above \SI{700}{\keV})		&	\multicolumn{5}{c}{\(\approx 0\)}			\\
-Clustering efficiency								&	0.18									\\
+Clustering efficiency								&	0.18	&	1.00	&	0.7	&	0.5	&	0.1	\\
 Noise leading to improper clustering				&	\multicolumn{5}{c}{\(<0.18\)}				\\
 Shape distortion in \SIrange{700}{1000}{\keV}			&	\multicolumn{5}{c}{0.75}					\\\midrule
-\textbf{Total}									&\textbf{2.0}&\textbf{2.0}&\textbf{2.0}&\textbf{2.0}&\textbf{2.5}\\\bottomrule
+\textbf{Total}									&\textbf{2.3}&\textbf{2.1}&\textbf{2.0}&\textbf{2.0}&\textbf{2.5}\\\bottomrule
 \end{tabular}
 \end{table}
 
@@ -611,7 +611,7 @@ Decay mode	&	n	&	\multicolumn{2}{c}{\(T_{1/2} (\si{\year})\)}					\\
 			&		&	KamLAND-ZEN		&	EXO-200 (this work)			\\\midrule
 \zeronuX{}	&	1	&	\(>2.6\times10^{24}\)		&	\(>6.34\times10^{23}\)		\\
 \zeronuX{}	&	2	&	\(>1.0\times10^{24}\)		&	\(>2.31\times10^{23}\)		\\
-\zeronuXpX{}	&	3	&	\(>4.5\times10^{23}\)		&	\(>6.67\times10^{22}\)		\\
+\zeronuXpX{}	&	3	&	\(>4.5\times10^{23}\)		&	\(>7.01\times10^{22}\)		\\
 \zeronuXX{}	&	7	&	\(>1.1\times10^{22}\)		&	\(>1.30\times10^{22}\)		\\\bottomrule
 \end{tabular}
 \end{table}
@@ -667,7 +667,7 @@ When using the bounded likelihood method of Rolke et al., it is important to ver
 \label{fig:analysis_bb0nX_sensitivity}
 \end{figure}
 
-Using the best fit spectrum with no \zeronuXpX{} to again create toy simulations, it is possible to study the sensitivity to Majoron-emitting modes. Each simulation is used to construct a 90\% confidence interval. \Cref{fig:analysis_bb0nX_sensitivity} shows histograms of the limits obtained from many simulations. For all modes, the expected sensitivity is higher than the observed limit. For the modes with spectral indices 1 and 2, higher limits are expected 77\% and 81\% of the time, respectively. For the mode with spectral index 3, 98\% of simulations had a better limit. For the mode with spectral index 7, only one simulation in 500 had a comparable limit. This suggests that the model used to simulate the data is inadequate. As discussed in \cref{sec:analysis_shape_agreement} the simulations show a slightly different single-site fraction than seen in data. Since the \zeronuXX{} spectrum is primarily single site and peaks at lower energies than \twonu{}, the upper limit on the number of decays is larger in data than in the toy simulations.
+Using the best fit spectrum with no \zeronuXpX{} to again create toy simulations, it is possible to study the sensitivity to Majoron-emitting modes. Each simulation is used to construct a 90\% confidence interval. \Cref{fig:analysis_bb0nX_sensitivity} shows histograms of the limits obtained from many simulations. For all modes, the expected sensitivity is higher than the observed limit. For the modes with spectral indices 1 and 2, higher limits are expected 77\% and 81\% of the time, respectively. For the mode with spectral index 3, 96\% of simulations had a better limit. For the mode with spectral index 7, only one simulation in 500 had a comparable limit. This suggests that the model used to simulate the data is inadequate. As discussed in \cref{sec:analysis_shape_agreement} the simulations show a slightly different single-site fraction than seen in data. Since the \zeronuXX{} spectrum is primarily single site and peaks at lower energies than \twonu{}, the upper limit on the number of decays is larger in data than in the toy simulations.
 
 \subsection{Comparison to previous results}
 As \cref{tab:analysis_majoron_limits} shows, the limits on the Majoron-emitting modes with spectral indices 1, 2, and 3 are weaker than those reported by KamLAND-Zen. The weaker limits are primarily due to statistics, as discussed in \cref{sec:analysis_majoron_error_budget}. This is not surprising, as the KamLAND-Zen results come from \SI{38.4}{\kg\year} exposure of \xenon{136}, whereas this analysis only contains \SI{21.0}{\kg\year}. For the spectral index 7 mode, EXO-200 can report a modestly improved limit. Looking at \cref{fig:analysis_kamlandzen_spectrum}, backgrounds in KamLAND-Zen begin to dominate over the \twonu{} mode below \SI{1}{\MeV}. EXO-200, on the other hand, has much smaller backgrounds at this low energy, which allow a stronger limit, even with reduced exposure.
