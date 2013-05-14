@@ -15,19 +15,19 @@
 
 \begin{table}[tbp]
 \centering
-\caption[Electronic shaping times]{The shaping times for the signal readouts in EXO-200.}
+\caption[Electronic shaping times]{The shaping times for the signal readouts in EXO-200. The stages are listed in order. `D' denotes a differentiation stage, while `I' denotes an integration stage.}
 \label{tab:data_shaping_times}
-\begin{tabular}{l c @{\hskip 20pt} c c c @{\hskip 20pt} c c c}\toprule
-							&&						\multicolumn{6}{c}{Stage Type}													\\\cmidrule{3-8}
-	Channel Type				&&	\multicolumn{2}{c}{Integration (\si{\micro\s})}	&&	\multicolumn{3}{c}{Differentiation (\si{\micro\s})}				\\\midrule
-	APDs					&&	3				&		3			&&	10				&	10				&	300			\\
-	\multirow{2}{*}{\(u\) wires}		&&	\multirow{2}{*}{1.5}	&	\multirow{2}{*}{1.5}	&&	\multirow{2}{*}{40}	&	\multirow{2}{*}{40}	& 	measured 	\\
-							&&					&					&&					&					& 	(nominally 60)	\\
-	\(v\) wires					&&	3				&		3			&&	10				&	10				&	60			\\\bottomrule
+\begin{tabular}{l c c c c c}\toprule
+							&						\multicolumn{5}{c}{Stage Type}														\\\cmidrule{2-6}
+	Channel Type				&	D (\si{\micro\s})		&		D (\si{\micro\s})	& I (\si{\micro\s}) 		& D (\si{\micro\s}) 		& I (\si{\micro\s})		\\\midrule
+	APDs					&	300				&		10			&	3				&	10				&	3				\\
+	\multirow{2}{*}{\(u\) wires}		&	measured			&	\multirow{2}{*}{40}	&	\multirow{2}{*}{1.5}	&	\multirow{2}{*}{40}	& 	\multirow{2}{*}{1.5} 	\\
+							&	(nominally 60)		&					&					&					& 					\\
+	\(v\) wires					&	60				&		10			&	3				&	10				&	3				\\\bottomrule
 \end{tabular}
 \end{table}
 
-\Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The scintillation signals from the APDs and the induction and collection signals from ionization are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of a differentiator on the preamplifier, followed by two identical stages of differentiation followed by integration.\todo{Check!} \Cref{tab:data_shaping_times} summarizes the time constants.  The transfer functions of these shapers determine the waveform of a physical signal (ionization or scintillation). In order to improve energy resolution, the final stage differentiation times for the \(u\) wire channels are measured by analyzing the response to charge injected from a capacitor.
+\Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The scintillation signals from the APDs and the induction and collection signals from ionization are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of a differentiator on the preamplifier, followed by two identical CR-RC stages of differentiation followed by integration. \Cref{tab:data_shaping_times} summarizes the time constants.  The transfer functions of these shapers determine the waveform of a physical signal (ionization or scintillation). In order to improve energy resolution, the preamp stage differentiation times for the \(u\) wire channels are measured by analyzing the response to charge injected from a capacitor.
 
 After digitization, the Trigger Event Module (TEM) monitors the signals to select interesting events. Due to the low radioactive backgrounds in EXO-200, and the relatively slow rate of \twonu, this trigger is extremely permissive. The triggering thresholds have not been thoroughly studied at low energies, but the trigger is 100\% efficient at triggering on events that deposit more than \SI{700}{\keV} in the liquid xenon. The average trigger rate during routine data taking is approximately \SI{8}{\mHz}. Additionally, the trigger is forced to fire every \SI{0.1}{\s} in order to ensure the DAQ system is correctly recording events and to provide a measurement of detector live time. When the trigger fires, the DAQ records a frame consisting of digitized waveforms for all channels \SI{\pm1024}{\micro\s} around the trigger time.
 
@@ -144,7 +144,7 @@ Monte Carlo simulations using a MAXWELL simulation of the electric field inside 
 E_\text{measured} = E_\text{true}\left[1 + p_0 \exp \left(\frac{|z| - 192.5\si{\mm}}{p_1}\right)\right]^{-1}
 \label{eq:data_grid_correction}
 \end{equation}
-where \SI{192.5}{\mm} is the distance between the cathode and the \(v\) wire plane. The constants \(p_0\) and \(p_1\) are determined by fitting to simulated data, as shown in \cref{fig:data_grid_correction_fits}. They are found to differ for events that have ionization collected on one \(u\) wire and for events that share ionization across 2 \(u\) wires. The best-fit values are summarized in \cref{tab:data_grid_correction_parameters}. The results of applying these corrections is shown in \cref{fig:data_grid_correction_applied}\todo{Reformat these figures}. There is a lingering \SI{\pm0.35}{\percent} variation in the collected signal through the TPC.
+where \SI{192.5}{\mm} is the distance between the cathode and the \(v\) wire plane. The constants \(p_0\) and \(p_1\) are determined by fitting to simulated data, as shown in \cref{fig:data_grid_correction_fits}. They are found to differ for events that have ionization collected on one \(u\) wire and for events that share ionization across 2 \(u\) wires. The best-fit values are summarized in \cref{tab:data_grid_correction_parameters}. The results of applying these corrections are shown in \cref{fig:data_grid_correction_applied}\todo{Reformat these figures}. There is a lingering \SI{\pm0.35}{\percent} variation in the collected signal through the TPC.
 
 \begin{table}[htp]
 \centering
