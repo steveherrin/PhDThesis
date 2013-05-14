@@ -24,9 +24,9 @@ In order to reduce backgrounds (described in \cref{sec:muon_motivation}) due to 
 \item Events that occur within the \SI{25}{\ms} following a hit in a muon veto system panel are cut.
 \item Events that occur within the \SI{60}{\s} following a muon passing through the TPC (identified by the method in \cref{ch:muons}) are cut. The muon events are cut themselves, as well.
 \end{itemize}
-These cuts are designed to remove as many cosmogenic background events as possible while not cutting a portion of the detector live time so large that the trade-off in signal-to-background ratio is not worth it.
+These cuts are designed to remove as many cosmogenic background events as possible while not cutting so much detector live time that the trade-off in signal-to-background ratio is not worth it.
 
-Events occurring near each other in time are likely to be due to a decay of some radioactive contaminant, followed by another decay of a short-lived daughter. For example, the \isotope{222}{Rn} daughter \isotope{214}{Bi} \(\beta^{-}\) decays to \isotope{214}{Po}, which then \(\alpha\) decays with a \SI{164}{\micro\s} half-life.  Any event is vetoed if it occurs within \SI{\pm1}{\s} of another event.
+Events occurring near each other in time are likely to be due to a decay of some radioactive contaminant, followed by another decay of a short-lived daughter. For example, the \isotope{222}{Rn} daughter \isotope{214}{Bi} \(\beta^{-}\) decays to \isotope{214}{Po}, which then \(\alpha\) decays with a \SI{164}{\micro\s} half-life.  An event is vetoed if it occurs within \SI{\pm1}{\s} of another event.
 
 Finally, conditions external to the detector may make the data unusable. Data from these time periods is vetoed. The most common cause is the mine evacuation siren, which is tested periodically. It is loud enough to create a large amount electronic noise through microphonic pickup. Time periods in which the siren is going off are vetoed.
 
@@ -163,16 +163,16 @@ For a single event, the GEANT4 simulation provides a list of energy deposits in 
 
 The energy that doesn't go into drifting ionization goes into scintillation. The anticorrelation between ionization and scintillation is not modeled, and so the fraction of energy in scintillation is constant. The scintillation photons are distributed across the two planes in a parameterized way. All photoelectrons from the APDs are assumed to arrive instantaneously, since the scintillation signal arrives in \si{\ns}, compared to the \si{\micro\s} digitization time.
 
-White noise is added to the ionization and scintillation signals to yield a similar signal-to-noise ratio as in the detector. They are then run through simulations of the shapers found in the detector electronics, and are digitized at \SI{1}{\MHz}, just like the real signals. The matched filter and multiple signal finder are applied to identify signals, and the signals are bundled and clustered. The process is identical to the one described in \cref{sec:data_reconstruction}. This simulates the efficiency and energy threshold effects that come from signal-finding and reconstruction, as well as the position resolution.
+White noise is added to the ionization and scintillation signals to yield a similar signal-to-noise ratio as in the detector. They are then run through simulations of the shapers found in the detector electronics, and are digitized at \SI{1}{\MHz}, just as the real signals. The matched filter and multiple signal finder are applied to identify signals, and the signals are bundled and clustered. The process is identical to the one described in \cref{sec:data_reconstruction}. This simulates the efficiency and energy threshold effects that come from signal-finding and reconstruction, as well as the position resolution.
 
-The final state is to form distributions in multiplicity, energy, and standoff distance that can be fit to the data collected by the detector. The multiplicity and standoff distance can be calculated directly from the reconstruction described above. For the energy, however, the true energy from Monte Carlo simulation is used. For each cluster found by the reconstruction process, the energy deposits that arrived on the wires associated with the cluster at the appropriate time are summed to get the cluster's true energy.
+The final step is to form distributions in multiplicity, energy, and standoff distance that can be fit to the data collected by the detector. The multiplicity and standoff distance can be calculated directly from the reconstruction described above. For the energy, however, the true energy from Monte Carlo simulation is used. For each cluster found by the reconstruction process, the energy deposits that arrived on the wires associated with the cluster at the appropriate time are summed to get the cluster's true energy.
 
 In order to simulate the detector energy resolution, the true energies are smeared by a parameterized resolution function given by
 \begin{equation}
 \frac{\sigma(E)}{E} = \sqrt{\frac{p_0^2}{E^2} + \frac{p_1^2}{E} + p_2^2}
 \label{eq:analysis_energy_resolution}
 \end{equation}
-where \(p_0\) is a constant, noise-like smearing, \(p_1\) is a smearing due to counting statistics, and \(p_2\) is an energy-dependent smearing that can be due to drifting gains. These parameters are determined for the entire data set by fitting a simulated calibration source spectrum to the calibration data collected by the detector during the entire time period. The values of the parameters are shown in \cref{tab:analysis_resolution_parameters}, and the resolution as a function of energy is shown in \cref{fig:analysis_resolution}. The \(p_0\) term can be attributed to electronic noise, and the \(p_1\) term is due to statistical fluctuations. The \(p_2\) term can be attributed to spatial or temporal inhomogeneity.
+where \(p_0\) is a constant, noise-like smearing, \(p_1\) is a smearing due to counting statistics, and \(p_2\) is an energy-dependent smearing that can be due to drifting gains or other inhomogeneities. These parameters are determined for the entire data set by fitting a simulated calibration source spectrum to the calibration data collected by the detector during the entire time period. The values of the parameters are shown in \cref{tab:analysis_resolution_parameters}, and the resolution as a function of energy is shown in \cref{fig:analysis_resolution}.
 
 \begin{table}[htp]
 \centering
@@ -199,7 +199,7 @@ MS			&	40.9				&	\num{2.8e-4}				&	0.01			\\\bottomrule
 \label{fig:analysis_resolution}
 \end{figure}
 
-The true energies from the signal and background Monte Carlo simulations are smeared according to the parameterization in \cref{eq:analysis_energy_resolution}. For each simulation, then two probability density functions (PDFs) are formed in energy and standoff distance: one for single site events, and one for multiple site events. \Cref{fig:analysis_example_PDFs} shows an example of two smeared PDFs. For each simulation, the efficiency for a simulated event to make it into the final PDFs is recorded, as well as the fractional split between single site and multiple site events.
+The true energies from the signal and background Monte Carlo simulations are smeared according to the parameterization in \cref{eq:analysis_energy_resolution}. For each simulation, two probability density functions (PDFs) are formed in energy and standoff distance: one for single site events, and one for multiple site events. \Cref{fig:analysis_example_PDFs} shows an example of two smeared PDFs. For each simulation, the efficiency for a simulated event to make it into the final PDFs is recorded, as well as the fractional split between single site and multiple site events.
 
 \begin{figure}[htp]
 \centering
@@ -246,7 +246,7 @@ Since the distinction between single site and multiple site events plays a stron
 
 \subsubsection{Shape Agreement}
 \label{sec:analysis_shape_agreement}
-One simple check is to compare the shapes of the energy and standoff distance distributions in data and simulation. \Cref{fig:analysis_shape_agreement} shows this comparison. The overall agreement in both shape and standoff distance looks reasonable. However, this agreement is not perfect. As \cref{fig:analysis_shape_agreement_ratio} shows, the simulations underpredict the fraction of single site events at low energies. The effects of this can be modeled. First, linear functions are fit to the data as shown in \cref{fig:analysis_shape_agreement_ratio}. The fits are used to form a skewing function that can be applied to PDFs. This correction is applied to PDFs for \twonu{}, and toy simulations with a known number of \twonu{} events are generated from these unskewed PDFs. Finally, the original unskewed PDFs are fit to the toy simulated data. Doing so reveals the skewing introduces a \SI{0.75}{\percent} systematic error on the number of \twonu{} events. This systematic error is taken into account at a later stage.
+One simple check is to compare the shapes of the energy and standoff distance distributions in data and simulation. \Cref{fig:analysis_shape_agreement} shows this comparison. The overall agreement in both shape and standoff distance looks reasonable. However, this agreement is not perfect. As \cref{fig:analysis_shape_agreement_ratio} shows, the simulations underpredict the fraction of single site events at low energies. This is due to a slight difference in efficiency for detecting low-energy clusters between data and simulations. This results in some events being shifted from single site to multiple site in simulations. This is not corrected for, but the systematic effect is taken into account, as described in \cref{sec:analysis_rate_uncertainty}.
 
 \begin{figure}[htp]
 \centering
@@ -279,7 +279,7 @@ One simple check is to compare the shapes of the energy and standoff distance di
 
 \subsubsection{Rate Agreement}
 \label{sec:analysis_rate_agreement}
-\Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate observed using the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals gives a mean residual rate for (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations. Thus, the \(1\sigma\) uncertainty on the rate of calibration sources, \SI{4.1}{\percent} represents a conservative estimate on the uncertainty for decay rates in the liquid xenon.
+\Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate observed using the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals yields (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations. Because of these extra considerations, the reconstructed rate for double beta decays in the liquid xenon itself will have less uncertainty.
 
 \begin{table}[htp]
 \centering
@@ -330,11 +330,11 @@ Shape distortion in \SIrange{700}{1000}{\keV}			&	\multicolumn{5}{c}{0.75}					\
 
 Noise events may occur in coincidence with real events. By simply comparing the \SI{11}{\milli\Hz} rate for real events and the \SI{75}{\milli\Hz} rates for noise events, the probability for one to occur in the \SI{1024}{\micro\s} following a trigger by the other, thus removing a real event from the data set, is \num{8.9e-5}. Likewise, hand-scanning events tagged as noise puts an upper limit on the rate at which legitimate physics events are tagged as noise at \(< 5.8e-4\).
 
-Monte Carlo simulations of \twonu{} events suggest that the RMS error on the \(u\), \(v\), and \(x\) coordinates that are used to define the fiducial volume are \SI{2.4}{\mm}, \SI{1.2}{\mm}, and \SI{2.7}{\mm}, respectively. The error on the \(z\) coordinate due to slight deviations from a uniform electric field is \SI{0.42}{\mm}. Meanwhile, studies of events that occur on the cathode and so create signals in both TPCs suggest there might be a \SI{1.5}{\mm} offset in \(u\) and \(v\) and a \SI{0.5}{\mm} offset in \(z\) between the two TPCs. These might be physical, due to slight asymmetries in the construction, but are taken as systematic errors. Combining these uncertainties gives a total \SI{1.73}{\percent} uncertainty on the fiducial volume. Furthermore, position resolution considerations mean some events inside the fiducial volume can be reconstructed outside, and vice versa. Assuming uniform events, this should be a \(+\SI{0.36}{\percent}\) effect on the rate. It is, however, taken as a symmetric systematic error rather than corrected for.
+Monte Carlo simulations of \twonu{} events suggest that the RMS error on the \(u\), \(v\), and \(x\) coordinates that are used to define hexagonal cross-section of the fiducial volume are \SI{2.4}{\mm}, \SI{1.2}{\mm}, and \SI{2.7}{\mm}, respectively. The error on the \(z\) coordinate due to slight deviations from a uniform electric field is \SI{0.42}{\mm}. Meanwhile, studies of events that occur on the cathode and so create signals in both TPCs suggest there might be a \SI{1.5}{\mm} offset in \(u\) and \(v\) and a \SI{0.5}{\mm} offset in \(z\) between the two TPCs. These might be physical, due to slight asymmetries in the construction, but are taken as systematic errors. Combining these uncertainties gives a total \SI{1.73}{\percent} uncertainty on the fiducial volume. Furthermore, position resolution considerations mean some events inside the fiducial volume can be reconstructed outside, and vice versa. Assuming uniform events, this should be a \(+\SI{0.36}{\percent}\) effect on the rate. It is, however, taken as a symmetric systematic error and is not corrected.
 
 The energy range used for the fit has a \SI{700}{\keV} lower limit, since the trigger and reconstruction are known to be \SI{100}{\percent} efficient above that energy. Uncertainty on the energy calibration means some events might mistakenly be left out of the data set used in the fit. At \SI{700}{\keV}, the energy uncertainty is \SI{2.5}{\keV}. Comparing the number of events in the spectrum within \SI{700\pm2.5}{\keV} to the total number of events above \SI{700}{\keV} gives an estimate of this uncertainty's effect. Since it depends on the shape of the spectrum under consideration, it is computed separately for the different double beta decay modes.
 
-The \SI{2615}{\keV} \(\gamma\) ray from \isotope{228}{Th} may produce an electron-positron pair that should be topologically similar to a double beta decay event. Using the \SI{511}{\keV} gamma rays produced by positron annihilation as a tag gives a very clean sample of these events. Studying the ionization of the electron-positron pair suggests that there may be a systematic shift in the energy scale for \(\beta\) events, compared to \(\gamma\) events. \Cref{fig:analysis_beta_scale} shows an example. Propagating this difference through all rotations and calibrations suggests that \(\beta\) events should have their energies multiplied by a factor \num{1.0115\pm0.0052} in order to match the calibration from \(\gamma\) events. Meanwhile, generating PDFs for different energy scale differences and determining which best fit the data (as described below) suggests the best value for this factor is \num{1.001\pm0.003}. For \twonu{} the effect on the rate uncertainty is done by performing the fit at \num{1.001\pm0.011} and observing the change in the number of events found. For the Majoron-emitting modes, this is instead determined similarly to the energy scale uncertainty, by seeing how many events pass above and below the \SI{700}{\keV} threshold as the factor is varied between \num{1.001\pm0.011}.
+The \SI{2615}{\keV} \(\gamma\) ray from \isotope{228}{Th} may produce an electron-positron pair that should be topologically similar to a double beta decay event. Using the \SI{511}{\keV} gamma rays produced by positron annihilation as a tag gives a very clean sample of these events. Studying the ionization of the electron-positron pair suggests that there may be a systematic shift in the energy scale for \(\beta\) events compared to \(\gamma\) events. \Cref{fig:analysis_beta_scale} shows an example. Propagating this difference through all rotations and calibrations suggests that \(\beta\) events should have their energies multiplied by a factor \num{1.0115\pm0.0052} in order to match the calibration from \(\gamma\) events. Meanwhile, generating PDFs for different energy scale differences and determining which best fit the data (as described below) suggests the best value for this factor is \num{1.001\pm0.003}. For \twonu{} the effect on the rate uncertainty is done by performing the fit at \num{1.001\pm0.011} and observing the change in the number of events found. For the Majoron-emitting modes, this is instead determined similarly to the energy scale uncertainty, by seeing how many events pass above and below the \SI{700}{\keV} threshold as the factor is varied between \num{1.001\pm0.011}.
 
 \begin{figure}[htp]
 \centering
@@ -346,7 +346,7 @@ The \SI{2615}{\keV} \(\gamma\) ray from \isotope{228}{Th} may produce an electro
 	\centering
 	\includegraphics[width=\textwidth]{./plots/analysis_calibrated_pp_peak.pdf}
 	\end{subfigure}
-	\caption[Evidence that \(\beta\) and \(\gamma\) events might have different energy scales]{(Right) A comparison of the mean ionization signal for a given amount of scintillation in low background (green dots and red contours) data, compared to that for thorium calibration (yellow dots and blue shading). The low background data, consisting chiefly of \(\beta\) events, shows larger ionization signals than the thorium data, consisting chiefly of \(\gamma\) events. (Left) After applying the energy calibration (based on \(\gamma\) ray emitting sources) the pair production peak of a \SI{2615}{\keV}, which is a \(\beta\) type event, reconstructs below its expected \SI{1593}{\keV} energy.}
+	\caption[Evidence that \(\beta\) and \(\gamma\) events might have different energy scales]{(Left) A comparison of the mean ionization signal for a given amount of scintillation in low background (green dots and red contours) data, compared to that for thorium calibration (yellow dots and blue shading). The low background data, consisting chiefly of \(\beta\) events, shows larger ionization signals than the thorium data, consisting chiefly of \(\gamma\) events. (Right) After applying the energy calibration (based on \(\gamma\) ray emitting sources) the pair production peak of a \SI{2615}{\keV}, which is a \(\beta\) type event, reconstructs below its expected \SI{1593}{\keV} energy.}
 \label{fig:analysis_beta_scale}
 \end{figure}
 
@@ -360,15 +360,15 @@ A number of radioactive isotopes are only simulated in the TPC vessel. However, 
  
 \begin{figure}[htp]
 \centering
-\begin{subfigure}[c]{0.7\textwidth}
+\begin{subfigure}[c]{\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{./plots/analysis_degenerate_uranium_spectra_e.pdf}
 \end{subfigure}
-\begin{subfigure}[c]{0.7\textwidth}
+\begin{subfigure}[c]{\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{./plots/analysis_degenerate_uranium_spectra_s.pdf}
 \end{subfigure}
-\caption[Lack of statistical power to distinguish the source of uranium backgrounds]{Projections of the energy (top) and standoff distance (bottom) spectra for \isotope{238}{U} in the TPC vessel (black points) and in the inner cryostat (blue line). The error bars are statistical, normalized to the number of \isotope{238}{U} decays returned by the fit. The two spectra are statistically indistinguishable without more data.}
+\caption[Lack of statistical power to distinguish the source of uranium backgrounds]{Projections of the energy (top) and standoff distance (bottom) spectra for \isotope{238}{U} in the TPC vessel (black points) and in the inner cryostat (blue line). Single site events are on the left, and multiple site events are on the right. The error bars are statistical, normalized to the number of \isotope{238}{U} decays returned by the fit. The two spectra are statistically indistinguishable without more data.}
 \label{fig:analysis_degenerate_uranium_spectra}
 \end{figure}
 
@@ -386,6 +386,7 @@ For a period of roughly 1 month, the data collected from the detector did not in
 
 \section{Maximum Likelihood Method}
 \subsection{Theory}
+\label{sec:analysis_ml_theory}
 When attempting to measure a decay rate (as for double beta decay), the parameter measured is the number of decays in a given amount of time. This is complicated by the presence of backgrounds. Ultimately, the collected data is a combination of many backgrounds and possibly signals, each parameterized by a number of decays. A maximum likelihood analysis provides a way to estimate these parameters and their uncertainties, or to place limits on the parameters.
 
 In a maximum likelihood analysis, first a likelihood function \(\mathcal{L}\) is established:
@@ -400,7 +401,7 @@ The maximum likelihood method can be used to construct confidence intervals. Def
 \begin{equation}
 \lambda({\theta_0}) = \ln \mathcal{L}_{max}(\boldsymbol{\theta}) - \ln \mathcal{L}_{max}(\theta_0, \boldsymbol{\theta}')
 \end{equation}
-where \(\mathcal{L}_{max}(\boldsymbol{\theta})\) denotes the likelihood maximized over all parameters. \(\mathcal{L}_{max}(\theta_0, \boldsymbol{\theta}')\) denotes the likelihood maximized over all parameters except for \(\theta_0\), which is held fixed. Wilks' theorem says that the distribution of \(\lambda\) can be approximated by
+where \(\mathcal{L}_{max}(\boldsymbol{\theta})\) denotes the likelihood maximized over all parameters. \(\mathcal{L}_{max}(\theta_0, \boldsymbol{\theta}')\) denotes the likelihood maximized over all parameters except for \(\theta_0\), which is held fixed. Wilks' theorem\cite{Wilks:1938fk} says that the distribution of \(\lambda\) can be approximated by
 \begin{equation}
 2\lambda(\theta_0) \sim \chi^2_{\text{dim}(\theta_0)}
 \label{eq:analysis_nll_distribution}
@@ -413,10 +414,10 @@ It may happen, however, that when measuring physical quantities, the best fit pa
 \end{equation}
 and the relationship in \cref{eq:analysis_nll_distribution}.
 
-When employing the method of bounded likelihood, it is necessary to verify that the method provides ``coverage''. That is, if a \(\alpha\%\) confidence level is reported, then the interval obtained should cover the true value \(\alpha\%\) of the time. This can be studied through Monte Carlo simulations. Namely, the experiment is simulated some large number of times for a range of parameter values. For each simulation, the confidence interval is obtained using the method of bounded likelihood. The fraction of the time the true parameter value lies within the confidence interval can then be computed. The method is said to ``overcover'' if an \(\alpha\%\) confidence interval contains the true value more than \(\alpha\%\) of the time. The opposite is to ``undercover''. In this case, the approximation in \cref{eq:analysis_nll_distribution} does not hold well, and so the value of \(\lambda'\) used to form the confidence interval must be adjusted.
+When employing the method of bounded likelihood, it is necessary to verify that the method provides coverage. A nominal CL\% confidence interval for a parameter should contain the true value of the parameter at least CL\% of the time. This can be studied through Monte Carlo simulations. Namely, the experiment is simulated some large number of times for a range of parameter values. For each simulation, the confidence interval is obtained using the method of bounded likelihood. The fraction of the time the true parameter value lies within the confidence interval can then be computed. The method is said to ``overcover'' if an \(\alpha\%\) confidence interval contains the true value more than \(\alpha\%\) of the time. The opposite is to ``undercover''. In this case, the approximation in \cref{eq:analysis_nll_distribution} does not hold well, and so the value of \(\lambda'\) used to form the confidence interval must be adjusted.
 
 \subsection{Application to EXO-200}
-
+\label{sec:analysis_fitting_exo200}
 For each signal and each background, two dimensional PDFs (in energy and standoff distance) are generated for single site and multiple site multiplicities as described in \cref{sec:analysis_monte_carlo}. These PDFs are generated for \(\SI{700}{\keV} \leq E < \SI{3500}{\keV}\) and \(\SI{5}{\mm} \leq d_s < \SI{182}{\mm}\), where \(d_s\) is the standoff distance. There are 200 evenly-spaced (\SI{14}{\keV}) bins in energy, and 20 evenly-spaced (\SI{9.1}{\mm}) bins in standoff distance.
 
 For each PDF, there are two parameters: the total number of events \(N_i\) associated with that PDF, and the fraction \(a_i\) of those events that are single site events. There is also one overall normalization parameter \(c_\text{norm}\), explained below. Denote the number of events in the bin with multiplicity (SS or MS) \(m\), energy \(E\), and standoff distance \(d_s\) for PDF \(i\) as \(n_i(m, E, d_s)\). The combined PDF predicts
@@ -445,7 +446,7 @@ That is, the likelihood for a given \(\theta\) is Gaussian distributed around th
 As described in \cref{sec:analysis_ss_frac_agreement}, the overall systematic error on the single site fraction is estimated to be \SI{5.9}{\percent}, based on comparisons of calibration data to simulations. Therefore, the single site fraction for each component in the fit is assigned a Gaussian constraint (as in \cref{eq:analysis_gaussian_constraint}). The mean of this Gaussian is the single site fraction from the simulation, and the width is \SI{5.9}{\percent} of the mean. The constraint on each component is assumed independent of every other component. While some correlation should be expected, it has not been studied, and independence provides a conservative assumption.
 
 \subsection{Radon in the xenon}
-Because radon is noble, it cannot be chemically purified from the xenon. \isotope{222}{Rn} and some daughters emit \(\alpha\) particles when decaying, and these can be identified through their increased scintillation and decreased ionization signals. Counting these decays reveals there is \SI{3.65\pm0.37}{\micro\Bq\per\kg} of \isotope{222}{Rn} dissolved in the liquid xenon in the TPC. This is used to constrain the the contributions of radon in the xenon in the fit to the spectrum:
+Since radon is noble, it cannot be chemically purified from the xenon. \isotope{222}{Rn} and some daughters emit \(\alpha\) particles when decaying, and these can be identified through their increased scintillation and decreased ionization signals. Counting these decays reveals there is \SI{3.65\pm0.37}{\micro\Bq\per\kg} of \isotope{222}{Rn} dissolved in the liquid xenon in the TPC. This is used to constrain the the contributions of radon in the xenon in the fit to the spectrum:
 \begin{itemize}
 \item The active volume of xenon has a total mass of \SI{126.1}{\kg}, so there is a total activity of \SI{460.1\pm46.0}{\micro\Bq} in the active xenon.
 \item Of the \isotope{214}{Po} \(\alpha\) decays observed, roughly 75\% occur at the cathode. Since half of the decays on the cathode will have the \(\alpha\) particle emitted invisibly into the cathode material, this means 83\% of all radon daughters decay at the cathode. Since \isotope{214}{Bi} is the only one that can deposit energy in the fiducial volume, its activity is constrained to \SI{381.9\pm38.2}{\micro\Bq}.
@@ -455,7 +456,7 @@ Because radon is noble, it cannot be chemically purified from the xenon. \isotop
 These constraints are imposed as Gaussian constraints (\cref{eq:analysis_gaussian_constraint}) on the \(N_i\) (as in \cref{eq:analysis_sum_pdf}) for the PDFs, taking into account the efficiencies of all cuts, including the \(\alpha\) particle eliminating diagonal cut.
 
 \subsection{Radon in the air gap}
-Radon can seep through the cracks in the lead wall and decay in the small gap between the lead and the cryostat. \(\gamma\) rays from decays of \isotope{214}{Bi} in this volume can reach the TPC. An external unit\cite{rad7} monitors the level of \isotope{222}{Rn} in the clean room air. The average activity during periods when the detector was live was \SI{7.2\pm0.5}{\Bq\per\cubic\meter}. Measurements sampling air from the gap directly have confirmed that radon levels in that gap are similar to those in the clean room air. The volume of air in the gap is known to be \SI{.280\pm0.015}{\cubic\meter}, and so the total activity of \SI{2.01\pm 0.11}{\Bq} is used, along with the efficiencies from simulation, to constrain the number of decays \(N_i\) for \SI{214}{Bi} in the gap. This is applied as a Gaussian constraint on the upper number of decays.
+Radon can seep through the cracks in the lead wall and decay in the small gap between the lead and the cryostat. \(\gamma\) rays from decays of \isotope{214}{Bi} in this volume can reach the TPC. An external instrument\cite{rad7} monitors the level of \isotope{222}{Rn} in the clean room air. The average activity during periods when the detector was live was \SI{7.2\pm0.5}{\Bq\per\cubic\meter}. Measurements sampling air from the gap directly have confirmed that radon levels in the gap are similar to those in the clean room air. The volume of air in the gap is known to be \SI{.280\pm0.015}{\cubic\meter}, and so the total activity of \SI{2.01\pm 0.11}{\Bq} is used, along with the efficiencies from simulation, to constrain the number of decays \(N_i\) for \SI{214}{Bi} in the gap. This is applied as a Gaussian constraint on the upper number of decays.
 
 \subsection{Normalization}
 The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty} is included in the fit as an overall factor multiplying the normalization. This is not so much a constraint as a way to account for the uncertainty. The constraint has the factor centered around 1, so it will never affect the best fit value. The width is given by the rate uncertainty given in \cref{tab:analysis_source_rate_agreement}, and so it contributes to the uncertainty on half life measurements or limits.
@@ -507,7 +508,7 @@ Normalization	&	2.0				\\\midrule
 \end{tabular}
 \end{table}
 
-Thus, the measurement of the \twonu{} half time for \isotope{136}{Xe} is
+Thus, the measurement of the \twonu{} half life for \isotope{136}{Xe} is
 \begin{equation}
 T_{1/2} = \left ( 1.983 \pm 0.015 (\text{stat}) \pm 0.045 (\text{sys}) \right)\times 10^{21} \si{\year}
 \label{eq:analysis_bb2n_halflife}
@@ -515,7 +516,7 @@ T_{1/2} = \left ( 1.983 \pm 0.015 (\text{stat}) \pm 0.045 (\text{sys}) \right)\t
 
 \subsection{Consistency Checks}
 \subsubsection{Time and position independence}
-As \cref{fig:analysis_bb2n_rate_v_time} shows, the half time obtained by fitting over subsets of the data is consistent with the half life obtained from the entire data set. Thus, the half life seems steady over time. Likewise, as \cref{fig:analysis_bb2n_rate_v_pos} shows, the \twonu{} decays seem uniformly distributed throughout the volume.
+As \cref{fig:analysis_bb2n_rate_v_time} shows, the half life obtained by fitting over subsets of the data is consistent with the half life obtained from the entire data set. Thus, the half life seems steady over time. Likewise, as \cref{fig:analysis_bb2n_rate_v_pos} shows, the \twonu{} decays seem uniformly distributed throughout the volume.
 
 \begin{figure}[htp]
 \centering
@@ -533,7 +534,7 @@ As \cref{fig:analysis_bb2n_rate_v_time} shows, the half time obtained by fitting
 	\centering
 	\includegraphics[width=\textwidth]{./plots/analysis_bb2n_rate_v_apothem.pdf}
 	\end{subfigure}
-\caption[Number of \twonu{} decays v. position]{The number of \twonu{} decays returned by the fit when applied to small volumes of the detector. As the plot on the left shows, the rate is consistent with uniform in \(z\). For the right plot, the volume is proportional to the square of the apothem. Therefore, the volume in a shell bounded by apothem \(r\) and \(r+dr\) should increase linearly as a function of \(r\). Thus, the plot shows the \twonu{} decays are uniformly distributed throughout the fiducial volume.}
+\caption[Number of \twonu{} decays v. position]{The number of \twonu{} decays returned by the fit when applied to small volumes of the detector. As the plot on the left shows, the rate is consistent with uniformity in \(z\). For the right plot, the volume is proportional to the square of the apothem. Therefore, the volume in a shell bounded by apothem \(r\) and \(r+dr\) should increase linearly as a function of \(r\). Thus, the plot shows the \twonu{} decays are uniformly distributed throughout the fiducial volume.}
 \label{fig:analysis_bb2n_rate_v_pos}
 \end{figure}
 
@@ -541,7 +542,7 @@ As \cref{fig:analysis_bb2n_rate_v_time} shows, the half time obtained by fitting
 It is worthwhile to verify that the inclusion of standoff distance in the fit is not somehow biasing the results. Repeating the fit with the standoff distance ignored, the best fit for the \twonu{} half life is \(T_{1/2} = \SI{2.01\pm0.05e21}{\year}\), in agreement with the half life reported above.
 
 \subsection{Comparison to previous results}
-\Cref{fig:analysis_bb2n_halflife_comparison} shows previous measurements of the \twonu{} half life by the EXO-200 and KamLAND-Zen experiments. The Run2a data was previously used to report \(T_{1/2} = (2.23\pm0.017(\text{stat})\pm0.22(\text{sys}))\times10^{21}\si{\year}\). This measurement suffered from a 3\% overestimate in the detector live time, and correcting for this brings the measurement closer in line with the one reported here. That measurement also used a larger fiducial volume, including regions near the detector edges where the volume is less well-known (this is demonstrated by the apparent drop-off in events near the walls and anode/cathode planes in \cref{fig:analysis_bb2n_rate_v_pos}). So while this measurement is consistent with previous measurements by the EXO-200 experiment, it is now in tension with the measurements by KamLAND-Zen.
+\Cref{fig:analysis_bb2n_half_life_comparison} shows previous measurements of the \twonu{} half life by the EXO-200 and KamLAND-Zen experiments. The Run2a data was previously used to report \(T_{1/2} = (2.23\pm0.017(\text{stat})\pm0.22(\text{sys}))\times10^{21}\si{\year}\). This measurement suffered from a 3\% overestimate in the detector live time, and correcting for this brings the measurement closer to the one reported here. That measurement also used a larger fiducial volume, including regions near the detector edges where the volume is less well-known (this is demonstrated by the apparent drop-off in events near the walls and anode/cathode planes in \cref{fig:analysis_bb2n_rate_v_pos}). So while this measurement is consistent with previous measurements by the EXO-200 experiment, it is now in tension with the measurements by KamLAND-Zen.
 
 \begin{figure}[htp]
 \centering
@@ -618,7 +619,7 @@ Decay mode	&	n	&	\multicolumn{2}{c}{\(T_{1/2} (\si{\year})\)}					\\
 
 \subsection{Effect of Systematic Uncertainties}
 \label{sec:analysis_majoron_error_budget}
-\Cref{tab:analysis_majoron_error_budget} tabulates the effect of the various uncertainties on the limits obtained for the Majoron-emitting modes. All of the limits are only slightly degraded below their statistical limits. For all modes, uncertainty in the backgrounds has a modest effect on the limit. Being able to better constrain the backgrounds, both through external constraints and more detector data, could improve the limits. For the modes with spectral indices 1, 2, and 3, the statistical limits are weakened by uncertainties in the background, and the systematic uncertainty in the single site fraction. Since these events are similar to \twonu{} events, this suggests the limits could be improved modestly by using the \twonu{} single site fraction as a constraint on the single site fraction for these modes. The mode with spectral index 7 has its limit weakened by the normalization uncertainty, and this seems to be correlated with the background uncertainty, since the overall limit is no worse. Looking at the energy spectrum, this mode is similar in shape to \twonu{}, and so changes in its amplitude can be compensated for in similar ways by either changing the normalization or the number of \twonu{}.
+\Cref{tab:analysis_majoron_error_budget} tabulates the effect of the various uncertainties on the limits obtained for the Majoron-emitting modes. All of the limits are only slightly degraded below their statistical limits. For all modes, uncertainty in the backgrounds has a modest effect on the limit. Being able to better constrain the backgrounds, both through external constraints and more detector data, could improve the limits. For the modes with spectral indices 1, 2, and 3, the statistical limits are weakened by uncertainties in the background and the systematic uncertainty in the single site fraction. Since these events are similar to \twonu{} events, this suggests the limits could be improved modestly by using the \twonu{} single site fraction as a constraint on the single site fraction for these modes. The mode with spectral index 7 has its limit weakened by the normalization uncertainty, and this seems to be correlated with the background uncertainty, since the overall limit is no worse. Looking at the energy spectrum, this mode is similar in shape to \twonu{}, and so changes in its amplitude can be compensated for in similar ways by either changing the normalization or the number of \twonu{}.
 
 \begin{table}[htp]
 \centering
@@ -636,7 +637,7 @@ Normalization	&	6.49						&	2.36						&	6.87						&	1.30						\\\midrule
 \end{table}
 
 \subsection{Coverage Tests and Sensitivity}
-When using the bounded likelihood method of Rolke et al., it is important to verify that the intervals constructed have coverage. This is, a nominal 90\% confidence interval should contain the true value 90\% of the time. To study this, the best fit spectrum with no \zeronuXpX{} decays included is used to generate toy Monte Carlo data sets. Sampling from the \zeronuXpX{} PDF, a known number of events are injected into the toy data set, and the profile likelihood method is used to construct confidence intervals. Doing this many times provides an estimate of how likely the intervals are to cover the true value. As \cref{fig:analysis_bb0nX_coverage} shows, the method provides adequate coverage.
+As discussed in \cref{sec:analysis_ml_theory}, when using the bounded likelihood method of Rolke et al., it is important to verify that the intervals constructed have coverage. To study this, the best fit spectrum with no \zeronuXpX{} decays included is used to generate toy Monte Carlo data sets. Sampling from the \zeronuXpX{} PDF, a known number of events are injected into the toy data set, and the profile likelihood method is used to construct confidence intervals. Doing this many times provides an estimate of how likely the intervals are to cover the true value. As \cref{fig:analysis_bb0nX_coverage} shows, the method provides adequate coverage.
 
 \begin{figure}[htp]
 \centering
