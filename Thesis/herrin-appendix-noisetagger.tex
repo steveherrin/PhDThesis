@@ -24,7 +24,7 @@ These events are identified by summing all collection wire waveforms. The baseli
 
 \Cref{fig:noise_sum_u_neg} shows an example of a typical event caught by this check. These events would otherwise be problematic for the muon tagging algorithm (\cref{ch:muons}) because they exhibit lines of positive collection signals and negative inductions signals that resemble a muon passing parallel to the wire plane.
 
-\subsection{``Glitch'' events}
+\subsection{``Glitch'' Events}
 For a period of time, the high-voltage supply for the EXO-200 cathode would occasionally cause many channels in the TPC to complete saturate. Events with 100 or more saturated channels are tagged as ``glitch'' events. The exact origin of these events is still unknown. They seem to be electronic, since they still saturated channels when the APD gains were reduced to unity.
 
 \begin{figure}[tbp]
@@ -36,7 +36,7 @@ For a period of time, the high-voltage supply for the EXO-200 cathode would occa
 
 \Cref{fig:noise_glitch} shows an example of a ``glitch'' event. The only other type of event that saturates a large number of channels are high-energy TPC muons, or  muons stopping and decaying in the TPC. However, these are rare, and so this noise check only slightly reduces the efficiency of muon tagging.
 
-\subsection{APD ``bouncing'' events}
+\subsection{APD ``Bouncing'' Events}
 In some events, the APD signals seem to spontaneously saturate, go far below their baseline, rebound, and then bounce below or high above the baseline again. This seems to be accompanied by noise in the muon veto system, though it has proven difficult to diagnose.
 
 These events are identified by looking for any APD channels that saturate, then fall below 20 ADC counts absolute (without considering baseline), recovering to above 1024 ADC counts (again absolute, which is 1/4 full scale), and then either dipping back below 1024 ADC counts or bouncing above 2048 ADC counts (typical baselines are \(\sim\)1600 ADC counts). 
