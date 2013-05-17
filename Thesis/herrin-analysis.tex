@@ -55,7 +55,7 @@ The effects of all timing-based vetoes are summarized in \cref{tab:analysis_veto
 As mentioned in \cref{sec:xe_combining_ion_and_scint}, \(\alpha\) particle interactions produce more scintillation and less ionization in the liquid xenon than \(\beta\) and \(\gamma\) interactions. Therefore, events with a large scintillation-to-ionization ratio are removed from the data used for double beta decay physics. Since \isotope{222}{Rn} is a common source of \(\alpha\) particles, these decays are later used in order to constrain backgrounds due to other isotopes in the \isotope{222}{Rn} decay chain.
 
 \subsubsection{Scintillation Timing}
-Events are vetoed if they contain more than one scintillation cluster. The typical event rate in the TPC is \about{}\SI{0.1}{\Hz}, so random coincidences are rare enough that the effects of this cut on legitimate events is minuscule compared to other sources of systematic error. This eliminates \isotope{214}{Bi}-\isotope{214}{Po} coincidences, as described above, and also eliminates events in which there could be ambiguity in associating ionization signals with multiple scintillation signals. Additionally, events are vetoed if the scintillation comes too late in the waveform for ionization to have time to drift the full TPC drift length. Since the waveforms are centered around the trigger time, this does not happen in typical data, but may happen in source calibration runs.
+Events are vetoed if they contain more than one scintillation signal. The typical event rate in the TPC is \about{}\SI{0.1}{\Hz}, so random coincidences are rare enough that the effects of this cut on legitimate events is minuscule compared to other sources of systematic error. This eliminates \isotope{214}{Bi}-\isotope{214}{Po} coincidences, as described above, and also eliminates events in which there could be ambiguity in associating ionization signals with multiple scintillation signals. Additionally, events are vetoed if the scintillation comes too late in the waveform for ionization to have time to drift the full TPC drift length. Since the waveforms are centered around the trigger time, this does not happen in typical data, but may happen in source calibration runs.
 
 \subsection{Fiducial Volume}
 \label{sec:analysis_fiducial_volume}
@@ -312,8 +312,9 @@ While the rate agreement with calibration sources provides a conservative estima
 			&	\multicolumn{5}{c}{Contribution to rate uncertainty (\%)}				\\
 Component	&	\twonu{}	&	\multicolumn{4}{c}{\(0\nu\beta\beta\chi^0(\chi^0)\)}		\\
 			&			&	\(n = 1\)	&	\(n = 2\)	&	\(n = 3\)	&	\(n = 7\)	\\
-Identified noise in coincidence with physics events		&	\multicolumn{5}{c}{\(1\times10^{-3}\)}		\\
+Tagged noise in coincidence with physics events		&	\multicolumn{5}{c}{\(1\times10^{-3}\)}		\\
 Physics events mis-identified as noise				&	\multicolumn{5}{c}{\(<0.06\)}				\\
+Falsely finding of second scintillation signal			&	\multicolumn{5}{c}{\(1.0\)}				\\
 Fiducial volume due to bias in position reconstruction	&	\multicolumn{5}{c}{\(1.73\)}				\\
 Fiducial volume due to position reconstruction resolution	&	\multicolumn{5}{c}{\(0.36\)}				\\
 Energy calibration and resolution uncertainty			&	0.40	&	0.04	&	0.09	&	0.16	&	0.56	\\
@@ -321,14 +322,15 @@ Energy scale difference between \(\beta\) and \(\gamma\)	&	0.17	&	0.09	&	0.20	&	
 Induction tagging								&	\(<0.2\)&	\(<0.66\)	&	\(<0.44\)	&	\(<0.21\)	&	\(<0.28\)	\\
 Triggering efficiency	(above \SI{700}{\keV})			&	\multicolumn{5}{c}{\(\approx 0\)}			\\
 Signal-finding efficiency (above \SI{700}{\keV})		&	\multicolumn{5}{c}{\(\approx 0\)}			\\
-Clustering efficiency								&	0.18	&	1.00	&	0.7	&	0.5	&	0.1	\\
-Noise leading to improper clustering				&	\multicolumn{5}{c}{\(<0.18\)}				\\
+Clustering efficiency								&	\multicolumn{5}{c}{\(1.0\)}	\\
 Shape distortion in \SIrange{700}{1000}{\keV}			&	\multicolumn{5}{c}{0.75}					\\\midrule
-\textbf{Total}									&\textbf{2.3}&\textbf{2.1}&\textbf{2.0}&\textbf{2.0}&\textbf{2.5}\\\bottomrule
+\textbf{Total}									&\textbf{3.0}&\textbf{3.0}&\textbf{3.0}&\textbf{3.0}&\textbf{3.3}\\\bottomrule
 \end{tabular}
 \end{table}
 
-Noise events may occur in coincidence with real events. By simply comparing the \SI{11}{\milli\Hz} rate for real events and the \SI{75}{\milli\Hz} rates for noise events, the probability for one to occur in the \SI{1024}{\micro\s} following a trigger by the other, thus removing a real event from the data set, is \num{8.9e-5}. Likewise, hand-scanning events tagged as noise puts an upper limit on the rate at which legitimate physics events are tagged as noise at \(< 5.8e-4\).
+Noise events (as identified by the noise tagger) may occur in coincidence with real events. By simply comparing the \SI{11}{\milli\Hz} rate for real events and the \SI{75}{\milli\Hz} rates for noise events, the probability for one to occur in the \SI{1024}{\micro\s} following a trigger by the other, thus removing a real event from the data set, is \num{8.9e-5}. Likewise, hand-scanning events tagged as noise puts an upper limit on the rate at which legitimate physics events are tagged as noise at \(< 5.8e-4\).
+
+Noise fluctuations in the APD waveforms might be reconstructed as scintillation signals. These events would be rejected by the requirement that events have only one scintillation signal. In order to estimate this rate, a study was done in which simulated pulses were added to the waveforms from the \SI{0.1}{\Hz} pulsed triggers. These events had no real signals in them. The rate of falsely reconstructing a second signal (in addition to the injected one) was seen to be at worst \SI{1}{\percent}.
 
 Monte Carlo simulations of \twonu{} events suggest that the RMS error on the \(u\), \(v\), and \(x\) coordinates that are used to define hexagonal cross-section of the fiducial volume are \SI{2.4}{\mm}, \SI{1.2}{\mm}, and \SI{2.7}{\mm}, respectively. The error on the \(z\) coordinate due to slight deviations from a uniform electric field is \SI{0.42}{\mm}. Meanwhile, studies of events that occur on the cathode and so create signals in both TPCs suggest there might be a \SI{1.5}{\mm} offset in \(u\) and \(v\) and a \SI{0.5}{\mm} offset in \(z\) between the two TPCs. These might be physical, due to slight asymmetries in the construction, but are taken as systematic errors. Combining these uncertainties gives a total \SI{1.73}{\percent} uncertainty on the fiducial volume. Furthermore, position resolution considerations mean some events inside the fiducial volume can be reconstructed outside, and vice versa. Assuming uniform events, this should be a \(+\SI{0.36}{\percent}\) effect on the rate. It is, however, taken as a symmetric systematic error and is not corrected.
 
@@ -350,7 +352,7 @@ The \SI{2615}{\keV} \(\gamma\) ray from \isotope{228}{Th} may produce an electro
 \label{fig:analysis_beta_scale}
 \end{figure}
 
-The clustering efficiency is determined by comparing the number of ionization clusters with a fully reconstructed position to the total number of collection wire signal bundles. The former is a subset of the latter, and both have a well-defined energy. The absolute efficiency is energy-dependent, and taken into account when generating PDFs. The uncertainty is obtained by comparing the efficiency, as a function of energy, in both simulations and data. Integrating over the energy spectra of the double beta decay modes gives the uncertainties listed in \cref{tab:analysis_source_rate_agreement}. Since noise being reconstructed as a signal would contribute to differing efficiencies, the uncertainty introduced by noise in clustering is included in this number.
+The clustering efficiency is determined by comparing the number of ionization clusters with a fully reconstructed position to the total number of collection wire signal bundles. The former is a subset of the latter, and both have a well-defined energy. The absolute efficiency is energy-dependent, and taken into account when generating PDFs. The uncertainty is obtained by comparing the efficiency, as a function of energy, in both simulations and data. Integrating over the energy spectra of the double beta decay modes gives the uncertainties listed in \cref{tab:analysis_source_rate_agreement}.
 
 Finally, simulations predict a shape for the spectrum between about \SIrange{700}{1000}{\keV} that disagrees with calibration data. This shape error is similar for \isotope{60}{Co} and \isotope{228}{Th}, and can be parameterized as shown in \cref{fig:analysis_shape_agreement_ratio}. This could be used as a correction, but instead it is taken as a systematic uncertainty. All PDFs are ``skewed'' to effectively undo this error, and then used to generate toy Monte Carlo simulations with similar amounts of signal and background as in the Run2a data. The resulting toy sets are then fit with the original, unskewed PDFs. The result is that the number of \twonu{} events returned by the fit is systematically \SI{0.75}{\percent} higher than the number generated in the simulation. Therefore, this is the contribution to the \twonu{} rate uncertainty. The Majoron-emitting modes with spectral indices 1, 2, and 3 have less of their spectrum at these low energies, and so using the \twonu{} uncertainty is a conservative estimate. For spectral index 7, the sign of the distortion would tend to cause the number of these decays to fit to higher than their true values. Thus, if a limit is obtained for spectral index 7, it will still be conservative, even using the \twonu{} uncertainty.
 
