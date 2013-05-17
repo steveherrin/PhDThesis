@@ -314,23 +314,26 @@ Component	&	\twonu{}	&	\multicolumn{4}{c}{\(0\nu\beta\beta\chi^0(\chi^0)\)}		\\
 			&			&	\(n = 1\)	&	\(n = 2\)	&	\(n = 3\)	&	\(n = 7\)	\\
 Tagged noise in coincidence with physics events		&	\multicolumn{5}{c}{\(1\times10^{-3}\)}		\\
 Physics events mis-identified as noise				&	\multicolumn{5}{c}{\(<0.06\)}				\\
-Falsely finding of second scintillation signal			&	\multicolumn{5}{c}{\(1.0\)}				\\
+%Falsely finding a second scintillation signal			&	\multicolumn{5}{c}{\(4.0\)}				\\
+Falsely finding a second scintillation signal			&	0.5	&	0.5	&	0.5	&	0.5	&	1.0	\\
 Fiducial volume due to bias in position reconstruction	&	\multicolumn{5}{c}{\(1.73\)}				\\
 Fiducial volume due to position reconstruction resolution	&	\multicolumn{5}{c}{\(0.36\)}				\\
-Energy calibration and resolution uncertainty			&	0.40	&	0.04	&	0.09	&	0.16	&	0.56	\\
+Energy calibration and resolution uncertainty			&	0.36	&	0.04	&	0.09	&	0.36	&	0.56	\\
 Energy scale difference between \(\beta\) and \(\gamma\)	&	0.17	&	0.09	&	0.20	&	0.37	&	1.40	\\
 Induction tagging								&	\(<0.2\)&	\(<0.66\)	&	\(<0.44\)	&	\(<0.21\)	&	\(<0.28\)	\\
 Triggering efficiency	(above \SI{700}{\keV})			&	\multicolumn{5}{c}{\(\approx 0\)}			\\
 Signal-finding efficiency (above \SI{700}{\keV})		&	\multicolumn{5}{c}{\(\approx 0\)}			\\
-Clustering efficiency								&	\multicolumn{5}{c}{\(1.0\)}	\\
+Clustering efficiency								&	\multicolumn{5}{c}{\(2.0\)}	\\
 Shape distortion in \SIrange{700}{1000}{\keV}			&	\multicolumn{5}{c}{0.75}					\\\midrule
-\textbf{Total}									&\textbf{3.0}&\textbf{3.0}&\textbf{3.0}&\textbf{3.0}&\textbf{3.3}\\\bottomrule
+%\textbf{Total}									&\textbf{4.89}&\textbf{4.91}&\textbf{4.89}&\textbf{4.89}&\textbf{5.10}\\\bottomrule
+\textbf{Total}									&\textbf{2.85}&\textbf{2.90}&\textbf{4.86}&\textbf{2.85}&\textbf{3.32}\\\bottomrule
 \end{tabular}
 \end{table}
 
 Noise events (as identified by the noise tagger) may occur in coincidence with real events. By simply comparing the \SI{11}{\milli\Hz} rate for real events and the \SI{75}{\milli\Hz} rates for noise events, the probability for one to occur in the \SI{1024}{\micro\s} following a trigger by the other, thus removing a real event from the data set, is \num{8.9e-5}. Likewise, hand-scanning events tagged as noise puts an upper limit on the rate at which legitimate physics events are tagged as noise at \(< 5.8e-4\).
 
-Noise fluctuations in the APD waveforms might be reconstructed as scintillation signals. These events would be rejected by the requirement that events have only one scintillation signal. In order to estimate this rate, a study was done in which simulated pulses were added to the waveforms from the \SI{0.1}{\Hz} pulsed triggers. These events had no real signals in them. The rate of falsely reconstructing a second signal (in addition to the injected one) was seen to be at worst \SI{1}{\percent}.
+%Noise fluctuations in the APD waveforms might be reconstructed as scintillation signals. These events would be rejected by the requirement that events have only one scintillation signal. About \SI{0.75}{\percent} of events in real data are removed by this cut, while \SI{4}{\percent} of events in Monte Carlo simulations of \twonu{} events are removed. Since events in the data can be attributed to genuine coincidences (involving \isotope{214}{Bi}), no such events are in the \twonu{} simulations. Therefore, this \SI{4}{\percent} is taken as a systematic error.
+Noise fluctuations in the APD waveforms might be reconstructed as scintillation signals. These events would be rejected by the requirement that events have only one scintillation signal. To study this, simulated signals were added to pulsed trigger events taken from physics data. The rate for falsely reconstructing a second scintillation signal was \SI{1}{\percent} at worst, when the simulated signal was below about \SI{700}{\keV}. For simulated signals about \SI{1500}{\keV} and above, the rate was \SI{0.1}{\percent}. Therefore, integrated over the energy spectra of the modes, the systematic error is less than \SI{0.5}{\percent} for all modes expect the one with spectral index 7, which is less than \SI{1}{\percent}.
 
 Monte Carlo simulations of \twonu{} events suggest that the RMS error on the \(u\), \(v\), and \(x\) coordinates that are used to define hexagonal cross-section of the fiducial volume are \SI{2.4}{\mm}, \SI{1.2}{\mm}, and \SI{2.7}{\mm}, respectively. The error on the \(z\) coordinate due to slight deviations from a uniform electric field is \SI{0.42}{\mm}. Meanwhile, studies of events that occur on the cathode and so create signals in both TPCs suggest there might be a \SI{1.5}{\mm} offset in \(u\) and \(v\) and a \SI{0.5}{\mm} offset in \(z\) between the two TPCs. These might be physical, due to slight asymmetries in the construction, but are taken as systematic errors. Combining these uncertainties gives a total \SI{1.73}{\percent} uncertainty on the fiducial volume. Furthermore, position resolution considerations mean some events inside the fiducial volume can be reconstructed outside, and vice versa. Assuming uniform events, this should be a \(+\SI{0.36}{\percent}\) effect on the rate. It is, however, taken as a symmetric systematic error and is not corrected.
 
