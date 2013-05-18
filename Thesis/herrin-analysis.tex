@@ -279,7 +279,7 @@ One simple check is to compare the shapes of the energy and standoff distance di
 
 \subsubsection{Rate Agreement}
 \label{sec:analysis_rate_agreement}
-\Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate observed using the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals yields (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations. Because of these extra considerations, the reconstructed rate for double beta decays in the liquid xenon itself will have less uncertainty.
+\Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate observed using the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals yields (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations.
 
 \begin{table}[htp]
 \centering
@@ -302,7 +302,7 @@ Cathode		&	\(+y\)		&	\isotope{228}{Th}	&	\(4.5^{+3.3}_{-3.2}\)			\\
 \section{Systematic Uncertainties}
 \subsection{Rate Uncertainty}
 \label{sec:analysis_rate_uncertainty}
-While the rate agreement with calibration sources provides a conservative estimate of the accuracy to which the detector can measure decay rates, it is possible to estimate this uncertainty directly. \Cref{tab:analysis_normalization_uncertainty} summarizes these estimates.
+While the rate agreement with calibration sources provides an estimate of the accuracy to which the detector can measure decay rates, it is possible to estimate this uncertainty directly. \Cref{tab:analysis_normalization_uncertainty} summarizes these estimates.
 
 \begin{table}[htp]
 \centering
@@ -314,8 +314,8 @@ Component	&	\twonu{}	&	\multicolumn{4}{c}{\(0\nu\beta\beta\chi^0(\chi^0)\)}		\\
 			&			&	\(n = 1\)	&	\(n = 2\)	&	\(n = 3\)	&	\(n = 7\)	\\
 Tagged noise in coincidence with physics events		&	\multicolumn{5}{c}{\(1\times10^{-3}\)}		\\
 Physics events mis-identified as noise				&	\multicolumn{5}{c}{\(<0.06\)}				\\
-%Falsely finding a second scintillation signal			&	\multicolumn{5}{c}{\(4.0\)}				\\
-Falsely finding a second scintillation signal			&	0.5	&	0.5	&	0.5	&	0.5	&	1.0	\\
+Falsely finding a second scintillation signal			&	\multicolumn{5}{c}{\(4.0\)}				\\
+%Falsely finding a second scintillation signal			&	0.5	&	0.5	&	0.5	&	0.5	&	1.0	\\
 Fiducial volume due to bias in position reconstruction	&	\multicolumn{5}{c}{\(1.73\)}				\\
 Fiducial volume due to position reconstruction resolution	&	\multicolumn{5}{c}{\(0.36\)}				\\
 Energy calibration and resolution uncertainty			&	0.36	&	0.04	&	0.09	&	0.36	&	0.56	\\
@@ -325,15 +325,15 @@ Triggering efficiency	(above \SI{700}{\keV})			&	\multicolumn{5}{c}{\(\approx 0\
 Signal-finding efficiency (above \SI{700}{\keV})		&	\multicolumn{5}{c}{\(\approx 0\)}			\\
 Clustering efficiency								&	\multicolumn{5}{c}{\(2.0\)}	\\
 Shape distortion in \SIrange{700}{1000}{\keV}			&	\multicolumn{5}{c}{0.75}					\\\midrule
-%\textbf{Total}									&\textbf{4.89}&\textbf{4.91}&\textbf{4.89}&\textbf{4.89}&\textbf{5.10}\\\bottomrule
-\textbf{Total}									&\textbf{2.85}&\textbf{2.90}&\textbf{4.86}&\textbf{2.85}&\textbf{3.32}\\\bottomrule
+\textbf{Total}									&\textbf{4.89}&\textbf{4.91}&\textbf{4.89}&\textbf{4.89}&\textbf{5.10}\\\bottomrule
+%\textbf{Total}									&\textbf{2.85}&\textbf{2.90}&\textbf{4.86}&\textbf{2.85}&\textbf{3.32}\\\bottomrule
 \end{tabular}
 \end{table}
 
 Noise events (as identified by the noise tagger) may occur in coincidence with real events. By simply comparing the \SI{11}{\milli\Hz} rate for real events and the \SI{75}{\milli\Hz} rates for noise events, the probability for one to occur in the \SI{1024}{\micro\s} following a trigger by the other, thus removing a real event from the data set, is \num{8.9e-5}. Likewise, hand-scanning events tagged as noise puts an upper limit on the rate at which legitimate physics events are tagged as noise at \(< 5.8e-4\).
 
-%Noise fluctuations in the APD waveforms might be reconstructed as scintillation signals. These events would be rejected by the requirement that events have only one scintillation signal. About \SI{0.75}{\percent} of events in real data are removed by this cut, while \SI{4}{\percent} of events in Monte Carlo simulations of \twonu{} events are removed. Since events in the data can be attributed to genuine coincidences (involving \isotope{214}{Bi}), no such events are in the \twonu{} simulations. Therefore, this \SI{4}{\percent} is taken as a systematic error.
-Noise fluctuations in the APD waveforms might be reconstructed as scintillation signals. These events would be rejected by the requirement that events have only one scintillation signal. To study this, simulated signals were added to pulsed trigger events taken from physics data. The rate for falsely reconstructing a second scintillation signal was \SI{1}{\percent} at worst, when the simulated signal was below about \SI{700}{\keV}. For simulated signals about \SI{1500}{\keV} and above, the rate was \SI{0.1}{\percent}. Therefore, integrated over the energy spectra of the modes, the systematic error is less than \SI{0.5}{\percent} for all modes expect the one with spectral index 7, which is less than \SI{1}{\percent}.
+Noise fluctuations in the APD waveforms might be reconstructed as scintillation signals. These events would be rejected by the requirement that events have only one scintillation signal. About \SI{0.75}{\percent} of events in real data are removed by this cut, while \SI{4}{\percent} of events in Monte Carlo simulations of \twonu{} events are removed. This is attributed to the matched filter signal finding technique being optimized to work on APD signals with real noise, when the Monte Carlo simulations only have simulated white noise. Since events in the data can be attributed to genuine coincidences (involving \isotope{214}{Bi}), no such events are in the \twonu{} simulations. Therefore, this \SI{4}{\percent} is taken conservatively as a systematic error.
+%Noise fluctuations in the APD waveforms might be reconstructed as scintillation signals. These events would be rejected by the requirement that events have only one scintillation signal. To study this, simulated signals were added to pulsed trigger events taken from physics data. The rate for falsely reconstructing a second scintillation signal was \SI{1}{\percent} at worst, when the simulated signal was below about \SI{700}{\keV}. For simulated signals about \SI{1500}{\keV} and above, the rate was \SI{0.1}{\percent}. Therefore, integrated over the energy spectra of the modes, the systematic error is less than \SI{0.5}{\percent} for all modes expect the one with spectral index 7, which is less than \SI{1}{\percent}.
 
 Monte Carlo simulations of \twonu{} events suggest that the RMS error on the \(u\), \(v\), and \(x\) coordinates that are used to define hexagonal cross-section of the fiducial volume are \SI{2.4}{\mm}, \SI{1.2}{\mm}, and \SI{2.7}{\mm}, respectively. The error on the \(z\) coordinate due to slight deviations from a uniform electric field is \SI{0.42}{\mm}. Meanwhile, studies of events that occur on the cathode and so create signals in both TPCs suggest there might be a \SI{1.5}{\mm} offset in \(u\) and \(v\) and a \SI{0.5}{\mm} offset in \(z\) between the two TPCs. These might be physical, due to slight asymmetries in the construction, but are taken as systematic errors. Combining these uncertainties gives a total \SI{1.73}{\percent} uncertainty on the fiducial volume. Furthermore, position resolution considerations mean some events inside the fiducial volume can be reconstructed outside, and vice versa. Assuming uniform events, this should be a \(+\SI{0.36}{\percent}\) effect on the rate. It is, however, taken as a symmetric systematic error and is not corrected.
 
@@ -464,7 +464,7 @@ These constraints are imposed as Gaussian constraints (\cref{eq:analysis_gaussia
 Radon can seep through the cracks in the lead wall and decay in the small gap between the lead and the cryostat. \(\gamma\) rays from decays of \isotope{214}{Bi} in this volume can reach the TPC. An external instrument\cite{rad7} monitors the level of \isotope{222}{Rn} in the clean room air. The average activity during periods when the detector was live was \SI{7.2\pm0.5}{\Bq\per\cubic\meter}. Measurements sampling air from the gap directly have confirmed that radon levels in the gap are similar to those in the clean room air. The volume of air in the gap is known to be \SI{.280\pm0.015}{\cubic\meter}, and so the total activity of \SI{2.01\pm 0.11}{\Bq} is used, along with the efficiencies from simulation, to constrain the number of decays \(N_i\) for \SI{214}{Bi} in the gap. This is applied as a Gaussian constraint on the upper number of decays.
 
 \subsection{Normalization}
-The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty} is included in the fit as an overall factor multiplying the normalization. This is not so much a constraint as a way to account for the uncertainty. The constraint has the factor centered around 1, so it will never affect the best fit value. The width is given by the rate uncertainty given in \cref{tab:analysis_source_rate_agreement}, and so it contributes to the uncertainty on half life measurements or limits.
+The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty} is included in the fit as an overall factor multiplying the normalization. This is not so much a constraint as a way to account for the uncertainty. The constraint has the factor centered around 1, so it does not significantly affect the best fit value. The width is given by the rate uncertainty given in \cref{tab:analysis_source_rate_agreement}, and so it contributes to the uncertainty on half life measurements or limits.
 
 \section{Measurement of \twonu}
 
@@ -494,28 +494,28 @@ The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty
 \label{fig:analysis_bb2n_best_fit}
 \end{figure}
 
-The best fit of the background and signal PDFs to the data is shown in \cref{fig:analysis_bb2n_best_fit}. The fiducial volume contains \SI{81.9}{\kg} of xenon, of which \SI{80.6}{\percent} is \isotope{136}{Xe}. The total live time was \SI{116.5}{day} and the efficiency for detecting \twonu{} after all cuts is \SI{59}{\percent}. The best fit using the maximum likelihood method says the data set contains \num{1.92e4} \twonu{} decays. This implies a half life of \SI{1.98e21}{\year}. \Cref{fig:analysis_bb2n_best_fit} shows projections of the best fit spectra.
+The best fit of the background and signal PDFs to the data is shown in \cref{fig:analysis_bb2n_best_fit}. The fiducial volume contains \SI{81.9}{\kg} of xenon, of which \SI{80.6}{\percent} is \isotope{136}{Xe}. The total live time was \SI{116.5}{day} and the efficiency for detecting \twonu{} after all cuts is \SI{59}{\percent}. The best fit using the maximum likelihood method says the data set contains \num{1.9e4} \twonu{} decays. This implies a half life of \SI{2.00e21}{\year}. \Cref{fig:analysis_bb2n_best_fit} shows projections of the best fit spectra.
 
 \subsection{Effects of systematic errors}
 Ultimately, the profile likelihood method gives an overall error, not broken down into statistical and systematic components. However, the relative contributions to the overall error can be obtained by fixing various components in the fit and observing the change in the width of the likelihood profile. The statistical uncertainty is obtained by fixing all parameters except the number of \twonu{} events to their best fit values. Systematic uncertainty can likewise be obtained by looking at just the effect of the single site fraction uncertainty, the contributions of the background PDFs, and the normalization uncertainty. \Cref{tab:analysis_error_budget} breaks down these different sources of uncertainty.
 
 \begin{table}[htp]
 \centering
-\caption[Effect of uncertainties on the half life measurement]{A breakdown of the various uncertainties on the measurement of the \twonu{} half life. Each contribution is given as a percentage of the best-fit value}
+\caption[Effect of uncertainties on the half life measurement]{A breakdown of the various uncertainties on the measurement of the \twonu{} half life. Each contribution is given as a percentage of the best-fit value obtained by letting only the specified parameter float when performing a profile scan of the likelihood function. Correlations mean they do not sum in quadrature.}
 \label{tab:analysis_error_budget}
 \begin{tabular}{c c}\toprule
 Uncertainty	&	Contribution \%		\\\midrule
 Statistical		&	0.76				\\
-SS fraction	&	0.7				\\
+SS fraction	&	0.81				\\
 Backgrounds	&	0.83				\\
-Normalization	&	2.0				\\\midrule
-\textbf{Total}	&	\textbf{2.4}		\\\bottomrule
+Normalization	&	2.5				\\\midrule
+\textbf{Total}	&	\textbf{5.0}		\\\bottomrule
 \end{tabular}
 \end{table}
 
 Thus, the measurement of the \twonu{} half life for \isotope{136}{Xe} is
 \begin{equation}
-T_{1/2} = \left ( 1.983 \pm 0.015 (\text{stat}) \pm 0.045 (\text{sys}) \right)\times 10^{21} \si{\year}
+T_{1/2} = \left ( 2.00 \pm 0.015 (\text{stat}) \pm 0.097 (\text{sys}) \right)\times 10^{21} \si{\year}
 \label{eq:analysis_bb2n_halflife}
 \end{equation}
 
@@ -544,7 +544,7 @@ As \cref{fig:analysis_bb2n_rate_v_time} shows, the half life obtained by fitting
 \end{figure}
 
 \subsubsection{Energy-Only Fit}
-It is worthwhile to verify that the inclusion of standoff distance in the fit is not somehow biasing the results. Repeating the fit with the standoff distance ignored, the best fit for the \twonu{} half life is \(T_{1/2} = \SI{2.01\pm0.05e21}{\year}\), in agreement with the half life reported above.
+It is worthwhile to verify that the inclusion of standoff distance in the fit is not somehow biasing the results. Repeating the fit with the standoff distance ignored, the best fit for the \twonu{} half life is \(T_{1/2} = \SI{2.0\pm0.1e21}{\year}\), in agreement with the half life reported above.
 
 \subsection{Comparison to Previous Results}
 \Cref{fig:analysis_bb2n_half_life_comparison} shows previous measurements of the \twonu{} half life by the EXO-200 and KamLAND-Zen experiments. The Run2a data was previously used to report \(T_{1/2} = (2.23\pm0.017(\text{stat})\pm0.22(\text{sys}))\times10^{21}\si{\year}\). This measurement suffered from a 3\% overestimate in the detector live time, and correcting for this brings the measurement closer to the one reported here. That measurement also used a larger fiducial volume, including regions near the detector edges where the volume is less well-known (this is demonstrated by the apparent drop-off in events near the walls and anode/cathode planes in \cref{fig:analysis_bb2n_rate_v_pos}). So while this measurement is consistent with previous measurements by the EXO-200 experiment, it is now in tension with the measurements by KamLAND-Zen.
@@ -552,7 +552,7 @@ It is worthwhile to verify that the inclusion of standoff distance in the fit is
 \begin{figure}[htp]
 \centering
 \includegraphics[width=0.6\textwidth]{./plots/analysis_bb2n_half_life_comparison.pdf}
-\caption[Comparison of measurements of the half life for \twonu{}]{A comparison of measurements of \twonu{} half life measurements. The EXO-200 experiment reported results in 2011\cite{Ackerman:2011gz} and 2012\cite{Auger:2012ar} using independent data sets. The KamLAND-Zen experiment reported two results in 2012, denoted a\cite{Gando:2012qy} and b\cite{Gando:2012fk}, with some data in common between the two analyses. The blue line is the maximum likelihood estimate of the half life (\(T_{1/2} = (2.29\pm0.09)\times10^{21}\si{\year}\)) based on these previous measurements, assuming all are independent. The bottom point is the measurement reported in this work.}
+\caption[Comparison of measurements of the half life for \twonu{}]{A comparison of measurements of \twonu{} half life measurements. The EXO-200 experiment reported results in 2011\cite{Ackerman:2011gz} and 2012\cite{Auger:2012ar} using independent data sets. The KamLAND-Zen experiment reported two results in 2012, denoted a\cite{Gando:2012qy} and b\cite{Gando:2012fk}, with some data in common between the two analyses. The blue line are blue shaded area are the maximum likelihood estimate and the 1\(\sigma\) error on the half life (\(T_{1/2} = (2.29\pm0.076)\times10^{21}\si{\year}\)) based on these previous measurements, assuming all are independent. The bottom point is the measurement reported in this work.}
 \label{fig:analysis_bb2n_half_life_comparison}
 \end{figure}
 
@@ -615,16 +615,16 @@ The Majoron-emitting modes are each separately included in the fit, and confiden
 \begin{tabular}{ l c c c}\toprule
 Decay mode	&	n	&	\multicolumn{2}{c}{\(T_{1/2} (\si{\year})\)}					\\
 			&		&	KamLAND-ZEN		&	EXO-200 (this work)			\\\midrule
-\zeronuX{}	&	1	&	\(>2.6\times10^{24}\)		&	\(>6.34\times10^{23}\)		\\
-\zeronuX{}	&	2	&	\(>1.0\times10^{24}\)		&	\(>2.31\times10^{23}\)		\\
-\zeronuXpX{}	&	3	&	\(>4.5\times10^{23}\)		&	\(>7.01\times10^{22}\)		\\
+\zeronuX{}	&	1	&	\(>2.6\times10^{24}\)		&	\(>7.06\times10^{23}\)		\\
+\zeronuX{}	&	2	&	\(>1.0\times10^{24}\)		&	\(>2.55\times10^{23}\)		\\
+\zeronuXpX{}	&	3	&	\(>4.5\times10^{23}\)		&	\(>7.21\times10^{22}\)		\\
 \zeronuXX{}	&	7	&	\(>1.1\times10^{22}\)		&	\(>1.30\times10^{22}\)		\\\bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Effect of Systematic Uncertainties}
 \label{sec:analysis_majoron_error_budget}
-\Cref{tab:analysis_majoron_error_budget} tabulates the effect of the various uncertainties on the limits obtained for the Majoron-emitting modes. All of the limits are only slightly degraded below their statistical limits. For all modes, uncertainty in the backgrounds has a modest effect on the limit. Being able to better constrain the backgrounds, both through external constraints and more detector data, could improve the limits. For the modes with spectral indices 1, 2, and 3, the statistical limits are weakened by uncertainties in the background and the systematic uncertainty in the single site fraction. Since these events are similar to \twonu{} events, this suggests the limits could be improved modestly by using the \twonu{} single site fraction as a constraint on the single site fraction for these modes. The mode with spectral index 7 has its limit weakened by the normalization uncertainty, and this seems to be correlated with the background uncertainty, since the overall limit is no worse. Looking at the energy spectrum, this mode is similar in shape to \twonu{}, and so changes in its amplitude can be compensated for in similar ways by either changing the normalization or the number of \twonu{}.
+\Cref{tab:analysis_majoron_error_budget} tabulates the effect of the various uncertainties on the limits obtained for the Majoron-emitting modes. All of the limits are only slightly degraded below their statistical limits. For all modes, uncertainty in the backgrounds has a modest effect on the limit. Being able to better constrain the backgrounds, both through external constraints and more detector data, could improve the limits. For all modes, the statistical limits are weakened by uncertainties in the background and the systematic uncertainty in the single site fraction. Since these events are similar to \twonu{} events, this suggests the limits could be improved modestly by using the \twonu{} single site fraction as a constraint on the single site fraction. The normalization uncertainty does not weaken the limit significantly, and so enlarging the fiducial volume to increase the number of xenon atoms would likely improve the limit, despite worsening the normalization uncertainty.
 
 \begin{table}[htp]
 \centering
@@ -633,11 +633,11 @@ Decay mode	&	n	&	\multicolumn{2}{c}{\(T_{1/2} (\si{\year})\)}					\\
 \begin{tabular}{c c c c c }\toprule
 Uncertainty		&	\multicolumn{4}{c}{90\% CL limit on \(T_{1/2}\)}			\\
 				&	\(n = 1\) (\SI{e23}{\year})		&	\(n = 2\) (\SI{e23}{\year})		&	\(n = 3\) (\SI{e22}{\year})		&	\(n=4\) (\SI{e22}{\year})	\\\midrule
-Statistical only		&	6.49						&	2.36						&	6.87						&	1.34					\\
-SS fraction	&	6.42						&	2.33						&	6.76						&	1.34						\\
-Backgrounds	&	6.43						&	2.34						&	6.79						&	1.30						\\
-Normalization	&	6.49						&	2.36						&	6.87						&	1.30						\\\midrule
-\textbf{Reported}	&	\textbf{6.34}				&	\textbf{2.31}				&	\textbf{6.67}				&	\textbf{1.30}			\\\bottomrule
+Statistical only	&	7.33						&	2.67						&	7.86						&	1.36					\\
+SS fraction	&	7.13						&	2.58						&	7.37						&	1.34					\\
+Backgrounds	&	7.25						&	2.63						&	7.73						&	1.33					\\
+Normalization	&	7.33						&	2.67						&	7.86						&	1.36					\\\midrule
+\textbf{Reported}&	\textbf{7.06}				&	\textbf{2.55}				&	\textbf{7.21}				&	\textbf{1.30}			\\\bottomrule
 \end{tabular}
 \end{table}
 
@@ -673,7 +673,7 @@ As discussed in \cref{sec:analysis_ml_theory}, when using the bounded likelihood
 \label{fig:analysis_bb0nX_sensitivity}
 \end{figure}
 
-Using the best fit spectrum with no \zeronuXpX{} to again create toy simulations, it is possible to study the sensitivity to Majoron-emitting modes. Each simulation is used to construct a 90\% confidence interval. \Cref{fig:analysis_bb0nX_sensitivity} shows histograms of the limits obtained from many simulations. For all modes, the expected sensitivity is higher than the observed limit. For the modes with spectral indices 1 and 2, higher limits are expected 77\% and 81\% of the time, respectively. For the mode with spectral index 3, 98\% of simulations had a better limit. For the mode with spectral index 7, only one simulation in 500 had a comparable limit. This suggests that the model used to simulate the data is inadequate. As discussed in \cref{sec:analysis_shape_agreement} the simulations show a slightly different single-site fraction than seen in data. Since the \zeronuXX{} spectrum is primarily single site and peaks at lower energies than \twonu{}, the upper limit on the number of decays is larger in data than in the toy simulations.
+Using the best fit spectrum with no \zeronuXpX{} to again create toy simulations, it is possible to study the sensitivity to Majoron-emitting modes. Each simulation is used to construct a 90\% confidence interval. \Cref{fig:analysis_bb0nX_sensitivity} shows histograms of the limits obtained from many simulations. For all modes, the expected sensitivity is higher than the observed limit. For the modes with spectral indices 1 and 2, higher limits are expected 75\% and 78\% of the time, respectively. For the mode with spectral index 3, 96\% of simulations had a better limit. For the mode with spectral index 7, only one simulation in 500 had a comparable limit. This suggests that the model used to simulate the data is inadequate. As discussed in \cref{sec:analysis_shape_agreement} the simulations show a slightly different single-site fraction than seen in data. Since the \zeronuXX{} spectrum is primarily single site and peaks at lower energies than \twonu{}, the upper limit on the number of decays is larger in data than in the toy simulations.
 
 \subsection{Comparison to Previous Results}
 As \cref{tab:analysis_majoron_limits} shows, the limits on the Majoron-emitting modes with spectral indices 1, 2, and 3 are weaker than those reported by KamLAND-Zen. The weaker limits are primarily due to statistics, as discussed in \cref{sec:analysis_majoron_error_budget}. This is not surprising, as the KamLAND-Zen results come from \SI{38.4}{\kg\year} exposure of \xenon{136}, whereas this analysis only contains \SI{21.0}{\kg\year}. For the spectral index 7 mode, EXO-200 can report a modestly improved limit. Looking at \cref{fig:analysis_kamlandzen_spectrum}, backgrounds in KamLAND-Zen begin to dominate over the \twonu{} mode below \SI{1}{\MeV}. EXO-200, on the other hand, has much smaller backgrounds at this low energy, which allow a stronger limit, even with reduced exposure.
