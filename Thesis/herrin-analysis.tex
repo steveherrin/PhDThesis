@@ -425,7 +425,7 @@ When employing the method of bounded likelihood, it is necessary to verify that 
 
 \subsection{Application to EXO-200}
 \label{sec:analysis_fitting_exo200}
-For each signal and each background, two dimensional PDFs (in energy and standoff distance) are generated for single site and multiple site multiplicities as described in \cref{sec:analysis_monte_carlo}. These PDFs are generated for \(\SI{700}{\keV} \leq E < \SI{3500}{\keV}\) and \(\SI{5}{\mm} \leq d_s < \SI{182}{\mm}\), where \(d_s\) is the standoff distance. There are 200 evenly-spaced (\SI{14}{\keV}) bins in energy, and 20 evenly-spaced (\SI{9.1}{\mm}) bins in standoff distance.
+For each signal and each background, two dimensional PDFs (in energy and standoff distance) are generated for single site and multiple site multiplicities as described in \cref{sec:analysis_monte_carlo}. These PDFs are generated for \(\SI{700}{\keV} \leq E < \SI{3500}{\keV}\) and \(\SI{0}{\mm} \leq d_s < \SI{200}{\mm}\), where \(d_s\) is the standoff distance. There are 200 evenly-spaced (\SI{14}{\keV}) bins in energy, and 20 evenly-spaced (\SI{10}{\mm}) bins in standoff distance.
 
 For each PDF, there are two parameters: the total number of events \(N_i\) associated with that PDF, and the fraction \(a_i\) of those events that are single site events. There is also one overall normalization parameter \(c_\text{norm}\), explained below. Denote the number of events in the bin with multiplicity (SS or MS) \(m\), energy \(E\), and standoff distance \(d_s\) for PDF \(i\) as \(n_i(m, E, d_s)\). The combined PDF predicts
 \begin{equation}
