@@ -57,6 +57,9 @@ As mentioned in \cref{sec:xe_combining_ion_and_scint}, \(\alpha\) particle inter
 \subsubsection{Scintillation Timing}
 Events are vetoed if they contain more than one scintillation signal. The typical event rate in the TPC is \about{}\SI{0.1}{\Hz}, so random coincidences are rare enough that the effects of this cut on legitimate events is minuscule compared to other sources of systematic error. This eliminates \isotope{214}{Bi}-\isotope{214}{Po} coincidences, as described above, and also eliminates events in which there could be ambiguity in associating ionization signals with multiple scintillation signals. Additionally, events are vetoed if the scintillation comes too late in the waveform for ionization to have time to drift the full TPC drift length. Since the waveforms are centered around the trigger time, this does not happen in typical data, but may happen in source calibration runs.
 
+\subsubsection{Full Reconstruction}
+Events are vetoed if they cannot be fully reconstructed. That is, all \(u\) wire signal bundles must be paired with \(v\) wire signal bundles. The resulting clusters must also be paired with a scintillation signal. This is necessary in order to know the 3D position of a cluster.
+
 \subsection{Fiducial Volume}
 \label{sec:analysis_fiducial_volume}
 \begin{figure}[htb]
@@ -355,7 +358,7 @@ The \SI{2615}{\keV} \(\gamma\) ray from \isotope{228}{Th} may produce an electro
 \label{fig:analysis_beta_scale}
 \end{figure}
 
-The clustering efficiency is determined by comparing the number of ionization clusters with a fully reconstructed position to the total number of collection wire signal bundles. The former is a subset of the latter, and both have a well-defined energy. The absolute efficiency is energy-dependent, and taken into account when generating PDFs. The uncertainty is obtained by comparing the efficiency, as a function of energy, in both simulations and data. Integrating over the energy spectra of the double beta decay modes gives the uncertainties listed in \cref{tab:analysis_source_rate_agreement}.
+The clustering efficiency uncertainty is determined by comparing the number of events that pass all cuts except the one requiring all charge bundles to be fully clustered to the number of events that pass all cuts. This is done in both simulations of \twonu{} and real data. Since there are backgrounds in the real data which may have different rates, background subtraction is done using the best fit to the data (described below in \cref{sec:analysis_twonu_measurement}. The difference between background-subtracted data and simulation is energy dependent, and so integrating over the \twonu{} spectrum gives the uncertainty listed in \cref{tab:analysis_source_rate_agreement}.
 
 Simulations predict a shape for the spectrum between about \SIrange{700}{1000}{\keV} that disagrees with calibration data. This shape error is similar for \isotope{60}{Co} and \isotope{228}{Th}, and can be parameterized as shown in \cref{fig:analysis_shape_agreement_ratio}. This could be used as a correction, but instead it is taken as a systematic uncertainty. All PDFs are ``skewed'' to effectively undo this error, and then used to generate toy Monte Carlo simulations with similar amounts of signal and background as in the Run2a data. The resulting toy sets are then fit with the original, unskewed PDFs. The result is that the number of \twonu{} events returned by the fit is systematically \SI{0.75}{\percent} higher than the number generated in the simulation. Therefore, this is the contribution to the \twonu{} rate uncertainty. The Majoron-emitting modes with spectral indices 1, 2, and 3 have less of their spectrum at these low energies, and so using the \twonu{} uncertainty is a conservative estimate. For spectral index 7, the sign of the distortion would tend to cause the number of these decays to fit to higher than their true values. Thus, if a limit is obtained for spectral index 7, it will still be conservative, even using the \twonu{} uncertainty.
 
@@ -469,6 +472,7 @@ Radon can seep through the cracks in the lead wall and decay in the small gap be
 The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty} is included in the fit as an overall factor multiplying the normalization. This is not so much a constraint as a way to account for the uncertainty. The constraint has the factor centered around 1, so it does not significantly affect the best fit value. The width is given by the rate uncertainty given in \cref{tab:analysis_source_rate_agreement}, and so it contributes to the uncertainty on half life measurements or limits.
 
 \section{Measurement of \twonu}
+\label{sec:analysis_twonu_measurement}
 
 \begin{figure}[htp]
 \centering
