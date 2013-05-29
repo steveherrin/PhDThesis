@@ -16,7 +16,7 @@ In order to illuminate the entire detector, long calibration runs at both anode 
 \subsection{Event Selection}
 Only single site full-absorption events are used to make the light map, since both their location and energies are known. Full absorption events are identified by looking at the ionization spectrum. The mean and sigma of the full-absorption peak are fit with a Gaussian + complementary errror function model like that used for calibration. Only events with ionization energies between \(+0.33\sigma\) and \(+3.0\sigma\) are used. \Cref{fig:lightmap_event_selection} provides an illustration. This cut retains 37\% of the full-absorption events, and should only retain 3\% of the Compton scatter events with energies within 2\(\sigma\) of the peak. Since scintillation is correlated with ionization, and the ionization response is uniform throughout the detector (after electron lifetime and shielding grid corrections), this should give a give a sample of events with the same scintillation throughout the detector.
 
-\begin{figure}[tbh]
+\begin{figure}[htbp]
 \centering
 \begin{subfigure}[b]{0.48\textwidth}
 \centering
@@ -85,7 +85,7 @@ is the corrected signal.
 
 \Cref{tab:lightmap_effect} shows the improvement in the scintillation-only energy resolution for calibration data taken with a \isotope{228}{Th} source at several positions around the detector. The mean improvement in \(\sigma/E\) was \SI{2.0}{\percent} for single site events, and \SI{1.8}{\percent} for multiple site data. An example of the improvement is shown in \cref{fig:lightmap_improvement}.
 
-\begin{table}[tbh]
+\begin{table}[htbp]
 \centering
 \caption[Resolution improvement due to correction]{The improvement in the scintillation-only energy resolution \((\sigma/E)\) after applying the correction for both single site (SS) and multiple site (MS) events. This is based on fitting a Gaussian + complimentary error function model (see \ref{sec:data_fitmodel}) to \isotope{228}{Th} calibration data taken at a number of positions.}
 \label{tab:lightmap_effect}
@@ -104,7 +104,7 @@ anode	&	\(+z\)				&	SS			&	\(7.65\pm0.26\)					&	\(5.89\pm0.14\)					\\
 \end{tabular}
 \end{table}
 
-\begin{figure}[tbh]
+\begin{figure}[htbp]
 \centering
 \begin{subfigure}[b]{0.48\textwidth}
 \centering
