@@ -22,7 +22,7 @@ Muons that reach underground have typical energies of \SIrange{1}{1000}{\GeV}, a
 \end{figure}
 
 \subsection{Identifying Muons with the Hough Transform}
-The Hough transform\cite{Hough:1959fk}\cite{Duda:1972:UHT:361237.361242} is an algorithm originally used to look for tracks in bubble chamber photographs. A line can be completely parameterized by the angle \(\eta\) it makes with an axis, and the perpendicular distance \(r\) from the line to the origin. The Hough transform maps a pixel in an image to all possible lines that can pass through that pixel, which looks like a sinusoidal curve in \((\eta, r)\) space. If some of the pixels form a line, then these curves will converge at the point corresponding to that line.
+The Hough transform \cite{Hough:1959fk,Duda:1972:UHT:361237.361242} is an algorithm originally used to look for tracks in bubble chamber photographs. A line can be completely parameterized by the angle \(\eta\) it makes with an axis, and the perpendicular distance \(r\) from the line to the origin. The Hough transform maps a pixel in an image to all possible lines that can pass through that pixel, which looks like a sinusoidal curve in \((\eta, r)\) space. If some of the pixels form a line, then these curves will converge at the point corresponding to that line.
 
 This can be applied to EXO-200 to look for muons. First, an event must pass a simple scintillation cut. The sum of the individual APD waveforms must sum to at least 10000 ADC units, which is  above the typical signal associated with gamma and beta events under \SI{3}{MeV}. Next, ionization deposits are identified by simply looking at the collection wire channel waveforms. The first 256 samples are averaged to find the baseline.  A ``hot spot'' is associated with the time value at which the waveform peaks, once it has climbed 80 ADC units above the baseline. The induction wires are analyzed the same way, except looking for the waveform dipping 80 ADC units below its baseline. The hot spots undergo a Hough transform, and the curves are placed in a histogram. The bin with the most entries is used to reconstruct the projection of the muon's track onto the wire planes. In the event multiple bins have the most entries, meaning the best track does not quite line up with the binning, the median of the bins (sorted by \(\eta\)) is used. \Cref{fig:muon:houghtransform} shows an example of a reconstructed muon track.
 
@@ -38,14 +38,14 @@ After passing a check for noise (described in \Cref{app:noisetagger}) and a chec
 The Hough transform reconstructs the projection of the muon's path onto the wire planes. Since the drift velocity and wire spacings are well known, these projections can be translated back to an incident angle for the muon. However, some information is lost in the time projection. For example, all muons incident from (\(\theta,\phi) = (\theta, \pm\pi/2)\) pass parallel to the wire plane. All their charge arrives simultaneously on the wires. While the signal is distinctive and will be tagged as a muon, there is no way to determine \(\theta\). Likewise, a muon may pass parallel to a wire. In this case, it may not create enough hot spots to be tagged as a muon, or some ionization may reach perpendicular wires, leading to a reconstruction in a perpendicular direction.
 
 \subsection{Validation with Monte Carlo Simulations}
-In order to validate this muon tagging algorithm, 2 million muons were generated in the EXOSim GEANT4 simulation of the EXO-200 detector. The overall efficiency of the tagging depends on the angular distribution of the incident muons, for the reasons described above. The angular distribution underground is approximated\cite{miyake:1973} by
+In order to validate this muon tagging algorithm, 2 million muons were generated in the EXOSim GEANT4 simulation of the EXO-200 detector. The overall efficiency of the tagging depends on the angular distribution of the incident muons, for the reasons described above. The angular distribution underground is approximated \cite{miyake:1973} by
 \begin{equation}
 \label{eq:muon_angular_distribution}
 \frac{dN}{d\Omega} = \Phi(h) \left (\cos \theta \right)^{1.53}e^{-8\times10^{-4} h \left(\sec \theta -1\right)}
 \end{equation}
-where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\g\per\square\cm} (\SI{1}{\hecto\g\per\square\cm} is equivalent shielding to one meter of water). For WIPP, previous experiments have measured \(h\) to be \(1585^{+11}_{-6}\) \si{\hecto\g\per\square\cm}\cite{Esch:2004zj}, so this value was used for the simulations. This distribution is a good approximation for \(\theta < \pi/3\).
+where \(\theta\) is the zenith angle and \(h\) is the vertical depth in \si{\hecto\g\per\square\cm} (\SI{1}{\hecto\g\per\square\cm} is equivalent shielding to one meter of water). For WIPP, previous experiments have measured \(h\) to be \(1585^{+11}_{-6}\) \si{\hecto\g\per\square\cm} \cite{Esch:2004zj}, so this value was used for the simulations. This distribution is a good approximation for \(\theta < \pi/3\).
 
-The energy distribution for muons underground can also be approximated\cite{Gaisser:1990kx}. The distribution for muons at the surface is given by
+The energy distribution for muons underground can also be approximated \cite{Gaisser:1990kx}. The distribution for muons at the surface is given by
 \begin{equation}
 \label{eq:muon_surface_distribution}
 \frac{dN}{dE} \propto E^{-2.7}\left(\frac{1}{1+\frac{1.1 E \cos \theta}{115}} + \frac{0.054}{1+\frac{1.1 E \cos \theta}{850}}\right)
@@ -60,7 +60,7 @@ where \(b E\) defines the rate of continuous energy loss for muons. \(b\) is abo
 \label{eq:muon_E0_def}
 E_0 = e^{b h \sec \theta}\left(E + \epsilon\right) - \epsilon
 \end{equation}
-which is the average energy of surface muons that pass through \(h\sec\theta\) of material and emerge with energy \(E\). The parameter \(\epsilon\) is a critical energy above which discrete, radiative energy losses dominate, rather than continuous losses described by \(b\). For standard rock, \(\epsilon\) is about \SI{693}{\GeV}\cite{groom:2001ys}.
+which is the average energy of surface muons that pass through \(h\sec\theta\) of material and emerge with energy \(E\). The parameter \(\epsilon\) is a critical energy above which discrete, radiative energy losses dominate, rather than continuous losses described by \(b\). For standard rock, \(\epsilon\) is about \SI{693}{\GeV} \cite{groom:2001ys}.
 
 Muon events were simulated by first picking an azimuthal angle \(\phi\) uniformly between\(-\pi\) and \(+\pi\) and a zenith angle \(\theta\) from \cref{eq:muon_angular_distribution} multiplied by a factor of \(\cos\theta\) (explained below). The energy was selected in a range of \SIrange{1}{500}{\GeV} from \cref{eq:muon_underground_distribution} for the selected zenith angle. A point was chosen uniformly randomly from a horizontal disk of radius \SI{3}{\m} just below the TPC. This is the reason for the \(\cos\theta\) factor in the angular distribution, since the flux through that disk will be \(\cos\theta\) less than a disk of the same area normal to the incident angle. The \SI{3}{\m} radius ensures the flux will be accurately simulated for \(\theta \lesssim 80^{\circ}\).
 
@@ -119,10 +119,10 @@ To calculate the flux, EXO-200 was divided into \ang{4} bins in \(\theta\) and \
 \Phi_v = \left(4.01\pm0.04\text{(stat)}^{+0.04}_{-0.05}\text{(sys)}\right)\times10^{-7}\frac{\text{Hz}}{\text{cm}^2\text{sr}}
 \end{equation}
 
-Comparing the vertical muon flux to a global fit\cite{Mei:2006qy} suggests the overburden at WIPP is \(1481^{+8}_{-6}\)~\si{\hecto\g\per\square\cm}. Other global fits\cite{Crouch:1987ij}\cite{miyake:1973} yield consistent results to these.
+Comparing the vertical muon flux to a global fit \cite{Mei:2006qy} suggests the overburden at WIPP is \(1481^{+8}_{-6}\)~\si{\hecto\g\per\square\cm}. Other global fits \cite{Crouch:1987ij,miyake:1973} yield consistent results to these.
 
 \subsection{Comparison with Previous Results}
-Esch et al.\cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian} underground at WIPP. To do so, they deployed at WIPP two parallel scintillator panels, oriented horizontally. Using these panels and subtracting off backgrounds, they measure a flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the ratio yields 
+Esch et al. \cite{Esch:2004zj} report a vertical muon flux of \((3.10^{+0.05}_{-0.07})\times10^{-7}\)\si{\Hz\per\square\cm\per\steradian} underground at WIPP. To do so, they deployed at WIPP two parallel scintillator panels, oriented horizontally. Using these panels and subtracting off backgrounds, they measure a flux and then convert it to a vertical flux using the integral of \cref{eq:muon_angular_distribution}. They calculate the ratio to be \(\Phi_v = (0.65\pm0.04)\Phi\). However, computing the ratio yields 
 \begin{equation}
 \label{eq:muon_esch_integral}
 \frac{\Phi_v}{\Phi} = \frac{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\cos\theta\sin\theta d\theta}{2 \pi \int_0^{\pi/2} \varphi(h,\theta)\sin\theta d\theta} = 0.814^{+0.006}_{-0.005}
