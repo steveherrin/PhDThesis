@@ -275,8 +275,15 @@ One simple check is to compare the shapes of the energy and standoff distance di
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.7\textwidth]{./plots/analysis_shape_agreement_ratio.pdf}
-\caption[Ratio of simulated spectra to data as a function of energy]{The ratio of the simulated energy spectrum to data for a \isotope{60}{Co} source. Single site events are shown on top, and multiple site events are shown on bottom. This indicates that the simulation underpredicts the fraction of single site events at low energies.}
+	\begin{subfigure}[c]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_shape_agreement_ratio_ss.pdf}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[c]{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{./plots/analysis_shape_agreement_ratio_ms.pdf}
+	\end{subfigure}
+\caption[Ratio of simulated spectra to data as a function of energy]{The ratio of the simulated energy spectrum to data for a \isotope{60}{Co} source. Single site events are shown on left, and multiple site events are shown on right. This indicates that the simulation underpredicts the fraction of single site events at low energies.}
 \label{fig:analysis_shape_agreement_ratio}
 \end{figure}
 
