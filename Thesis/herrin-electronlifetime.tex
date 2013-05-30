@@ -5,7 +5,7 @@
 \label{ch:electronlifetime}
 
 \section{Electron Capture on Impurities}
-When an electromagnetic process deposits energy in a noble liquid detector, it ionizes the atoms, producing electrons and ions. Some of the electrons will recombine with the ions, which produces scintillation light. However, if the detector has an applied electric field, then the remaining electrons and ions will drift in opposite directions along the field lines. In a detector consisting of perfectly pure noble liquid, the electrons would all reach the anode and would be collected for an energy measurement. In a non-ideal detector, however, electronegative impurities can capture the drifting electrons and form ions. The ions are more massive and drift more slowly, and so they escape inclusion in the signal used for energy measurement.
+As described in \cref{sec:xe_ionization}, when an electromagnetic process deposits energy in a noble liquid detector, it ionizes the atoms, producing electrons and ions that drift in an electric field. In a detector consisting of perfectly pure noble liquid, the electrons would all reach the anode and would be collected for an energy measurement. In a non-ideal detector, however, electronegative impurities can capture the drifting electrons and form ions. The ions are more massive and drift more slowly, and so they escape inclusion in the signal used for energy measurement.
 
 Electronegative impurities may capture electrons in three ways \cite{Aprile:2006fk}. Denoting the impurities, which may be atoms or molecules, as \(AB\), these are:
 \begin{enumerate}
@@ -33,7 +33,7 @@ e^{-} + AB \leftrightarrow (AB^{-})^{*} \\
 where X represents the atom or molecule that make up the majority of the liquid.
 \end{enumerate}
 
-The three-body reaction shown in \cref{eq:el_3bodyattachment} releases some amount of energy, given by the \emph{electron affinity} of \(AB\). The electron affinity is positive if \(AB\) is electronegative. Noble elements have a negative electron affinity, so the reaction does not take place in a pure detector.
+The three-body reaction shown in \cref{eq:el_3bodyattachment} releases some amount of energy, given by the ``electron affinity'' of \(AB\). The electron affinity is positive if \(AB\) is electronegative. Noble elements have a negative electron affinity, so the reaction does not take place in a pure detector.
 
 The rate of the reaction shown in \cref{eq:el_3bodyattachment} is given by:
 \begin{equation}
@@ -47,7 +47,7 @@ According to \cref{eq:el_3bodyreactionrate}, electrons will be captured, forming
 N_{e^{-}}(t) = N_0 \exp (-t/\tau_e)
 \label{eq:el_exponentialtaue}
 \end{equation}
-where \(N_0\) is the original number of electrons, and \(\tau_e\) is the \emph{electron lifetime}.
+where \(N_0\) is the original number of electrons, and \(\tau_e\) is the``electron lifetime''.
 
 In general, there can be several different species of electronegative impurity. In that case, they all contribute to the electron lifetime according to:
 \begin{equation}
@@ -79,7 +79,7 @@ The fit model used for a full-absorption peak is described in \cref{sec:data_fit
 \label{fig:el_elfit}
 \end{figure}
 
-Plotting the full absorption peak energy from each drift time bin as a function of drift time reveals the exponential decay described in \cref{eq:el_exponentialtaue}. Fitting an exponential to each TPC yields a measurement of the electron lifetime for each. Alternatively, a fit with a single electron lifetime to the entire detector uses information from both TPCs. In all cases, the amplitude of the exponential is allowed to float in the fit, since only the relative decay matters when measuring the electron lifetime. Presently, the separate TPC lifetimes are used when correcting for electron lifetime in EXO-200, while the single measurement is used when monitoring the detector and data quality. \Cref{fig:el_elfit} shows an example. In EXO-200, the electron lifetime is typically \(>\)~\SI{1}{\ms} over a \SI{100}{\micro\s} drift time, and so the attenuation begins to look approximately linear.
+Plotting the full absorption peak energy from each drift time bin as a function of drift time reveals the exponential decay described in \cref{eq:el_exponentialtaue}. Fitting an exponential to each TPC yields a measurement of the electron lifetime for each. Alternatively, a fit with a single electron lifetime to the entire detector uses information from both TPCs. In all cases, the amplitude of the exponential is allowed to float in the fit, since only the relative decay matters when measuring the electron lifetime. Presently, the separate TPC lifetimes are used when correcting for electron lifetime in EXO-200, while the single measurement is used for detector monitoring and to ensure data quality. \Cref{fig:el_elfit} shows an example. In EXO-200, the electron lifetime is typically \(>\)~\SI{1}{\ms} over a \SI{100}{\micro\s} drift time, and so the attenuation begins to look approximately linear.
 
 \begin{figure}[tbp]
 \centering
@@ -107,7 +107,7 @@ The electron lifetime measurement comes from minimizing the \(\chi^2\) statistic
 
 \Cref{fig:el_sim_err} shows a comparison between a known simulated electron lifetime and the measurement of that lifetime using the method described above. The error is small for electron lifetimes below \SI{1}{\ms}. For large electron lifetimes, however, the method consistently underestimates the electron lifetime, with the effect getting worse as the electron lifetime improves. 
 
-This effect seems to be due to a some \(z\)-dependence introduced in processing the data. In simulations of a \thorium{228} source at the cathode with infinite electron lifetime, the method reports electron lifetimes of \SI{3.0\pm0.9d4}{\micro\second} measured in both TPCs simultaneously, and \SI{4.3\pm0.9d4}{\micro\second} measured in a single TPC, for runs with 2.5k events in the full absorption peak. It reports electron lifetimes of \SI{5.0\pm0.7d4}{\micro\second} measured in both TPCs simultaneously and \SI{4.9\pm0.8d4}{\micro\second} measured in a single TPC, for runs with 5k events in the full absorption peak.
+This effect seems to be due to a some \(z\)-dependence introduced in processing the data. In simulations of a \thorium{228} source at the cathode with infinite electron lifetime, the method reports electron lifetimes of \SI{3.0\pm0.9d4}{\micro\second} measured in both TPCs simultaneously, and \SI{4.3\pm0.9d4}{\micro\second} measured in a single TPC for runs with 2.5k events in the full absorption peak. It reports electron lifetimes of \SI{5.0\pm0.7d4}{\micro\second} measured in both TPCs simultaneously and \SI{4.9\pm0.8d4}{\micro\second} measured in a single TPC, for runs with 5k events in the full absorption peak.
 
 The error due to this effect is small, however. A measured electron lifetime of \SI{3000}{\micro\second} corresponds to a true electron lifetime of roughly \((1/3000-1/40000)^{-1} =\) \SI{3250}{\micro\second}. This will only move the corrected ionization signal 0.3\% higher than its true value, if the ionization drifts over the full \SI{120}{\micro\second} drift time. The effect on the energy resolution in the ionization channel will be half of this this, and even smaller in the rotated spectrum. This effect does not appear in simulations that have not had the shielding grid correction (\cref{sec:data_grid_correction}) applied. The shielding grid correction may introduce a slight \(z\) dependence that is measured when attempting to correct for electron lifetime. Since this is presently not well understood, it is not corrected for, and so is accepted as a potential detrimental effect on the energy resolution.
 
@@ -123,30 +123,30 @@ The error due to this effect is small, however. A measured electron lifetime of 
 \centering
 \includegraphics[width=1.0\columnwidth]{./plots/el_sim_width_indiv.pdf}
 \end{subfigure}
-\caption[Confidence band widths for electron lifetime measurements]{The width of the 68\% confidence band for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). Typical calibration runs include 2.5k events in the full absorption peak (black dots), but using more events would improve the error. Using longer calibrations would improve the uncertainty. However, for long electron lifetimes, it becomes difficult to detect the attenuation and measure it, giving a large uncertainty.}
+\caption[Confidence band widths for electron lifetime measurements]{The width of the 68\% confidence band for the electron lifetime measured in both TPCs simultaneously (left) and individually (right). Typical calibration runs include 2.5k events in the full absorption peak (black dots), but using longer calibration runs to get more events in the peak would improve the uncertainty. However, for long electron lifetimes, it becomes difficult to detect the attenuation and measure it, giving a large uncertainty.}
 \label{fig:el_sim_width}
 \end{figure}
 
-As the electron lifetime grows large, it becomes increasingly difficult to measure. For a \SI{4000}{\micro\second} electron lifetime, ionization drifting the full distance will only be attenuated about 3\%. This is comparable to the 3.4\% \todo{May need to be updated} energy resolution in the ionization channel at the 2615 keV full absorption peak from \thorium{228}. This effect is shown in \cref{fig:el_sim_width}. The width of the confidence band for the measurement grows to near 20\% of the measured value for large electron lifetimes. Taking more calibration data only partially mitigates this effect, also shown in \cref{fig:el_sim_width}. For low electron lifetimes, a simulated calibration run with twice as many events in the full absorption peak (and requiring twice as much time to run) shrinks the confidence band by roughly \(\sqrt{2}\). For large electron lifetimes, more events don't shrink the band, suggesting systematic errors such as the relatively short drift time dominate.
+As the electron lifetime grows large, it becomes increasingly difficult to measure. For a \SI{4000}{\micro\second} electron lifetime, ionization drifting the full distance will only be attenuated about 3\%. This is comparable to the 3.4\% energy resolution in the ionization channel at the 2615 keV full absorption peak from \thorium{228}. This effect is shown in \cref{fig:el_sim_width}. The width of the confidence band for the measurement grows to nearly 20\% of the measured value for large electron lifetimes. Taking more calibration data only partially mitigates this effect, also shown in \cref{fig:el_sim_width}. For low electron lifetimes, a simulated calibration run with twice as many events in the full absorption peak (and requiring twice as much time to run) shrinks the confidence band by roughly \(\sqrt{2}\). For large electron lifetimes, more events don't shrink the band, suggesting systematic errors such as the relatively short drift time dominate.
 
 \section{Effects of Electron Lifetime on the Energy Resolution}
 
-The error on \(E_{rotated}\) due to an uncertainty \(\Delta\tau\) in the electron lifetime is:
+The error on the energy \(E_{combined}\) (obtained through the combination of ionization and scintillation as described in \cref{sec:data_rotation_angle}) due to an uncertainty \(\Delta\tau\) in the electron lifetime is:
 \begin{equation}
-\frac{\Delta E_{rotated}}{E_{rotated}} = \cos(\theta) \frac{t_d}{\tau^2}\Delta\tau
+\frac{\Delta E_{combined}}{E_{combined}} = \cos(\theta) \frac{t_d}{\tau^2}\Delta\tau
 \label{eq:el_de_dtau}
 \end{equation}
-and the error on \(E_{rotated}\) due to an uncertainty \(\Delta t_d\) in the drift time is:
+and the error on \(E_{combined}\) due to an uncertainty \(\Delta t_d\) in the drift time is:
 \begin{equation}
-\frac{\Delta E_{rotated}}{E_{rotated}} = \cos(\theta) \frac{\Delta t_d}{\tau}
+\frac{\Delta E_{combined}}{E_{combined}} = \cos(\theta) \frac{\Delta t_d}{\tau}
 \label{eq:el_de_dtd}
 \end{equation}
 
 \subsection{Position Uncertainty}
 \subsubsection{True Single-Site Events}
-For true (point-like) single-site events, we can measure their drift time to within about \SI{0.2}{\micro\second} thanks to the information provided by including multiple points in the fit that extracts information from waveforms. This uncertainty will cause some smearing of the resolution, since the correction relies on a measurement of the drift time. The effect is easy to calculate using \cref{eq:el_de_dtd}. \Cref{tab:el_res_dt_ideal} provides some concrete numbers.
+For true (point-like) single-site events, the drift time can be measured to within about \SI{0.2}{\micro\second} thanks to the information provided by including multiple points in the fit that extracts information from waveforms. This uncertainty will cause some smearing of the resolution, since the correction relies on a measurement of the drift time. The effect is easy to calculate using \cref{eq:el_de_dtd}. \Cref{tab:el_res_dt_ideal} provides some concrete numbers.
 
-\begin{table}[htbp]
+\begin{table}[tbp]
 \centering
 \caption[Drift time uncertainty effect on resolution for ideal events]{The effect of a \SI{0.2}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
 \label{tab:el_res_dt_ideal}
@@ -164,9 +164,9 @@ For true (point-like) single-site events, we can measure their drift time to wit
 \end{table}
 
 \subsubsection{Events with Spatial Extent}
-Most events, however, are not point like, and the ionization arrives over a finite period of time. This leads to an uncertainty on the true drift time of \(\sim\)~\SI{3}{\micro\second}, which will result in more smearing of the energy resolution due to the electron lifetime correction. \Cref{tab:el_res_dt} shows the spread for this scenario.
+Most events, however, are not point like, and the ionization arrives over a finite period of time. The resolution of the multiple signal finder described in \cref{sec:data_signal_finding} leads to an uncertainty on the true drift time of \(\sim\)~\SI{3}{\micro\second}, which will result in more smearing of the energy resolution due to the electron lifetime correction. \Cref{tab:el_res_dt} shows the spread for this scenario.
 
-\begin{table}[htbp]
+\begin{table}[tbp]
 \centering
 \caption[Drift time uncertainty effect on resolution for realistic events]{The effect of a \SI{3}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
 \label{tab:el_res_dt}
@@ -187,7 +187,7 @@ Most events, however, are not point like, and the ionization arrives over a fini
 
 \subsection{Electron Lifetime Uncertainty}
 \label{subsec:el_dtau}
-The effect of electron lifetime uncertainty on the energy resolution is given by \cref{eq:el_de_dtau}. With a fixed drift time, it becomes increasingly difficult to measure long electron lifetimes because the attenuation is so slight. The drift distance in EXO-200 is fixed. Varying the electric field to increase the drift time carries some risk to the experiment and so is not done routinely. Furthermore, the attachment rates for electronegative species vary with electric field (see \cref{subsec:el_lowfield}). Lacking knowledge of the precise nature of the impurities in EXO-200, it is not clear this would provide a good estimate for the electron lifetime at normal electric fields. Parameterizing the uncertainty as a function of electron lifetime provides a way to estimate its effect on energy resolution.
+The effect of electron lifetime uncertainty on the energy resolution is given by \cref{eq:el_de_dtau}. With a fixed drift time, it becomes increasingly difficult to measure long electron lifetimes because the attenuation is so slight. The drift distance in EXO-200 is fixed. Varying the electric field to increase the drift time carries some risk to the experiment and so is not done routinely. Furthermore, the attachment rates for electronegative species vary with electric field (see \cref{subsec:el_lowfield}). Lacking knowledge of the precise nature of the impurities in EXO-200, it is not clear this would provide a good estimate for the electron lifetime at normal electric fields. Since the uncertainty cannot be easily removed, parameterizing the uncertainty as a function of electron lifetime provides a way to estimate its effect on energy resolution.
 
 \begin{figure}[tbp]
 \begin{subfigure}[b]{0.5\linewidth}
@@ -204,7 +204,7 @@ The effect of electron lifetime uncertainty on the energy resolution is given by
 
 As shown in \cref{fig:el_err_fits}, a polynomial function nicely fits the observed uncertainties. The effect on energy resolution is tabulated in \cref{tab:el_res_dtau}. In practice, however, a number of measurements go into the actual correction function applied to the data, and so the effect will be smaller.
 
-\begin{table}[htbp]
+\begin{table}[tbp]
 \centering
 \caption[Electron lifetime uncertainty effect on resolution]{The effect of the electron lifetime uncertainty on energy resolution. This is based on the parameterization shown in \cref{fig:el_err_fits}. Note that the reported resolution assumes only one measurement is used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
 \label{tab:el_res_dtau}
@@ -224,16 +224,16 @@ As shown in \cref{fig:el_err_fits}, a polynomial function nicely fits the observ
 \end{table}
 
 \subsection{Rate of Change}
-The electron lifetime can vary with time. The most dramatic instances are following outages, when recirculation is resumed after a period of letting xenon stagnate. Impurities leaching out of the materials in the vessel, or from liquid xenon coming into contact with different sections of plumbing can cause the purity to degrade. When the pump is turned back on, the purity recovers over several days. Likewise, as the pump operates, it can lose pumping ability, which slows the recirculation rate.
+The electron lifetime can vary with time. The most dramatic instances are following outages, when recirculation through the purifiers (as described in \cref{sec:detector_xe_recirculation}) is resumed after a period of letting xenon stagnate. Impurities leaching out of the materials in the vessel, or from liquid xenon coming into contact with different sections of plumbing can cause the purity to degrade. When the pump is turned back on, the purity recovers over several days. Likewise, as the pump operates, it can lose pumping ability, which slows the recirculation rate.
 
-Suppose we have two measurements, \(\tau_1 \pm \sigma_{\tau_1}\) and \(\tau_2 \pm \sigma_{\tau_2}\). The best estimate of the rate of change is simply
+Suppose there are only two measurements of electron lifetime, \(\tau_1 \pm \sigma_{\tau_1}\) and \(\tau_2 \pm \sigma_{\tau_2}\). The best estimate of the rate of change is simply
 \[\frac{d\tau}{dt} = \frac{\tau_2 - \tau_1}{\Delta t}\]
 However, propagating the uncertainties, the error on the estimate is
 \[\Delta \frac{d\tau}{dt} = \frac{d\tau}{dt}\sqrt{\left(\frac{\sigma_{\tau_1}}{\tau_1}\right)^2 + \left(\frac{\sigma_{\tau_2}}{\tau_2}\right)^2}\]
 
 If the true rate of change is \(+1\sigma\) away from the estimate, events close to the first measurement will be undercorrected, and events close to the second measurement will be overcorrected. This results in an overall smearing to the energy resolution, tabulated in \cref{tab:el_res_dtaudt}. This effect will grow if the time between measurements is increased, since more data will be taken with an estimate far from the true value.
 
-\begin{table}[htbp]
+\begin{table}[tbp]
 \centering
 \caption[Electron lifetime time variance effect on resolution]{The effect of the rate of change of electron lifetime on energy resolution. This shows the additional effect due to uncertainty in the rate of change, with measurements taken 1 day apart. Longer intervals between measurements will result in more smearing. Note that the reported resolution assumes only two measurements are used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
 \label{tab:el_res_dtaudt}
@@ -289,7 +289,7 @@ The measured electron lifetime varies in time. Usually, this variation is small 
 For a good event in EXO-200, the reconstruction algorithms find both a drift time and an (attenuated) ionization signal. The polynomial fit described above provides an estimate of the electron lifetime at the event time. \Cref{eq:el_exponentialtaue} provides a recipe for correcting the attenuated ionization signal to get a corrected signal, using the drift time and measured electron lifetime.
 
 \subsection{Comparison with Recirculation Rate}
-The rate at which xenon is recirculated through the purifiers effects electron lifetime. \Cref{fig:el_vs_recirculation} shows a clear trend of increasing electron lifetime with increasing recirculation rate. The highest electron lifetimes are achieved with a recirculation rate above \SI{13}{slpm}, which corresponds to completely recirculating the volume of the chamber in \SI{1.8}{days}.
+The rate at which xenon is recirculated through the purifiers affects electron lifetime. \Cref{fig:el_vs_recirculation} shows a clear trend of increasing electron lifetime with increasing recirculation rate. The highest electron lifetimes are achieved with a recirculation rate above \SI{13}{slpm}, which corresponds to completely recirculating the volume of the chamber in \SI{1.8}{days}.
 
 \begin{figure}[tbp]
 \centering
@@ -331,12 +331,12 @@ The rate constant for electron attachment to impurities varies with the electric
 \begin{subfigure}[b]{0.55\linewidth}
 \includegraphics[width=\textwidth]{./plots/el_lifetime_vs_efield.pdf}
 \end{subfigure}
-\caption[Electron lifetime vs. electric field]{On the left is a figure by Bakale et al., showing the electron attachment constant as a function of electric field strength. On the right is the measured electron lifetime, which is inversely proportional to the attachment constant, for a number of electric field strengths. For these runs, the calibration source was located slightly on the TPC 2 side of the cathode, giving more events and allowing a better measurement in this TPC. The nominal field for normal operation is \SI{374}{\V\per\cm}. The results are not incompatible with a constant electron lifetime (\(\chi^2/\text{n.d.f.} = 3.15/3\)). However, there does seem to be a trend of decreasing electron lifetime with increasing electric field, and the magnitude of this decrease is not unreasonable, resembling that expected for \ce{N_2O}. (Left figure reprinted with permission from \cite{Bakale:1976ly}. Copyright 1976 American Chemical Society.)}
+\caption[Electron lifetime vs. electric field]{On the left is a figure by Bakale et al., showing the electron attachment constant as a function of electric field strength. On the right is the measured electron lifetime, which is inversely proportional to the attachment constant, for a number of electric field strengths. For these runs, the calibration source was located slightly on the TPC 2 side of the cathode, giving more events and allowing a better measurement in this TPC. The nominal field for normal operation is \SI{374}{\V\per\cm}. Although a trend is visible, the results are not incompatible with a constant electron lifetime (\(\chi^2/\text{n.d.f.} = 3.15/3\)).(Left figure reprinted with permission from \cite{Bakale:1976ly}. Copyright 1976 American Chemical Society.)}
 \label{fig:el_attachment_vs_efield}
 \label{fig:el_lifetime_vs_efield}
 \end{figure}
 
-Calibration runs of the standard length were taken with the cathode at \SIlist{-4.4;-2.2;-1.45; -1.1}{\kilo\V}, corresponding to electric field strengths of \SIlist{187;75;38;20}{\V\per\cm}. Normal operation is at \SI{-8}{\kilo\V}, corresponding to \SI{374}{\V\per\cm}. Unfortunately, there were not enough events in the full-absorption peak to measure the electron lifetime at the lowest field strength. The results are shown in \cref{fig:el_lifetime_vs_efield}. The electron lifetime seems to decrease with increasing electric field, unlike as expected for oxygen. There is not enough information to identify the exact species of impurity present. For species with similar molecular weight and electron attachment as \ce{N_2O} and \ce{O_2}, the required concentration of impurities for a \SI{3}{\ms} electron lifetime is on the order of \(10^{-11}\)~\si[per-mode=symbol]{\g\per\g}.
+Calibration runs of the standard length were taken with the cathode at \SIlist{-4.4;-2.2;-1.45; -1.1}{\kilo\V}, corresponding to electric field strengths of \SIlist{187;75;38;20}{\V\per\cm}. Normal operation is at \SI{-8}{\kilo\V}, corresponding to \SI{374}{\V\per\cm}. Unfortunately, there were not enough events in the full-absorption peak to measure the electron lifetime at the lowest field strength. The results are shown in \cref{fig:el_lifetime_vs_efield}. The electron lifetime does not seem to increase with increasing electric field, as would be expected for oxygen. There is not enough information to identify the exact species of impurity present. For species with similar molecular weight and electron attachment as \ce{N_2O} and \ce{O_2}, the required concentration of impurities for a \SI{3}{\ms} electron lifetime is on the order of \(10^{-11}\)~\si[per-mode=symbol]{\g\per\g}.
 
 %\bibliographystyle{plain}
 %\bibliography{herrin-thesis}

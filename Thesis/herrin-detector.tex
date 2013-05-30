@@ -6,7 +6,7 @@
 
 \section{Creating a Sensitive Detector}
 \label{sec:detector_sensitivity}
-The number of decays of a radioactive element in a given period of time follow a Poisson distribution, provided the half life is much longer than the observation time. This is clearly the case for a double beta decay experiment. The expected signal in such a case is
+The number of decays of a radioactive element in a given period of time follow a Poisson distribution, provided the half-life is much longer than the observation time. This is clearly the case for a double beta decay experiment. The expected signal in such a case is
 \begin{equation}
 N_{s} = \epsilon \frac{a M}{m_{a}} \frac{t \ln2}{T_{1/2}}
 \label{eq:detector_N_expected}
@@ -107,7 +107,7 @@ Currently, EXO-200 calibrates with three different isotopes. \isotope{137}{Cs} e
 \end{figure}
 
 \subsection{Cryostat and Clean Rooms}
-As shown in \cref{fig:detector_cleanroom}, the TPC vessel that contains the liquid xenon is housed inside a double-walled cryostat. The inner chamber is filled with HFE-7000 \cite{hfe7000} fluid that acts a thermal bath. The HFE fluid is radiologically clean and additionally provides some shielding from external \(\gamma\) radiation. The outer chamber is held at \(10^{-6}\)~\si{Torr} for insulation. The cryostat, made of copper low in radioactivity, is in turn shielded by two \SI{25}{\cm} walls of lead. The front end electronics lie just outside this inner lead wall, and the second \SI{25}{\cm} wall sits just outside these. This second wall prevents external radiation from having line-of-site to the detector through the penetrations in the inner lead wall, used for xenon and electrical connections.
+As shown in \cref{fig:detector_cleanroom}, the TPC vessel that contains the liquid xenon is housed inside a double-walled cryostat. The inner chamber is filled with HFE-7000 \cite{hfe7000} fluid that acts a thermal bath. The HFE fluid is radiologically clean and additionally provides some shielding from external \(\gamma\) radiation. The outer chamber is held at \(10^{-6}\)~\si{Torr} for insulation. The cryostat, made of copper low in radioactivity, is in turn shielded by \SI{25}{\cm} of lead, on all sides. The front end electronics lie just outside this lead wall. On the front of the cryostat, a second \SI{25}{\cm} wall sits just outside the electronics. This second wall prevents external radiation from having line-of-site to the detector through the penetrations in the inner lead wall, used for xenon and electrical connections.
 
 A class 1000 clean room houses the cryostat and its shielding in order to reduce trace radioactivity from dust being tracked in and introduced to the detector. This clean room also houses the xenon handling system, the cryogenic refrigerators used to chill the HFE, and other necessary infrastructure.
 
@@ -133,10 +133,11 @@ In order to attenuate the cosmic ray muons, EXO-200 is located \(\sim\)~\SI{655}
 The rock overburden provides \SI{1480}{\hecto\g\per\square\cm} shielding from cosmic rays (see \cref{ch:muons}), and the salt walls are naturally low in radionuclides. Direct counting finds a contamination of \SI[per-mode=symbol]{27\pm2d-9}{\g\per\g} of \isotope{238}{U}, \SI[per-mode=symbol]{66\pm2d-9}{\g\per\g} of \isotope{232}{Th}, and \SI[per-mode=symbol]{124\pm2}{\g\per\g} of \isotope{40}{K} \cite{Auger:2012dq}. Little radon emanates from the walls, such that radon levels are similar to those found at the surface.
 
 \section{Xenon and Recirculation}
+\label{sec:detector_xe_recirculation}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.75\textwidth]{./figures/detector_simplified_xe.pdf}
+\includegraphics[width=0.9\textwidth]{./figures/detector_simplified_xe.pdf}
 \caption[The EXO-200 xenon recirculation system]{A simplified schematic of the EXO-200 xenon recirculation system. A heater vaporizes xenon returning from the TPC. A gas-phase pump recirculates xenon through purifiers. The xenon is condensed and then returns to the TPC. Gas purity monitors (GPMs) look for changes in the electron lifetime of the circulating xenon. The TPC vessel must track the HFE pressure closely. A sophisticated slow controls system controls valves to feed and bleed xenon as needed from storage bottles. Compressors allow the xenon to be placed back into the bottles when bleeding xenon.}
 \label{fig:detector_simplified_xe}
 \end{figure}

@@ -34,6 +34,7 @@ After digitization, the Trigger Event Module (TEM) monitors the signals to selec
 \section{Signal Reconstruction}
 \label{sec:data_reconstruction}
 \subsection{Signal Finding}
+\label{sec:data_signal_finding}
 Either scintillation or ionization signals may cause the trigger to fire. Since there is not a fixed time between the two types of signal, it is necessary to search for signals in the waveforms. This is done in a two stage process: first a matched filter technique searches for signals, and then a waveform unshaping technique refines the found signals. \Cref{fig:data_signal_finding} shows an example of this process.
 
 \begin{figure}[tbp]
@@ -66,7 +67,7 @@ Either scintillation or ionization signals may cause the trigger to fire. Since 
 	\label{fig:data_signal_finding}
 \end{figure}
 
-The matched filter technique \cite{North:1963fk} convolves a time-reversed template signal with the waveform. Template signals are produced by passing a step function through the filters specified in \cref{tab:data_shaping_times}. This is done for individual channels for the \(u\) and \(v\) wires. For the APDs, the signals on the individual planes are summed and this technique is applied to these two sum signals. A threshold is determined by calculating the mean absolute deviation (MAD) of the waveform from its baseline. Parts of the waveform exceeding \((3\sqrt{\pi/2})\times\text{MAD}\) are excluded and the MAD is recalculated. A signal is found if the filter output exceeds 5 (4) times this final MAD for the wire (APD) signals. \Cref{fig:data_signal_finding_raw,fig:data_signal_finding_mf} show an example of this process.
+The matched filter technique \cite{North:1963fk} convolves a time-reversed template signal with the waveform. Template signals are produced by passing a step function through the filters specified in \cref{tab:data_shaping_times} and adding noise sampled from the detector. This is done for individual channels for the \(u\) and \(v\) wires. For the APDs, the signals on the individual planes are summed and this technique is applied to these two sum signals. A threshold is determined by calculating the mean absolute deviation (MAD) of the waveform from its baseline. Parts of the waveform exceeding \((3\sqrt{\pi/2})\times\text{MAD}\) are excluded and the MAD is recalculated. A signal is found if the filter output exceeds 5 (4) times this final MAD for the wire (APD) signals. \Cref{fig:data_signal_finding_raw,fig:data_signal_finding_mf} show an example of this process.
 
 While the matched filter is good at identifying that there was a signal on a wire, a refined analysis is needed to identify if multiple signals occurred in a short period of time. As \cref{fig:data_signal_finding_mf} shows, the matched filter only finds one signal when two are clearly visible. To find other signals, a \SI{256}{\micro\s} portion of the raw waveform is unshaped (by convolving the signal with the inverse transfer function of the shapers), then reshaped with a \SI{2}{\micro\s} triangular filter. Peaks in the output correspond to distinct signals. Finding multiple signals aids in discriminating against Compton-scattering \(\gamma\) ray backgrounds.
 
@@ -86,7 +87,7 @@ Signals that are collected on a \(u\) wire channel can induce signals in neighbo
 Once signals have been identified, signals of the same type may be bundled together:
 \begin{itemize}
 \item \(u\) wire signals: signals that are on neighboring channels and are within \SI{3.5}{\micro\s} of each other most likely came from the same energy deposition, and so are bundled together. This bundle is assigned the energy-weighted mean time and \(u\) position of the constituent signals.
-\item \(v\) wire signals: induction effects from a single energy deposition may affect more than the nearest-neighbor channels. \(v\) wire signals are bundled together if \(|(t_{i} + (\SI{2.97}{\micro\s})\Delta v) - t_0|< \SI{4.5}{\micro\s}\), where \(t_0\) is the largest amplitude signal and \(\Delta v\) is the difference in channel number between the largest signal and signal \(i\). This is based on an empirical measurement that channels farther away from the event fit to earlier signal times. The resulting bundle is assigned the energy-weighted mean \(v\) position of the bundled signals and the time of the largest signal.
+\item \(v\) wire signals: induction effects from a single energy deposition may affect more than the nearest-neighbor channels. \(v\) wire signals are bundled together if \(|(t_{i} + (\SI{2.97}{\micro\s})\Delta v) - t_0|< \SI{4.5}{\micro\s}\), where \(t_0\) is the time of the largest amplitude signal, \(t_i\) is the time of signal \(i\), and \(\Delta v\) is the difference in channel number between the largest signal and signal \(i\). This is based on an empirical measurement that channels farther away from the event fit to earlier signal times. The resulting bundle is assigned the energy-weighted mean \(v\) position of the bundled signals and the time of the largest signal.
 \item The sum APD plane signals are bundled together if they have times within \SI{6}{\micro\s} (based on the integration times for the shaping circuits). This bundle is assigned the energy-weighted mean time of the signals.
 \end{itemize}
 
@@ -99,11 +100,11 @@ Finally, \(u\) signal bundles are paired with \(v\) signal bundles to form a ``c
 \item Not all \(u\) and \(v\) wire channels cross. If a pairing would cause the signal to be outside the hexagon containing the wires, the likelihood is penalized. The perpendicular distance to the edge of this hexagon is calculated. The penalty is the likelihood to be that distance away from the mean of a Gaussian distribution with standard deviation \SI{4.5}{\mm} (half the wire pitch).
 \end{itemize}
 
-The paired \(u\) and \(v\) bundles provide a 2D transverse position for the event. Since the wires do not cross at right angles, this position is translated to a \((x, y)\) position. The \(+y\) direction is vertically upward, the \(+x\) direction is away from the cryostat door, and \(+z\) is along the TPC axis and chosen to make the coordinate system right-handed. The position \((x, y, z) = (0, 0, 0)\) is defined to be the center of the detector, which is the center of the cathode.
+The set of pairings that maximizes the likelihood is used. The paired \(u\) and \(v\) bundles provide a 2D transverse position for the event. Since the wires do not cross at right angles, this position is translated to a \((x, y)\) position. The \(+y\) direction is vertically upward, the \(+x\) direction is away from the cryostat door, and \(+z\) is along the TPC axis and chosen to make the coordinate system right-handed. The position \((x, y, z) = (0, 0, 0)\) is defined to be the center of the detector, which is the center of the cathode. Occasionally, a signal bundle may remain unpaired if no good pairing is found. These still have some well-defined quantities like energy and \(z\) position that are saved, but events with such unpaired bundles are typically not used in analyses.
 
 \subsection{Topology}
 \label{sec:data_topology}
-An event may have zero, one, or many clusters. This proves a useful tool for discriminating beta decays from gamma ray backgrounds. The electron(s) from a beta decay deposit their energy in a small volume, creating mostly events with one cluster. A small fraction create bremsstrahlung photons that create multiple clusters. Meanwhile, gamma ray backgrounds tend to Compton scatter, producing events with multiple clusters. Some, however, do photoionize the xenon or Compton scatter in a small volume, producing only one cluster. When an electron-positron pair is created, if the \SI{511}{\keV} gamma rays from the positron annihilation escape the detector, this also only produces one cluster.
+An event may have zero, one, or many clusters. This proves a useful tool for discriminating beta decays from gamma ray backgrounds. The electron(s) from a beta decay deposit their energy in a small volume, creating mostly events with one cluster. A small fraction create bremsstrahlung photons that create multiple clusters. Meanwhile, gamma ray backgrounds tend to Compton scatter, producing events with multiple clusters. Some, however, do photoionize the xenon or Compton scatter in a small volume, producing only one cluster. When a gamma ray creates an electron-positron pair, this may only produce one cluster if the \SI{511}{\keV} gamma rays from the positron annihilation escape the detector.
 
 Two categories of event are created:
 \begin{itemize}
@@ -133,7 +134,7 @@ In order to have good energy resolution, events of the same energy should be rec
 
 Minute differences in the components that read out each \(u\) wire channel can cause channel-to-channel variation in their responses. In order to address this, data from \thorium{228} calibration runs is used. The \SI{2615}{\keV} \(\gamma\) ray can produce an electron-positron pair with combined energy \SI{1593}{\keV}. Since the electron and positron deposit their energy in a small volume, this peak is clearly visible on individual wire channels. A scaling factor for each channel is determined by fitting these peaks and scaling so that they occur at the same value for each channel. \Cref{fig:data_wiregain_pp} shows examples for two channels.
 
-Environmental conditions can also cause the response to shift over time. To address this, each channel has a capacitor that can inject a known amount of charge. These charge injections are done \about{} daily and used to measure the shaping time for the charge preamp (see \cref{sec:data_signal_readout}), but can also be used to measure the time variation of each individual channel. The time variation is tracked, and applied as a very small correction on top of the channel-to-channel correction.
+Environmental conditions can also cause the response to shift over time. To address this, each channel has a capacitor that can inject a known amount of charge. These charge injections are done daily and used to measure the shaping time for the charge preamp (see \cref{sec:data_signal_readout}), but can also be used to measure the time variation of each individual channel. The time variation is tracked, and applied as a very small correction on top of the channel-to-channel correction.
 
 \subsection{Shielding Grid Correction}
 \label{sec:data_grid_correction}
@@ -144,7 +145,7 @@ Monte Carlo simulations using a MAXWELL simulation of the electric field inside 
 E_\text{measured} = E_\text{true}\left[1 + p_0 \exp \left(\frac{|z| - 192.5\si{\mm}}{p_1}\right)\right]^{-1}
 \label{eq:data_grid_correction}
 \end{equation}
-where \SI{192.5}{\mm} is the distance between the cathode and the \(v\) wire plane. The constants \(p_0\) and \(p_1\) are determined by fitting to simulated data, as shown in \cref{fig:data_grid_correction_fits}. They are found to differ for events that have ionization collected on one \(u\) wire and for events that share ionization across 2 \(u\) wires. The best-fit values are summarized in \cref{tab:data_grid_correction_parameters}. The results of applying these corrections are shown in \cref{fig:data_grid_correction_applied}\todo{Reformat these figures}. There is a lingering \SI{\pm0.35}{\percent} variation in the collected signal through the TPC.
+where \SI{192.5}{\mm} is the distance between the cathode and the \(v\) wire plane. The constants \(p_0\) and \(p_1\) are determined by fitting to simulated data, as shown in \cref{fig:data_grid_correction_fits}. They are found to differ for events that have ionization collected on one \(u\) wire and for events that share ionization across 2 \(u\) wires. The best-fit values are summarized in \cref{tab:data_grid_correction_parameters}. The results of applying these corrections are shown in \cref{fig:data_grid_correction_applied}. There is a lingering \SI{\pm0.35}{\percent} variation in the collected signal through the TPC.
 
 \begin{table}[hbtp]
 \centering
@@ -215,6 +216,7 @@ MS 	& 	8.13 				& 6.19 				& 6.35 				&	7.15				\\\bottomrule
 This model exhibits a slight bias. That is, the mean energy found is different than the true value. This can be measured by applying the fit model to Monte Carlo simulations of the sources, where the true peak location is known. The biases are summarized in \cref{tab:data_fit_biases}. The bias varies as a function of energy resolution, and with the peak-to-Compton ratio, which is why it is not the same in all cases.
 
 \subsection{Rotation Angle}
+\label{sec:data_rotation_angle}
 As described in \cref{sec:xe_combining_ion_and_scint}, the ionization and scintillation signals can be combined by projection onto a rotated axis in order to achieve good energy resolution. In order to determine the optimal angle, the energy spectra for calibration runs are constructed using a range of different angles using
 \begin{equation}
 E_R = E_{I}\cos\theta_R + E_{S}\sin\theta_R
@@ -246,7 +248,7 @@ Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, 
 \end{figure}
 
 \subsection{Overall Energy Scale}
-While thorium source calibrations are taken frequently, the cobalt and cesium sources are generally reserved for dedicated campaigns. Throughout these campaigns, it has been observed that the ratio between the peak energies remain relatively stable, even though their values show some drift. This is shown in \cref{fig:data_energy_ratios_time}\todo{Reformat these}. Therefore, the three ratios \(E_\text{Cs}/E_\text{Th}\) and \(E_{\text{Co},i}/E_\text{Th}\) are used as the basis for the calibration. The process for calibration is then:
+While thorium source calibrations are taken frequently, the cobalt and cesium sources are generally reserved for dedicated campaigns. Throughout these campaigns, it has been observed that the ratio between the peak energies remain relatively stable, even though their values show some drift. This is shown in \cref{fig:data_energy_ratios_time}. Therefore, the three ratios \(E_\text{Cs}/E_\text{Th}\) and \(E_{\text{Co},i}/E_\text{Th}\) are used as the basis for the calibration. The process for calibration is then:
 \begin{enumerate}
 \item On a week-by-week basis, use thorium calibration data to determine the optimal rotation angle \(\theta(t)\) and to fit the thorium peak \(E^\text{fit}_\text{Th}(t)\) in the spectrum obtained using \cref{eq:data_E_rotated} and that rotation angle. If no thorium data is available for a given week, data from the adjacent weeks are combined and used to estimate the angle and peak for that week.
 \item For each multiple isotope calibration campaign, compute the ratios \(E^\text{fit}_\text{Cs}/E^\text{fit}_\text{Th}\) and \(E^\text{fit}_{\text{Co},i}/E^\text{fit}_\text{Th}\)
@@ -303,6 +305,7 @@ The residuals from the calibration campaigns are shown in \cref{fig:data_calibra
 \end{figure}
 
 \section{Data Quality Cuts}
+\label{sec:data_quality_cuts}
 Once the data has been processed, a number of data quality cuts are applied before it can be used in analyses. These cuts help ensure that the detector response and behavior are consistent throughout the data set. Summarizing them:
 \begin{itemize}
 \item The DAQ must be operating normally. All voltages must be nominal, and the trigger must be the standard one. Channels must not have an unusual baseline or RMS (indicating high noise).
