@@ -39,7 +39,7 @@ Full absorption, single site events from all calibrations are placed into the bi
 
 \section{Correction Function}
 
-\subsection{Trilinear interpolation in Cylindrical Polar Coordinates}
+\subsection{Trilinear Interpolation in Cylindrical Polar Coordinates}
 Suppose a function \(F(r_i, \phi_j, z_k)\) is defined only at discrete points, and \(f(r, \phi, z)\) is a smooth transition between the defined points of \(F\). The simplest way to do so is with trilinear interpolation. Define
 \begin{equation}
 r_d = \frac{r_{i+1} - r_{i}}{r_{i+1}+r_{i}} ; \phi_d = \frac{\phi_{j+1} - \phi_{j}}{\phi_{j+1}+\phi_{j}}; z_d = \frac{z_{k+1} - z_{k}}{z_{k+1}+z_{k}}
@@ -121,14 +121,14 @@ anode	&	\(+z\)				&	SS			&	\(7.65\pm0.26\)					&	\(5.89\pm0.14\)					\\
 \begin{sidewaysfigure}[p]
 \centering
 \includegraphics[width=\textwidth]{./plots/lightmap_binned_phi_slices.pdf}
-\caption[Lightmap \(\phi\) slices]{The lightmap, showing the bins in \(r\) (horizontal axis) and \(z\) (vertical axis) for each of the 8 \(\phi\) bins. Note the finer binning around the cathode at \(z=0\).}
+\caption[Light map \(\phi\) slices]{The light map, showing the bins in \(r\) (horizontal axis) and \(z\) (vertical axis) for each of the 8 \(\phi\) bins. Note the finer binning around the cathode at \(z=0\).}
 \label{fig:lightmap_binned_phi_slices}
 \end{sidewaysfigure}
 
 \begin{sidewaysfigure}[p]
 \centering
 \includegraphics[width=\textwidth]{./plots/lightmap_binned_z_slices.pdf}
-\caption[Lightmap \(z\) slices]{The lightmap, showing the bins in \(r\) and \(\phi\) for each of the 13 \(z\) bins.}
+\caption[Light map \(z\) slices]{The light map, showing the bins in \(r\) and \(\phi\) for each of the 13 \(z\) bins.}
 \label{fig:lightmap_binned_z_slices}
 \end{sidewaysfigure}
 

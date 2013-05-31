@@ -54,11 +54,11 @@ The effects of all timing-based vetoes are summarized in \cref{tab:analysis_veto
 \subsubsection{Scintillation-to-ionization ratio}
 As mentioned in \cref{sec:xe_combining_ion_and_scint}, \(\alpha\) particle interactions produce more scintillation and less ionization in the liquid xenon than \(\beta\) and \(\gamma\) interactions. Therefore, events with a large scintillation-to-ionization ratio are removed from the data used for double beta decay physics. Since \isotope{222}{Rn} is a common source of \(\alpha\) particles, these decays are later used in order to constrain backgrounds due to other isotopes in the \isotope{222}{Rn} decay chain.
 
-\subsubsection{Scintillation Timing}
+\subsubsection{Scintillation timing}
 Events are vetoed if they contain more than one scintillation signal. This eliminates \isotope{214}{Bi}-\isotope{214}{Po} coincidences, as described above, and also eliminates events in which there could be ambiguity in associating ionization signals with multiple scintillation signals. Additionally, events are vetoed if the scintillation comes too late in the waveform for ionization to have time to drift the full TPC drift length. Since the waveforms are centered around the trigger time, this does not happen in typical data, but may happen in source calibration runs.
 
-\subsubsection{Full Reconstruction}
-Events are vetoed if they cannot be fully reconstructed. That is, all \(u\) wire signal bundles must be paired with \(v\) wire signal bundles. The resulting clusters must also be paired with a scintillation signal. This is necessary in order to know the 3D position of a cluster.
+\subsubsection{Full reconstruction}
+Events are vetoed if they cannot be fully reconstructed. That is, all \(u\) wire signal bundles must be paired with \(v\) wire signal bundles as described in \cref{sec:data_clustering}. The resulting clusters must also be paired with a scintillation signal. This is necessary in order to know the 3D position of a cluster.
 
 \subsection{Fiducial Volume}
 \label{sec:analysis_fiducial_volume}
@@ -72,7 +72,7 @@ Events are vetoed if they cannot be fully reconstructed. That is, all \(u\) wire
 	\centering
 	\includegraphics[width=1\textwidth]{./plots/analysis_fiducial_vol_xz.pdf}
 	\end{subfigure}
-\caption[Fiducial Volume]{Projections of the hexagonal fiducial volume. The dashed lines represent the fiducial volume. The solid lines are the anode wire plane and the teflon reflector. For the \(xz\) projection on the right, the two sets of vertical dashed lines are the maximum and minimum radial boundaries of the fiducial volume.}
+\caption[Fiducial volume]{Projections of the hexagonal fiducial volume. The dashed lines represent the fiducial volume. The solid lines are the anode wire plane and the teflon reflector. For the \(xz\) projection on the right, the two sets of vertical dashed lines are the maximum and minimum radial boundaries of the fiducial volume.}
 \label{fig:analysis_fiducial_volume}
 \end{figure}
 
@@ -229,7 +229,7 @@ The true energies from the signal and background Monte Carlo simulations are sme
 \subsection{Agreement between Simulation and Data}
 In order to verify that the simulations accurately predict multiplicity, energy, and standoff distance distributions, they are cross checked by simulating the calibration sources and comparing the results with calibration data. This is done for both the \isotope{60}{Co} source and the \isotope{228}{Th} source.
 
-\subsubsection{Single Site Fraction Agreement}
+\subsubsection{Single site fraction agreement}
 \label{sec:analysis_ss_frac_agreement}
 Since the distinction between single site and multiple site events plays a strong role in estimating backgrounds, it is important to confirm that the simulations accurately reflect the fraction of events of each multiplicity. \Cref{fig:analysis_ssfrac_agreement} shows that the maximum observed deviation in the single site fraction is less than \SI{10}{\percent} and varies with energy. The systematic error due to the energy-dependent deviation is evaluated with the shape agreement below. The remaining energy independent error on the overall fraction is \SI{5.9}{\percent}. This is determined by taking the mean of the measured residual, weighted by the fraction of the \twonu{} spectrum in each energy bin. The weighting is done so that the error reflects the portion of the spectrum where the most events are collected.
 
@@ -247,7 +247,7 @@ Since the distinction between single site and multiple site events plays a stron
 \label{fig:analysis_ssfrac_agreement}
 \end{figure}
 
-\subsubsection{Shape Agreement}
+\subsubsection{Shape agreement}
 \label{sec:analysis_shape_agreement}
 One simple check is to compare the shapes of the energy and standoff distance distributions in data and simulation. \Cref{fig:analysis_shape_agreement} shows this comparison. The overall agreement in both shape and standoff distance looks reasonable. However, this agreement is not perfect. As \cref{fig:analysis_shape_agreement_ratio} shows, the simulations underpredict the fraction of single site events at low energies. This is due to a slight difference in efficiency for detecting low-energy clusters between data and simulations. This results in some events being shifted from single site to multiple site in simulations. This is not corrected for, but the systematic effect is taken into account, as described in \cref{sec:analysis_rate_uncertainty}.
 
@@ -287,7 +287,7 @@ One simple check is to compare the shapes of the energy and standoff distance di
 \label{fig:analysis_shape_agreement_ratio}
 \end{figure}
 
-\subsubsection{Rate Agreement}
+\subsubsection{Rate agreement}
 \label{sec:analysis_rate_agreement}
 \Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate observed using the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals yields (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations.
 
@@ -316,7 +316,7 @@ While the rate agreement with calibration sources provides an estimate of the ac
 
 \begin{table}[tbp]
 \centering
-\caption[Contributions to systematic uncertainty]{Estimated contributions to the uncertainty for rates measured in the detector. Some contributions are energy independent, and so are calculated separately for the different modes.}
+\caption[Contributions to systematic uncertainty on rate]{Estimated contributions to the uncertainty for rates measured in the detector. Some contributions are energy independent, and so are calculated separately for the different modes.}
 \label{tab:analysis_normalization_uncertainty}
 \begin{tabular}{p{0.45\textwidth} c c c c c}\toprule
 			&	\multicolumn{5}{c}{Contribution to rate uncertainty (\%)}				\\
@@ -372,7 +372,7 @@ Simulations predict a shape for the spectrum between about \SIrange{700}{1000}{\
 Finally, there is uncertainty as to precisely how many \xenon{136} atoms are in the fiducial volume. The uncertainty on the enrichment fraction of \SI{80.6\pm0.2}{\percent}, for example, contributes a \SI{0.3}{\percent} uncertainty. Isotope fractionation between the liquid and gas phases is small, contributing less than \SI{0.01}{\percent} uncertainty. Some natural xenon from a commissioning run may have remained dissolved in plastic TPC parts, possibly diluting \xenon{136} by \SI{0.04}{\percent}. The dominant contribution comes from uncertainty about the density. Allowing for a \SI{\pm2.5}{\percent} uncertainty in xenon temperature changes the density by \SI{\pm0.6}{\percent}.
 
 \subsection{Other PDFs}
-\subsubsection{Other Backgrounds}
+\subsubsection{Other backgrounds}
 A number of radioactive isotopes are only simulated in the TPC vessel. However, since the cryostat, for example, is made of the same copper, it seems reasonable to include simulations for it as well. And, likewise, other sources of background can be imagined. In the Run2a data set, however, there are not enough events to statistically distinguish backgrounds in different components. \Cref{fig:analysis_degenerate_uranium_spectra} shows projections of the energy and standoff distance spectra for \isotope{238}{U} in the TPC vessel and the inner cryostat, normalized to the number of \isotope{238}{U} decays returned by the fit. Statistical errors are shown.
  
 \begin{figure}[tbp]
@@ -509,12 +509,12 @@ The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty
 
 The best fit of the background and signal PDFs to the data is shown in \cref{fig:analysis_bb2n_best_fit}. The fiducial volume contains \SI{81.9}{\kg} of xenon, of which \SI{80.6}{\percent} is \isotope{136}{Xe}. The total live time is \SI{116.5}{days} and the efficiency for detecting \twonu{} after all cuts is \SI{60}{\percent}. The best fit using the maximum likelihood method says the data set contains \num{1.91e4} \twonu{} decays. This implies a half life of \SI{2.04e21}{\year}. \Cref{fig:analysis_bb2n_best_fit} shows projections of the best fit spectra.
 
-\subsection{Effects of systematic errors}
+\subsection{Effects of Systematic Errors}
 Ultimately, the profile likelihood method gives an overall error, not broken down into statistical and systematic components. However, the relative contributions to the overall error can be obtained by fixing various components in the fit and observing the change in the width of the likelihood profile. The statistical uncertainty is obtained by fixing all parameters except the number of \twonu{} events to their best fit values. Systematic uncertainty can likewise be obtained by looking at just the effect of the single site fraction uncertainty, the contributions of the background PDFs, and the normalization uncertainty. \Cref{tab:analysis_error_budget} breaks down these different sources of uncertainty.
 
 \begin{table}[htbp]
 \centering
-\caption[Effect of uncertainties on the half life measurement]{A breakdown of the various uncertainties on the measurement of the \twonu{} half life. Each contribution is given as a percentage of the best-fit value obtained by letting only the specified parameter float when performing a profile scan of the likelihood function. Correlations mean they do not sum in quadrature.}
+\caption[Effect of uncertainties on the half life measurement]{A breakdown of how various uncertainties contribute to the overall uncertainty on the measurement of the \twonu{} half life. Each contribution is given as a percentage of the best-fit value obtained by letting only the specified parameter float when performing a profile scan of the likelihood function. Correlations mean they do not sum in quadrature.}
 \label{tab:analysis_error_budget}
 \begin{tabular}{c c}\toprule
 Uncertainty	&	Contribution (\%)	\\\midrule
@@ -533,7 +533,7 @@ T_{1/2} = \left ( 2.04 \pm 0.015 (\text{stat}) \pm 0.075 (\text{sys}) \right)\ti
 \end{equation}
 
 \subsection{Consistency Checks}
-\subsubsection{Time and Position Independence}
+\subsubsection{Time and position independence}
 As \cref{fig:analysis_bb2n_rate_v_time} shows, the half life obtained by fitting over subsets of the data is consistent with the half life obtained from the entire data set. Thus, the half life seems steady over time. Likewise, as \cref{fig:analysis_bb2n_rate_v_pos} shows, the \twonu{} decays seem uniformly distributed throughout the volume.
 
 \begin{figure}[htbp]
@@ -556,7 +556,7 @@ As \cref{fig:analysis_bb2n_rate_v_time} shows, the half life obtained by fitting
 \label{fig:analysis_bb2n_rate_v_pos}
 \end{figure}
 
-\subsubsection{Energy-Only Fit}
+\subsubsection{Energy-only fit}
 It is worthwhile to verify that the inclusion of standoff distance in the fit is not somehow biasing the results. Repeating the fit with the standoff distance ignored, the best fit for the \twonu{} half life is \(T_{1/2} = \SI{2.06\pm0.08e21}{\year}\), in agreement with the half life reported above.
 
 \subsection{Comparison to Previous Results}
@@ -569,8 +569,7 @@ It is worthwhile to verify that the inclusion of standoff distance in the fit is
 \label{fig:analysis_bb2n_half_life_comparison}
 \end{figure}
 
-\section{Limits on \(0\nu\beta\beta\chi^0(\chi^0)\)}
-\subsection{Limits}
+\section{Limits on \zeronuXpX{}}
 The Majoron-emitting modes are each separately included in the fit, and confidence intervals are constructed for each using the bounded likelihood method described above. All modes fit to a value consistent with zero events at the 68\% confidence level. The likelihood profiles used to extract the 90\% confidence limits are shown in \cref{fig:analysis_bb0nX_profiles}. Limits on the number of events are translated into limits on half lives using the known live time and number of \xenon{136} nuclei in the fiducial volume. The efficiency for detection is 90.0\% for the mode with spectral index 1; 85.7\% for the mode with spectral index 2; 77.4\% for the mode with spectral index 3; and 45.0\% for the mode with spectral index 7. \Cref{fig:analysis_bb0nX_best_fit} shows projections of the single site spectra with the 90\% confidence limits for the Majoron-emitting modes. \Cref{tab:analysis_majoron_limits} summarizes the limits obtained in the context of a number of models.
 
 \begin{figure}[htbp]
@@ -617,7 +616,7 @@ The Majoron-emitting modes are each separately included in the fit, and confiden
 	\centering
 	\includegraphics[width=\textwidth]{./plots/analysis_bb0nX_90_fit_legend.pdf}
 	\end{subfigure}
-\caption[Fits for \(0\nu\beta\beta\chi^0(\chi^0)\)]{The best fits of \twonu{}, \(0\nu\beta\beta\chi^0(\chi^0)\), and all background components to the data. Only projections of the single site energy spectra are shown. For each of the Majoron-emitting modes, the 90\% confidence level upper limit is shown. Upper left is spectral index 1. Upper right is spectral index 2. Bottom left is spectral index 3. Bottom right is spectral index 7.}
+\caption[Fits for \zeronuXpX{} with 90\% limits shown]{The best fits of \twonu{}, \(0\nu\beta\beta\chi^0(\chi^0)\), and all background components to the data. Only projections of the single site energy spectra are shown. For each of the Majoron-emitting modes, the 90\% confidence level upper limit is shown. Upper left is spectral index 1. Upper right is spectral index 2. Bottom left is spectral index 3. Bottom right is spectral index 7.}
 \label{fig:analysis_bb0nX_best_fit}
 \end{figure}
 
@@ -635,13 +634,13 @@ Decay mode	&	n	&	\multicolumn{2}{c}{\(T_{1/2} (\si{\year})\)}					\\
 \end{tabular}
 \end{table}
 
-\subsection{Effect of Systematic Uncertainties}
+\subsection{Effect of Systematic Errors}
 \label{sec:analysis_majoron_error_budget}
 \Cref{tab:analysis_majoron_error_budget} tabulates the effect of the various uncertainties on the limits obtained for the Majoron-emitting modes. All of the limits are only slightly degraded below their statistical limits. For all modes, uncertainty in the backgrounds has a modest effect on the limit. Being able to better constrain the backgrounds, both with more data and through external constraints, could improve the limits. For all modes, the statistical limits are weakened more by the uncertainty in the single site fraction. Since these events are similar to \twonu{} events, this suggests the limits could be improved modestly by using the \twonu{} single site fraction as a constraint on the single site fraction for these modes. The normalization uncertainty does not weaken the limit significantly, and so enlarging the fiducial volume to increase the number of xenon atoms would likely improve the limit, despite worsening the normalization uncertainty.
 
 \begin{table}[htbp]
 \centering
-\caption[Effects of uncertainties to the limits on Majoron-emitting modes]{A breakdown of how various uncertainties effect the limit obtained on the Majoron-emitting modes. These are obtained by fixing parameters to their best-fit values and then letting only the specified parameters float when doing the profile scan. \twonu{} is considered a background for these results.}
+\caption[Effects of uncertainties on the limits for Majoron-emitting modes]{A breakdown of how various uncertainties affect the limits obtained on the Majoron-emitting modes. These are obtained by fixing parameters to their best-fit values and then letting only the specified parameters float when doing the profile scan. \twonu{} is considered a background for these results.}
 \label{tab:analysis_majoron_error_budget}
 \begin{tabular}{c c c c c }\toprule
 Uncertainty		&	\multicolumn{4}{c}{90\% CL limit on \(T_{1/2}\)}			\\
@@ -694,7 +693,7 @@ As \cref{tab:analysis_majoron_limits} shows, the limits on the Majoron-emitting 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{./plots/analysis_kamlandzen_spectrum.pdf}
-\caption[KamLAND-Zen spectrum for Majoron-emitting modes]{The energy spectrum reported by KamLAND-Zen. Backgrounds begin to become comparable to the \twonu{} signal below \SI{1}{\MeV}, reducing sensitivity to the Majoron-emitting mode with spectral index 7. (Figure reproduced from \cite{Gando:2012fk}.)}
+\caption[KamLAND-Zen spectrum with limits for Majoron-emitting modes]{The energy spectrum reported by KamLAND-Zen. Backgrounds begin to become comparable to the \twonu{} signal below \SI{1}{\MeV}, reducing sensitivity to the Majoron-emitting mode with spectral index 7. (Figure reproduced from \cite{Gando:2012fk}.)}
 \label{fig:analysis_kamlandzen_spectrum}
 \end{figure}
 

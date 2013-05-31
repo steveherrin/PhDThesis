@@ -66,7 +66,7 @@ A single calibration source at the cathode of the detector illuminates both TPCs
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.6\columnwidth]{./plots/el_run4034_dt_bin_fit.pdf}
-\caption[An example fit in a drift time bin]{A fit of the simple Gaussian + complementary error function model to one single drift time bin. In this example, the full absorption peak is the 2615 keV gamma line from \thorium{228}.}
+\caption[A fit to the full-absorption peak in a drift time bin]{A fit of the simple Gaussian + complementary error function model to one single drift time bin. In this example, the full absorption peak is the 2615 keV gamma line from \thorium{228}.}
 \label{fig:el_dtbinfit}
 \end{figure}
 
@@ -75,7 +75,7 @@ The fit model used for a full-absorption peak is described in \cref{sec:data_fit
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.6\columnwidth]{./plots/el_run4228_fit.pdf}
-\caption[An example fit to exponential attenuation]{Measuring the electron lifetime by fitting a decaying exponential to the full-absorption peak energies binned by drift time. TPC 2 is assigned a negative drift time for convenience in visualization. Both fits to the individual TPCs and to both TPCs together are shown. In this case, there is no large difference between the combined fit and the individual fits.}
+\caption[A fit to the exponential attenuation of the full-absorption peak]{Measuring the electron lifetime by fitting a decaying exponential to the full-absorption peak energies binned by drift time. TPC 2 is assigned a negative drift time for convenience in visualization. Both fits to the individual TPCs and to both TPCs together are shown. In this case, there is no large difference between the combined fit and the individual fits.}
 \label{fig:el_elfit}
 \end{figure}
 
@@ -84,7 +84,7 @@ Plotting the full absorption peak energy from each drift time bin as a function 
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.6\columnwidth]{./plots/el_run4252_profile.pdf}
-\caption[A profile scan around the best-fit electron lifetime]{Confidence intervals around the best fit electron lifetime come from a profile scan, shown here. As this figure shows, this is superior to simply estimating the 1\(\sigma\) errors from the second derivative at the best fit value, since the profile is asymmetric around the best fit (indicated by the red dot). The blue line indicates \(\Delta\chi^2 = 1\), corresponding to a 68\% confidence interval.}
+\caption[A profile scan around the best-fit electron lifetime to determine confidence intervals]{Confidence intervals around the best fit electron lifetime come from a profile scan, shown here. As this figure shows, this is superior to simply estimating the 1\(\sigma\) errors from the second derivative at the best fit value, since the profile is asymmetric around the best fit (indicated by the red dot). The blue line indicates \(\Delta\chi^2 = 1\), corresponding to a 68\% confidence interval.}
 \label{fig:el_profileel}
 \end{figure}
 
@@ -148,7 +148,7 @@ For true (point-like) single-site events, the drift time can be measured to with
 
 \begin{table}[tbp]
 \centering
-\caption[Drift time uncertainty effect on resolution for ideal events]{The effect of a \SI{0.2}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
+\caption[Effect of drift time uncertainty on resolution for ideal events]{The effect of a \SI{0.2}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
 \label{tab:el_res_dt_ideal}
 \begin{tabular}{c c}\toprule
 	\(\tau\) (\si{\micro\second})	&	\(\Delta E / E\) (\%) 	\\\midrule
@@ -168,7 +168,7 @@ Most events, however, are not point like, and the ionization arrives over a fini
 
 \begin{table}[tbp]
 \centering
-\caption[Drift time uncertainty effect on resolution for realistic events]{The effect of a \SI{3}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
+\caption[Effect of drift time uncertainty on resolution for realistic events]{The effect of a \SI{3}{\micro\second} drift time uncertainty on the rotated energy resolution, assuming a \SI{100}{\micro\second} drift time.}
 \label{tab:el_res_dt}
 \begin{tabular}{c c}\toprule
 	\(\tau\) (\si{\micro\second})	&	\(\Delta E / E\) (\%) 	\\\midrule
@@ -198,7 +198,7 @@ The effect of electron lifetime uncertainty on the energy resolution is given by
 \centering
 \includegraphics[width=1.0\columnwidth]{./plots/el_sim_errp_fit.pdf}
 \end{subfigure}
-\caption[Fits to errors on electron lifetime measurements]{The width of the uncertainty bars on single electron lifetime measurements as a function of the electron lifetime. Since the uncertainties  are asymmetric, the negative uncertainty (left) and the positive uncertainty (right) are fit separately. The fit function is a cubic polynomial.}
+\caption[Fits to confidence band widths for electron lifetime measurements]{The width of the confidence bands on single electron lifetime measurements as a function of the electron lifetime. Since the uncertainties  are asymmetric, the negative uncertainty (left) and the positive uncertainty (right) are fit separately. The fit function is a cubic polynomial.}
 \label{fig:el_err_fits}
 \end{figure}
 
@@ -206,7 +206,7 @@ As shown in \cref{fig:el_err_fits}, a polynomial function nicely fits the observ
 
 \begin{table}[tbp]
 \centering
-\caption[Electron lifetime uncertainty effect on resolution]{The effect of the electron lifetime uncertainty on energy resolution. This is based on the parameterization shown in \cref{fig:el_err_fits}. Note that the reported resolution assumes only one measurement is used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
+\caption[Effect of electron lifetime uncertainty on resolution]{The effect of the electron lifetime uncertainty on energy resolution. This is based on the parameterization shown in \cref{fig:el_err_fits}. Note that the reported resolution assumes only one measurement is used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
 \label{tab:el_res_dtau}
 \begin{tabular}{c c}\toprule
 	\(\tau\) (\si{\micro\second})&	\(\Delta E / E\) (\%) 	\\\midrule
@@ -235,7 +235,7 @@ If the true rate of change is \(+1\sigma\) away from the estimate, events close 
 
 \begin{table}[tbp]
 \centering
-\caption[Electron lifetime time variance effect on resolution]{The effect of the rate of change of electron lifetime on energy resolution. This shows the additional effect due to uncertainty in the rate of change, with measurements taken 1 day apart. Longer intervals between measurements will result in more smearing. Note that the reported resolution assumes only two measurements are used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
+\caption[Effect of electron lifetime time variance on resolution]{The effect of the rate of change of electron lifetime on energy resolution. This shows the additional effect due to uncertainty in the rate of change, with measurements taken 1 day apart. Longer intervals between measurements will result in more smearing. Note that the reported resolution assumes only two measurements are used for the correction. In practice, more measurements are used, and so the effect will be smaller.}
 \label{tab:el_res_dtaudt}
 \begin{tabular}{c c c}\toprule
 	\(\tau\) (\si{\micro\second})	&	\(d\tau/dt\) (\si{\micro\second\per\day})	&	\(\Delta E / E\) (\%) 	\\\midrule
@@ -282,7 +282,7 @@ The measured electron lifetime varies in time. Usually, this variation is small 
 \centering
 \includegraphics[width=1.0\columnwidth]{./plots/el_trend_tpc2.pdf}
 \end{subfigure}
-\caption[Fit to time-varying electron lifetime]{The fit of a piecewise polynomial to electron lifetime in TPC 1(left) and TPC 2 (right). The colored bands show the 68\% confidence interval on the fit. The vertical dashed lines indicate discontinuities in the electron lifetime due to pump stoppages or xenon feeds.}
+\caption[Fits to time-varying electron lifetime]{The fit of a piecewise polynomial to electron lifetime in TPC 1(left) and TPC 2 (right). The colored bands show the 68\% confidence interval on the fit. The vertical dashed lines indicate discontinuities in the electron lifetime due to pump stoppages or xenon feeds.}
 \label{fig:el_time_variation}
 \end{figure}
 
@@ -303,7 +303,7 @@ The rate at which xenon is recirculated through the purifiers affects electron l
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\columnwidth]{./plots/el_and_recirculation.pdf}
-\caption[Electron lifetime history with recirculation rate]{A time history of the electron lifetime, with the recirculation rate plotted below. The electron lifetime drops when the pump slows or completely stops, and recovers when recirculation resumes at a fast rate.}
+\caption[Time history of electron lifetime and recirculation rate]{A time history of the electron lifetime, with the recirculation rate plotted below. The electron lifetime drops when the pump slows or completely stops, and recovers when recirculation resumes at a fast rate.}
 \label{fig:el_and_recirculation}
 \end{figure}
 
@@ -313,7 +313,7 @@ The gas purity monitors \cite{Dobi:2011zr} provide real-time monitoring of the r
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.6\textwidth]{./plots/el_gpm_vs_el.pdf}
-\caption[GPM reading vs. electron lifetime]{The reading from the gas purity monitor sampling the gas returning from the TPC (GPM 3), during periods when the electron lifetime was recovering from a pump stoppage or feed event. Different recovery incidents are denoted with different colors and markers.}
+\caption[GPM 3 reading vs. electron lifetime]{The reading from the gas purity monitor sampling the gas returning from the TPC (GPM 3), during periods when the electron lifetime was recovering from a pump stoppage or feed event. Different recovery incidents are denoted with different colors and markers.}
 \label{fig:el_gpm_vs_el}
 \end{figure}
 

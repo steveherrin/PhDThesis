@@ -84,6 +84,7 @@ Signals that are collected on a \(u\) wire channel can induce signals in neighbo
 \end{itemize}
 
 \subsection{Signal Clustering}
+\label{sec:data_clustering}
 Once signals have been identified, signals of the same type may be bundled together:
 \begin{itemize}
 \item \(u\) wire signals: signals that are on neighboring channels and are within \SI{3.5}{\micro\s} of each other most likely came from the same energy deposition, and so are bundled together. This bundle is assigned the energy-weighted mean time and \(u\) position of the constituent signals.
@@ -118,7 +119,7 @@ The clustering algorithm above is limited by the position resolution of the dete
 \label{sec:data_corrections}
 In order to have good energy resolution, events of the same energy should be reconstructed with the same energy, regardless of where in the detector they originated or on which channels the signals were collected. In order to achieve this, a number of corrections are applied to correct for both gain and position variation. They are detailed below.
 
-\subsection{Wire Gain Corrections}
+\subsection{Wire Gain Correction}
 \begin{figure}[htbp]
 	\begin{subfigure}[t]{0.48\textwidth}
 		\centering
@@ -169,14 +170,14 @@ number of \(u\) wires	&	\(p_0\)	&	\(p_1\)	\\\midrule
 		\centering
 		\includegraphics[width=\textwidth]{./plots/data_grid_correction_Th2wire.pdf}
 	\end{subfigure}
-	\caption[Fits to determine the shieldin grid correction parameters]{Fits of the shielding grid correction function (\cref{eq:data_grid_correction}) to simulated \isotope{228}{Th} data. Each point represents the ratio of the reconstructed to the simulated full-absorption peak energy for events in a particular \(z\) bin. The left shows the ratio for signals collected on 1 \(u\) wire, while the right shows the ratio for signals collected on 2 \(u\) wires.}
+	\caption[Fits to determine the shielding grid correction parameters]{Fits of the shielding grid correction function (\cref{eq:data_grid_correction}) to simulated \isotope{228}{Th} data. Each point represents the ratio of the reconstructed to the simulated full-absorption peak energy for events in a particular \(z\) bin. The left shows the ratio for signals collected on 1 \(u\) wire, while the right shows the ratio for signals collected on 2 \(u\) wires.}
 	\label{fig:data_grid_correction_fits}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{./plots/data_grid_correction_applied.pdf}
-\caption[The shielding grid correction applied to data]{The results of applying the shielding grid correction (\cref{eq:data_grid_correction}) with the parameters in \cref{tab:data_grid_correction_parameters} to data collected with a \isotope{228}{Th} source positioned at the cathode.  Each point represents the center of the full-absorption peak for events in a particular \(z\) bin. A \SI{\pm0.35}{\percent} variation is observed throughout the TPC.}
+\caption[The result of applying the shielding grid correction to data]{The results of applying the shielding grid correction (\cref{eq:data_grid_correction}) with the parameters in \cref{tab:data_grid_correction_parameters} to data collected with a \isotope{228}{Th} source positioned at the cathode.  Each point represents the center of the full-absorption peak for events in a particular \(z\) bin. A \SI{\pm0.35}{\percent} variation is observed throughout the TPC.}
 	\label{fig:data_grid_correction_applied}
 \end{figure}
 
@@ -237,13 +238,13 @@ where \(E_I\) and \(E_S\) are the ionization and scintillation signals after all
 	\label{fig:data_finding_theta}
 \end{figure}
 
-\subsection{Thorium Peak}
-Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, the optimal rotation angle for the \SI{2615}{\keV} full absorption peak is determined from these calibrations. This angle is used for all data during that week. \SI{2615}{\keV} is close to the \SI{2458}{\keV} Q value for \xenon{136}, and so optimizing the resolution for the thorium peak should also give good resolution near the \zeronu{} peak. \Cref{fig:data_theta_v_time} shows the optimal angle for the Run2a time period. Some slight variation is seen. This is primarily due to variation in the electronic noise of the APDs. As the noise increases, better energy resolution can be obtained by using less of their signal, corresponding to smaller \(\theta\).
+\subsection{Thallium Peak from Thorium Runs}
+Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, the optimal rotation angle for the \SI{2615}{\keV} full absorption peak from the decay of \isotope{208}{Tl} is determined from these calibrations. This angle is used for all data during that week. \SI{2615}{\keV} is close to the \SI{2458}{\keV} Q value for \xenon{136}, and so optimizing the resolution for the thorium peak should also give good resolution near the \zeronu{} peak. \Cref{fig:data_theta_v_time} shows the optimal angle for the Run2a time period. Some slight variation is seen. This is primarily due to variation in the electronic noise of the APDs. As the noise increases, better energy resolution can be obtained by using less of their signal, corresponding to smaller \(\theta\).
 
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=0.75\textwidth]{./plots/data_theta_v_time.pdf}
-	\caption[Optimal rotation angle and resulting full-absorption peak energy]{The angle that yields the optimal energy resolution for the \SI{2615}{\keV} \isotope{228}{Th} full-absorption peak is determined on a week-by-week basis (top). Shaded periods represent times in which the \ce{Th} source was not used, and so the optimal angle is based on the combined data from the previous and next weeks that the \ce{Th} source was used. The vertical lines represent electronics changes prior to the start of Run2a.}
+	\caption[Variation of the optimal rotation angle over time]{The angle that yields the optimal energy resolution for the \SI{2615}{\keV} full-absorption peak is determined on a week-by-week basis for \isotope{228}{Th} calibration runs (top). Shaded periods represent times in which the \ce{Th} source was not used, and so the optimal angle is based on the combined data from the previous and next weeks that the \ce{Th} source was used. The vertical lines represent electronics changes prior to the start of Run2a.}
 	\label{fig:data_theta_v_time}
 \end{figure}
 
@@ -265,7 +266,7 @@ While thorium source calibrations are taken frequently, the cobalt and cesium so
 \centering
 \includegraphics[width=1\textwidth]{./plots/data_peak_ratio_v_time.pdf}
 \end{subfigure}
-\caption[Variation of full-absorption peak energies and peak energy ratios over time]{Although the rotated energy of the full-absorption peaks for \isotope{137}{Cs}, \isotope{60}{Co}, and \isotope{228}{Th} vary by about \SI{\pm3}{\percent} over time (top), the ratios between the full-absorption peaks and the \isotope{228}{Th} peak (bottom) remain much more steady, varying less than \SI{1}{\percent}.}
+\caption[Variation of full-absorption peak energies and their ratios over time]{Although the rotated energy of the full-absorption peaks for \isotope{137}{Cs}, \isotope{60}{Co}, and \isotope{228}{Th} vary by about \SI{\pm3}{\percent} over time (top), the ratios between the full-absorption peaks and the \isotope{228}{Th} peak (bottom) remain much more steady, varying less than \SI{1}{\percent}.}
 \label{fig:data_energy_ratios_time}
 \end{figure}
 
@@ -300,7 +301,7 @@ The residuals from the calibration campaigns are shown in \cref{fig:data_calibra
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./plots/data_calibration_residuals.pdf}
-	\caption[Residuals of energy calibration]{The residuals \((E^\text{fit,data} - E^\text{fit,sim})/E^\text{sim}\) for the calibration source peaks after the calibration is applied. The fit values are used because both data and simulation suffer from a fitting function bias. The top shows them for the single site calibration, while the bottom shows them for the multiple site calibration. The points are the mean of all source calibration campaigns, while the error bars represent the RMS. The small values indicate the calibration successfully reconstructs the true energy of an event.}
+	\caption[Residuals after energy calibration]{The residuals \((E^\text{fit,data} - E^\text{fit,sim})/E^\text{sim}\) for the calibration source peaks after the calibration is applied. The fit values are used because both data and simulation suffer from a fitting function bias. The top shows them for the single site calibration, while the bottom shows them for the multiple site calibration. The points are the mean of all source calibration campaigns, while the error bars represent the RMS. The small values indicate the calibration successfully reconstructs the true energy of an event.}
 	\label{fig:data_calibration_residuals}
 \end{figure}
 
