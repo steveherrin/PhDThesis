@@ -256,19 +256,19 @@ While thorium source calibrations are taken frequently, the cobalt and cesium so
 \item Using the mean values from these campaigns and the true ratios, fit a polynomial function \(f\) such that \(f([E^\text{fit}/E^\text{fit}_\text{Th}]|_\text{data}) = [E^\text{fit}/E^\text{fit}_\text{Th}]|_\text{simulation}\). The ratios used for this fit are shown in \cref{tab:data_calib_ratios}.
 \end{enumerate}
 
-\begin{figure}[tbp]
+\begin{sidewaysfigure}[p]
 \centering
-\begin{subfigure}[b]{0.75\textwidth}
+\begin{subfigure}[b]{0.48\textwidth}
 \centering
 \includegraphics[width=\textwidth]{./plots/data_peak_energy_v_time.pdf}
-\end{subfigure}
-\begin{subfigure}[b]{0.75\textwidth}
+\end{subfigure}\hfill%
+\begin{subfigure}[b]{0.48\textwidth}
 \centering
 \includegraphics[width=1\textwidth]{./plots/data_peak_ratio_v_time.pdf}
 \end{subfigure}
-\caption[Variation of full-absorption peak energies and their ratios over time]{Although the rotated energy of the full-absorption peaks for \isotope{137}{Cs}, \isotope{60}{Co}, and \isotope{228}{Th} vary by about \SI{\pm3}{\percent} over time (top), the ratios between the full-absorption peaks and the \isotope{228}{Th} peak (bottom) remain much more steady, varying less than \SI{1}{\percent}.}
+\caption[Variation of full-absorption peak energies and their ratios over time]{Although the rotated energy of the full-absorption peaks for \isotope{137}{Cs}, \isotope{60}{Co}, and \isotope{228}{Th} vary by about \SI{\pm3}{\percent} over time (left), the ratios between the full-absorption peaks and the \isotope{228}{Th} peak (right) remain much more steady, varying less than \SI{1}{\percent}.}
 \label{fig:data_energy_ratios_time}
-\end{figure}
+\end{sidewaysfigure}
 
 \begin{table}[tbp]
 \centering
