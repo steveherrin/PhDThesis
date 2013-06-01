@@ -15,24 +15,10 @@ The collection wires normally collect drifting ionization, which produces a posi
 
 These events are identified by summing all collection wire waveforms. The baseline of this sum is taken by averaging the first 256 samples of the waveform. If the sum waveform drops 270 ADC counts below baseline before any individual wire goes above 30 ADC counts, the event is tagged as noise.
 
-\begin{figure}[tbp]
-\centering
-\includegraphics[width=\columnwidth]{./plots/noise_eventdisplay_run_4685_ev_0441_annotated.png}
-\caption[Collection wires going negative noise]{A noise event which shows the collection \((u)\) wires going unphysically negative (blue color) before any individual wire shows a positive signal (red color). The arrow indicates the first time at which the sum signal goes negative, but more extreme examples are visible later in the event.}
-\label{fig:noise_sum_u_neg}
-\end{figure}
-
 \Cref{fig:noise_sum_u_neg} shows an example of a typical event caught by this check. These events would otherwise be problematic for the muon tagging algorithm (\cref{ch:muons}) because they exhibit lines of positive collection signals and negative inductions signals that resemble a muon passing parallel to the wire plane.
 
 \subsection{``Glitch'' Events}
 For a period of time, the high-voltage supply for the EXO-200 cathode would occasionally cause many channels in the TPC to complete saturate. Events with 100 or more saturated channels are tagged as ``glitch'' events. The exact origin of these events is still unknown. They seem to be electronic, since they were still observed saturating all the APD channels even when their gain was reduced to unity.
-
-\begin{figure}[tbp]
-\centering
-\includegraphics[width=\columnwidth]{./plots/noise_eventdisplay_run_1683_ev_0002.png}
-\caption[``Glitch'' noise]{An example of a ``glitch'' event showing a large number of saturated (indicated by red) channels.}
-\label{fig:noise_glitch}
-\end{figure}
 
 \Cref{fig:noise_glitch} shows an example of a ``glitch'' event. The only other type of event that saturates a large number of channels are high-energy TPC muons, or  muons stopping and decaying in the TPC. However, these are rare, and so this noise check only slightly reduces the efficiency of muon tagging.
 
@@ -41,12 +27,26 @@ In some events, the APD signals seem to spontaneously saturate, go far below the
 
 These events are identified by looking for any APD channels that saturate, then fall below 20 ADC counts absolute (without considering baseline), recovering to above 1024 ADC counts (again absolute, which is 1/4 full scale), and then either dipping back below 1024 ADC counts or bouncing above 2048 ADC counts (typical baselines are \(\sim\)1600 ADC counts). 
 
-\begin{figure}[tbp]
+\begin{sidewaysfigure}[p]
 \centering
-\includegraphics[width=\textwidth]{./plots/noise_eventdisplay_run_4685_ev_3344_annotated.png}
+\includegraphics[width=0.85\textwidth]{./plots/noise_eventdisplay_run_4685_ev_0441_annotated.png}
+\caption[Collection wires going negative noise]{A noise event which shows the collection \((u)\) wires going unphysically negative (blue color) before any individual wire shows a positive signal (red color). The arrow indicates the first time at which the sum signal goes negative, but more extreme examples are visible later in the event.}
+\label{fig:noise_sum_u_neg}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}[p]
+\centering
+\includegraphics[width=0.9\textwidth]{./plots/noise_eventdisplay_run_1683_ev_0002.png}
+\caption[``Glitch'' noise]{An example of a ``glitch'' event showing a large number of saturated (indicated by red) channels.}
+\label{fig:noise_glitch}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}[p]
+\centering
+\includegraphics[width=0.8\textwidth]{./plots/noise_eventdisplay_run_4685_ev_3344_annotated.png}
 \caption[APD ``bouncing'' noise]{A noise event with an APD channel signal ``bouncing''. The top image shows signals for the APD plane and u wires in TPC 2, while the bottom image shows the waveform for one APD channel. No baseline subtraction has been applied in order to show the characteristic noise signal: 1) The APD channel saturates; 2) It dips below 20 ADC counts absolute; 3) It rises back above one quarter full scale; 4) Then dips back below one quarter full scale again.}
 \label{fig:noise_apd_bounce}
-\end{figure}
+\end{sidewaysfigure}
 
 \Cref{fig:noise_apd_bounce} shows an example of this type of noise. This noise events could otherwise be tagged as muons, since the signal often bleeds over into the wire signals.
 
