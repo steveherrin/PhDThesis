@@ -201,7 +201,7 @@ where the peak energy \(E_0\), width \(\sigma\), and peak fraction \(a\) are all
 
 This model is fit to spectra collected in \isotope{137}{Cs} and  \thorium{228} calibrations, and a sum of two such models is fit to data from \isotope{60}{Co} calibrations, since it emits two gamma rays similar in energy. The energy spectra are fit using an unbinned maximum likelihood method. This fit is performed twice, first over a broad energy range to roughly identify the peak, then again in the range \((-3.0\sigma, +2.5\sigma)\) from the found peak to more precisely determine the mean energy, and to minimize bias introduced by the choice of fit window.
 
-\begin{table}[htp]
+\begin{table}[tbp]
 \centering
 \caption[Fit function biases]{The bias for fits using \cref{eq:data_fitmodel} obtained from Monte Carlo simulations of the sources. It is defined as \(E^\text{bias} = (E^\text{true} - E^\text{fit})\). It differs for single site (SS) and multiple site (MS) events.}
 \label{tab:data_fit_biases}
@@ -251,7 +251,7 @@ Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, 
 \subsection{Overall Energy Scale}
 While thorium source calibrations are taken frequently, the cobalt and cesium sources are generally reserved for dedicated campaigns. Throughout these campaigns, it has been observed that the ratio between the peak energies remain relatively stable, even though their values show some drift. This is shown in \cref{fig:data_energy_ratios_time}. Therefore, the three ratios \(E_\text{Cs}/E_\text{Th}\) and \(E_{\text{Co},i}/E_\text{Th}\) are used as the basis for the calibration. The process for calibration is then:
 \begin{enumerate}
-\item On a week-by-week basis, use thorium calibration data to determine the optimal rotation angle \(\theta(t)\) and to fit the thorium peak \(E^\text{fit}_\text{Th}(t)\) in the spectrum obtained using \cref{eq:data_E_rotated} and that rotation angle. If no thorium data is available for a given week, data from the adjacent weeks are combined and used to estimate the angle and peak for that week.
+\item On a week-by-week basis, use thorium calibration data to determine the optimal rotation angle \(\theta(t)\) and to fit the peak \(E^\text{fit}_\text{Th}(t)\) in the spectrum for thorium data obtained using \cref{eq:data_E_rotated} and that rotation angle. If no thorium data is available for a given week, data from the adjacent weeks are combined and used to estimate the angle and peak for that week.
 \item For each multiple isotope calibration campaign, compute the ratios \(E^\text{fit}_\text{Cs}/E^\text{fit}_\text{Th}\) and \(E^\text{fit}_{\text{Co},i}/E^\text{fit}_\text{Th}\)
 \item Using the mean values from these campaigns and the true ratios, fit a polynomial function \(f\) such that \(f([E^\text{fit}/E^\text{fit}_\text{Th}]|_\text{data}) = [E^\text{fit}/E^\text{fit}_\text{Th}]|_\text{simulation}\). The ratios used for this fit are shown in \cref{tab:data_calib_ratios}.
 \end{enumerate}

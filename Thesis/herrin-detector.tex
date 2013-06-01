@@ -26,7 +26,7 @@ S(T_{1/2}) \propto t \epsilon \frac{a M}{m_{a}} \frac{1}{\Delta N_b} \approx t \
 \end{equation}
 where the approximation that the uncertainty \(\Delta N_b = \sqrt{N_b}\) is valid when \(N_b\) is large enough that Gaussian statistics apply. Poisson statistics on \(N_b\) create a transition between \cref{eq:detector_bgfree_sensitivity,eq:detector_bg_sensitivity}.
 
-The design of a detector for a double beta decay experiment is guided by \cref{eq:detector_bgfree_sensitivity,eq:detector_bg_sensitivity}. It must be able to contain a large mass \(M\) of material highly-enriched in the isotope of interest (large \(a\)). It must also have a good energy resolution (small \(\Gamma\)) and be constructed to minimize backgrounds (small \(b\)). In a search for \zeronu{}, recalling \cref{eq:nu_zeronu_rate}, an experiment with large backgrounds will decrease the smallest  \(\langle m_{\nu} \rangle\) it is sensitive to as \(t^{-1/4}\), which is much slower than an experiment with small backgrounds, which goes more like \(t^{-1/2}\). EXO-200 is designed to meet these goals.
+The design of a detector for a double beta decay experiment is guided by \cref{eq:detector_bgfree_sensitivity,eq:detector_bg_sensitivity}. It must be able to contain a large mass \(M\) of material highly-enriched in the isotope of interest (large \(a\)). It must also have a good energy resolution (small \(\Gamma\)) and be constructed to minimize backgrounds (small \(b\)). In a search for \zeronu{}, recalling \cref{eq:nu_zeronu_rate}, an experiment with large backgrounds will decrease the smallest  \(\langle m_{\nu} \rangle\) it is sensitive to as \(t^{-1/4}\), which is much slower than an experiment with small backgrounds, which goes more like \(t^{-1/2}\). EXO-200 is designed to meet these goals to achieve good sensitivity.
 
 \section{Time Projection Chamber}
 \begin{figure}[htbp]
@@ -89,7 +89,7 @@ The electrical cables for the anode wires and the APDs reach the detector throug
 \begin{subfigure}[c]{0.60\linewidth}
 \includegraphics[width=\textwidth]{./photos/calibration_tubing_cropped.png}
 \end{subfigure}
-\caption[The calibration system]{To calibrate the detector, a tiny source capsule (left) containing a radioisotope housed in the small sphere indicated by the arrow can be deployed to many positions just outside the detector through a guide tube system (right).}
+\caption[The calibration system]{To calibrate the detector, a tiny source capsule (left) containing a radioisotope housed in the small sphere indicated by the arrow can be pushed with a cable through a guide tube system to many positions just outside the detector (right).}
 \label{fig:detector_calibration}
 \end{figure}
 
@@ -107,7 +107,7 @@ Currently, EXO-200 calibrates with three different isotopes. \isotope{137}{Cs} e
 \end{figure}
 
 \subsection{Cryostat and Clean Rooms}
-As shown in \cref{fig:detector_cleanroom}, the TPC vessel that contains the liquid xenon is housed inside a double-walled cryostat. The inner chamber is filled with HFE-7000 \cite{hfe7000} fluid that acts a thermal bath. The HFE fluid is radiologically clean and additionally provides some shielding from external \(\gamma\) radiation. The outer chamber is held at \(10^{-6}\)~\si{Torr} for insulation. The cryostat, made of copper low in radioactivity, is in turn shielded by \SI{25}{\cm} of lead, on all sides. The front end electronics lie just outside this lead wall. On the front of the cryostat, a second \SI{25}{\cm} wall sits just outside the electronics. This second wall prevents external radiation from having line-of-site to the detector through the penetrations in the inner lead wall, used for xenon and electrical connections.
+As shown in \cref{fig:detector_cleanroom}, the TPC vessel that contains the liquid xenon is housed inside a double-walled cryostat. The inner chamber is filled with HFE-7000 \cite{hfe7000} fluid that acts a thermal bath. The HFE fluid is radiologically clean and additionally provides some shielding from external \(\gamma\) radiation. The outer chamber is held at \(10^{-6}\)~\si{Torr} for insulation. The cryostat, made of copper low in radioactivity, is in turn shielded by \SI{25}{\cm} of lead on all sides. The front end electronics lie just outside this lead wall. On the front of the cryostat, a second \SI{25}{\cm} wall sits just outside the electronics. This second wall prevents external radiation from having line-of-site to the detector through the penetrations in the inner lead wall, used for xenon and electrical connections.
 
 A class 1000 clean room houses the cryostat and its shielding in order to reduce trace radioactivity from dust being tracked in and introduced to the detector. This clean room also houses the xenon handling system, the cryogenic refrigerators used to chill the HFE, and other necessary infrastructure.
 
@@ -130,7 +130,7 @@ While muons passing through the TPC can be readily identified (see \cref{ch:muon
 
 In order to attenuate the cosmic ray muons, EXO-200 is located \(\sim\)~\SI{655}{\m} underground at the Department of Energy's Waste Isolation Pilot Plant (WIPP) in southeastern New Mexico. WIPP is a salt mine, and its primary purpose is the permanent disposal of transuranic waste. The north end of the mine, far from and upwind of the waste, serves as a suitable site for low-background experiments.
 
-The rock overburden provides \SI{1480}{\hecto\g\per\square\cm} shielding from cosmic rays (see \cref{ch:muons}), and the salt walls are naturally low in radionuclides. Direct counting finds a contamination of \SI[per-mode=symbol]{27\pm2d-9}{\g\per\g} of \isotope{238}{U}, \SI[per-mode=symbol]{66\pm2d-9}{\g\per\g} of \isotope{232}{Th}, and \SI[per-mode=symbol]{124\pm2}{\g\per\g} of \isotope{40}{K} \cite{Auger:2012dq}. Little radon emanates from the walls, such that radon levels are similar to those found at the surface.
+The rock overburden provides \SI{1480}{\hecto\g\per\square\cm} shielding from cosmic rays (see \cref{ch:muons}), and the salt walls are naturally low in radionuclides. Direct counting finds a contamination of \SI[per-mode=symbol]{27\pm2d-9}{\g\per\g} of \isotope{238}{U}, \SI[per-mode=symbol]{66\pm2d-9}{\g\per\g} of \isotope{232}{Th}, and \SI[per-mode=symbol]{124\pm2d-9}{\g\per\g} of \isotope{40}{K} \cite{Auger:2012dq}. Little radon emanates from the walls, such that radon concentration of \SI{7}{\Bq\per\cubic\meter} is similar to that found at the surface.
 
 \section{Xenon and Recirculation}
 \label{sec:detector_xe_recirculation}

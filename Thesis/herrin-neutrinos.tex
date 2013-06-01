@@ -7,7 +7,7 @@
 \section{History}
 Neutrino physics first arose in the study of beta decay. In the most basic form of beta decay, a neutron in a nucleus decays to a proton and emits an electron. Early nuclear physicists observed that unlike alpha particles and gamma rays, which are emitted in monoenergetic lines from nuclear processes, beta decay electrons are emitted with a continuous range of energies up to some maximum energy (known as the Q value). Rather than abandoning the principle of energy conservation, Wolfgang Pauli in 1930 proposed a massless particle that could carry away the ``missing energy'' in beta decays. In 1933, Enrico Fermi \cite{Fermi:1934bh} combined the idea with Werner Heisenberg's nucleon model to form a theory of beta decay. The proposed massless particle was eventually dubbed the ``neutrino''.
 
-For several decades after Pauli proposed the neutrino, the only evidence for its existence was indirect. It was not until 1956 that Cowan and Reines \cite{Cowan:1956qf} observed the electron antineutrino by looking for the inverse beta decay reaction of antineutrinos from a nuclear reactor. In 1962, Lederman, Schwartz, and Steinberger \cite{Danby:1962ve} used a beam of pions decaying to muons to create a beam of neutrinos. These neutrinos interacted to form only muons and not electrons. This established the existence of the muon neutrino, distinct from the electron neutrino. These distinct types of neutrino with respect to the weak interaction are sometimes known as ``flavors''.
+For several decades after Pauli proposed the neutrino, the only evidence for its existence was indirect. It was not until 1956 that Cowan and Reines \cite{Cowan:1956qf} observed the electron antineutrino by looking for the inverse beta decay reaction of antineutrinos from a nuclear reactor. In 1962, Lederman, Schwartz, and Steinberger \cite{Danby:1962ve} used a beam of pions decaying to muons to create a beam of neutrinos. These neutrinos interacted to form only muons and not electrons. This established the existence of the muon neutrino, distinct from the electron neutrino. These distinct types of neutrino with respect to the weak interaction are referred to as ``flavors''.
 
 Beginning in the early 1970s, the Homestake experiment \cite{Cleveland:1998ly} observed a large deficit in the flux of electron neutrinos coming from the sun compared to the expected flux. Eventually, it was suggested that this ``solar neutrino problem'' was due to neutrinos oscillating between flavors in flight. The Super-Kamiokande experiment first observed evidence for neutrino oscillation in 1998 \cite{Fukuda:1998zr} by looking at neutrinos produced in the upper atmosphere. The solar neutrino problem was not definitively resolved until 2001 when the Sudbury Neutrino Observatory \cite{Ahmad:2001ys} simultaneously measured the flux of electron neutrinos and the total flux of all neutrinos from the sun. The total flux matched expectations, meaning that the missing electron neutrinos oscillated to other flavors in flight. For neutrinos to oscillate, they must have mass, and their mass eigenstates must be mixtures of the flavor eigenstates that participate in the weak interaction. Understanding the nature and magnitude of neutrino mass has now become the subject of much research.
 
@@ -21,11 +21,11 @@ Neutrinos do not carry charge, and so mass terms of the form
 \mathcal{L}_{m}^{\nu} = -\frac{1}{2}\overline{\nu_{L}} m_{L L}^{\nu} \nu_{L}^{c} +h.c.
 \label{eq:nu_majorana_lagrangian}
 \end{equation}
-can be added to the standard model Lagrangian. Such terms are not allowed for charged leptons, since they would violate electric charge conservation. No fundamental rule requires total lepton number conservation in the standard model, and so it is not troublesome that these terms violate it. Particles that have such mass terms are known as Majorana particles and satisfy the Majorana equation:
+can be added to the standard model Lagrangian. Such terms are not allowed for charged leptons, since they would violate electric charge conservation. No fundamental rule requires total lepton number conservation in the standard model, and so it is not troublesome that these terms violate it. Particles that have such mass terms satisfy the Majorana equation:
 \begin{equation}
-i\gamma^{\mu}\partial_{\mu}\psi - m \psi_{c} = 0
+i\gamma^{\mu}\partial_{\mu}\psi - m \psi^{c} = 0
 \end{equation}
-with \(\psi_c = \psi\). The Majorana equation is similar to the Dirac equation, except that it includes the charge conjugate \(\psi_c\) of the spinor \(\psi\). Majorana particles can be said to be their own antiparticles.
+The Majorana equation is similar to the Dirac equation, except that it includes the charge conjugate \(\psi^c\) of the spinor \(\psi\). Adding the supplemental condition that \(\psi^c = \psi\) results in a single neutral particle solution. This means Majorana particles can be described as their own antiparticles.
 
 Mass terms like those in \cref{eq:nu_majorana_lagrangian} for left-handed neutrinos violate weak isospin symmetry, but can arise from other phenomena that conserve it. In 1979, S.~Weinberg \cite{Weinberg:1979qa} proposed a dimension 5 operator coupling the neutrino fields to the standard model Higgs field. However, such a term is not renormalizable and would have to reflect new physics at a mass scale much larger than the weak scale. Introducing massive right-handed Majorana neutrinos provides one possible mechanism. With right-handed neutrinos, the most general way to write the mass terms for one generation is
 \begin{equation}
@@ -146,7 +146,7 @@ m^2\left(\nu_e\right) = \sum_j \left | U_{e j} \right |^2 m^2\left(\nu_j\right)
 The best limits come from the Mainz and Troitsk experiments, which examined the spectrum of tritium. Mainz measured \(m(\nu_e) \leq 2.3 \text{ eV}/\text{c}^{2}\) \cite{Kraus:2005nx}, while Troitsk measured \(m(\nu_e) \leq 2.05 \text{ eV}/\text{c}^{2}\) \cite{Aseev:2011dq}, both at the 95\% confidence level. The KATRIN experiment, which will begin operation soon and also examine the spectrum for tritium, hopes to be sensitive to masses greater than \(0.2\text{ eV}/\text{c}^2\) \cite{Osipowicz:2001oq}.
 
 \subsection{Cosmology}
-Due to their small masses and large velocities, neutrinos in the early universe did not clump together as much as other matter. The distribution of matter in the universe, then, is sensitive to the mass ratio of neutrinos to other matter. Thus, cosmological surveys of structure and anisotropy can potentially measure \(\sum m_{\nu}\). Cosmic microwave background data from the Planck satellite provide the best limit to date. The Planck data yield \(\sum m_{\nu} < (0.23 - 1.08) \text{ eV}/\text{c}^2\). The spread is due to the choice of model and which datasets are combined in the analysis \cite{Ade:2013kl}.Further data from other surveys may push the sensitivity down to the \si{\eV} scale \cite{Abazajian:2011dt}.
+Due to their small masses and large velocities, neutrinos in the early universe did not clump together as much as other matter. The distribution of matter in the universe, then, is sensitive to the mass ratio of neutrinos to other matter. Cosmological surveys of structure and anisotropy can potentially measure \(\sum m_{\nu}\). Cosmic microwave background data from the Planck satellite provide the best limit to date. The Planck data yield \(\sum m_{\nu} < (0.23 - 1.08) \text{ eV}/\text{c}^2\). The spread is due to the choice of model and which datasets are combined in the analysis \cite{Ade:2013kl}.Further data from other surveys may push the sensitivity down to the \si{\eV} scale \cite{Abazajian:2011dt}.
 
 \subsection{Double Beta Decay}
 \label{sec:nu_doublebetadecay}
@@ -167,7 +167,7 @@ Standard double beta decay (\twonu{}) is a standard model process in which two n
 \end{equation}
 where \(G(E,Z)\) is a known phase space factor and \(\mathcal{M}\) is the nuclear matrix element, which can be calculated using various nuclear structure models.
 
-Any experiment looking for more exotic forms of double beta decay should also observe this standard mode, and so it is primarily a background. By studying the two-neutrino-emitting mode, this background can be constrained. Moreover, measuring the rate in turn measures the nuclear matrix element. For more exotic modes, models must be used to predict the nuclear matrix elements in order to translate the rates (or limits on the rates) into statements about neutrinos. These models can be evaluated by comparing their predictions to the measurement of the \twonu{} matrix element.
+Any experiment looking for more exotic forms of double beta decay should also observe this standard mode, and so it is primarily a background. Studying the two-neutrino-emitting mode can constrain this background. Moreover, measuring the rate in turn measures the nuclear matrix element. For more exotic modes, models must be used to predict the nuclear matrix elements in order to translate the rates (or limits on the rates) into statements about neutrinos. These models can be evaluated by comparing their predictions to the measurement of the \twonu{} matrix element.
 
 \subsubsection{Neutrinoless Double Beta Decay}
 
@@ -203,7 +203,7 @@ Any experiment looking for more exotic forms of double beta decay should also ob
 
 \begin{table}[tbp]
 \centering
-\caption[Current limits on \zeronu{}]{Results of searches for neutrinoless double beta decay. Effective masses are as reported by the experiments, and no attempt has been made to standardize the nuclear matrix element calculation used. Where a range has been reported, it is due to variation between different nuclear matrix element calculations.}
+\caption[Current limits on \zeronu{}]{Results of searches for neutrinoless double beta decay. Effective masses are as reported by the experiments, and no attempt has been made to standardize the nuclear matrix element calculations used. Where a range has been reported, it is due to variation between different nuclear matrix element calculations.}
 \label{tab:nu_zeronu_limits}
 \begin{tabular}{c c c c}\toprule
 	isotope			&	half-life (\(\times10^{22}\) \si{\year})	&	\(\left|\langle m_{\nu}\rangle\right |\) (\si{\eV})	&	experiment	\\\midrule
@@ -235,14 +235,14 @@ is known as the ``effective mass''. A number of experiments have attempted to lo
 
 \subsubsection{Majoron-Emitting Double Beta Decay}
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./plots/nu_majoron_spectra}
 	\caption[Energy spectra for Majoron-emitting double beta decay modes]{The sum electron energy spectra for different Majoron-emitting double beta decays. Decays with different spectral indices are clearly distinguishable. \twonu{} has a spectral index of 5 and is plotted for comparison. All spectra have been normalized.}
 	\label{fig:nu_majoron_spectra}
 \end{figure}
 
-\begin{table}[tbp]
+\begin{table}[hbp]
 \centering
 \caption[Current limits on \zeronuXpX{}]{Limits on the half-lives of Majoron-emitting double beta decay modes in \xenon{136} from the KamLAND-Zen experiment \cite{Gando:2012fk}.}
 \label{tab:nu_majoron_limits}
@@ -278,7 +278,7 @@ Even if neutrinoless double beta decay does not proceed through light neutrino e
 \begin{figure}[htp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./plots/nu_meff_v_mmin.pdf}
-	\caption[Effective Majorana mass vs. smallest neutrino mass]{The allowed values for the effective Majorana mass as a function of the smallest neutrino mass for both the inverted and normal mass hierarchies. The widths of the bands depend on the Majorana phases. Uncertainties on the mixing angles and mass splittings widen these bands.The mixing angles, mass splittings, and uncertainties used are from a global fit by Forero et al. \cite{Forero:2012cr} The double beta decay limit comes from EXO-200 \cite{Auger:2012ar}, with the spread due to different nuclear models. The cosmological limit comes from the Planck 2013 data \cite{Ade:2013kl}, with the spread due to choice of model and which datasets are combined in the analysis. Constraints on the sum of the neutrino masses combined with the mass splittings yield an upper bound for the smallest neutrino mass.}
+	\caption[Effective Majorana mass vs. smallest neutrino mass]{The allowed values for the effective Majorana mass as a function of the smallest neutrino mass for both the inverted and normal mass hierarchies. The widths of the bands depend on the Majorana phases. Uncertainties on the mixing angles and mass splittings widen these bands. The mixing angles, mass splittings, and uncertainties used are from a global fit by Forero et al. \cite{Forero:2012cr} The double beta decay limit comes from EXO-200 \cite{Auger:2012ar}, with the spread due to different nuclear models. The cosmological limit comes from the Planck 2013 data \cite{Ade:2013kl}, with the spread due to choice of model and which datasets are combined in the analysis. Constraints on the sum of the neutrino masses combined with the mass splittings yield an upper bound for the smallest neutrino mass.}
 	\label{fig:nu_meff_v_mmin}
 \end{figure}
 

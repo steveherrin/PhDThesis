@@ -7,7 +7,7 @@
 \section{Motivation}
 Ideally, EXO-200 would only trigger on events that are due to particles interacting in the liquid xenon. Unlike the detectors at hadron colliders that have a large event rate and must selectively trigger, EXO-200 only sees about one event every 10 seconds. Therefore, the triggers do not need to be sophisticated, and indeed err on the side of including events that may not be interesting.
 
-These simple triggers, however, allow events that are not actually due to interactions in the detector to make it into the data. One common source of spurious events is electronic noise. One source of this noise is microphonic vibration of the signal readout cables due to loud acoustic noises. When these noise signals go through processing, they can slow down the processing due odd shapes and large multiplicity of the signals in the events. Furthermore, they can masquerade as signals. As described below, one of the most common types of noise can be tagged as a TPC muon. These noise events are frequent enough that the dead time enforced after a TPC muon would cause a significant hit to live time. Therefore algorithms were developed to identify and tag noise events.
+These simple triggers, however, allow events that are not actually due to interactions in the detector to make it into the data. One common source of spurious events is electronic noise. One source of this noise is microphonic vibration of the signal readout cables due to loud acoustic noises. When these noise signals go through processing, they can slow down the processing due to the odd shapes and large multiplicity of the signals in the events. Furthermore, noise signals can masquerade as real signals. As described below, some of the most common types of noise can be tagged as a TPC muon. These noise events are frequent enough that the dead time enforced after a TPC muon would cause a significant hit to live time. Therefore algorithms were developed to identify and tag noise events.
 
 \section{Types of Noise Events}
 \subsection{Unphysically Negative Signals on the Collection Wires}
@@ -18,19 +18,19 @@ These events are identified by summing all collection wire waveforms. The baseli
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=\columnwidth]{./plots/noise_eventdisplay_run_4685_ev_0441_annotated.png}
-\caption[Collection wires going negative noise]{A noise event which shows the collection \((u)\) wires going unphysically negative before any individual wire shows a psoitive signal. The arrow indicates the first time at which the sum signal goes negative, but more extreme examples are visible later in the event.}
+\caption[Collection wires going negative noise]{A noise event which shows the collection \((u)\) wires going unphysically negative (blue color) before any individual wire shows a positive signal (red color). The arrow indicates the first time at which the sum signal goes negative, but more extreme examples are visible later in the event.}
 \label{fig:noise_sum_u_neg}
 \end{figure}
 
 \Cref{fig:noise_sum_u_neg} shows an example of a typical event caught by this check. These events would otherwise be problematic for the muon tagging algorithm (\cref{ch:muons}) because they exhibit lines of positive collection signals and negative inductions signals that resemble a muon passing parallel to the wire plane.
 
 \subsection{``Glitch'' Events}
-For a period of time, the high-voltage supply for the EXO-200 cathode would occasionally cause many channels in the TPC to complete saturate. Events with 100 or more saturated channels are tagged as ``glitch'' events. The exact origin of these events is still unknown. They seem to be electronic, since they still saturated channels when the APD gains were reduced to unity.
+For a period of time, the high-voltage supply for the EXO-200 cathode would occasionally cause many channels in the TPC to complete saturate. Events with 100 or more saturated channels are tagged as ``glitch'' events. The exact origin of these events is still unknown. They seem to be electronic, since they were still observed saturating all the APD channels even when their gain was reduced to unity.
 
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=\columnwidth]{./plots/noise_eventdisplay_run_1683_ev_0002.png}
-\caption[``Glitch'' noise]{An example of a ``glitch'' event showing a large number of saturated channels.}
+\caption[``Glitch'' noise]{An example of a ``glitch'' event showing a large number of saturated (indicated by red) channels.}
 \label{fig:noise_glitch}
 \end{figure}
 
