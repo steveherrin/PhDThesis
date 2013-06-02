@@ -35,11 +35,11 @@ Only single site full-absorption events are used to make the light map, since bo
 
 The full detector volume is divided into 1352 spatial bins (see \cref{fig:lightmap_binned_phi_slices,fig:lightmap_binned_z_slices} for an illustration of this binning). This binning consists of 8 \(\phi\) bins, 13 radial bins, and 13 \(z\) bins. The \(\phi\) binning is evenly-spaced. For the \(z\) binning, the full detector is divided evenly into 11 slices. The central slice is then divided into 3 even slices, since the response is observed to change rapidly near the cathode. The radial binning consists of 1 bin from \SIrange{0}{3}{\mm}, bins every \SI{20}{mm} from \SIrange{30}{90}{\mm}, bins every \SI{10}{\mm} from \SIrange{90}{120}{\mm}, and bins every \SI{8}{mm} from \SIrange{120}{168}{\mm}. This binning is chosen to ensure adequate statistics within all bins, and to optimally map the response in regions with a high light collection gradient.
 
-Full absorption, single site events from all calibrations are placed into the bins according to the event location. Then the mean of each bin is stored in a 3-dimensional histograms. This histogram stores the scintillation response in each bin of the detector and is referred to as the ``light map''. It is stored in a database. \Cref{fig:lightmap_binned_phi_slices,fig:lightmap_binned_z_slices} show an example light map. Histograms of the number of events in each bin, and the error on the mean, are also retained to ensure an adequate amount of data was used.
+Full absorption, single site events from all calibrations are placed into the bins according to the event location. Then the mean of each bin is stored in a 3-dimensional histograms. This histogram stores the scintillation response in each bin of the detector and is referred to as the ``light map''. \Cref{fig:lightmap_binned_phi_slices,fig:lightmap_binned_z_slices} show an example light map. Histograms of the number of events in each bin, and the error on the mean, are also retained to ensure an adequate amount of data was used.
 
 \section{Correction Function}
 
-\subsection{Trilinear Interpolation in Cylindrical Polar Coordinates}
+\subsection{Interpolating in Cylindrical Polar Coordinates}
 Suppose a function \(F(r_i, \phi_j, z_k)\) is defined only at discrete points, and \(f(r, \phi, z)\) is a smooth transition between the defined points of \(F\). The simplest way to do so is with trilinear interpolation. Define
 \begin{equation}
 r_d = \frac{r_{i+1} - r_{i}}{r_{i+1}+r_{i}} ; \phi_d = \frac{\phi_{j+1} - \phi_{j}}{\phi_{j+1}+\phi_{j}}; z_d = \frac{z_{k+1} - z_{k}}{z_{k+1}+z_{k}}

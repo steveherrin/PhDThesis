@@ -8,7 +8,7 @@
 \label{sec:muon_motivation}
 Cosmic rays interact in the upper atmosphere, forming pions and kaons that decay to muons. Some of these muons have very high energies, and so can travel through lots of matter, reaching deep underground. These muons can produce backgrounds in EXO-200. For example, some muons pass through EXO-200, depositing energy. Furthermore, radiative losses create gamma rays or charged particles that can deposit energy in EXO-200. Finally, muons can produce neutrons through spallation. Spallation neutrons can capture on detector materials or the HFE, producing high-energy gamma rays that might interact in the detector and leave behind energy close to the Q value for \xenon{136}. These processes occurs promptly or on millisecond timescales, and so these events can be vetoed if the muon can be tagged.
 
-More troublesome is when the neutron capture creates an unstable isotope. For example, a neutron capture on \xenon{136} produces \xenon{137}, an isotope that beta decays with a Q value of \SI{3.8}{\MeV}, which means the beta particle produced in the decay could have an energy close to the Q value of \xenon{136}. Likewise, the (n,~2n) reaction on \xenon{136} can produce \xenon{135}, which beta decays with a Q value of \SI{1.2}{\MeV} and is is a background for \twonu{} mode. The half lives of \xenon{137} and \xenon{135} are \SI{3.8}{\minute} and \SI{9.1}{\hour} respectively, and so vetoing becomes more difficult. However, a good measurement of the muon flux can put constraints on the amount of both isotopes expected.
+More troublesome is when the neutron capture creates an unstable isotope. For example, a neutron capture on \xenon{136} produces \xenon{137}, an isotope that beta decays with a Q value of \SI{3.8}{\MeV}, which means the beta particle produced in the decay could have an energy close to the Q value of \xenon{136}. Likewise, the (n,~2n) reaction on \xenon{136} can produce \xenon{135}, which beta decays with a Q value of \SI{1.2}{\MeV} and is is a background for \twonu{} mode. The half lives of \xenon{137} and \xenon{135} are \SI{3.8}{\minute} and \SI{9.1}{\hour} respectively, and so vetoing becomes more difficult. However, a good measurement of the muon flux can constrain the rate at which these and other isotopes are formed.
 
 \section{Identifying Muons}
 \label{sec:muon_id}
@@ -22,11 +22,11 @@ Muons that reach underground have typical energies of \SIrange{1}{1000}{\GeV}, a
 \end{figure}
 
 \subsection{Identifying Muons with the Hough Transform}
-The Hough transform \cite{Hough:1959fk,Duda:1972:UHT:361237.361242} is an algorithm invented to look for tracks in bubble chamber photographs. A line can be completely parameterized by the perpendicular distance \(r\) from the line to the origin and by the by the angle \(\eta\) that perpendicular line makes with an axis. The Hough transform maps a pixel \((x, y)\) in an image to all possible lines that can pass through that pixel:
+The Hough transform \cite{Hough:1959fk,Duda:1972:UHT:361237.361242} is an algorithm invented to look for tracks in bubble chamber photographs. A line can be completely parameterized by the perpendicular distance \(r\) from the line to the origin and by the angle \(\eta\) that perpendicular line makes with an axis. The Hough transform maps a point \((x, y)\) in an image to all possible lines that can pass through that point:
 \begin{equation}
 r = x \cos\eta + y \sin\eta
 \end{equation}
-Thus, a point is transformed into a sinusoidal curve in \((\eta, r)\) space. If some of the pixels form a line, these curves will converge at the point corresponding to that line.
+Thus, a point \((x, y)\) is transformed into a sinusoidal curve in \((\eta, r)\) space. If some of the points form a line, these curves will converge at the coordinates corresponding to that line.
 
 This can be applied to EXO-200 to look for muons. First, an event must pass a simple scintillation cut. The sum of the individual APD waveforms must sum to at least 10000 ADC units, which is  above the typical signal associated with \(\gamma\) and \(\beta\) events under \SI{3}{MeV}. Next, ionization deposits are identified by simply looking at the collection wire channel waveforms. The first 256 samples are averaged to find the baseline.  A ``hot spot'' is associated with the time value at which the waveform peaks, once it has climbed 80 ADC units above the baseline. The induction wires are analyzed the same way, except looking for the waveform dipping 80 ADC units below its baseline. The hot spots undergo a Hough transform, and the curves are placed in a histogram. The bin with the most entries corresponds to the line that passes through the most points. This line is a projection of the muon's track onto the wire planes. In the case when multiple bins have the most entries, meaning the best track does not quite line up with the binning, the median of the bins (sorted by \(\eta\)) is used. \Cref{fig:muon:houghtransform} shows an example of a reconstructed muon track.
 
@@ -39,7 +39,7 @@ This can be applied to EXO-200 to look for muons. First, an event must pass a si
 
 After passing a check for noise (described in \Cref{app:noisetagger}) and a check for a large amount of scintillation light, an event will be tagged as a muon if it has good tracks in both the induction and collection wire planes in at least one TPC. A ``good'' track must be reconstructed from at least 5 hot spots that lie along the reconstructed track, or at least 3 hot spots along the track if fewer than 5 total spots were found.
 
-The Hough transform reconstructs the projection of the muon's path onto the wire planes. Since the drift velocity and wire spacings are well known, these projections can be translated back to incident zenith and azimuthal angles for the muon. However, some information is lost in the time projection. For example, consider muons that pass parallel to the wire plane. All their charge arrives simultaneously on the wires. While the signal is distinctive and will be tagged as a muon, there is no way to determine the zenith angle \(\theta\). Likewise, a muon may pass parallel to a wire. In this case, it may not create enough hot spots to be tagged as a muon, or some ionization may reach perpendicular wires, leading to an incorrect reconstruction of the angle.
+The Hough transform reconstructs the projection of the muon's path onto the wire planes. Since the drift velocity and wire spacings are well known, these projections can be translated back to incident zenith (\(\theta\)) and azimuthal (\(\phi\)) angles for the muon. However, some information is lost in the time projection. For example, consider muons that pass parallel to the wire plane. All their charge arrives simultaneously on the wires. While the signal is distinctive and will be tagged as a muon, there is no way to determine the zenith angle. Likewise, a muon may pass parallel to a wire. In this case, it may not create enough hot spots to be tagged as a muon, or some ionization may reach perpendicular wires, leading to an incorrect reconstruction of the angle.
 
 \subsection{Validation with Monte Carlo Simulations}
 In order to validate this muon tagging algorithm, 2 million muons were generated in EXOSim, a GEANT4 \cite{Agostinelli:2003fk} simulation of the EXO-200 detector. The overall efficiency of the tagging depends on the angular distribution of the incident muons for the reasons described above. The angular distribution underground is approximated \cite{miyake:1973} by
@@ -59,7 +59,7 @@ for \(E\) in \si{\GeV}. The flux underground is then
 \label{eq:muon_underground_distribution}
 \frac{dN}{dE} = \frac{dN}{dE_0}e^{b h \sec \theta}
 \end{equation}
-where \(b E\) defines the rate of continuous energy loss for muons. \(b\) is about \SI{4d-6}{\g\per\square\cm} for standard rock. This makes the substitution
+where \(b E\) defines the rate of continuous energy loss for muons. For standard rock, \(b\) is about \SI{4d-6}{\g\per\square\cm}. This makes the substitution
 \begin{equation}
 \label{eq:muon_E0_def}
 E_0 = e^{b h \sec \theta}\left(E + \epsilon\right) - \epsilon
@@ -82,7 +82,7 @@ For most incident muon angles, the algorithm correctly reconstructs their incide
   \centering
    \includegraphics[width=0.8\textwidth]{./plots/muon_misrecon_theta_rate.pdf}
   \end{subfigure}
- \caption[Rate for poorly reconstructing muon angles as a function of angle]{The rate for muons to be reconstructed far from their true direction. The top figure shows the rate for  errors greater than \ang{5} in total angular separation. The bottom figure shows the rate for errors greater than \ang{5} in \(\theta\) only, which is of concern because the flux varies in \(\theta\), but is isotropic in \(\phi\). The black polygon indicates the region with good reconstruction used for this analysis. The azimuthal angle is on the horizontal axis, with \ang{3} bins, while the zenith angle is on the vertical axis, with \ang{1} bins. Blank bins had no muons reconstructed in that bin. Poor angular resolution for near-vertical muons leads to the many blank bins at small \(\theta\).}
+ \caption[Rate for poorly reconstructing muon angles as a function of angle]{The rate for muons to be reconstructed far from their true direction. The top figure shows the rate for errors greater than \ang{5} in total separation. The bottom figure shows the rate for errors greater than \ang{5} in \(\theta\) only, of concern because the flux varies in \(\theta\), but is isotropic in \(\phi\). The black polygon indicates the region with good reconstruction used for this analysis. The azimuthal angle \(\phi\) has \ang{3} bins, and the zenith angle \(\theta\) has \ang{1} bins. Blank bins had no muons reconstructed in that bin. Poor angular resolution for near-vertical muons leads to the many blank bins at small \(\theta\).}
  \label{fig:muon_misrecon_rate}
  \end{figure}
 
