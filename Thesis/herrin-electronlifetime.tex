@@ -49,7 +49,7 @@ N_{e^{-}}(t) = N_0 \exp (-t/\tau_e)
 \end{equation}
 where \(N_0\) is the original number of electrons, and \(\tau_e\) is the``electron lifetime''.
 
-In general, there can be several different species of electronegative impurity. In that case, they all contribute to the electron lifetime according to:
+In general, there can be several different species of electronegative impurity present. In that case, they all contribute to the electron lifetime according to:
 \begin{equation}
 \tau_e^{-1} = \sum_i k_i n_i = \sum_i\tau_i^{-1}
 \label{eq:el_tauedefinition}
@@ -79,7 +79,7 @@ The fit model used for a full-absorption peak is described in \cref{sec:data_fit
 \label{fig:el_elfit}
 \end{figure}
 
-Plotting the full absorption peak energy from each drift time bin as a function of drift time reveals the exponential decay described in \cref{eq:el_exponentialtaue}. Fitting an exponential to each TPC yields a measurement of the electron lifetime for each. Alternatively, a fit with a single electron lifetime to the entire detector uses information from both TPCs. In all cases, the amplitude of the exponential is allowed to float in the fit, since only the relative decay matters when measuring the electron lifetime. Presently, the separate TPC lifetimes are used when correcting for electron lifetime in EXO-200, while the single measurement is used for detector monitoring and to ensure data quality. \Cref{fig:el_elfit} shows an example. In EXO-200, the electron lifetime is typically \(>\)~\SI{1}{\ms} over a \SI{100}{\micro\s} drift time, and so the attenuation begins to look approximately linear.
+Plotting the full absorption peak energy from each drift time bin as a function of drift time reveals the exponential decay described in \cref{eq:el_exponentialtaue}. Fitting an exponential to each TPC yields a measurement of the electron lifetime for each. Alternatively, a fit with a single electron lifetime to the entire detector uses information from both TPCs. In all cases, the amplitude of the exponential is allowed to float in the fit, since only the relative decay matters when measuring the electron lifetime. \Cref{fig:el_elfit} shows an example. Presently, the separate TPC lifetimes are used when correcting for electron lifetime in EXO-200, while the single measurement is used for detector monitoring and to ensure data quality. In EXO-200, the electron lifetime is typically \(>\)~\SI{1}{\ms} over a \SI{100}{\micro\s} drift time, and so the attenuation begins to look approximately linear.
 
 \begin{figure}[tbp]
 \centering
@@ -109,7 +109,7 @@ The electron lifetime measurement comes from minimizing the \(\chi^2\) statistic
 
 This effect seems to be due to some \(z\)-dependence introduced in processing the data. In simulations of a \thorium{228} source at the cathode with infinite electron lifetime, the method reports electron lifetimes of \SI{3.0\pm0.9d4}{\micro\second} measured in both TPCs simultaneously, and \SI{4.3\pm0.9d4}{\micro\second} measured in a single TPC for runs with 2.5k events in the full absorption peak. It reports electron lifetimes of \SI{5.0\pm0.7d4}{\micro\second} measured in both TPCs simultaneously and \SI{4.9\pm0.8d4}{\micro\second} measured in a single TPC for runs with 5k events in the full absorption peak. This effect does not appear in simulations that have not had the shielding grid correction (\cref{sec:data_grid_correction}) applied. The shielding grid correction may introduce a slight \(z\) dependence that is measured when attempting to correct for electron lifetime.
 
-The error due to this effect is small, however. A measured electron lifetime of \SI{3000}{\micro\second} corresponds to a true electron lifetime of roughly \((1/3000-1/40000)^{-1} =\) \SI{3250}{\micro\second}. This will only move the corrected ionization signal 0.3\% higher than its true value if the ionization drifts over the full \SI{120}{\micro\second} drift time. The effect on the energy resolution in the ionization channel will be half of this this, and even smaller in the rotated spectrum. Since this is presently not well understood, it is not corrected for, and so is accepted as a potential detrimental effect on the energy resolution.
+The error due to this effect is small, however. A measured electron lifetime of \SI{3000}{\micro\second} corresponds to a true electron lifetime of roughly \((1/3000-1/40000)^{-1} =\) \SI{3250}{\micro\second}. This will only move the corrected ionization signal 0.3\% higher than its true value if the ionization drifts over the full \SI{120}{\micro\second} drift time. The effect on the energy resolution in the ionization channel will be half of this this, and even smaller in the rotated spectrum. Since the source of the error is presently not well understood, it is not corrected for, and so is accepted as a potential detrimental effect on the energy resolution.
 
 \subsection{Practical Considerations}
 \label{sec:el_practical_considerations}
@@ -225,7 +225,7 @@ As shown in \cref{fig:el_err_fits}, a polynomial function nicely fits the observ
 \end{table}
 
 \subsection{Rate of Change}
-The electron lifetime can vary with time. As the pump operates, it can lose pumping ability. This slows the recirculation rate and causes a decline in electron lifetime. The most dramatic instances are following outages, when recirculation through the purifiers (as described in \cref{sec:detector_xe_recirculation}) is completely stopped, allowing xenon to stagnate. Impurities leaching out of the materials in the vessel, or from liquid xenon coming into contact with different sections of plumbing can cause the purity to degrade rapidly. When the pump is turned back on, the purity recovers over several days.
+The electron lifetime can vary with time. As the pump operates, it can lose pumping ability. This slows the recirculation rate and causes a decline in electron lifetime. The most dramatic instances are following pump outages, when recirculation through the purifiers (as described in \cref{sec:detector_xe_recirculation}) is completely stopped, allowing xenon to stagnate. Impurities leaching out of the materials in the vessel, or from liquid xenon coming into contact with different sections of plumbing can cause the purity to degrade rapidly. When the pump is turned back on, the purity recovers over several days.
 
 Suppose there are only two measurements of electron lifetime, \(\tau_1 \pm \sigma_{\tau_1}\) and \(\tau_2 \pm \sigma_{\tau_2}\). The best estimate of the rate of change is simply
 \begin{equation}

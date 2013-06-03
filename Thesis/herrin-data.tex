@@ -29,7 +29,7 @@
 
 \Cref{fig:data_simplified_electronics} shows a simplified schematic for the EXO-200 electronics. The scintillation signals from the APDs and the induction and collection signals from ionization are read out through long flex cables. The long cables separate the electronics from the TPC, removing the need for cryogenic and low-radioactivity components. After passing through a preamplifier, the signals are fed through shaping circuits and are then digitized at a rate of \SI{1}{\MHz}. The shaping circuits consist of a differentiator on the preamplifier, followed by two identical CR-RC stages of differentiation followed by integration. \Cref{tab:data_shaping_times} summarizes the time constants.  The transfer functions of these shapers determine the waveform of a physical signal (ionization or scintillation). In order to improve energy resolution, the preamp stage differentiation times for the \(u\) wire channels are measured by analyzing the response to charge injected from a capacitor.
 
-After digitization, the Trigger Event Module (TEM) monitors the signals to select interesting events. Due to the low radioactive backgrounds in EXO-200, and the relatively slow rate of \twonu, this trigger is extremely permissive. The triggering thresholds have not been thoroughly studied at low energies, but the trigger is 100\% efficient at triggering on events that deposit more than \SI{700}{\keV} in the liquid xenon. The average trigger rate during routine data taking is approximately \SI{8}{\mHz}. Additionally, the trigger is forced to fire every \SI{0.1}{\s} in order to ensure the DAQ system is correctly recording events and to provide a measurement of detector live time. When the trigger fires, the DAQ records a frame consisting of digitized waveforms for all channels \SI{\pm1024}{\micro\s} around the trigger time.
+After digitization, the Trigger Event Module (TEM) monitors the signals to select interesting events. Due to the low radioactive backgrounds in EXO-200, and the relatively slow rate of \twonu, this trigger is extremely permissive. The triggering thresholds have not been thoroughly studied at low energies, but the trigger is 100\% efficient at triggering on events that deposit more than \SI{700}{\keV} in the liquid xenon. The average trigger rate during routine data taking is approximately \SI{0.8}{\Hz}. Additionally, the trigger is forced to fire every \SI{10}{\s} in order to ensure the DAQ system is correctly recording events and to provide a measurement of detector live time. When the trigger fires, the DAQ records a frame consisting of digitized waveforms for all channels \SI{\pm1024}{\micro\s} around the trigger time.
 
 \section{Signal Reconstruction}
 \label{sec:data_reconstruction}
@@ -141,7 +141,7 @@ Environmental conditions can also cause the response to shift over time. To addr
 \label{sec:data_grid_correction}
 When ionization is created in a TPC, the positively charged ions move more slowly than the much less massive electrons. These positive ions can induce a signal on the collection wires that is opposite to the collection signal. The measured signal will be reduced. For events far from the anode, the induction wire grid shields the collection wires from this effect. However, closer to the anode, the shielding grid is not perfect \cite{Bunemann:1949kx}, and so this effect must be corrected for.
 
-Monte Carlo simulations using a MAXWELL simulation of the electric field inside the TPC suggest that the measured ionization signal \(E_\text{measured}\) is related to the true ionization signal \(E_\text{true}\) by
+Monte Carlo simulations using a Maxwell \cite{Maxwell} simulation of the electric field inside the TPC suggest that the measured ionization signal \(E_\text{measured}\) is related to the true ionization signal \(E_\text{true}\) by
 \begin{equation}
 E_\text{measured} = E_\text{true}\left[1 + p_0 \exp \left(\frac{|z| - 192.5\si{\mm}}{p_1}\right)\right]^{-1}
 \label{eq:data_grid_correction}
@@ -214,7 +214,7 @@ MS 	& 	8.13 				& 6.19 				& 6.35 				&	7.15				\\\bottomrule
 \end{tabular}
 \end{table}
 
-This model exhibits a slight bias. That is, the mean energy found is different than the true value. This can be measured by applying the fit model to Monte Carlo simulations of the sources, where the true peak location is known. The biases are summarized in \cref{tab:data_fit_biases}. The bias varies as a function of energy resolution, and with the peak-to-Compton ratio, which is why it is not the same in all cases.
+This model exhibits a slight bias. That is, the mean energy found is different than the true value. This can be measured by applying the fit model to Monte Carlo simulations of the sources, where the true peak energy is known. The biases are summarized in \cref{tab:data_fit_biases}. The bias varies as a function of energy resolution, and with the peak-to-Compton ratio, which is why it is not the same in all cases.
 
 \subsection{Rotation Angle}
 \label{sec:data_rotation_angle}
@@ -239,7 +239,7 @@ where \(E_I\) and \(E_S\) are the ionization and scintillation signals after all
 \end{figure}
 
 \subsection{Thallium Peak from Thorium Runs}
-Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, the optimal rotation angle for the \SI{2615}{\keV} full absorption peak from the decay of \isotope{208}{Tl} is determined from these calibrations. This angle is used for all data during that week. \SI{2615}{\keV} is close to the \SI{2458}{\keV} Q value for \xenon{136}, and so optimizing the resolution for the thorium peak should also give good resolution near the \zeronu{} peak. \Cref{fig:data_theta_v_time} shows the optimal angle for the Run 2a time period analyzed in \cref{ch:analysis}. Some slight variation is seen. This is primarily due to variation in the electronic noise of the APDs. As the noise increases, better energy resolution can be obtained by using less of their signal, corresponding to smaller \(\theta\).
+Thorium source calibrations are taken every 1--2~days. On a week-by-week basis, the optimal rotation angle for the \SI{2615}{\keV} full absorption peak from the decay of \isotope{208}{Tl} is determined from these calibrations. This angle is used for all data during that week. \SI{2615}{\keV} is close to the \SI{2458}{\keV} Q value for \xenon{136}, and so optimizing the resolution for this peak should also give good resolution near the \zeronu{} peak. \Cref{fig:data_theta_v_time} shows the optimal angle for the Run 2a time period analyzed in \cref{ch:analysis}. Some slight variation is seen. This is primarily due to variation in the electronic noise of the APDs. As the noise increases, better energy resolution can be obtained by using less of their signal, corresponding to smaller \(\theta\).
 
 \begin{figure}[htbp]
 \centering
