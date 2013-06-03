@@ -1,7 +1,7 @@
 #!/bin/bash
 
 INFILE=$1
-OUTFILE="${INFILE%.*}_embedded.pdf"
+OUTFILE="${INFILE%.*}_final.pdf"
 
 AUTHOR="Steven Herrin"
 TITLE="Double beta decay in xenon-136"
