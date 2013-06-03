@@ -3,7 +3,7 @@
 
 \chapter{Measuring Double Beta Decay}
 \label{ch:analysis}
-This is a reanalysis of the EXO-200 Run 2a data, taken between October 2011 and April 2012. This data has previously been used to establish a limit on the half-life of \zeronu{} of \(T_{1/2}^{0\nu} > \SI{1.5e25}{\year}\) and measure the half-life of \twonu{} to be \(T_{1/2}^{2\nu} = (2.23 \pm 0.017 (\text{stat}) \pm 0.22 (\text{sys}))\times 10^{25}\si{\year}\) \cite{Auger:2012ar}. This analysis attempts to make a more precise measurement of \(T_{1/2}^{2\nu}\), and also to set a limit on the half-lives of Majoron-emitting modes \(0\nu\beta\beta\chi^{0}(\chi^{0})\).
+This is a reanalysis of the EXO-200 Run 2a data, taken between October 2011 and April 2012. This data has previously been used to establish a limit on the half-life of \zeronu{} of \(T_{1/2}^{0\nu} > \SI{1.5e25}{\year}\) and measure the half-life of \twonu{} to be \(T_{1/2}^{2\nu} = (2.23 \pm 0.017 (\text{stat}) \pm 0.22 (\text{sys}))\times 10^{21}\si{\year}\) \cite{Auger:2012ar}. This analysis attempts to make a more precise measurement of \(T_{1/2}^{2\nu}\), and also to set a limit on the half-lives of Majoron-emitting modes \(0\nu\beta\beta\chi^{0}(\chi^{0})\).
 
 There are numerous improvements over the previous analysis:
 \begin{itemize}
@@ -289,7 +289,7 @@ One simple check is to compare the shapes of the energy and standoff distance di
 
 \subsubsection{Rate Agreement}
 \label{sec:analysis_rate_agreement}
-\Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate observed using the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals yields (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations.
+\Cref{tab:analysis_source_rate_agreement} shows the agreement between the true activity of calibration sources (based on their activity at time of manufacture and known half-life) and the rate estimated using data from the detector and Monte Carlo simulations of the sources in order to determine efficiency. For most isotope and position combinations, the error is less than 5\%. Taking a mean (weighted by the uncertainties) of all the residuals yields (True - Estimated)/True = \SI{1.7\pm2.3}{\percent}. Contributions to this error include several effects that may not be present in non-calibration data. The source activities are only known to within 1.2\%, and the rate estimate is quite sensitive to the actual location of the source in the simulations.
 
 \begin{table}[htbp]
 \centering
@@ -380,7 +380,7 @@ Finally, there is uncertainty as to precisely how many \xenon{136} atoms are in 
 
 \subsection{Other PDFs}
 \subsubsection{Other Backgrounds}
-A number of radioactive isotopes are only simulated in the TPC vessel. However, since the cryostat, for example, is made of the same copper, it seems reasonable to include simulations for it as well. And, likewise, other sources of background can be imagined. In the Run 2a data set, however, there are not enough events to statistically distinguish backgrounds in different components. \Cref{fig:analysis_degenerate_uranium_spectra} shows projections of the energy and standoff distance spectra for \isotope{238}{U} in the TPC vessel and the inner cryostat, normalized to the number of \isotope{238}{U} decays returned by the fit. Statistical errors are shown.
+A number of radioactive isotopes are only simulated in the TPC vessel. However, since the cryostat, for example, is made of the same copper, it seems reasonable to include simulations for it as well. And, likewise, other sources of background can be imagined. In the Run 2a data set, however, there are not enough events to statistically distinguish backgrounds in different components. \Cref{fig:analysis_degenerate_uranium_spectra} shows projections of the energy and standoff distance spectra for \isotope{238}{U} in the TPC vessel and the inner cryostat, normalized to the number of \isotope{238}{U} decays returned by the fit. Statistical errors are shown. The two spectra are statistically indistinguishable.
  
 \begin{figure}[tbp]
 \centering
@@ -477,10 +477,10 @@ Since radon is noble, it cannot be chemically purified from the xenon. \isotope{
 \item The remaining \SI{78.2\pm46.0}{\micro\Bq} is used as the constraint for \isotope{222}{Rn} and its daughters in the active xenon.
 \item There is also \SI{30.2}{\kg} of inactive xenon. It is assumed that it mixes well with the active xenon. The activity in this volume is constrained to \SI{110.3\pm11.0}{\Bq}.
 \end{itemize}
-These constraints are imposed as Gaussian constraints (\cref{eq:analysis_gaussian_constraint}) on the \(N_i\) (as in \cref{eq:analysis_sum_pdf}) for the PDFs, taking into account the efficiencies of all cuts, including the \(\alpha\) particle eliminating diagonal cut.
+These constraints are imposed as Gaussian constraints (\cref{eq:analysis_gaussian_constraint}) on the \(N_i\) (as in \cref{eq:analysis_sum_pdf}) for the PDFs, taking into account the efficiencies of all cuts, including the \(\alpha\)-particle-eliminating scintillation-to-ionization ratio cut.
 
 \subsection{Radon in the Air Gap}
-Radon can seep through the cracks in the lead wall and decay in the small gap between the lead and the cryostat. \(\gamma\) rays from decays of \isotope{214}{Bi} in this volume can reach the TPC. An external instrument \cite{rad7} monitors the level of \isotope{222}{Rn} in the clean room air. The average activity during periods when the detector was live was \SI{7.2\pm0.5}{\Bq\per\cubic\meter}. Measurements sampling air from the gap directly have confirmed that radon levels in the gap are similar to those in the clean room air. The volume of air in the gap is known to be \SI{.280\pm0.015}{\cubic\meter}, and so the total activity of \SI{2.01\pm 0.11}{\Bq} is used, along with the efficiencies from simulation, to constrain the number of decays \(N_i\) for \SI{214}{Bi} in the gap. This is applied as a Gaussian constraint on the upper number of decays.
+Radon can seep through the cracks in the lead wall and decay in the small gap between the lead and the cryostat. \(\gamma\) rays from decays of \isotope{214}{Bi} in this volume can reach the TPC. An external instrument \cite{rad7} monitors the level of \isotope{222}{Rn} in the clean room air. The average activity during periods when the detector was live was \SI{7.2\pm0.5}{\Bq\per\cubic\meter}. Measurements sampling air from the gap directly have confirmed that radon levels in the gap are similar to those in the clean room air. The volume of air in the gap is known to be \SI{.280\pm0.015}{\cubic\meter}, and so the total activity of \SI{2.01\pm 0.11}{\Bq} is used, along with the efficiencies from simulation, to constrain the number of decays \(N_i\) for \SI{214}{Bi} in the gap. This is applied as a one-sided Gaussian constraint on the upper number of decays.
 
 \subsection{Normalization}
 The systematic rate uncertainty described in \cref{sec:analysis_rate_uncertainty} is included in the fit as an overall factor multiplying the normalization. This is not so much a constraint as a way to account for the uncertainty. The constraint has the factor centered around 1, so it does not significantly affect the best fit value. The width is given by the rate uncertainty given in \cref{tab:analysis_source_rate_agreement}, and so it contributes to the uncertainty on half-life measurements or limits.
@@ -572,7 +572,7 @@ It is worthwhile to verify that the inclusion of standoff distance in the fit is
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth]{./plots/analysis_bb2n_half_life_comparison.pdf}
-\caption[Comparison of measurements of the half-life for \twonu{}]{A comparison of measurements of \twonu{} half-life measurements. The EXO-200 experiment reported results in 2011 \cite{Ackerman:2011gz} and 2012 \cite{Auger:2012ar} using independent data sets. The KamLAND-Zen experiment reported two results in 2012, denoted ``a'' \cite{Gando:2012qy} and ``b'' \cite{Gando:2012fk}, with some data in common between the two analyses. The blue line and blue shaded area are the maximum likelihood estimate and the 1\(\sigma\) error for the half-life (\(T_{1/2} = (2.29\pm0.076)\times10^{21}\si{\year}\)) based on these previous measurements, assuming all are independent. The bottom point is the measurement reported in this work.}
+\caption[Comparison of measurements of the half-life for \twonu{}]{A comparison of measurements of the \twonu{} half-life for \xenon{136}. The EXO-200 experiment reported results in 2011 \cite{Ackerman:2011gz} and 2012 \cite{Auger:2012ar} using independent data sets. The KamLAND-Zen experiment reported two results in 2012, denoted ``a'' \cite{Gando:2012qy} and ``b'' \cite{Gando:2012fk}, with some data in common between the two analyses. The blue line and blue shaded area are the maximum likelihood estimate and the 1\(\sigma\) error for the half-life (\(T_{1/2} = (2.29\pm0.076)\times10^{21}\si{\year}\)) based on these previous measurements, assuming all are independent. The bottom point is the measurement reported in this work.}
 \label{fig:analysis_bb2n_half_life_comparison}
 \end{figure}
 

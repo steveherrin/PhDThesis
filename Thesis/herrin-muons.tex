@@ -6,7 +6,7 @@
 
 \section{Motivation}
 \label{sec:muon_motivation}
-Cosmic rays interact in the upper atmosphere, forming pions and kaons that decay to muons. Some of these muons have very high energies, and so can travel through lots of matter, reaching deep underground. These muons can produce backgrounds in EXO-200. For example, some muons pass through EXO-200, depositing energy. Furthermore, radiative losses create gamma rays or charged particles that can deposit energy in EXO-200. Finally, muons can produce neutrons through spallation. Spallation neutrons can capture on detector materials or the HFE, producing high-energy gamma rays that might interact in the detector and leave behind energy close to the Q value for \xenon{136}. These processes occur promptly or on millisecond timescales, and so these events can be vetoed if the muon can be tagged.
+Cosmic rays interact in the upper atmosphere, forming pions and kaons that decay to muons. Some of these muons have very high energies, and so can travel through lots of matter, reaching deep underground. These muons can produce backgrounds in EXO-200. For example, some muons pass through EXO-200, depositing energy. Furthermore, radiative losses create gamma rays or charged particles that can deposit energy in EXO-200. Finally, muons can produce neutrons through spallation. Spallation neutrons can capture on detector materials or the HFE, producing high-energy gamma rays that might interact in the detector. Any of these processes could leave behind energy close to the Q value for \xenon{136}. These processes occur promptly or on millisecond timescales, and so these events can be vetoed if the muon can be tagged.
 
 More troublesome is when the neutron capture creates an unstable isotope. For example, a neutron capture on \xenon{136} produces \xenon{137}, an isotope that beta decays with a Q value of \SI{3.8}{\MeV}, which means the beta particle produced in the decay could have an energy close to the Q value of \xenon{136}. Likewise, the (n,~2n) reaction on \xenon{136} can produce \xenon{135}, which beta decays with a Q value of \SI{1.2}{\MeV} and is a background for the \twonu{} mode. The half-lives of \xenon{137} and \xenon{135} are \SI{3.8}{\minute} and \SI{9.1}{\hour} respectively, and so vetoing becomes more difficult. However, a good measurement of the muon flux can constrain the rate at which these and other isotopes are formed.
 
@@ -33,7 +33,7 @@ This can be applied to EXO-200 to look for muons. First, an event must pass a si
 \begin{figure}[tp]
 \centering
 \includegraphics[width=1\columnwidth]{./plots/muon_houghtransform_run_4685_ev_67.pdf}
-\caption[Identifying a muon with the Hough transform]{The Hough transform used to identify and reconstruct a muon passing through EXO-200. The left side shows collection wire channels, and the right side shows induction wire channels. The upper panels show the raw waveforms, baseline subtracted. The middle panels shows the identified hot spots in the waveforms in black, and the reconstructed tracks in red. The lower panels show the Hough transforms of the hot spots above, which converge on the points corresponding to the red lines in the middle panels.}
+\caption[Identifying a muon with the Hough transform]{The Hough transform used to identify and reconstruct a muon passing through EXO-200. The left side shows collection wire channels, and the right side shows induction wire channels. The upper panels show the raw waveforms, baseline subtracted. The middle panels show the identified hot spots in the waveforms in black, and the reconstructed tracks in red. The lower panels show the Hough transforms of the hot spots above, which converge on the points corresponding to the red lines in the middle panels.}
 \label{fig:muon:houghtransform}
 \end{figure}
 
@@ -103,7 +103,7 @@ The muon flux through the detector divided into discrete solid angle bins is sim
 \label{eq:muon_fluxdef}
 \Phi = \frac{\sum_{i}N_{\mu}}{ \Delta T\sum_{i}\Delta\Omega_i \epsilon(\theta_i, \phi_i) A(\theta_i, \phi_i)}
 \end{equation}
-where \(N_\mu\) is the number of muons observed in time \(\Delta T\). \(\epsilon\) is the efficiency for that bin, \(\Delta\Omega_i\) is the solid angle subtended by bin \(i\), and \(A\) is the projected area of the detector for a particle incident from \((\theta_i, \phi_i)\). The projected area of a cylinder on its side is
+where \(N_\mu\) is the number of muons observed in time \(\Delta T\), \(\epsilon\) is the efficiency for that bin, \(\Delta\Omega_i\) is the solid angle subtended by bin \(i\), and \(A\) is the projected area of the detector for a particle incident from \((\theta_i, \phi_i)\). The projected area of a cylinder on its side is
 \begin{equation}
 A(\theta,\phi) = \pi r^2 |\cos(\phi)|\sin(\theta) + 2 r \ell \sqrt{1-\sin(\theta)^2 \cos(\phi)^2}
 \end{equation}
