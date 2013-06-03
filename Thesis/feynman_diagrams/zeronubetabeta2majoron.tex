@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage[top=1mm, bottom=1mm, left=1mm, right=1mm, paperwidth=75mm, paperheight=54mm]{geometry}
+\usepackage{feynmp}
+\begin{document}
+	\DeclareGraphicsRule{*}{mps}{*}{}
+	\pagestyle{empty}
+	\setlength{\parindent}{0cm}
+	\unitlength = 1mm
+		\begin{fmffile}{0nubbXX}
+			%\fbox{
+			\fmfframe(6,6)(6,6){
+			\begin{fmfgraph*}(60, 40)
+				\fmfstraight
+				\fmfleft{i1,d1,d2,i2}
+				\fmfright{o1,o2,o31,o32,o4,o5}
+				\fmftop{v2}
+				\fmfbottom{v1}
+				%
+				\fmfv{d.sh=cross,d.size=0.05w,label=\(\nu_e\),label.dist=-0.1w}{in1}
+				\fmf{fermion}{i1,v1,o1}
+				\fmf{photon,label=\(W^{-}\),label.side=left,label.dist=1}{v1,v3}
+				\fmf{phantom}{v1,v5}
+				\fmf{phantom}{d1,v5,in1}
+				\fmf{fermion}{v3,o2}
+				\fmf{plain}{in1,v3}
+				\fmf{fermion}{i2,v2,o5}
+				\fmf{photon,label=\(W^{-}\),label.side=right,label.dist=1}{v2,v4}
+				\fmf{phantom}{v2,v6}
+				\fmf{phantom}{d2,v6,in1}
+				\fmf{fermion}{v4,o4}
+				\fmf{plain}{in1,v4}
+				\fmf{dashes,tension=0}{in1,o31}
+				\fmf{dashes,tension=0}{in1,o32}
+				\fmffixedx{0}{v3,in1}
+				\fmffixedx{0}{v4,in1}
+				\fmffixedy{0}{v3,o2}
+				\fmffixedy{0}{v4,o4}
+				%			
+				\fmffreeze
+				\fmfi{fermion}{vpath (__i1,__v1) shifted (thick*(0,-3))}
+				\fmfi{fermion}{vpath (__i1,__v1) shifted (thick*(0,-6))}
+				\fmfi{fermion}{vpath (__v1,__o1) shifted (thick*(0,-3))}
+				\fmfi{fermion}{vpath (__v1,__o1) shifted (thick*(0,-6))}
+				\fmfi{fermion}{vpath (__i2,__v2) shifted (thick*(0,3))}
+				\fmfi{fermion}{vpath (__i2,__v2) shifted (thick*(0,6))}
+				\fmfi{fermion}{vpath (__v2,__o5) shifted (thick*(0,3))}
+				\fmfi{fermion}{vpath (__v2,__o5) shifted (thick*(0,6))}
+				%			
+				\fmflabel{\(n\)}{i1}
+				\fmflabel{\(p\)}{o1}			
+				\fmflabel{\(n\)}{i2}
+				\fmflabel{\(p\)}{o5}
+				\fmflabel{\(e^{-}\)}{o2}
+				\fmflabel{\(e^{-}\)}{o4}
+				\fmflabel{\(\chi^0\)}{o31}
+				\fmflabel{\(\chi^0\)}{o32}
+			\end{fmfgraph*}
+			}%}
+		\end{fmffile}
+\end{document}
