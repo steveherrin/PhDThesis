@@ -1,0 +1,121 @@
+%\documentclass[12pt]{report}
+\documentclass[12pt,twoside]{report}
+
+% note that the document can be single or double sided.  
+
+%\usepackage[online]{suthesis-2e}
+\usepackage{suthesis-2e}
+\usepackage{fixltx2e}
+\usepackage[sorting=none,firstinits=true]{biblatex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[version=3]{mhchem}
+\usepackage{braket}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{subfiles}
+\usepackage{subcaption}
+\usepackage{rotating}
+\usepackage[section]{placeins}
+\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage[disable]{todonotes}
+%\usepackage{showframe}
+\usepackage{nag}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{pdfpages}
+
+\newcommand{\addref}{\todo[color=red!40]{Add reference.}}
+
+\newcommand{\about}[0]{\(\sim\)}
+
+\newcommand{\isotope}[2]{\ce{^{#1} #2}}
+\newcommand{\xenon}[1]{\isotope{#1}{Xe}}
+\newcommand{\cobalt}[1]{\isotope{#1}{Co}}
+\newcommand{\cesium}[1]{\isotope{#1}{Cs}}
+\newcommand{\thorium}[1]{\isotope{#1}{Th}}
+
+\newcommand{\zeronu}{\(0\nu\beta\beta\)}
+\newcommand{\zeronuX}{\(0\nu\beta\beta\chi^{0}\)}
+\newcommand{\zeronuXpX}{\(0\nu\beta\beta\chi^{0}(\chi^{0})\)}
+\newcommand{\zeronuXX}{\(0\nu\beta\beta\chi^{0}\chi^{0}\)}
+\newcommand{\twonu}{\(2\nu\beta\beta\)}
+
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\Bq{Bq}
+
+\reversemarginpar
+\setlength{\marginparwidth}{1.25in}
+
+%\renewcommand{\thesiscopyrightpage}{\includepdf[pages=2]{registrar_pages.pdf}}
+\renewcommand{\signaturepage}{\includepdf[pages=3]{registrar_pages.pdf}}
+
+\addbibresource{herrin-thesis.bib}
+
+\begin{document}
+
+\title{Double beta decay in xenon-136:\\
+	 Measuring the neutrino-emitting mode\\
+	 and searching for Majoron-emitting modes}
+\author{Steven Herrin}
+\dept{Physics}
+\principaladviser{Martin Breidenbach}
+\firstreader{Patricia Burchat}
+\secondreader{Aaron Roodman}
+\submitdate{June 2013}
+\copyrightyear{2013}
+\copyrighttrue
+ 
+\beforepreface
+
+\prefacesection{Abstract}
+\input{herrin-abstract}
+\cleardoublepage
+
+\prefacesection{Acknowledgements}
+\input{herrin-acknowledgements}
+\cleardoublepage
+
+\afterpreface
+\cleardoublepage
+ 
+\subfile{herrin-introduction}
+ \cleardoublepage
+
+\subfile{herrin-neutrinos}
+ \cleardoublepage
+
+\subfile{herrin-liquidxe}
+ \cleardoublepage
+
+\subfile{herrin-detector}
+ \cleardoublepage
+
+\subfile{herrin-data}
+ \cleardoublepage
+
+\subfile{herrin-electronlifetime}
+ \cleardoublepage
+
+\subfile{herrin-muons}
+ \cleardoublepage
+
+\subfile{herrin-analysis}
+ \cleardoublepage
+
+\subfile{herrin-conclusion}
+ \cleardoublepage
+
+\appendix
+\subfile{herrin-appendix-noisetagger}
+ \cleardoublepage
+
+\subfile{herrin-appendix-lightmap}
+ \cleardoublepage
+
+\printbibliography[heading=bibintoc]
+
+%\onlinesignature
+
+\end{document}
