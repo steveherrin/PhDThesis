@@ -1,0 +1,31 @@
+Thesis/subfiles.dtx
+Thesis/subfiles.ins
+Thesis/subfiles.cls
+Thesis/example/*
+
+Thesis/feynman_diagrams/*.1
+Thesis/feynman_diagrams/*.t1
+Thesis/feynman_diagrams/*.mp
+
+Thesis/herrin-thesis.bib
+
+# Latex output #
+################
+*.pdf
+*.aux
+*.out
+*.log
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.xml
+*.bib
+
+# But I want plots
+##################
+!/Thesis/plots/*.pdf
+!/Thesis/photos/*.pdf
+!/Thesis/figures/*.pdf
+!/Thesis/copyright/*.pdf
